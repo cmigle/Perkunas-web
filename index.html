@@ -5,1299 +5,404 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Perkūnas Racing Team | Kuriame Ateitį</title>
   <link rel="icon" type="image/png" href="images/favicon.png" />
-  
+
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
-  <!-- Google Material Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-  
-  <!-- React Bits Styles -->
-  <link rel="stylesheet" href="https://unpkg.com/@react-bits/ui/dist/style.css" />
-  
-  <!-- HeroUI -->
-  <link rel="stylesheet" href="https://unpkg.com/@heroui/theme@latest/dist/index.css" />
-  
-  <!-- Swiper -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  
-  <!-- NEW: Responsive styles and improvements -->
-  <link rel="stylesheet" href="src/styles/responsive.css" />
+
+  <!-- Gallery CSS (used on gallery page but harmless here) -->
   <link rel="stylesheet" href="components/Gallery.css" />
-  
-  <style>
-    :root {
-      --primary: #FA8F31;
-      --primary-dark: #F16D26;
-      --accent: #AA1811;
-      --accent-dark: #7C1715;
-      --near-black: #0B0605;
-      --glass-bg: rgba(11, 6, 5, 0.4);
-      --glass-border: rgba(250, 143, 49, 0.2);
-    }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Exo 2', sans-serif;
-      background: #000;
-      color: #f0f0f0;
-      overflow-x: hidden;
-      line-height: 1.6;
-    }
-
-    /* Selection Colors */
-    ::selection {
-      background: var(--primary);
-      color: var(--near-black);
-    }
-
-    /* Mouse-Reactive Background Container */
-    #mouse-bg {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    /* React Bits Pill Menu */
-    .pill-menu {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1000;
-      background: rgba(11, 6, 5, 0.6);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(250, 143, 49, 0.3);
-      border-radius: 50px;
-      padding: 8px 12px;
-      display: flex;
-      gap: 8px;
-      box-shadow: 0 8px 32px rgba(250, 143, 49, 0.2);
-    }
-
-    .pill-menu a {
-      padding: 10px 24px;
-      border-radius: 50px;
-      text-decoration: none;
-      color: #f0f0f0;
-      font-weight: 600;
-      font-size: 14px;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .pill-menu a.logo-link {
-      padding: 6px 16px;
-    }
-
-    .pill-menu a.logo-link img {
-      height: 32px;
-      width: auto;
-      filter: brightness(0) invert(1);
-      transition: filter 0.3s ease;
-    }
-
-    .pill-menu a.logo-link:hover img,
-    .pill-menu a.logo-link.active img {
-      filter: none;
-    }
-
-    .pill-menu a::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: -1;
-    }
-
-    .pill-menu a:hover::before,
-    .pill-menu a.active::before {
-      opacity: 1;
-    }
-
-    .pill-menu a.active {
-      color: #fff;
-      box-shadow: 0 4px 12px rgba(250, 143, 49, 0.4);
-    }
-
-    /* Main Content */
-    .content {
-      position: relative;
-      z-index: 1;
-      padding-top: 80px;
-    }
-
-    /* Hero Section with 3D Car */
-    .hero-section {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      padding: 0 20px 40px;
-      margin-top: -60px; /* Pull section up to meet navbar */
-      overflow: hidden; /* Contain the absolute car container */
-    }
-
-    .hero-content {
-      max-width: min(2400px, 95vw);
-      width: 100%;
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr; /* Equal columns instead of fixed center */
-      gap: 60px;
-      align-items: center;
-      min-height: 100vh; /* Ensure full height */
-      pointer-events: none; /* Allow clicks to pass through to car */
-    }
-
-    .hero-text {
-      text-align: right;
-      padding-right: 30px;
-      /* Enhanced semi-transparent matte glass effect */
-      background: rgba(11, 6, 5, 0.45); /* More transparent - 45% instead of 75% */
-      backdrop-filter: blur(20px) saturate(200%);
-      -webkit-backdrop-filter: blur(20px) saturate(200%);
-      border: 1px solid rgba(250, 143, 49, 0.25);
-      border-radius: 24px;
-      padding: 48px 40px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
-                  inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      position: relative;
-      z-index: 10; /* Text on top! */
-      pointer-events: auto; /* Text is clickable */
-    }
-    
-    .hero-text * {
-      pointer-events: auto; /* All children are clickable */
-    }
-
-    .hero-text h1 {
-      font-size: 4.5rem;
-      font-weight: 900;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 20px;
-      line-height: 1.2;
-    }
-
-    .hero-text p {
-      font-size: 1.3rem;
-      color: rgba(255, 255, 255, 0.8);
-      margin-bottom: 30px;
-    }
-
-    .cta-button {
-      display: inline-block;
-      padding: 18px 48px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: #fff;
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1.2rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 24px rgba(250, 143, 49, 0.3);
-    }
-
-    .cta-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(250, 143, 49, 0.5);
-    }
-
-    /* 3D Car Container - FULL SCREEN ABSOLUTE POSITIONING */
-    .car-container {
-      position: absolute;
-      top: -150px; /* Move model even higher up to eliminate gap */
-      left: 0;
-      width: 100%;
-      height: calc(100% + 150px); /* Increase height to compensate */
-      z-index: 1; /* Behind text */
-      pointer-events: none; /* Allow scroll - only canvas gets events */
-    }
-    
-    #threejs-car {
-      width: 100%;
-      height: 100%;
-      cursor: grab; /* Show it's draggable */
-      pointer-events: auto; /* Canvas captures mouse for rotation but allows scroll */
-    }
-    
-    #threejs-car:active {
-      cursor: grabbing; /* Show when dragging */
-    }
-
-    #threejs-car {
-      width: 100%;
-      height: 100%;
-      border-radius: 20px;
-    }
-
-    .rotate-indicator {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(11, 6, 5, 0.8);
-      backdrop-filter: blur(10px);
-      padding: 12px 24px;
-      border-radius: 50px;
-      border: 1px solid rgba(250, 143, 49, 0.3);
-      font-size: 14px;
-      animation: pulse 2s ease-in-out infinite;
-      opacity: 0;
-      animation: fadeInPulse 2s ease-in-out 3s forwards, pulse 2s ease-in-out 5s infinite;
-    }
-
-    @keyframes fadeInPulse {
-      to { opacity: 1; }
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: translateX(-50%) scale(1); }
-      50% { transform: translateX(-50%) scale(1.05); }
-    }
-
-    /* Car Info Tooltips */
-    .car-info {
-      position: absolute;
-      background: rgba(11, 6, 5, 0.95);
-      backdrop-filter: blur(20px);
-      border: 2px solid var(--primary);
-      border-radius: 12px;
-      padding: 16px 20px;
-      max-width: 280px;
-      font-size: 14px;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: 10;
-      box-shadow: 0 8px 32px rgba(250, 143, 49, 0.3);
-      transform: translate(-50%, -50%);
-    }
-
-    .car-info h4 {
-      color: var(--primary);
-      margin-bottom: 8px;
-      font-size: 16px;
-    }
-
-    .car-info::before {
-      content: '';
-      position: absolute;
-      width: 2px;
-      height: 40px;
-      background: linear-gradient(to bottom, var(--primary), transparent);
-      top: -40px;
-      left: 20px;
-    }
-
-    /* Hero Side Info */
-    .hero-info {
-      padding-left: 30px;
-      position: relative;
-      z-index: 10; /* Text on top! */
-    }
-    
-    .hero-info * {
-      pointer-events: auto; /* All children are clickable */
-    }
-
-    .info-card {
-      /* Enhanced semi-transparent matte glass effect */
-      background: rgba(11, 6, 5, 0.45); /* More transparent - 45% instead of 75% */
-      backdrop-filter: blur(20px) saturate(200%);
-      -webkit-backdrop-filter: blur(20px) saturate(200%);
-      border: 1px solid rgba(250, 143, 49, 0.25);
-      border-radius: 16px;
-      padding: 32px;
-      margin-bottom: 24px;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
-                  inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    }
-
-    .info-card:hover {
-      transform: translateX(5px);
-      border-color: var(--primary);
-      box-shadow: 0 12px 40px rgba(250, 143, 49, 0.4),
-                  inset 0 1px 0 rgba(255, 255, 255, 0.15);
-      background: rgba(11, 6, 5, 0.6); /* Slightly more opaque on hover */
-    }
-
-    .info-card h3 {
-      color: var(--primary);
-      margin-bottom: 12px;
-      font-size: 1.5rem;
-    }
-
-    .info-card p {
-      font-size: 1.05rem;
-      color: rgba(255, 255, 255, 0.8);
-      line-height: 1.6;
-    }
-
-    /* Scroll Indicator */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 120px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 30px;
-      height: 50px;
-      border: 2px solid var(--primary);
-      border-radius: 25px;
-      display: flex;
-      justify-content: center;
-      padding-top: 8px;
-      opacity: 0;
-      animation: fadeInScroll 1s ease-in-out 3s forwards;
-      z-index: 10;
-    }
-
-    @keyframes fadeInScroll {
-      to { opacity: 1; }
-    }
-
-    .scroll-indicator::before {
-      content: '';
-      width: 4px;
-      height: 10px;
-      background: var(--primary);
-      border-radius: 2px;
-      animation: scrollDown 2s ease-in-out infinite;
-    }
-
-    @keyframes scrollDown {
-      0%, 100% { transform: translateY(0); opacity: 1; }
-      50% { transform: translateY(15px); opacity: 0; }
-    }
-
-    /* Sections */
-    section {
-      padding: 100px 20px;
-      max-width: min(2200px, 95vw);
-      margin: 0 auto;
-      position: relative;
-    }
-
-    section h2 {
-      font-size: 3rem;
-      font-weight: 900;
-      text-align: center;
-      margin-bottom: 60px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    /* Timeline Section */
-    .timeline-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 20px;
-      position: relative;
-      padding: 40px 0;
-    }
-
-    .timeline-container::before {
-      content: '';
-      position: absolute;
-      top: 80px;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(to right, transparent, var(--primary), transparent);
-    }
-
-    .timeline-step {
-      flex: 1;
-      text-align: center;
-      position: relative;
-      transition: transform 0.1s ease-out;
-      cursor: default;
-    }
-
-    .timeline-number {
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      font-weight: 900;
-      margin: 0 auto 20px;
-      position: relative;
-      z-index: 2;
-      box-shadow: 0 8px 24px rgba(250, 143, 49, 0.4);
-      color: #000; /* Black numbers */
-    }
-
-    .timeline-step h3 {
-      font-size: 1.2rem;
-      color: var(--primary);
-      margin-bottom: 12px;
-    }
-
-    .timeline-step p {
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.7);
-      line-height: 1.5;
-    }
-
-    /* Combustion Engine Section */
-    .engine-section {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-    }
-
-    .engine-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      padding: 40px;
-      transition: all 0.3s ease;
-    }
-
-    .engine-card:hover {
-      border-color: var(--primary);
-      transform: translateY(-5px);
-      box-shadow: 0 12px 32px rgba(250, 143, 49, 0.3);
-    }
-
-    .engine-card h3 {
-      font-size: 2rem;
-      color: var(--primary);
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .engine-card h4 {
-      font-size: 1.3rem;
-      color: var(--primary-dark);
-      margin: 24px 0 12px;
-    }
-
-    .engine-card ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .engine-card li {
-      padding: 12px 0;
-      padding-left: 30px;
-      position: relative;
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    .engine-card li::before {
-      content: '▸';
-      position: absolute;
-      left: 0;
-      color: var(--primary);
-      font-weight: bold;
-    }
-
-    /* Gallery Preview */
-    .gallery-preview {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      margin-bottom: 40px;
-    }
-
-    .gallery-item {
-      position: relative;
-      height: 300px;
-      border-radius: 16px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .gallery-item:hover {
-      transform: scale(1.05);
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .gallery-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(11, 6, 5, 0.9), transparent);
-      display: flex;
-      align-items: flex-end;
-      padding: 20px;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .gallery-item:hover .gallery-overlay {
-      opacity: 1;
-    }
-
-    /* Three Column Cards */
-    .three-column-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-      margin-bottom: 40px;
-    }
-
-    /* Two Column Cards - for innovation section */
-    .two-column-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 30px;
-      margin-bottom: 40px;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .feature-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      padding: 40px;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-10px);
-      border-color: var(--primary);
-      box-shadow: 0 16px 48px rgba(250, 143, 49, 0.3);
-    }
-
-    .feature-icon {
-      font-size: 4rem;
-      margin-bottom: 20px;
-      color: var(--primary);
-    }
-
-    .feature-icon .material-icons {
-      font-size: 4rem;
-      color: var(--primary);
-      vertical-align: middle;
-    }
-
-    h3 .material-icons {
-      font-size: 1.5rem;
-      vertical-align: middle;
-      margin-right: 8px;
-    }
-
-    .feature-card h3 {
-      color: var(--primary);
-      font-size: 1.5rem;
-      margin-bottom: 16px;
-    }
-
-    .feature-card p {
-      color: rgba(255, 255, 255, 0.8);
-      line-height: 1.6;
-    }
-
-    /* Skills Matrix - ECIU Style */
-    .skills-matrix {
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      padding: 40px;
-      overflow-x: auto;
-    }
-
-    .matrix-grid {
-      display: grid;
-      grid-template-columns: 150px repeat(6, 1fr);
-      gap: 2px;
-      min-width: 900px;
-    }
-
-    .matrix-header {
-      background: var(--near-black);
-      border: 1px solid var(--primary);
-      border-radius: 8px; /* Square with slight rounding */
-      padding: 20px;
-      font-weight: 700;
-      color: var(--primary);
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
-      position: relative;
-    }
-
-    .matrix-row-label {
-      background: var(--near-black);
-      border: 1px solid var(--primary);
-      border-radius: 8px; /* Match header style */
-      padding: 20px;
-      font-weight: 600;
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .matrix-cell {
-      background: rgba(250, 143, 49, 0.15); /* Semi-transparent orange */
-      border: 1px solid rgba(250, 143, 49, 0.3);
-      border-radius: 12px; /* Rounded cells */
-      padding: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      position: relative;
-      min-height: 80px;
-    }
-
-    .matrix-cell:hover {
-      background: rgba(250, 143, 49, 0.25);
-      border-color: var(--primary);
-      transform: scale(1.02);
-    }
-      transform: scale(1.05);
-    }
-
-    .matrix-cell.filled {
-      background: rgba(20, 60, 70, 0.6);
-      position: relative;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding-bottom: 0;
-      overflow: visible;
-    }
-
-    /* Vertical column with rounded top (door shape) */
-    .matrix-cell.filled::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 40px;
-      height: calc(100% - 30px); /* Extends up but leaves room for badge */
-      background: linear-gradient(180deg, rgba(250, 143, 49, 0.3), rgba(241, 109, 38, 0.6));
-      border: 2px solid rgba(250, 143, 49, 0.5);
-      border-bottom: none;
-      border-radius: 20px 20px 0 0; /* Rounded top corners only (door shape) */
-      z-index: 0;
-    }
-
-    /* Position badge at top of column */
-    .achievement-badge {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%; /* Perfect circle */
-      background: linear-gradient(135deg, #FA8F31, #F16D26); /* Orange gradient */
-      border: 3px solid #FA8F31;
-      color: #0B0605; /* Dark text */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 1.6rem;
-      box-shadow: 0 4px 16px rgba(250, 143, 49, 0.6);
-      font-family: 'Exo 2', sans-serif;
-      position: relative;
-      z-index: 1;
-      margin-bottom: 10px;
-    }
-
-    .matrix-cell:hover .cell-tooltip {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .cell-tooltip {
-      position: absolute;
-      bottom: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0, 0, 0, 0.95);
-      color: white;
-      padding: 12px 16px;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      white-space: nowrap;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-      z-index: 100;
-      pointer-events: none;
-      border: 1px solid var(--primary);
-      margin-bottom: 8px;
-    }
-
-    .cell-tooltip::after {
-      content: '';
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      border: 6px solid transparent;
-      border-top-color: var(--primary);
-    }
-
-    .skill-category li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: var(--primary);
-      font-weight: bold;
-    }
-
-    /* Stats Section */
-    .stats-container {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 30px;
-      text-align: center;
-    }
-
-    .stat-box {
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--glass-border);
-      position: relative;
-      overflow: hidden;
-      border-radius: 20px;
-      padding: 40px 20px;
-      transition: all 0.3s ease;
-    }
-
-    .stat-box::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .stat-box:hover {
-      transform: translateY(-5px);
-      border-color: var(--primary);
-      box-shadow: 0 12px 32px rgba(250, 143, 49, 0.3);
-    }
-
-    .stat-box:hover::before { opacity: 1; }
-
-    .stat-number {
-      font-size: 3.5rem;
-      font-weight: 900;
-      color: var(--primary);
-      margin-bottom: 10px;
-    }
-
-    .stat-label {
-      font-size: 1.1rem;
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    /* CTA Section */
-    .cta-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-    }
-
-    .cta-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      padding: 50px 40px;
-      text-align: center;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-
-    .cta-card:hover {
-      border-color: var(--primary);
-      transform: scale(1.05);
-      box-shadow: 0 16px 48px rgba(250, 143, 49, 0.4);
-    }
-
-    .cta-card h3 {
-      font-size: 1.8rem;
-      color: var(--primary);
-      margin-bottom: 20px;
-    }
-
-    .cta-card p {
-      color: rgba(255, 255, 255, 0.8);
-      margin-bottom: 30px;
-      line-height: 1.6;
-    }
-
-    .cta-card .cta-button {
-      padding: 14px 32px;
-      font-size: 1rem;
-    }
-
-    /* Quote Section */
-    .quote-section {
-      text-align: center;
-      padding: 120px 20px;
-      background: linear-gradient(135deg, rgba(250, 143, 49, 0.1), rgba(170, 24, 17, 0.1));
-      border-radius: 30px;
-      margin: 60px 0;
-    }
-
-    .quote-section blockquote {
-      font-size: 2.5rem;
-      font-weight: 700;
-      font-style: italic;
-      color: #fff;
-      max-width: 1000px;
-      margin: 0 auto;
-      line-height: 1.4;
-    }
-
-    .quote-author {
-      margin-top: 30px;
-      font-size: 1.2rem;
-      color: var(--primary);
-    }
-
-    /* Responsive Design */
-    @media (max-width: 1200px) {
-      .hero-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .hero-text {
-        text-align: center;
-        padding: 0;
-      }
-
-      .hero-info {
-        padding: 0;
-      }
-
-      .car-container {
-        margin: 40px auto;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .hero-text h1 { font-size: 2.5rem; }
-      .timeline-container { flex-direction: column; }
-      .timeline-container::before {
-        width: 2px; height: 100%; left: 30px; top: 0;
-        background: linear-gradient(to bottom, transparent, var(--primary), transparent);
-      }
-      .timeline-step { text-align: left; padding-left: 80px; }
-      .timeline-number { position: absolute; left: 0; }
-      .engine-section, .skills-grid, .three-column-grid, .cta-grid { grid-template-columns: 1fr; }
-      .stats-container { grid-template-columns: repeat(2, 1fr); }
-      section h2 { font-size: 2rem; }
-      .quote-section blockquote { font-size: 1.5rem; }
-      .scroll-indicator { display: none; }
-      .hero-content {
-        grid-template-columns: 1fr !important;
-        gap: 24px !important;
-        padding: 0 16px !important;
-      }
-      .hero-text { text-align: center; padding: 32px 24px; }
-      .hero-info { padding-left: 0; }
-      .two-column-grid { grid-template-columns: 1fr; }
-    }
-
-    /* Mobile hamburger */
-    .mobile-menu-btn {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 8px;
-      z-index: 10001;
-    }
-    .mobile-menu-btn span {
-      width: 24px; height: 2px;
-      background: var(--primary);
-      transition: all 0.3s ease;
-      border-radius: 2px;
-      display: block;
-    }
-    .mobile-menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .mobile-menu-btn.open span:nth-child(2) { opacity: 0; }
-    .mobile-menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    @media (max-width: 1000px) {
-      .pill-menu {
-        top: 12px; padding: 10px 16px;
-        left: 50%; transform: translateX(-50%);
-        width: calc(100% - 24px); max-width: 480px;
-        justify-content: space-between; border-radius: 40px;
-      }
-      .pill-menu .nav-links {
-        display: none; position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(11, 6, 5, 0.97);
-        flex-direction: column; align-items: center;
-        justify-content: center; gap: 16px;
-        z-index: 9999; padding-top: 80px;
-      }
-      .pill-menu .nav-links.open { display: flex; }
-      .pill-menu .nav-links a { font-size: 20px; padding: 14px 40px; }
-      .mobile-menu-btn { display: flex; }
-    }
-
-    /* Animated stat counters */
-    .stat-number {
-      font-size: clamp(2.5rem, 5vw, 4rem) !important;
-      font-weight: 900;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    /* Footer */
-    .site-footer {
-      background: linear-gradient(135deg, var(--near-black), var(--accent-dark));
-      padding: 40px 24px;
-      border-top: 2px solid var(--primary-dark);
-      margin-top: 60px;
-    }
-
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 40px;
-      align-items: center;
-    }
-
-    .footer-logo img { height: 44px; filter: drop-shadow(0 0 6px var(--primary)); }
-
-    .footer-center { text-align: center; }
-
-    .footer-nav {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 12px;
-    }
-
-    .footer-nav a {
-      color: rgba(255,255,255,0.55);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-
-    .footer-nav a:hover { color: var(--primary); }
-
-    .footer-copy {
-      color: rgba(255,255,255,0.35);
-      font-size: 0.8rem;
-    }
-
-    .footer-socials {
-      display: flex;
-      gap: 12px;
-    }
-
-    .footer-socials a {
-      width: 40px; height: 40px;
-      border-radius: 50%;
-      border: 1px solid rgba(250,143,49,0.3);
-      display: flex; align-items: center; justify-content: center;
-      transition: all 0.3s ease;
-    }
-
-    .footer-socials a:hover { background: var(--primary); border-color: var(--primary); }
-    .footer-socials img { width: 18px; height: 18px; }
-
-    @media (max-width: 768px) {
-      .footer-inner { grid-template-columns: 1fr; text-align: center; justify-items: center; }
-    }
-  </style>
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="src/styles/modern.css" />
 </head>
 <body>
-  <!-- Particle System Canvas (disabled per user request) -->
-  <!-- <canvas id="particles-canvas"></canvas> -->
-  
-  <!-- Mouse-Reactive Background -->
+
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Particle background -->
   <div id="mouse-bg"></div>
 
-  <!-- React Bits Pill Menu -->
-  <nav class="pill-menu" role="navigation" aria-label="Main navigation">
+  <!-- NAVBAR -->
+  <nav class="pill-menu" id="navbar" role="navigation" aria-label="Main navigation">
     <a href="index.html" class="active logo-link" aria-label="Home">
-      <img src="images/logo.DW5XiSKA.png" alt="Perkūnas Logo" />
+      <img src="images/logo.DW5XiSKA.png" alt="Perkūnas" />
     </a>
     <div class="nav-links" id="nav-links">
-      <a href="about-us/index.html" data-i18n="nav.about">Apie Mus</a>
-      <a href="team/team.html" data-i18n="nav.team">Komanda</a>
-      <a href="gallery/index.html" data-i18n="nav.gallery">Galerija</a>
-      <a href="partners/index.html" data-i18n="nav.partners">Partneriai</a>
-      <a href="join-us/index.html" data-i18n="nav.join">Prisijunk</a>
-      <a href="support-us/index.html" data-i18n="nav.support">Paremk</a>
-      <a href="contact/index.html" data-i18n="nav.contact">Kontaktai</a>
+      <a href="about-us/index.html" data-i18n="nav.about"><span class="material-icons">info</span>Apie Mus</a>
+      <a href="team/team.html" data-i18n="nav.team"><span class="material-icons">groups</span>Komanda</a>
+      <a href="gallery/index.html" data-i18n="nav.gallery"><span class="material-icons">photo_library</span>Galerija</a>
+      <a href="partners/index.html" data-i18n="nav.partners"><span class="material-icons">handshake</span>Partneriai</a>
+      <a href="join-us/index.html" data-i18n="nav.join"><span class="material-icons">rocket_launch</span>Prisijunk</a>
+      <a href="support-us/index.html" data-i18n="nav.support"><span class="material-icons">favorite</span>Paremk</a>
+      <a href="contact/index.html" data-i18n="nav.contact"><span class="material-icons">mail</span>Kontaktai</a>
     </div>
     <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false" onclick="toggleMobileMenu(this)">
       <span></span><span></span><span></span>
     </button>
-    <!-- Language switcher added automatically by i18n.js -->
   </nav>
 
   <div class="content">
-    <!-- Hero Section with Interactive 3D Car -->
+
+    <!-- HERO -->
     <section class="hero-section">
-      <!-- 3D Car as full-screen background -->
       <div class="car-container">
         <div id="threejs-car"></div>
-        <!-- Camera-aware hotspots are now generated dynamically by 3d-scene-enhanced.js -->
       </div>
-      
-      <!-- Content grid on top -->
+
       <div class="hero-content">
         <div class="hero-text">
+          <span class="hero-kicker">
+            <span class="dot"></span>
+            <span data-i18n="hero.kicker">Formula Student · Lietuva</span>
+          </span>
           <h1 data-i18n="hero.title">Kuriame Ateitį</h1>
           <p data-i18n="hero.description">Lietuva, varomasis lenktyninis sportinis automobilis, kuriame inžinieriai kuria ateitį.</p>
-          <a href="#join" class="cta-button" data-i18n="hero.cta">Prisijunk Prie Mūsų</a>
+          <div class="cta-group">
+            <a href="join-us/index.html" class="cta-btn primary" data-i18n="hero.cta">
+              Prisijunk
+              <span class="material-icons">arrow_forward</span>
+            </a>
+            <a href="#technology" class="cta-btn ghost" data-i18n="hero.cta2">
+              <span class="material-icons">settings</span>
+              Pažiūrėk Bolidą
+            </a>
+          </div>
         </div>
 
-        <!-- Empty middle column for car to show through -->
         <div></div>
 
-        <div class="hero-info">
+        <div class="hero-info-wrap">
           <div class="info-card">
-            <h3><span class="material-icons">emoji_events</span> <span data-i18n="hero.latestProjects">Latest Projects</span></h3>
-            <p data-i18n="hero.latestProjectsDesc">Perkūnas-05 is currently being developed with cutting-edge technological solutions</p>
+            <h3><span class="material-icons">emoji_events</span> <span data-i18n="hero.latestProjects">Naujausi Projektai</span></h3>
+            <p data-i18n="hero.latestProjectsDesc">Perkūnas-05 kuriamas naudojant pažangias technologijas.</p>
+            <div class="metric"><strong>P-05</strong><span>In Development</span></div>
           </div>
           <div class="info-card">
-            <h3><span class="material-icons">military_tech</span> <span data-i18n="hero.achievements">Achievements</span></h3>
-            <p data-i18n="hero.achievementsDesc">3 years of active participation in Formula Student competitions</p>
+            <h3><span class="material-icons">military_tech</span> <span data-i18n="hero.achievements">Pasiekimai</span></h3>
+            <p data-i18n="hero.achievementsDesc">3 metai aktyvaus dalyvavimo Formula Student varžybose.</p>
+            <div class="metric"><strong>3+</strong><span>Years Active</span></div>
           </div>
           <div class="info-card">
-            <h3><span class="material-icons">groups</span> <span data-i18n="hero.members">50+ Members</span></h3>
-            <p data-i18n="hero.membersDesc">Active students from various Lithuanian universities</p>
+            <h3><span class="material-icons">groups</span> <span data-i18n="hero.members">70+ Narių</span></h3>
+            <p data-i18n="hero.membersDesc">Studentai iš įvairių Lietuvos universitetų.</p>
+            <div class="metric"><strong>70+</strong><span>Engineers</span></div>
           </div>
         </div>
       </div>
-      <div class="scroll-indicator"></div>
     </section>
 
-    <!-- Development Journey Timeline -->
-    <section id="timeline">
-      <h2 data-i18n="timeline.title">Development Journey</h2>
+    <!-- LIVE METRICS MARQUEE -->
+    <div class="marquee-section" aria-hidden="true">
+      <div class="marquee-track">
+        <div class="marquee-item"><span class="material-icons">bolt</span><strong>120 HP</strong> · Power Output</div>
+        <div class="marquee-item"><span class="material-icons">speed</span><strong>0-100 km/h</strong> · under 4s</div>
+        <div class="marquee-item"><span class="material-icons">fitness_center</span><strong>&lt; 300 kg</strong> · Dry Weight</div>
+        <div class="marquee-item"><span class="material-icons">public</span><strong>Formula Student</strong> · International</div>
+        <div class="marquee-item"><span class="material-icons">engineering</span><strong>70+</strong> · Engineers</div>
+        <div class="marquee-item"><span class="material-icons">workspace_premium</span><strong>3+ Years</strong> · Active</div>
+        <div class="marquee-item"><span class="material-icons">local_fire_department</span><strong>V4 Turbo</strong> · Powertrain</div>
+        <div class="marquee-item"><span class="material-icons">bolt</span><strong>120 HP</strong> · Power Output</div>
+        <div class="marquee-item"><span class="material-icons">speed</span><strong>0-100 km/h</strong> · under 4s</div>
+        <div class="marquee-item"><span class="material-icons">fitness_center</span><strong>&lt; 300 kg</strong> · Dry Weight</div>
+        <div class="marquee-item"><span class="material-icons">public</span><strong>Formula Student</strong> · International</div>
+        <div class="marquee-item"><span class="material-icons">engineering</span><strong>70+</strong> · Engineers</div>
+        <div class="marquee-item"><span class="material-icons">workspace_premium</span><strong>3+ Years</strong> · Active</div>
+        <div class="marquee-item"><span class="material-icons">local_fire_department</span><strong>V4 Turbo</strong> · Powertrain</div>
+      </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <section id="timeline" class="reveal">
+      <div class="section-head">
+        <span class="section-eyebrow" data-i18n="timeline.eyebrow">Process</span>
+        <h2 data-i18n="timeline.title">Development Journey</h2>
+        <p class="section-subtitle" data-i18n="timeline.subtitle">From concept to checkered flag — every stage of building a competition-ready car.</p>
+      </div>
       <div class="timeline-container">
         <div class="timeline-step active">
           <div class="timeline-number">01</div>
           <h3 data-i18n="timeline.step1.title">Team Formation</h3>
-          <p data-i18n="timeline.step1.desc">Gathering passionate engineering students from across Lithuania</p>
+          <p data-i18n="timeline.step1.desc">Gathering passionate engineering students from across Lithuania.</p>
+          <span class="status-pill">Live</span>
         </div>
         <div class="timeline-step active">
           <div class="timeline-number">02</div>
           <h3 data-i18n="timeline.step2.title">Design Phase</h3>
-          <p data-i18n="timeline.step2.desc">Creating innovative solutions through collaborative engineering design process</p>
+          <p data-i18n="timeline.step2.desc">Creating innovative solutions through collaborative design.</p>
+          <span class="status-pill">Live</span>
         </div>
         <div class="timeline-step active">
           <div class="timeline-number">03</div>
           <h3 data-i18n="timeline.step3.title">Prototyping</h3>
-          <p data-i18n="timeline.step3.desc">Testing concepts and refining performance through iterative development</p>
+          <p data-i18n="timeline.step3.desc">Testing concepts and refining performance through iteration.</p>
+          <span class="status-pill">In Progress</span>
         </div>
         <div class="timeline-step">
           <div class="timeline-number">04</div>
           <h3 data-i18n="timeline.step4.title">Manufacturing</h3>
-          <p data-i18n="timeline.step4.desc">Precision fabrication bringing designs to life with industry standards</p>
+          <p data-i18n="timeline.step4.desc">Precision fabrication bringing designs to life.</p>
+          <span class="status-pill">Upcoming</span>
         </div>
       </div>
     </section>
 
-    <!-- Combustion Engine Focus -->
-    <section id="technology">
-      <h2 data-i18n="technology.title">Technologijų Fokusas</h2>
-      <div class="engine-section">
+    <!-- TECHNOLOGY -->
+    <section id="technology" class="reveal">
+      <div class="section-head">
+        <span class="section-eyebrow" data-i18n="technology.eyebrow">Engineering</span>
+        <h2 data-i18n="technology.title">Technologijų Fokusas</h2>
+        <p class="section-subtitle" data-i18n="technology.subtitle">Kur esame šiandien — ir kur važiuojame rytoj.</p>
+      </div>
+
+      <div class="tech-tabs" role="tablist">
+        <button class="tech-tab active" data-tab="current" role="tab">
+          <span class="material-icons">local_fire_department</span>
+          <span data-i18n="technology.tabCurrent">Present</span>
+        </button>
+        <button class="tech-tab" data-tab="future" role="tab">
+          <span class="material-icons">bolt</span>
+          <span data-i18n="technology.tabFuture">Future</span>
+        </button>
+      </div>
+
+      <div class="tech-panel active" data-panel="current">
         <div class="engine-card">
-          <h3><span class="material-icons">local_fire_department</span> <span data-i18n="technology.current.title">Dabartinė Technologija</span></h3>
-          <h4 data-i18n="technology.current.subtitle">Vidaus Degimo Variklio Optimizavimas</h4>
+          <h3><span class="material-icons">tune</span> <span data-i18n="technology.current.title">Dabartinė Technologija</span></h3>
+          <h4 data-i18n="technology.current.subtitle">Vidaus Degimo Optimizavimas</h4>
           <ul>
-            <li><strong data-i18n="technology.current.tuning">Variklio Derinimas:</strong> <span data-i18n="technology.current.tuningDesc">Tikslus degalų ir oro mišinio optimizavimas maksimaliam našumui</span></li>
-            <li><strong data-i18n="technology.current.fuel">Degalų Sistema:</strong> <span data-i18n="technology.current.fuelDesc">Pažangi įpurškimo technologija geresniam efektyvumui</span></li>
-            <li><strong data-i18n="technology.current.exhaust">Išmetimo Sistema:</strong> <span data-i18n="technology.current.exhaustDesc">Individuali išmetimo sistema, optimizuota našumui ir garsui</span></li>
-            <li><strong data-i18n="technology.current.cooling">Aušinimo Sistema:</strong> <span data-i18n="technology.current.coolingDesc">Efektyvi šiluminė valdymo sistema maksimaliam patikimumui</span></li>
-            <li><strong data-i18n="technology.current.ecu">Elektroninė Valdymo Sistema:</strong> <span data-i18n="technology.current.ecuDesc">Individuali ECU programavimas tiksliam valdymui</span></li>
-          </ul>
-          <h4 data-i18n="technology.current.performance">Našumo Charakteristikos</h4>
-          <ul>
-            <li data-i18n="technology.current.power">Maksimalus galingumas: 89kW / 120HP</li>
-            <li data-i18n="technology.current.weight">Svoris: <300 kg</li>
-            <li data-i18n="technology.current.acceleration">Greitis 0-100 km/h: <4 sekundės</li>
-            <li data-i18n="technology.current.topSpeed">Maksimalus greitis: 120+ km/h</li>
+            <li><strong data-i18n="technology.current.tuning">Variklio Derinimas:</strong> <span data-i18n="technology.current.tuningDesc">Tikslus degalų ir oro mišinio optimizavimas.</span></li>
+            <li><strong data-i18n="technology.current.fuel">Degalų Sistema:</strong> <span data-i18n="technology.current.fuelDesc">Pažangi įpurškimo technologija.</span></li>
+            <li><strong data-i18n="technology.current.exhaust">Išmetimo Sistema:</strong> <span data-i18n="technology.current.exhaustDesc">Individuali sistema, optimizuota našumui.</span></li>
+            <li><strong data-i18n="technology.current.cooling">Aušinimo Sistema:</strong> <span data-i18n="technology.current.coolingDesc">Efektyvi šiluminė valdymo sistema.</span></li>
+            <li><strong data-i18n="technology.current.ecu">ECU:</strong> <span data-i18n="technology.current.ecuDesc">Individuali valdymo sistemos programa.</span></li>
           </ul>
         </div>
 
+        <div class="engine-card">
+          <h3><span class="material-icons">speed</span> <span data-i18n="technology.current.performance">Našumo Charakteristikos</span></h3>
+          <h4 data-i18n="technology.current.specSub">Spec Sheet · Perkūnas-05</h4>
+          <div class="spec-bento">
+            <div class="spec-tile">
+              <span class="spec-label">Power</span>
+              <div class="spec-value">120<span class="spec-unit">HP</span></div>
+            </div>
+            <div class="spec-tile">
+              <span class="spec-label">Weight</span>
+              <div class="spec-value">&lt;300<span class="spec-unit">kg</span></div>
+            </div>
+            <div class="spec-tile">
+              <span class="spec-label">0-100 km/h</span>
+              <div class="spec-value">&lt;4<span class="spec-unit">sec</span></div>
+            </div>
+            <div class="spec-tile">
+              <span class="spec-label">Top Speed</span>
+              <div class="spec-value">120+<span class="spec-unit">km/h</span></div>
+            </div>
+            <div class="spec-tile">
+              <span class="spec-label">Output</span>
+              <div class="spec-value">89<span class="spec-unit">kW</span></div>
+            </div>
+            <div class="spec-tile">
+              <span class="spec-label">Drivetrain</span>
+              <div class="spec-value">RWD</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tech-panel" data-panel="future">
         <div class="engine-card">
           <h3><span class="material-icons">bolt</span> <span data-i18n="technology.future.title">Ateities Vizija</span></h3>
-          <h4 data-i18n="technology.future.subtitle">Perėjimas į Elektrinį Variklį</h4>
+          <h4 data-i18n="technology.future.subtitle">Roadmap to Electric</h4>
+          <div class="roadmap">
+            <div class="roadmap-item">
+              <div class="year" data-i18n="technology.future.year2026">2026 · Research</div>
+              <div class="desc" data-i18n="technology.future.year2026Desc">Elektrinių sistemų analizė ir architektūros planavimas.</div>
+            </div>
+            <div class="roadmap-item">
+              <div class="year" data-i18n="technology.future.year2027">2027 · Prototype</div>
+              <div class="desc" data-i18n="technology.future.year2027Desc">Pirmojo elektrinio bolido projektavimas ir surinkimas.</div>
+            </div>
+            <div class="roadmap-item">
+              <div class="year" data-i18n="technology.future.year2028">2028 · Compete</div>
+              <div class="desc" data-i18n="technology.future.year2028Desc">Dalyvavimas Formula Student Electric kategorijoje.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="engine-card">
+          <h3><span class="material-icons">flag</span> <span data-i18n="technology.future.goalsTitle">Ateities Tikslai</span></h3>
+          <h4 data-i18n="technology.future.goalsSub">Mission · 2026-2028</h4>
           <ul>
-            <li><strong data-i18n="technology.future.year2026">2026:</strong> <span data-i18n="technology.future.year2026Desc">Tyrimų fazė - Elektrinių sistemų analizė ir planavimas</span></li>
-            <li><strong data-i18n="technology.future.year2027">2027:</strong> <span data-i18n="technology.future.year2027Desc">Prototipo kūrimas - Pirmojo elektrinio bolido projektavimas</span></li>
-            <li><strong data-i18n="technology.future.year2028">2028:</strong> <span data-i18n="technology.future.year2028Desc">Varžybos - Dalyvavimas Formula Student Electric kategorijoje</span></li>
-          </ul>
-          <h4 data-i18n="technology.future.goalsTitle">Ateities Tikslai</h4>
-          <ul>
-            <li><strong data-i18n="technology.future.sustainability">Tvarumas:</strong> <span data-i18n="technology.future.sustainabilityDesc">Sumažintas aplinkos poveikis per elektrifikaciją</span></li>
-            <li><strong data-i18n="technology.future.innovation">Inovacijos:</strong> <span data-i18n="technology.future.innovationDesc">Naujausių baterijos technologijų tyrimas</span></li>
-            <li><strong data-i18n="technology.future.performance">Našumas:</strong> <span data-i18n="technology.future.performanceDesc">Didesnis efektyvumas ir greitis</span></li>
-            <li><strong data-i18n="technology.future.education">Švietimas:</strong> <span data-i18n="technology.future.educationDesc">Ruošiame studentus elektrinių transporto priemonių ateičiai</span></li>
+            <li><strong data-i18n="technology.future.sustainability">Tvarumas:</strong> <span data-i18n="technology.future.sustainabilityDesc">Sumažintas aplinkos poveikis per elektrifikaciją.</span></li>
+            <li><strong data-i18n="technology.future.innovation">Inovacijos:</strong> <span data-i18n="technology.future.innovationDesc">Naujausios baterijų technologijos tyrimai.</span></li>
+            <li><strong data-i18n="technology.future.performance">Našumas:</strong> <span data-i18n="technology.future.performanceDesc">Didesnis efektyvumas ir greitis.</span></li>
+            <li><strong data-i18n="technology.future.education">Švietimas:</strong> <span data-i18n="technology.future.educationDesc">Ruošiame studentus elektromobilių ateičiai.</span></li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- Beyond Building Cars -->
-    <section id="beyond">
-      <h2 data-i18n="leadership.title">Auginame Ateities Lyderius</h2>
-      <div class="three-column-grid">
-        <div class="feature-card">
-          <div class="feature-icon"><span class="material-icons">psychology</span></div>
-          <h3 data-i18n="leadership.engineering.title">Inžinerijos Tobulumas</h3>
-          <p data-i18n="leadership.engineering.desc">Pritaikome pažangiausius inžinerijos principus realiam bolido projektavimui, gamybai ir testavimui. Mokymasis per praktinę patirtį su profesionalia mentorystė.</p>
+    <!-- LEADERSHIP (BENTO) -->
+    <section id="beyond" class="reveal">
+      <div class="section-head">
+        <span class="section-eyebrow">Beyond the Build</span>
+        <h2 data-i18n="leadership.title">Auginame Ateities Lyderius</h2>
+        <p class="section-subtitle" data-i18n="leadership.subtitle">Inžinerija yra tik pradžia — mes kuriame visapusiškus lyderius.</p>
+      </div>
+      <div class="bento-grid">
+        <div class="bento-tile tall accent">
+          <div>
+            <span class="material-icons bento-icon">psychology</span>
+            <h3 data-i18n="leadership.engineering.title">Inžinerijos Tobulumas</h3>
+            <p data-i18n="leadership.engineering.desc">Pritaikome pažangiausius inžinerijos principus realiam bolido projektavimui, gamybai ir testavimui — per praktinę patirtį su profesionalia mentoryste.</p>
+          </div>
+          <a href="about-us/index.html" class="bento-cta">
+            <span data-i18n="leadership.learnMore">Sužinok daugiau</span>
+            <span class="material-icons">arrow_forward</span>
+          </a>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon"><span class="material-icons">business_center</span></div>
-          <h3 data-i18n="leadership.business.title">Verslo Subrendimas</h3>
-          <p data-i18n="leadership.business.desc">Išvystome verslo įgūdžius per sponsorystės paieškos, biudžeto valdymo ir projekto organizavimo patirtį. Mokymės kurti partnerystes ir valdyti komandos finansus.</p>
+        <div class="bento-tile wide">
+          <div>
+            <span class="material-icons bento-icon">business_center</span>
+            <h3 data-i18n="leadership.business.title">Verslo Subrendimas</h3>
+            <p data-i18n="leadership.business.desc">Išvystome verslo įgūdžius per sponsorystės, biudžeto valdymo ir projekto organizavimo patirtį.</p>
+          </div>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon"><span class="material-icons">groups</span></div>
-          <h3 data-i18n="leadership.teamwork.title">Vieninga komanda</h3>
-          <p data-i18n="leadership.teamwork.desc">Dalyvaujame tarptautinėse Formula Student varžybose, varžydamiesi su geriausiais universitetais pasaulyje. Patirti aukšto lygio inžinerinį konkurenciškumą.</p>
+        <div class="bento-tile">
+          <div>
+            <span class="material-icons bento-icon">groups</span>
+            <h3 data-i18n="leadership.teamwork.title">Vieninga komanda</h3>
+          </div>
+          <p data-i18n="leadership.teamworkShort">Tarptautinės Formula Student varžybos.</p>
+        </div>
+        <div class="bento-tile">
+          <div>
+            <span class="material-icons bento-icon">school</span>
+            <h3 data-i18n="leadership.mentorshipT">Mentorystė</h3>
+          </div>
+          <p data-i18n="leadership.mentorshipD">Patirtis iš pramonės ekspertų.</p>
         </div>
       </div>
     </section>
 
-    <!-- Industry Partnerships -->
-    <section id="partnerships">
-      <h2 data-i18n="partnerships.title">Pramonės Partnerystės</h2>
-      <div class="three-column-grid">
+    <!-- PARTNERSHIPS -->
+    <section id="partnerships" class="reveal">
+      <div class="section-head">
+        <span class="section-eyebrow">Network</span>
+        <h2 data-i18n="partnerships.title">Pramonės Partnerystės</h2>
+      </div>
+      <div class="feature-grid">
         <div class="feature-card">
           <div class="feature-icon"><span class="material-icons">handshake</span></div>
           <h3 data-i18n="partnerships.professional.title">Profesionalūs Ryšiai</h3>
-          <p data-i18n="partnerships.professional.desc">Bendradarbiaujame su pirmaujančiomis inžinerijos įmonėmis ir pramonės lyderiais, sudarydami stiprius profesionalius tinklus.</p>
+          <p data-i18n="partnerships.professional.desc">Bendradarbiaujame su pirmaujančiomis inžinerijos įmonėmis ir pramonės lyderiais.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon"><span class="material-icons">menu_book</span></div>
           <h3 data-i18n="partnerships.knowledge.title">Žinių Mainai</h3>
-          <p data-i18n="partnerships.knowledge.desc">Gauname vertingą patirtį ir konsultacijas iš pramonės ekspertų, mokydamiesi geriausių praktikų.</p>
+          <p data-i18n="partnerships.knowledge.desc">Gauname vertingą patirtį ir konsultacijas iš pramonės ekspertų.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon"><span class="material-icons">school</span></div>
           <h3 data-i18n="partnerships.mentorship.title">Mentorystė</h3>
-          <p data-i18n="partnerships.mentorship.desc">Individuali mentorystė iš patyrę inžinierių ir pramonės profesionalų, padedanti formuoti karjeros kelią.</p>
+          <p data-i18n="partnerships.mentorship.desc">Individuali mentorystė iš patyrę inžinierių.</p>
         </div>
       </div>
     </section>
 
-    <!-- Pushing Boundaries -->
-    <section id="innovation">
-      <h2 data-i18n="innovation.title">Stumiame Motorinio Sporto Ribas</h2>
-      <div class="two-column-grid">
+    <!-- INNOVATION -->
+    <section id="innovation" class="reveal">
+      <div class="section-head">
+        <span class="section-eyebrow">Innovation</span>
+        <h2 data-i18n="innovation.title">Stumiame Motorinio Sporto Ribas</h2>
+      </div>
+      <div class="feature-grid two-col">
         <div class="feature-card">
           <div class="feature-icon"><span class="material-icons">public</span></div>
           <h3 data-i18n="innovation.international.title">Tarptautinis poveikis</h3>
-          <p data-i18n="innovation.international.desc">Dalyvaujame Formula Student varžybose, kuriose atstovaujame Lietuvai ir varžomės su geriausiais universitetais pasaulyje. Dalijamės savo patirtimi, kūrybiškumu ir inovacijomis su tarptautine bendruomene.</p>
+          <p data-i18n="innovation.international.desc">Dalyvaujame Formula Student varžybose, atstovaujame Lietuvai ir varžomės su geriausiais universitetais pasaulyje.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon"><span class="material-icons">lightbulb</span></div>
           <h3 data-i18n="innovation.futureTech.title">Ateities technologijos</h3>
-          <p data-i18n="innovation.futureTech.desc">Tyrinėjame elektrifikaciją, autonomines sistemas ir tvarios inžinerijos principus, siekdami kurti pažangesnį ir tvaresnį motorinį sportą.</p>
+          <p data-i18n="innovation.futureTech.desc">Tyrinėjame elektrifikaciją, autonomines sistemas ir tvarios inžinerijos principus.</p>
         </div>
       </div>
     </section>
 
-    <!-- Our Impact -->
-    <section id="impact">
-      <h2 data-i18n="stats.title">Our Impact</h2>
-      <div class="stats-container">
+    <!-- STATS -->
+    <section id="impact" class="reveal">
+      <div class="section-head">
+        <span class="section-eyebrow">By The Numbers</span>
+        <h2 data-i18n="stats.title">Mūsų Įtaka</h2>
+      </div>
+      <div class="stats-grid">
         <div class="stat-box">
+          <span class="material-icons stat-icon">groups</span>
           <div class="stat-number">70+</div>
           <div class="stat-label" data-i18n="stats.members">Team Members</div>
         </div>
         <div class="stat-box">
+          <span class="material-icons stat-icon">event</span>
           <div class="stat-number">2</div>
           <div class="stat-label" data-i18n="stats.years">Years Active</div>
         </div>
         <div class="stat-box">
+          <span class="material-icons stat-icon">local_fire_department</span>
           <div class="stat-number">100%</div>
           <div class="stat-label" data-i18n="stats.commitment">Commitment</div>
         </div>
         <div class="stat-box">
+          <span class="material-icons stat-icon">handshake</span>
           <div class="stat-number">15+</div>
           <div class="stat-label" data-i18n="stats.partners">Partners</div>
         </div>
       </div>
     </section>
 
-    <!-- Quote Section -->
-    <div class="quote-section">
+    <!-- QUOTE -->
+    <div class="quote-section reveal">
       <blockquote data-i18n="quote.main">
-        "We don't just build cars – we create future leaders in engineering and technology."
+        "Mes nestatome vien automobilių — kuriame ateities lyderius inžinerijoje ir technologijose."
       </blockquote>
       <div class="quote-author" data-i18n="quote.author">— Perkūnas Racing Team</div>
     </div>
 
-    <!-- Join Our Journey -->
-    <section id="join">
-      <h2 data-i18n="cta.title">Prisijunk Prie Mūsų Kelionės</h2>
+    <!-- JOIN / CTA -->
+    <section id="join" class="reveal">
+      <div class="section-head">
+        <span class="section-eyebrow">Get Involved</span>
+        <h2 data-i18n="cta.title">Prisijunk Prie Mūsų Kelionės</h2>
+      </div>
       <div class="cta-grid">
         <div class="cta-card">
-          <h3><span class="material-icons">school</span> <span data-i18n="cta.students.title">Studentams</span></h3>
-          <p data-i18n="cta.students.desc">Pritaikyk savo žinias realių projektų aplinkoje. Mokykis, augk ir kūk kartu su mumis.</p>
-          <a href="join-us/index.html" class="cta-button" data-i18n="cta.students.button">Prisijunk Dabar</a>
+          <span class="cta-card-badge">Students</span>
+          <h3><span class="material-icons">school</span><span data-i18n="cta.students.title">Studentams</span></h3>
+          <p data-i18n="cta.students.desc">Pritaikyk savo žinias realių projektų aplinkoje. Mokykis, augk ir kurk kartu su mumis.</p>
+          <a href="join-us/index.html" class="cta-btn primary" data-i18n="cta.students.button">
+            Prisijunk Dabar <span class="material-icons">arrow_forward</span>
+          </a>
         </div>
         <div class="cta-card">
-          <h3><span class="material-icons">handshake</span> <span data-i18n="cta.partners.title">Partneriams</span></h3>
-          <p data-i18n="cta.partners.desc">Paremk naują kartą inžinierių. Tapk dalimi mūsų kelionės į ateitį.</p>
-          <a href="support-us/index.html" class="cta-button" data-i18n="cta.partners.button">Tapk Partneriu</a>
+          <span class="cta-card-badge">Partners</span>
+          <h3><span class="material-icons">handshake</span><span data-i18n="cta.partners.title">Partneriams</span></h3>
+          <p data-i18n="cta.partners.desc">Paremk naują kartą inžinierių. Tapk mūsų kelionės į ateitį dalimi.</p>
+          <a href="support-us/index.html" class="cta-btn primary" data-i18n="cta.partners.button">
+            Tapk Partneriu <span class="material-icons">arrow_forward</span>
+          </a>
         </div>
         <div class="cta-card">
-          <h3><span class="material-icons">flag</span> <span data-i18n="cta.competitions.title">Varžybos</span></h3>
+          <span class="cta-card-badge">Fans</span>
+          <h3><span class="material-icons">flag</span><span data-i18n="cta.competitions.title">Varžybos</span></h3>
           <p data-i18n="cta.competitions.desc">Patirk Lietuvos inžinerijos meistriškumo renginius. Žiūrėk mūsų kelionę.</p>
-          <a href="gallery/index.html" class="cta-button" data-i18n="cta.competitions.button">Žiūrėk Galeriją</a>
+          <a href="gallery/index.html" class="cta-btn primary" data-i18n="cta.competitions.button">
+            Žiūrėk Galeriją <span class="material-icons">arrow_forward</span>
+          </a>
         </div>
       </div>
     </section>
@@ -1338,458 +443,184 @@
     </div>
   </footer>
 
-  <!-- NEW: i18n System (must load first) -->
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <span class="material-icons">arrow_upward</span>
+  </button>
+
+  <!-- i18n system (must load first) -->
   <script src="src/scripts/i18n.js"></script>
 
-  <!-- Three.js for 3D Car -->
+  <!-- Three.js for 3D car -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-
-  <!-- Swiper -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  
-  <!-- NEW: Enhanced 3D scene (particles disabled per user request) -->
-  <!-- <script src="src/scripts/particles.js"></script> -->
   <script src="src/scripts/3d-scene-enhanced.js"></script>
 
   <script>
-    // Mouse-Reactive Background with React Bits-style particles
-    const mouseBg = document.getElementById('mouse-bg');
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    mouseBg.appendChild(canvas);
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const particles = [];
-    const particleCount = 100;
-    let mouseX = canvas.width / 2;
-    let mouseY = canvas.height / 2;
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 1;
-        this.speedX = Math.random() * 0.5 - 0.25;
-        this.speedY = Math.random() * 0.5 - 0.25;
-        this.color = `rgba(250, 143, 49, ${Math.random() * 0.5 + 0.3})`;
-      }
-
-      update() {
-        // Mouse interaction
-        const dx = mouseX - this.x;
-        const dy = mouseY - this.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        const forceDirectionX = dx / distance;
-        const forceDirectionY = dy / distance;
-        const maxDistance = 150;
-        const force = (maxDistance - distance) / maxDistance;
-        
-        if (distance < maxDistance) {
-          this.x -= forceDirectionX * force * 3;
-          this.y -= forceDirectionY * force * 3;
-        }
-
-        this.x += this.speedX;
-        this.y += this.speedY;
-
-        // Wrap around screen
-        if (this.x > canvas.width) this.x = 0;
-        if (this.x < 0) this.x = canvas.width;
-        if (this.y > canvas.height) this.y = 0;
-        if (this.y < 0) this.y = canvas.height;
-      }
-
-      draw() {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    // Initialize particles
-    for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle());
-    }
-
-    // Animation loop
-    function animateParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      // Draw connections
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          
-          if (distance < 100) {
-            ctx.strokeStyle = `rgba(250, 143, 49, ${0.2 * (1 - distance / 100)})`;
-            ctx.lineWidth = 0.5;
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-
-      // Update and draw particles
-      particles.forEach(particle => {
-        particle.update();
-        particle.draw();
-      });
-
-      requestAnimationFrame(animateParticles);
-    }
-
-    animateParticles();
-
-    // Mouse tracking
-    window.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    });
-
-    window.addEventListener('resize', () => {
+    // ---------- Particle background ----------
+    (function () {
+      const bg = document.getElementById('mouse-bg');
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      bg.appendChild(canvas);
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-    });
 
-    /* INLINE 3D CAR SCENE DISABLED - Using 3d-scene-enhanced.js instead
-    // 3D Car Scene with Interactive Tooltips
-    const carContainer = document.getElementById('threejs-car');
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, carContainer.clientWidth / carContainer.clientHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    
-    renderer.setSize(carContainer.clientWidth, carContainer.clientHeight);
-    renderer.setClearColor(0x000000, 0);
-    carContainer.appendChild(renderer.domElement);
+      let mouseX = canvas.width / 2, mouseY = canvas.height / 2;
+      const particles = [];
+      const N = 80;
 
-    // Dramatic Lighting with Spotlight
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
-    scene.add(ambientLight);
-
-    // Main spotlight from above
-    const spotlight = new THREE.SpotLight(0xFA8F31, 2);
-    spotlight.position.set(0, 8, 0);
-    spotlight.angle = Math.PI / 6;
-    spotlight.penumbra = 0.3;
-    spotlight.decay = 2;
-    spotlight.distance = 20;
-    spotlight.castShadow = true;
-    scene.add(spotlight);
-
-    // Accent lights
-    const directionalLight1 = new THREE.DirectionalLight(0xF16D26, 0.6);
-    directionalLight1.position.set(5, 5, 5);
-    scene.add(directionalLight1);
-
-    const directionalLight2 = new THREE.DirectionalLight(0xAA1811, 0.4);
-    directionalLight2.position.set(-5, 3, -5);
-    scene.add(directionalLight2);
-
-    // Rim lights for dramatic effect
-    const rimLight1 = new THREE.DirectionalLight(0xFFFFFF, 0.8);
-    rimLight1.position.set(-8, 0, -5);
-    scene.add(rimLight1);
-
-    const rimLight2 = new THREE.DirectionalLight(0xFFFFFF, 0.8);
-    rimLight2.position.set(8, 0, -5);
-    scene.add(rimLight2);
-
-    // Wavy Dot Plane
-    const dotGeometry = new THREE.BufferGeometry();
-    const dotMaterial = new THREE.PointsMaterial({
-      color: 0xFA8F31,
-      size: 0.05,
-      transparent: true,
-      opacity: 0.6
-    });
-
-    const gridSize = 50;
-    const spacing = 0.3;
-    const positions = [];
-
-    for (let i = 0; i < gridSize; i++) {
-      for (let j = 0; j < gridSize; j++) {
-        positions.push(
-          (i - gridSize / 2) * spacing,
-          0,
-          (j - gridSize / 2) * spacing
-        );
-      }
-    }
-
-    dotGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-    const wavyPlane = new THREE.Points(dotGeometry, dotMaterial);
-    wavyPlane.position.y = -2;
-    scene.add(wavyPlane);
-
-    // Load Car Model
-    const loader = new THREE.GLTFLoader();
-    let carModel;
-    let carParts = {
-      engine: null,
-      chassis: null,
-      aero: null,
-      suspension: null
-    };
-
-    loader.load('components/rotatingCarModel.glb', (gltf) => {
-      carModel = gltf.scene;
-      
-      // Scale the model to a smaller, more manageable size
-      carModel.scale.set(1.5, 1.5, 1.5);
-      
-      // Apply material to ALL meshes and identify parts
-      carModel.traverse((child) => {
-        if (child.isMesh) {
-          child.material = new THREE.MeshStandardMaterial({
-            color: 0xFA8F31,
-            metalness: 0.85,
-            roughness: 0.15,
-            emissive: 0xF16D26,
-            emissiveIntensity: 0.3
-          });
-          child.castShadow = true;
-          child.receiveShadow = true;
-          
-          // Identify parts by name for tooltips
-          const name = child.name.toLowerCase();
-          if (name.includes('engine') || name.includes('motor')) {
-            carParts.engine = child;
-          } else if (name.includes('chassis') || name.includes('frame')) {
-            carParts.chassis = child;
-          } else if (name.includes('wing') || name.includes('aero')) {
-            carParts.aero = child;
-          } else if (name.includes('suspension') || name.includes('wheel')) {
-            carParts.suspension = child;
-          }
-        }
-      });
-
-      // Center the model
-      const box = new THREE.Box3().setFromObject(carModel);
-      const center = box.getCenter(new THREE.Vector3());
-      carModel.position.sub(center);
-
-      scene.add(carModel);
-    }, undefined, (error) => {
-      console.error('Error loading main model:', error);
-      // Fallback: Load chassis model instead
-      loader.load('images/formula_1_car_concept.glb', (gltf) => {
-        carModel = gltf.scene;
-        carModel.scale.set(0.15, 0.15, 0.15);
-        
-        carModel.traverse((child) => {
-          if (child.isMesh) {
-            child.material = new THREE.MeshStandardMaterial({
-              color: 0xFA8F31,
-              metalness: 0.85,
-              roughness: 0.15,
-              emissive: 0xF16D26,
-              emissiveIntensity: 0.3
-            });
-            child.castShadow = true;
-            child.receiveShadow = true;
-          }
+      for (let i = 0; i < N; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 1.8 + 0.6,
+          vx: (Math.random() - 0.5) * 0.35,
+          vy: (Math.random() - 0.5) * 0.35,
+          alpha: Math.random() * 0.4 + 0.2
         });
-        
-        const box = new THREE.Box3().setFromObject(carModel);
-        const center = box.getCenter(new THREE.Vector3());
-        carModel.position.sub(center);
-        scene.add(carModel);
-      }, undefined, (err) => {
-        console.error('Error loading chassis fallback:', err);
-      });
-    });
-
-    // OrbitControls - Only rotation, no zoom
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.05;
-    controls.enableZoom = false;  // Disable zoom
-    controls.enablePan = false;   // Disable panning
-    controls.minDistance = 8;     // Minimum distance
-    controls.maxDistance = 8;     // Maximum distance (locks zoom)
-    controls.autoRotate = true;
-    controls.autoRotateSpeed = 2;
-    controls.minPolarAngle = Math.PI / 3;  // Limit vertical rotation
-    controls.maxPolarAngle = Math.PI / 2;  // Limit vertical rotation
-
-    camera.position.set(5, 3, 5);
-    camera.lookAt(0, 0, 0);
-
-    // Animation
-    let time = 0;
-    function animate() {
-      requestAnimationFrame(animate);
-      
-      time += 0.01;
-      
-      // Animate wavy plane
-      const positions = wavyPlane.geometry.attributes.position.array;
-      for (let i = 0; i < positions.length; i += 3) {
-        const x = positions[i];
-        const z = positions[i + 2];
-        positions[i + 1] = Math.sin(x + time) * 0.3 + Math.cos(z + time) * 0.3;
       }
-      wavyPlane.geometry.attributes.position.needsUpdate = true;
 
-      controls.update();
-      renderer.render(scene, camera);
+      function loop() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          const dx = mouseX - p.x, dy = mouseY - p.y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < 160) {
+            const force = (160 - dist) / 160;
+            p.x -= (dx / dist) * force * 2.5;
+            p.y -= (dy / dist) * force * 2.5;
+          }
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0) p.x = canvas.width;
+          if (p.x > canvas.width) p.x = 0;
+          if (p.y < 0) p.y = canvas.height;
+          if (p.y > canvas.height) p.y = 0;
+
+          for (let j = i + 1; j < particles.length; j++) {
+            const q = particles[j];
+            const d2 = Math.hypot(p.x - q.x, p.y - q.y);
+            if (d2 < 110) {
+              ctx.strokeStyle = `rgba(250, 143, 49, ${0.18 * (1 - d2 / 110)})`;
+              ctx.lineWidth = 0.5;
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(q.x, q.y);
+              ctx.stroke();
+            }
+          }
+
+          ctx.fillStyle = `rgba(250, 143, 49, ${p.alpha})`;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        requestAnimationFrame(loop);
+      }
+      loop();
+
+      window.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+      window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+    })();
+
+    // ---------- Scroll progress + navbar + back-to-top ----------
+    const navbar = document.getElementById('navbar');
+    const progress = document.getElementById('scrollProgress');
+    const topBtn = document.getElementById('backToTop');
+    function onScroll() {
+      const y = window.scrollY;
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+      navbar.classList.toggle('scrolled', y > 40);
+      topBtn.classList.toggle('visible', y > 500);
     }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    animate();
-
-    // Interactive tooltips on rotation - showing different parts
-    let lastRotation = 0;
-    let tooltipTimeout;
-    
-    controls.addEventListener('change', () => {
-      const rotation = controls.getAzimuthalAngle();
-      const rotationDiff = Math.abs(rotation - lastRotation);
-      
-      if (rotationDiff > 0.3) {
-        const infos = document.querySelectorAll('.car-info');
-        
-        // Determine which part to show based on rotation angle
-        let targetInfo;
-        const normalizedRotation = ((rotation % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
-        
-        if (normalizedRotation < Math.PI / 2) {
-          targetInfo = document.getElementById('engine-info');
-        } else if (normalizedRotation < Math.PI) {
-          targetInfo = document.getElementById('aero-info');
-        } else if (normalizedRotation < Math.PI * 1.5) {
-          targetInfo = document.getElementById('chassis-info');
-        } else {
-          targetInfo = document.getElementById('suspension-info');
-        }
-        
-        infos.forEach(info => info.style.opacity = '0');
-        if (targetInfo) targetInfo.style.opacity = '1';
-        
-        clearTimeout(tooltipTimeout);
-        tooltipTimeout = setTimeout(() => {
-          if (targetInfo) targetInfo.style.opacity = '0';
-        }, 3000);
-        
-        lastRotation = rotation;
-      }
-    });
-
-    // Handle window resize
-    window.addEventListener('resize', () => {
-      camera.aspect = carContainer.clientWidth / carContainer.clientHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(carContainer.clientWidth, carContainer.clientHeight);
-    });
-    END OF INLINE 3D CAR SCENE COMMENT */
-
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+    // ---------- Smooth anchor scroll ----------
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function (e) {
+        const t = document.querySelector(this.getAttribute('href'));
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
       });
     });
 
-    // Intersection Observer for animations
-    const observerOptions = {
-      threshold: 0.08,
-      rootMargin: '0px 0px -60px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-          observer.unobserve(entry.target);
-        }
+    // ---------- Tech tabs ----------
+    document.querySelectorAll('.tech-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.tab;
+        document.querySelectorAll('.tech-tab').forEach(t => t.classList.toggle('active', t === tab));
+        document.querySelectorAll('.tech-panel').forEach(p => p.classList.toggle('active', p.dataset.panel === target));
       });
-    }, observerOptions);
-
-    // Observe all sections
-    document.querySelectorAll('section').forEach(section => {
-      section.style.opacity = '0';
-      section.style.transform = 'translateY(40px)';
-      section.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
-      observer.observe(section);
     });
 
-    // Staggered child animations for cards and grid items
+    // ---------- Bento mouse tracking ----------
+    document.querySelectorAll('.bento-tile').forEach(tile => {
+      tile.addEventListener('mousemove', (e) => {
+        const r = tile.getBoundingClientRect();
+        tile.style.setProperty('--mx', ((e.clientX - r.left) / r.width) * 100 + '%');
+        tile.style.setProperty('--my', ((e.clientY - r.top) / r.height) * 100 + '%');
+      });
+    });
+
+    // ---------- Reveal on scroll ----------
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); revealObserver.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
     const childObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0) scale(1)';
-          childObserver.unobserve(entry.target);
-        }
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); childObserver.unobserve(e.target); }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    const staggerSelectors = [
-      '.info-card', '.stat-box', '.timeline-step',
-      '.engine-section > *', '.skills-grid > *',
-      '.cta-grid > *', '.three-column-grid > *'
-    ];
-
-    staggerSelectors.forEach(sel => {
+    }, { threshold: 0.08 });
+    const childSelectors = ['.timeline-step', '.feature-card', '.stat-box', '.cta-card', '.bento-tile', '.info-card', '.spec-tile'];
+    childSelectors.forEach(sel => {
       document.querySelectorAll(sel).forEach((el, i) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(28px) scale(0.97)';
-        el.style.transition = `opacity 0.55s ease ${i * 0.1}s, transform 0.55s ease ${i * 0.1}s`;
+        el.classList.add('reveal-child');
+        el.style.transitionDelay = (i * 0.06) + 's';
         childObserver.observe(el);
       });
     });
 
-    // Counter animation for stats
-    const animateValue = (element, start, end, duration) => {
-      let startTimestamp = null;
-      const step = (timestamp) => {
-        if (!startTimestamp) startTimestamp = timestamp;
-        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        const value = Math.floor(progress * (end - start) + start);
-        element.textContent = value + (element.dataset.suffix || '');
-        if (progress < 1) {
-          window.requestAnimationFrame(step);
+    // ---------- Animated counters ----------
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target.querySelector('.stat-number');
+        if (!el || el.dataset.animated) return;
+        const txt = el.textContent.trim();
+        const match = txt.match(/(\d+)/);
+        if (!match) return;
+        const target = parseInt(match[1], 10);
+        const suffix = txt.replace(match[1], '');
+        const duration = 1600;
+        let start = null;
+        el.dataset.animated = '1';
+        function step(ts) {
+          if (!start) start = ts;
+          const p = Math.min((ts - start) / duration, 1);
+          const v = Math.floor(p * target);
+          el.textContent = v + suffix;
+          if (p < 1) requestAnimationFrame(step);
+          else el.textContent = target + suffix;
         }
-      };
-      window.requestAnimationFrame(step);
-    };
-
-    const statsObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const statNumber = entry.target.querySelector('.stat-number');
-          const value = parseInt(statNumber.textContent);
-          if (!isNaN(value)) {
-            statNumber.dataset.suffix = statNumber.textContent.replace(value, '');
-            animateValue(statNumber, 0, value, 2000);
-          }
-          statsObserver.unobserve(entry.target);
-        }
+        requestAnimationFrame(step);
+        countObserver.unobserve(e.target);
       });
     }, { threshold: 0.5 });
+    document.querySelectorAll('.stat-box').forEach(b => countObserver.observe(b));
 
-    document.querySelectorAll('.stat-box').forEach(box => {
-      statsObserver.observe(box);
-    });
-
-    // Removed magnetic text effect for timeline steps - keeping timeline static
-
-    // Mobile menu toggle
+    // ---------- Mobile menu ----------
     function toggleMobileMenu(btn) {
       btn.classList.toggle('open');
       const links = document.getElementById('nav-links');
@@ -1801,6 +632,15 @@
         document.getElementById('nav-links').classList.remove('open');
         document.querySelector('.mobile-menu-btn').classList.remove('open');
       });
+    });
+
+    // ---------- Keyboard shortcut ----------
+    document.addEventListener('keydown', (e) => {
+      if (e.key === '/' && !['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) {
+        e.preventDefault();
+        const first = document.querySelector('.pill-menu .nav-links a');
+        if (first) first.focus();
+      }
     });
   </script>
 </body>

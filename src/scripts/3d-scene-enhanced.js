@@ -94,9 +94,9 @@
       point1: { color: 0xAA1811, intensity: 0.6, position: { x: 0, y: 3, z: 0 } }
     },
     carModel: {
-      path: 'components/rotatingCarChassis.glb',  // Use chassis directly as primary
-      fallbackPath: null,  // No fallback needed
-      scale: 3.5,  // Slightly smaller - from 4.5 to 3.5
+      path: 'images/f1_2026_cad_concept.glb',
+      fallbackPath: 'images/formula_1_car_concept.glb',
+      scale: 3.5,
       // Centered position - text will overlay with glass effect
       positionOffset: { x: 0, y: 0, z: 0 },
       color: 0xFA8F31,
