@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Apie Mus | Perkūnas RT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    /* Custom text selection colors */
+    ::selection {
+      background-color: #F16D26;
+      color: #0B0605;
+    }
+    ::-moz-selection {
+      background-color: #F16D26;
+      color: #0B0605;
+    }
+
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Exo 2', sans-serif;
+      color: #f0f0f0;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+      background: #000;
+      position: relative;
+    }
+
+    /* Mouse-Reactive Background */
+    #mouse-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* NAVBAR - React Bits Pill Menu */
+    .pill-menu {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10000;
+      background: rgba(11, 6, 5, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(250, 143, 49, 0.3);
+      border-radius: 50px;
+      padding: 12px 24px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .pill-menu a {
+      padding: 10px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pill-menu a.logo-link {
+      padding: 6px 16px;
+    }
+
+    .pill-menu a.logo-link img {
+      height: 32px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      transition: filter 0.3s ease;
+    }
+
+    .pill-menu a.logo-link:hover img,
+    .pill-menu a.logo-link.active img {
+      filter: none;
+    }
+
+    .pill-menu a:hover {
+      background: rgba(250, 143, 49, 0.15);
+      color: #FA8F31;
+    }
+
+    .pill-menu a.active {
+      background: linear-gradient(135deg, #FA8F31, #F16D26);
+      color: #0B0605;
+      box-shadow: 0 4px 12px rgba(250, 143, 49, 0.4);
+    }
+
+    .lang-switcher {
+      padding: 10px;
+      border-radius: 50%;
+      background: rgba(250, 143, 49, 0.1);
+      border: 1px solid rgba(250, 143, 49, 0.3);
+      color: #FA8F31;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .lang-switcher:hover {
+      background: rgba(250, 143, 49, 0.2);
+      transform: scale(1.1);
+    }
+
+    /* Main content */
+    main {
+      margin-top: 60px; /* Account for fixed navbar */
+      padding-top: 100px;
+      max-width: 1100px;
+      margin: 0 auto 60px;
+      padding-left: 20px;
+      padding-right: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-section {
+      background: rgba(11, 6, 5, 0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(250, 143, 49, 0.3);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 40px;
+      box-shadow: 0 8px 32px rgba(250, 143, 49, 0.2);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Hero Section */
+    .about-hero {
+      text-align: center;
+      padding: 60px 20px;
+      margin-bottom: 40px;
+    }
+
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #FA8F31, #F16D26);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+      text-shadow: none;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      color: #ddd;
+      font-weight: 400;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+      z-index: 1;
+      position: relative;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, rgba(250, 143, 49, 0.1), rgba(241, 109, 38, 0.05));
+      border: 2px solid rgba(250, 143, 49, 0.3);
+      border-radius: 20px;
+      padding: 40px 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      border-color: #FA8F31;
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(250, 143, 49, 0.4);
+    }
+
+    .stat-number {
+      display: block;
+      font-size: 3rem;
+      font-weight: 900;
+      color: #FA8F31;
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      display: block;
+      font-size: 1.1rem;
+      color: #ddd;
+      font-weight: 600;
+    }
+
+    /* Split Layout */
+    .split-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .split-layout.reverse {
+      direction: rtl;
+    }
+
+    .split-layout.reverse > * {
+      direction: ltr;
+    }
+
+    .content-column h2 {
+      font-size: 2.5rem;
+      color: #FA8F31;
+      margin-bottom: 20px;
+    }
+
+    .image-column {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Highlight Section */
+    .highlight-section {
+      text-align: center;
+      background: linear-gradient(135deg, rgba(170, 24, 17, 0.2), rgba(124, 23, 21, 0.1));
+    }
+
+    .highlight-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #FA8F31, #F16D26);
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+
+    .highlight-icon .material-icons {
+      font-size: 48px;
+      color: #0B0605;
+    }
+
+    /* Departments Grid */
+    .departments-section {
+      background: linear-gradient(135deg, rgba(11, 6, 5, 0.9), rgba(26, 26, 26, 0.7));
+    }
+
+    .center-title {
+      text-align: center;
+      font-size: 3rem;
+      color: #FA8F31;
+      margin-bottom: 40px;
+    }
+
+    .departments-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .department-card {
+      background: rgba(250, 143, 49, 0.05);
+      border: 1px solid rgba(250, 143, 49, 0.2);
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .department-card:hover {
+      background: rgba(250, 143, 49, 0.1);
+      border-color: #FA8F31;
+      transform: translateY(-5px);
+    }
+
+    .department-card .material-icons {
+      font-size: 48px;
+      color: #FA8F31;
+      margin-bottom: 15px;
+    }
+
+    .department-card h3 {
+      font-size: 1.5rem;
+      color: #FA8F31;
+      margin-bottom: 10px;
+    }
+
+    .department-card p {
+      font-size: 1rem;
+      color: #ddd;
+      margin: 0;
+    }
+
+    /* Values Section */
+    .values-section {
+      background: linear-gradient(135deg, rgba(241, 109, 38, 0.1), rgba(170, 24, 17, 0.05));
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .value-item {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .value-item .material-icons {
+      font-size: 56px;
+      color: #FA8F31;
+      margin-bottom: 15px;
+    }
+
+    .value-item h3 {
+      font-size: 1.4rem;
+      color: #FA8F31;
+      margin-bottom: 10px;
+    }
+
+    .value-item p {
+      font-size: 1rem;
+      color: #ddd;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #FA8F31;
+      margin-bottom: 25px;
+      text-shadow: 0 0 15px rgba(241, 109, 38, 0.6);
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #FA8F31;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      line-height: 1.6;
+      color: #ffffff;
+    }
+
+    .section-img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border-radius: 15px;
+      margin: 20px auto;
+      display: block;
+      border: 2px solid #F16D26;
+      box-shadow: 0 0 25px rgba(241, 109, 38, 0.4);
+    }
+
+    /* Footer */
+    .b-block {
+      background: linear-gradient(135deg, #0B0605, #7C1715);
+      padding: 20px 0;
+      border-top: 2px solid #F16D26;
+      margin-top: auto;
+      color: #eee;
+    }
+
+    .containerFoot {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo-img-footer {
+      height: 45px;
+      filter: drop-shadow(0 0 4px #fa8f31);
+    }
+
+    .linksFoot {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .social-icon {
+      height: 28px;
+      width: 28px;
+      filter: brightness(0.8);
+      transition: filter 0.3s ease;
+    }
+
+    .email {
+      font-weight: 600;
+      color: #FA8F31;
+      font-size: 1rem;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.5rem; }
+      .hero-subtitle { font-size: 1.2rem; }
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.8rem; }
+      p { font-size: 1rem; }
+      .about-section { padding: 30px 25px; }
+      .split-layout { grid-template-columns: 1fr; gap: 30px; }
+      .split-layout.reverse { direction: ltr; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .departments-grid { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Mobile hamburger */
+    .mobile-menu-btn {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .mobile-menu-btn span {
+      width: 24px; height: 2px;
+      background: #FA8F31;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+      display: block;
+    }
+    .mobile-menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .mobile-menu-btn.open span:nth-child(2) { opacity: 0; }
+    .mobile-menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 900px) {
+      .pill-menu {
+        top: 12px;
+        padding: 10px 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 24px);
+        max-width: 480px;
+        justify-content: space-between;
+        border-radius: 40px;
+      }
+      .pill-menu .nav-links {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(11, 6, 5, 0.97);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        z-index: 9999;
+        padding-top: 80px;
+      }
+      .pill-menu .nav-links.open { display: flex; }
+      .pill-menu .nav-links a { font-size: 20px; padding: 14px 40px; }
+      .mobile-menu-btn { display: flex; }
+    }
+  </style>
+</head>
+<body>
+  <!-- React Bits Pill Menu -->
+  <nav class="pill-menu" role="navigation" aria-label="Main navigation">
+    <a href="../index.html" class="logo-link" aria-label="Home">
+      <img src="../images/logo.DW5XiSKA.png" alt="Perkūnas Logo" />
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html" class="active" data-i18n="nav.about">Apie Mus</a>
+      <a href="../team/team.html" data-i18n="nav.team">Komanda</a>
+      <a href="../gallery/index.html" data-i18n="nav.gallery">Galerija</a>
+      <a href="../partners/index.html" data-i18n="nav.partners">Partneriai</a>
+      <a href="../join-us/index.html" data-i18n="nav.join">Prisijunk</a>
+      <a href="../support-us/index.html" data-i18n="nav.support">Paremk</a>
+      <a href="../contact/index.html" data-i18n="nav.contact">Kontaktai</a>
+    </div>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false" onclick="toggleMobileMenu(this)">
+      <span></span><span></span><span></span>
+    </button>
+    <!-- Language switcher added automatically by i18n.js -->
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="about-hero">
+      <h1 class="hero-title" data-i18n="about.heroTitle">Perkūnas Racing Team</h1>
+      <p class="hero-subtitle" data-i18n="about.heroSubtitle">Lietuvos studentų komanda, kurianti ateitį lenktyninėse trasose</p>
+    </section>
+
+    <!-- Stats Grid -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-number">50+</span>
+        <span class="stat-label" data-i18n="about.statsMembers">Komandos nariai</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">7</span>
+        <span class="stat-label" data-i18n="about.statsDepartments">Skyriai</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">2025</span>
+        <span class="stat-label" data-i18n="about.statsSeason">Pirmasis sezonas</span>
+      </div>
+    </section>
+
+    <!-- About Section with Image -->
+    <section class="about-section split-layout">
+      <div class="content-column">
+        <h2 data-i18n="about.whoWeAre">Kas mes esame?</h2>
+        <p data-i18n="about.whoWeAreDesc1">
+          Perkūnas Racing Team – tai studentų komanda iš Lietuvos, kurianti ir konstruojanti lenktyninį automobilį Formula Student varžyboms. Mūsų tikslas – ne tik pasiekti aukštų rezultatų trasoje, bet ir ugdyti inžinerinius, vadybinius bei kūrybinius įgūdžius.
+        </p>
+        <p data-i18n="about.whoWeAreDesc2">
+          Komandoje susibūrę įvairių sričių studentai: nuo mechanikos, elektronikos, iki dizaino ir verslo. Kiekvienas narys prisideda prie bendro tikslo – sukurti inovatyvų, greitą ir patikimą bolidą.
+        </p>
+      </div>
+      <div class="image-column">
+        <img src="/gallery/images/17934843059947999.jpg" alt="Komandos automobilis" class="section-img" />
+      </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="about-section highlight-section">
+      <div class="highlight-icon">
+        <span class="material-icons">flag</span>
+      </div>
+      <h2 data-i18n="about.ourMission">Mūsų misija</h2>
+      <p data-i18n="about.missionDesc1">
+        Ugdome ateities lyderius inžinerijos, technologijų ir verslo srityse, kurdami aplinką, kurioje teorinės žinios virsta realiais sprendimais. Kaip suvienyta komanda, mes ne tik kuriame automobilį, bet ir formuojame tvarų mokymosi klimatą.
+      </p>
+      <p data-i18n="about.missionDesc2">
+        Esame įsipareigoję skatinti augimą, kurti stiprius partnerystes su pramonės specialistais ir stumti studentų motorsporto ribas, prisidėdami prie inovacijų tiek Lietuvoje, tiek tarptautiniu mastu.
+      </p>
+    </section>
+
+    <!-- Competition Section with Image -->
+    <section class="about-section split-layout reverse">
+      <div class="image-column">
+        <img src="/gallery/images/539617215_1182455547249860_3685311424549275171_n.jpg" alt="Varžybų momentas" class="section-img" />
+      </div>
+      <div class="content-column">
+        <h2 data-i18n="about.formulaStudent">Formula Student varžybos</h2>
+        <p data-i18n="about.formulaStudentDesc1">
+          Formula Student yra vienas prestižiškiausių inžinerijos konkursų pasaulyje, subūriantis universiteto inžinerijos studentus iš viso pasaulio, siekiančius parodyti savo įgūdžius dizaine, gamyboje, testavime ir projektų vadyboje.
+        </p>
+        <p data-i18n="about.formulaStudentDesc2">
+          Varžybose komandos vertinamos ne tik trasoje, bet ir pristatant verslo planą, rinkodaros strategijas, gamybos galimybes ir kaštų analizę. Sėkmė priklauso nuo kūrybiškumo, techninių žinių, inovacijų ir komandinio darbo.
+        </p>
+      </div>
+    </section>
+
+    <!-- Departments Overview -->
+    <section class="about-section departments-section">
+      <h2 class="center-title" data-i18n="about.ourDepartments">Mūsų skyriai</h2>
+      <div class="departments-grid">
+        <div class="department-card">
+          <span class="material-icons">air</span>
+          <h3 data-i18n="about.deptAero">Aerodinamika</h3>
+          <p data-i18n="about.deptAeroDesc">Oro srautų valdymas ir prispaudimo jėgos optimizavimas</p>
+        </div>
+        <div class="department-card">
+          <span class="material-icons">precision_manufacturing</span>
+          <h3 data-i18n="about.deptChassis">Šasi</h3>
+          <p data-i18n="about.deptChassisDesc">Rėmo ir kėbulo konstrukcijų projektavimas</p>
+        </div>
+        <div class="department-card">
+          <span class="material-icons">settings</span>
+          <h3 data-i18n="about.deptPowertrain">Pavara</h3>
+          <p data-i18n="about.deptPowertrainDesc">Variklio ir transmisijos sistemos integracija</p>
+        </div>
+        <div class="department-card">
+          <span class="material-icons">zoom_out_map</span>
+          <h3 data-i18n="about.deptSuspension">Pakaba</h3>
+          <p data-i18n="about.deptSuspensionDesc">Automobilio valdymo ir stabilumo užtikrinimas</p>
+        </div>
+        <div class="department-card">
+          <span class="material-icons">electric_bolt</span>
+          <h3 data-i18n="about.deptElectronics">Elektronika</h3>
+          <p data-i18n="about.deptElectronicsDesc">Elektros infrastruktūra ir duomenų rinkimo sistemos</p>
+        </div>
+        <div class="department-card">
+          <span class="material-icons">business_center</span>
+          <h3 data-i18n="about.deptBusiness">Verslas</h3>
+          <p data-i18n="about.deptBusinessDesc">Rėmėjų paieška, viešieji ryšiai ir finansų valdymas</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="about-section values-section">
+      <h2 class="center-title" data-i18n="about.ourValues">Mūsų vertybės</h2>
+      <div class="values-grid">
+        <div class="value-item">
+          <span class="material-icons">emoji_events</span>
+          <h3 data-i18n="about.valueExcellence">Tobulumo siekimas</h3>
+          <p data-i18n="about.valueExcellenceDesc">Nuolat tobulėjame ir siekiame aukščiausių standartų</p>
+        </div>
+        <div class="value-item">
+          <span class="material-icons">groups</span>
+          <h3 data-i18n="about.valueTeamwork">Komandinis darbas</h3>
+          <p data-i18n="about.valueTeamworkDesc">Kartu pasiekiame daugiau nei individualiai</p>
+        </div>
+        <div class="value-item">
+          <span class="material-icons">school</span>
+          <h3 data-i18n="about.valueLearning">Mokymasis</h3>
+          <p data-i18n="about.valueLearningDesc">Kiekvienas projektas - galimybė augti ir tobulėti</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Mouse-Reactive Particle Background -->
+  <div id="mouse-bg"></div>
+
+  <script>
+    // Mouse-Reactive Background
+    const mouseBg = document.getElementById('mouse-bg');
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    mouseBg.appendChild(canvas);
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const particleCount = 100;
+    let mouseX = canvas.width / 2;
+    let mouseY = canvas.height / 2;
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = Math.random() * 0.5 - 0.25;
+        this.speedY = Math.random() * 0.5 - 0.25;
+        this.color = `rgba(250, 143, 49, ${Math.random() * 0.5 + 0.3})`;
+      }
+
+      update() {
+        const dx = mouseX - this.x;
+        const dy = mouseY - this.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const forceDirectionX = dx / distance;
+        const forceDirectionY = dy / distance;
+        const maxDistance = 150;
+        const force = (maxDistance - distance) / maxDistance;
+        
+        if (distance < maxDistance) {
+          this.x -= forceDirectionX * force * 3;
+          this.y -= forceDirectionY * force * 3;
+        }
+
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x > canvas.width) this.x = 0;
+        if (this.x < 0) this.x = canvas.width;
+        if (this.y > canvas.height) this.y = 0;
+        if (this.y < 0) this.y = canvas.height;
+      }
+
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+
+    animateParticles();
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+  
+  <!-- I18n System -->
+  <script src="../src/scripts/i18n.js"></script>
+  <script>
+    function toggleMobileMenu(btn) {
+      btn.classList.toggle('open');
+      const links = document.getElementById('nav-links');
+      links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', links.classList.contains('open'));
+    }
+    document.querySelectorAll('#nav-links a').forEach(a => {
+      a.addEventListener('click', () => {
+        document.getElementById('nav-links').classList.remove('open');
+        document.querySelector('.mobile-menu-btn').classList.remove('open');
+      });
+    });
+  </script>
+
+  <!-- FOOTER -->
+  <footer style="background:linear-gradient(135deg,#0B0605,#7C1715);padding:24px 0;border-top:2px solid #F16D26;margin-top:60px;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+      <a href="../index.html"><img src="../images/logo.DW5XiSKA.png" alt="Perkūnas" style="height:40px;filter:drop-shadow(0 0 4px #FA8F31);" /></a>
+      <div style="display:flex;gap:12px;">
+        <a href="https://www.instagram.com/perkunas_racing_ktu/" target="_blank" style="width:36px;height:36px;border-radius:50%;border:1px solid rgba(250,143,49,0.3);display:flex;align-items:center;justify-content:center;"><img src="../images/instagram.CsCcNGYk.png" alt="Instagram" style="width:18px;height:18px;" /></a>
+        <a href="https://www.linkedin.com/company/perkunasrt/" target="_blank" style="width:36px;height:36px;border-radius:50%;border:1px solid rgba(250,143,49,0.3);display:flex;align-items:center;justify-content:center;"><img src="../images/linkedin.DSVuZdlt.png" alt="LinkedIn" style="width:18px;height:18px;" /></a>
+      </div>
+      <p style="color:rgba(255,255,255,0.4);font-size:0.85rem;" data-i18n="footer.copyright">© 2025 Perkūnas Racing Team</p>
+    </div>
+  </footer>
+</body>
+</html>

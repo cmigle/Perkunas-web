@@ -1,0 +1,301 @@
+"use client";
+
+import { Link } from "@heroui/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faLink,
+  faUsers,
+  faCalendar,
+  faCheckCircle,
+  faClock,
+  faArrowRight,
+} from "@fortawesome/free-solid-svg-icons";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+import Image from "next/image";
+import { useEffect } from "react";
+import { Button } from "@heroui/react";
+
+
+// //@ts-ignore
+// import PhotoSwipeDynamicCaption from "photoswipe-dynamic-caption-plugin";
+
+import { projects } from "./constants/projects";
+
+import "swiper/css";
+import "swiper/css/navigation";
+//import "photoswipe/style.css";
+
+// Simple components to replace missing ones
+const ShootingStars = () => (
+  <div className="fixed inset-0 pointer-events-none">
+    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black opacity-50"></div>
+  </div>
+);
+
+const Heading = ({ title, subtitle }: { title: string; subtitle: string }) => (
+  <div className="text-center mb-12">
+    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">{title}</h1>
+    <p className="text-lg text-neutral-300 max-w-4xl mx-auto leading-relaxed">{subtitle}</p>
+  </div>
+);
+
+const getStatusColor = (status: string) => {
+  switch (status) {
+    case "Active":
+      return "text-green-400";
+    case "Completed":
+      return "text-blue-400";
+    case "On Hold":
+      return "text-yellow-400";
+    default:
+      return "text-gray-400";
+  }
+};
+
+const getCategoryColor = (category: string) => {
+  switch (category) {
+    case "Mechanical":
+      return "bg-blue-500/20 text-blue-400";
+    case "Electronics":
+      return "bg-purple-500/20 text-purple-400";
+    case "Software":
+      return "bg-green-500/20 text-green-400";
+    case "Aerodynamics":
+      return "bg-orange-500/20 text-orange-400";
+    case "Powertrain":
+      return "bg-red-500/20 text-red-400";
+    case "Business":
+      return "bg-yellow-500/20 text-yellow-400";
+    default:
+      return "bg-gray-500/20 text-gray-400";
+  }
+};
+
+const createTeamMemberLink = (memberName: string) => {
+  const anchor = memberName
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^\w-]/g, "");
+  return `/team#${anchor}`;
+};
+
+export default function ProjectsPage() {
+  // useEffect(() => {
+  //   let lightbox = new PhotoSwipeLightbox({
+  //     gallery: "#projects-gallery",
+  //     children: "a.pswp-gallery-item",
+  //     pswpModule: () => import("photoswipe"),
+  //   });
+  //   // const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
+  //   //   type: "caption",
+  //   //   captionContent: (slide) => {
+  //   //     return slide.data.element?.querySelector("img")?.getAttribute("alt") || "";
+  //   //   },
+  //   // });
+  //
+  //   lightbox.init();
+  //
+  //   return () => {
+  //     lightbox.destroy();
+  //     lightbox.pswp?.destroy();
+  //   };
+  // }, []);
+
+  return (
+    <div className="flex flex-col items-center justify-start text-center min-h-screen">
+      <ShootingStars />
+      <div className="relative z-10 max-w-7xl container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 h-full flex flex-col">
+        <Heading
+          subtitle="Atraskite inovatyvius sprendimus ir pažangias technologijas, kurias kuriame formuojant ateities lenktyninių automobilių inžineriją ir Formula Student varžybas."
+          title="Mūsų projektai"
+        />
+
+        <div id="projects-gallery" className="space-y-24 mt-16">
+          {projects.map((project, index) => (
+            <section
+              key={project.id}
+              className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-start ${
+                index > 0 ? "pt-24 border-t border-neutral-800" : ""
+              }`}
+            >
+              {/* Left Column */}
+              <div className="text-left flex flex-col h-full">
+                <h2 className="text-4xl md:text-5xl font-bold text-neutral-100 mb-4">
+                  {project.name}
+                </h2>
+                <div 
+                  className="text-neutral-300 text-lg mb-6 flex-grow"
+                  dangerouslySetInnerHTML={{ __html: project.description }}
+                />
+
+                <div className="flex flex-wrap items-center gap-4 mb-6">
+                  <div className="flex flex-wrap gap-2">
+                    {project.categories.map((category) => (
+                      <span
+                        key={category}
+                        className={`px-3 py-1 text-sm rounded-full ${getCategoryColor(
+                          category,
+                        )}`}
+                      >
+                        {category}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <div className="flex items-center gap-4 text-sm text-neutral-400">
+                    <div className="flex items-center gap-2">
+                      <FontAwesomeIcon
+                        className="w-4 h-4"
+                        icon={
+                          project.status === "Active" ? faCheckCircle : faClock
+                        }
+                      />
+                      <span className={getStatusColor(project.status)}>
+                        {project.status}
+                      </span>
+                    </div>
+                    {project.startDate && (
+                      <div className="flex items-center gap-2">
+                        <FontAwesomeIcon className="w-4 h-4" icon={faCalendar} />
+                        <span>
+                          {new Date(project.startDate).toLocaleDateString(
+                            "en-US",
+                            { year: "numeric", month: "short" },
+                          )}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <div className="bg-neutral-800/50 border border-neutral-700/50 rounded-xl p-4 space-y-4 mb-6">
+                  <div>
+                    <h3 className="font-semibold text-neutral-200 mb-2 text-sm">
+                      Technologies ({project.tags.length})
+                    </h3>
+                    <Swiper
+                      autoplay={{
+                        delay: 5000,
+                        disableOnInteraction: false,
+                      }}
+                      className="h-full"
+                      loop={true}
+                      modules={[Autoplay]}
+                      slidesPerView={"auto"}
+                      spaceBetween={10}
+                    >
+                      {project.tags.map((tag) => (
+                        <SwiperSlide key={tag} style={{ width: "auto" }}>
+                          <span className="bg-primary-500/20 text-primary-400 px-2 py-1 text-xs rounded-md whitespace-nowrap">
+                            {tag}
+                          </span>
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
+                  </div>
+
+                  {project.teamMembers.length > 0 && (
+                    <div>
+                      <h3 className="font-semibold text-neutral-200 mb-2 text-sm">
+                        <FontAwesomeIcon className="mr-2" icon={faUsers} />
+                        Team ({project.teamMembers.length})
+                      </h3>
+                      <Swiper
+                        autoplay={{
+                          delay: 5000,
+                          disableOnInteraction: false,
+                        }}
+                        className="h-full"
+                        loop={true}
+                        modules={[Autoplay]}
+                        slidesPerView={"auto"}
+                        spaceBetween={10}
+                      >
+                        {project.teamMembers.map((member) => (
+                          <SwiperSlide key={member} style={{ width: "auto" }}>
+                            <Link
+                              href={createTeamMemberLink(member)}
+                              className="bg-secondary-500/20 text-secondary-400 px-2 py-1 text-xs rounded-md hover:bg-secondary-500/40 transition-colors whitespace-nowrap"
+                            >
+                              {member}
+                            </Link>
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
+                    </div>
+                  )}
+                </div>
+
+                {project.link && (
+                  <Button
+                    as={Link}
+                    href={project.link}
+                    isExternal
+                    variant="bordered"
+                    className="self-start bg-black/15 text-white shadow-xl rounded-lg"
+                    data-pswp-ignore
+                  >
+                    Read More <FontAwesomeIcon icon={faArrowRight} />
+                  </Button>
+                )}
+              </div>
+
+              {/* Right Column */}
+              <div className="flex flex-col gap-6">
+                {project.image && (
+                  <a
+                    href={project.image.src}
+                    data-pswp-width={project.image.width}
+                    data-pswp-height={project.image.height}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="pswp-gallery-item block rounded-xl overflow-hidden group"
+                  >
+                    <Image
+                      src={project.image}
+                      alt={project.name}
+                      className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
+                      priority={index < 2}
+                    />
+                  </a>
+                )}
+
+                {project.galleryImages && project.galleryImages.length > 0 && (
+                  <div className="grid grid-cols-3 gap-4">
+                    {project.galleryImages.map((img, i) => (
+                      <Link
+                        key={i}
+                        href={img.src.src}
+                        data-pswp-width={img.src.width}
+                        data-pswp-height={img.src.height}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="pswp-gallery-item block overflow-hidden group rounded-lg"
+                      >
+                        <Image
+                          src={img.src}
+                          alt={img.alt}
+                          height={320}
+                          className="object-cover transition-transform duration-300  rounded-lg group-hover:scale-105"
+                        />
+                      </Link>
+                    ))}
+                  </div>
+                )}
+                {project.partners && project.partners.length > 0 && (
+                  <div className="mb-6">
+                    <p className="text-white text-sm">
+                      Partners: {project.partners.join(", ")}
+                    </p>
+                  </div>
+                )}
+              </div>
+              
+            </section>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}

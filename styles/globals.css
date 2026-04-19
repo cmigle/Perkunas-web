@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom text selection colors */
+::selection {
+  background-color: #F16D26;
+  color: #0B0605;
+}
+::-moz-selection {
+  background-color: #F16D26;
+  color: #0B0605;
+}
+
+:root {
+  --primary: #FA8F31;
+  --primary-light: #F16D26;
+  --secondary: #AA1811;
+  --secondary-dark: #7C1715;
+  --accent: #0B0605;
+  --background: #0B0605;
+  --foreground: #fff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: linear-gradient(135deg, var(--background), #1a1a1a);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.glow {
+  filter: drop-shadow(0 0 1px white)
+          drop-shadow(0 0 24px white)
+          drop-shadow(0 0 4px var(--primary));
+}
+
+.featured-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-card.white-feature::before {
+  background: radial-gradient(circle closest-side, rgba(241, 109, 38, 0.8), transparent);
+  width: 500px;
+  height: 500px;
+}
+
+.featured-card::before {
+  content: "";
+  position: absolute;
+  left: var(--mouse-x, 500%);
+  top: var(--mouse-y, 500%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle closest-side, rgba(250, 143, 49, 0.15), transparent);
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  transition: opacity 0.2s ease-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ensure card content is above the glow */
+.featured-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.waves {
+    background-color:transparent;
+    position:absolute;
+    left: 0;
+    height: 100px;
+    width: 100vw;
+    top: calc(100vh - 100px);
+}
+
+.parallax > use {
+    animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+  }
+  .parallax > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+  }
+  .parallax > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+  }
+  .parallax > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+  }
+  .parallax > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+  }
+  @keyframes move-forever {
+    0% {
+     transform: translate3d(-90px,0,0);
+    }
+    100% { 
+      transform: translate3d(85px,0,0);
+    }
+  }
+
+.pswp__dynamic-caption {
+  background: linear-gradient(135deg, rgba(11, 6, 5, 0.9), rgba(124, 23, 21, 0.8));
+  border: 2px solid rgba(250, 143, 49, 0.6);
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 16px;
+  width: 80%;
+  max-width: 800px;
+  border-radius: 10px;
+  bottom: 20px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.pswp__dynamic-caption .caption-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #FA8F31;
+}
+
+.pswp__dynamic-caption .caption-description {
+  font-size: 14px;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.pswp__dynamic-caption .caption-date {
+  font-size: 12px;
+  color: #F16D26;
+  font-style: italic;
+}
+
+.pswp__dynamic-caption b {
+  font-weight: bold;
+}

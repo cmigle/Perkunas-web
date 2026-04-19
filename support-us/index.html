@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="format-detection" content="email=no" />
+  <link rel="icon" type="image/png" href="../images/favicon.C7VaowoF.png" />
+  <title>Perkūnas RT | Support us</title>
+  <meta
+    name="description"
+    content="Support the Perkūnas RT team and help build the future of engineering! Learn how to donate 1.2% GPM or contribute through other platforms. Your support fuels innovation, teamwork, and motorsport excellence."
+  />
+  <link rel="alternate" hreflang="lt" href="https://perkunasrt.com/paremkite" />
+  <link rel="alternate" hreflang="en" href="index.html" />
+  <link rel="canonical" href="https://perkunasrt.com/support-us" />
+  <meta property="og:title" content="Support us | Perkūnas RT – Help Build the Future of Engineering" />
+  <meta
+    property="og:description"
+    content="Help the Perkūnas RT team by donating 1.2% GPM or supporting through crowdfunding platforms. Together, we'll build a competitive race car and foster engineering talent."
+  />
+  <meta property="og:image" content="../images/TeamFromDrone.7kRmZBe6.png" />
+  <meta property="og:url" content="https://perkunasrt.com/support-us" />
+  <meta property="og:type" content="website" />
+
+  <!-- Orbitron šrifto importas iš Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/navbar.css" />
+
+  <style>
+    /* Custom text selection colors */
+    ::selection {
+      background-color: #F16D26;
+      color: #0B0605;
+    }
+    ::-moz-selection {
+      background-color: #F16D26;
+      color: #0B0605;
+    }
+
+    /* Reset */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Exo 2', sans-serif;
+      color: #f0f0f0;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+      background: #000;
+      position: relative;
+    }
+
+    #mouse-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* NAVBAR - React Bits Pill Menu */
+    .pill-menu {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10000;
+      background: rgba(11, 6, 5, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(250, 143, 49, 0.3);
+      border-radius: 50px;
+      padding: 12px 24px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .pill-menu a {
+      padding: 10px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pill-menu a.logo-link {
+      padding: 6px 16px;
+    }
+
+    .pill-menu a.logo-link img {
+      height: 32px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      transition: filter 0.3s ease;
+    }
+
+    .pill-menu a.logo-link:hover img,
+    .pill-menu a.logo-link.active img {
+      filter: none;
+    }
+
+    .pill-menu a:hover {
+      background: rgba(250, 143, 49, 0.15);
+      color: #FA8F31;
+    }
+
+    .pill-menu a.active {
+      background: linear-gradient(135deg, #FA8F31, #F16D26);
+      color: #0B0605;
+      box-shadow: 0 4px 12px rgba(250, 143, 49, 0.4);
+    }
+
+    .lang-switcher {
+      padding: 10px;
+      border-radius: 50%;
+      background: rgba(250, 143, 49, 0.1);
+      border: 1px solid rgba(250, 143, 49, 0.3);
+      color: #FA8F31;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .lang-switcher:hover {
+      background: rgba(250, 143, 49, 0.2);
+      transform: scale(1.1);
+    }
+
+    /* Navbar responsive - keep in one line */
+    @media (max-width: 1400px) {
+      .pill-menu {
+        gap: 4px;
+        padding: 10px 18px;
+      }
+      
+      .pill-menu a, .lang-switcher {
+        padding: 8px 14px;
+        font-size: 13px;
+      }
+      
+      .pill-menu a.logo-link {
+        padding: 4px 12px;
+      }
+      
+      .pill-menu a.logo-link img {
+        height: 28px;
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .pill-menu {
+        gap: 3px;
+        padding: 8px 14px;
+      }
+      
+      .pill-menu a, .lang-switcher {
+        padding: 7px 12px;
+        font-size: 12px;
+      }
+      
+      .pill-menu a.logo-link {
+        padding: 3px 10px;
+      }
+      
+      .pill-menu a.logo-link img {
+        height: 26px;
+      }
+    }
+
+    @media (max-width: 1100px) {
+      .pill-menu {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        justify-content: flex-start;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        max-width: 95%;
+      }
+      
+      .pill-menu::-webkit-scrollbar {
+        display: none;
+      }
+      
+      .pill-menu a, .lang-switcher {
+        padding: 6px 10px;
+        font-size: 11px;
+        flex-shrink: 0;
+      }
+    }
+
+    /* MAIN content */
+    main {
+      padding-top: 120px;
+      max-width: 1100px;
+      position: relative;
+      z-index: 1;
+      margin: 0 auto 60px;
+      flex-grow: 1;
+    }
+
+    /* Content block */
+    .w-block {
+      background: linear-gradient(135deg, rgba(124, 23, 21, 0.3), rgba(170, 24, 17, 0.2));
+      border: 2px solid #F16D26;
+      padding: 40px 40px;
+      box-shadow:
+        0 4px 15px rgba(241, 109, 38, 0.3),
+        inset 0 0 10px rgba(250, 143, 49, 0.15);
+      color: #222;
+      user-select: text;
+      transition: all 0.3s ease;
+      backdrop-filter: saturate(180%) blur(15px);
+    }
+    .w-block:hover {
+      box-shadow:
+        0 6px 25px rgba(170, 24, 17, 0.5),
+        inset 0 0 15px rgba(241, 109, 38, 0.3);
+      border-color: #FA8F31;
+    }
+
+    .card {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .GPM,
+    .support {
+      flex: 1 1 45%;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #FA8F31;
+      margin-bottom: 25px;
+      user-select: none;
+      text-shadow: 0 0 15px rgba(241, 109, 38, 0.6);
+    }
+
+    p {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      line-height: 1.5;
+      color: #ffffff;
+    }
+
+    a.pdf {
+      text-decoration: underline;
+      color: #F16D26;
+      font-weight: 700;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+    a.pdf:hover,
+    a.pdf:focus {
+      color: #FA8F31;
+    }
+
+    .support-email {
+      cursor: pointer;
+      text-decoration: underline;
+      user-select: all;
+      -webkit-user-select: all;
+      -moz-user-select: all;
+      -ms-user-select: all;
+      color: #F16D26;
+      font-weight: 700;
+    }
+    .support-email:hover,
+    .support-email:focus {
+      color: #FA8F31;
+    }
+
+    .donate {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .donate a {
+      display: inline-block;
+      background: linear-gradient(45deg, #FA8F31, #F16D26);
+      padding: 14px 36px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #0B0605;
+      text-decoration: none;
+      box-shadow:
+        0 0 10px rgba(170, 24, 17, 0.6),
+        0 4px 10px rgba(241, 109, 38, 0.4);
+      transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+    .donate a:hover,
+    .donate a:focus {
+      background: linear-gradient(45deg, #F16D26, #AA1811);
+      box-shadow:
+        0 0 20px rgba(250, 143, 49, 0.8),
+        0 6px 20px rgba(170, 24, 17, 0.6);
+      transform: scale(1.05);
+      outline: none;
+      color: #ffffff;
+    }
+
+    .image-b {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(241, 109, 38, 0.4);
+      border: 2px solid #F16D26;
+      margin: 0 auto 20px;
+      user-select: none;
+      display: block;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: default;
+      object-fit: cover;
+    }
+    .image-b:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(250, 143, 49, 0.6);
+    }
+
+    /* Footer */
+    .b-block {
+      background: linear-gradient(135deg, #0B0605, #7C1715);
+      padding: 20px 0;
+      border-top: 2px solid #F16D26;
+      margin-top: auto;
+      color: #eee;
+    }
+    .containerFoot {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .logo-img-footer {
+      height: 45px;
+      filter: drop-shadow(0 0 4px #fa8f31);
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.3s ease;
+    }
+    .logo-img-footer:hover {
+      transform: scale(1.05);
+    }
+    .linksFoot {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+    .socials a {
+      display: inline-block;
+    }
+    .social-icon {
+      height: 28px;
+      width: 28px;
+      filter: brightness(0.8);
+      transition: filter 0.3s ease;
+      cursor: pointer;
+    }
+    .social-icon:hover {
+      filter: brightness(1.3);
+    }
+    .email {
+      font-weight: 600;
+      color: #FA8F31;
+      font-size: 1rem;
+      user-select: text;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .donate {
+        justify-content: center;
+      }
+      nav {
+        flex-direction: column;
+      }
+      .card {
+        flex-direction: column;
+      }
+      .GPM,
+      .support {
+        width: 100%;
+        flex: none;
+        margin-bottom: 40px;
+      }
+    }
+    @media (max-width: 480px) {
+      h1 { font-size: 2rem; }
+      p { font-size: 1rem; }
+    }
+
+    @media (max-width: 768px) {
+      .gpm-card { grid-template-columns: 1fr !important; gap: 32px !important; padding: 32px !important; }
+    }
+
+    @media (max-width: 600px) {
+      [style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: 1fr !important; }
+    }
+
+    /* Mobile hamburger */
+    .mobile-menu-btn {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .mobile-menu-btn span {
+      width: 24px; height: 2px;
+      background: #FA8F31;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+      display: block;
+    }
+    .mobile-menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .mobile-menu-btn.open span:nth-child(2) { opacity: 0; }
+    .mobile-menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 900px) {
+      .pill-menu {
+        top: 12px; padding: 10px 16px;
+        left: 50%; transform: translateX(-50%);
+        width: calc(100% - 24px); max-width: 480px;
+        justify-content: space-between; border-radius: 40px;
+      }
+      .pill-menu .nav-links {
+        display: none; position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(11, 6, 5, 0.97);
+        flex-direction: column; align-items: center;
+        justify-content: center; gap: 16px;
+        z-index: 9999; padding-top: 80px;
+      }
+      .pill-menu .nav-links.open { display: flex; }
+      .pill-menu .nav-links a { font-size: 20px; padding: 14px 40px; }
+      .mobile-menu-btn { display: flex; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Mouse-Reactive Background -->
+  <div id="mouse-bg"></div>
+
+  <!-- NAVBAR -->
+  <nav class="pill-menu" role="navigation" aria-label="Main navigation">
+    <a href="../index.html" class="logo-link" aria-label="Home">
+      <img src="../images/logo.DW5XiSKA.png" alt="Perkūnas Logo" />
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="../about-us/index.html" data-i18n="nav.about">Apie Mus</a>
+      <a href="../team/team.html" data-i18n="nav.team">Komanda</a>
+      <a href="../gallery/index.html" data-i18n="nav.gallery">Galerija</a>
+      <a href="../partners/index.html" data-i18n="nav.partners">Partneriai</a>
+      <a href="../join-us/index.html" data-i18n="nav.join">Prisijunk</a>
+      <a href="index.html" class="active" data-i18n="nav.support">Paremk</a>
+      <a href="../contact/index.html" data-i18n="nav.contact">Kontaktai</a>
+    </div>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false" onclick="toggleMobileMenu(this)">
+      <span></span><span></span><span></span>
+    </button>
+    <!-- Language switcher added automatically by i18n.js -->
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- Page Header -->
+    <div class="support-header" style="text-align:center;padding:80px 24px 48px;max-width:800px;margin:0 auto;">
+      <div style="display:inline-block;padding:6px 16px;border-radius:30px;border:1px solid rgba(250,143,49,0.4);background:rgba(250,143,49,0.08);color:#FA8F31;font-size:0.85rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:20px;">Parama</div>
+      <h1 style="font-size:clamp(2.2rem,5vw,4rem);font-weight:900;background:linear-gradient(135deg,#FA8F31,#F16D26);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:20px;" data-i18n="support.title">Paremk Mus</h1>
+      <p style="font-size:1.15rem;color:rgba(255,255,255,0.7);line-height:1.7;" data-i18n="support.description">Jūsų parama padeda mums toliau varžytis ir inovatyti. Štai kaip galite prisidėti:</p>
+    </div>
+
+    <!-- GPM Card - Featured -->
+    <section class="support-main" style="max-width:1100px;margin:0 auto;padding:0 24px 80px;">
+      <div class="gpm-card" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;background:rgba(11,6,5,0.7);backdrop-filter:blur(20px);border:1px solid rgba(250,143,49,0.3);border-radius:28px;padding:56px;margin-bottom:40px;">
+        <div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+            <div style="width:56px;height:56px;background:linear-gradient(135deg,#FA8F31,#F16D26);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <span class="material-icons" style="font-size:28px;color:#0B0605;">percent</span>
+            </div>
+            <h2 style="font-size:2rem;font-weight:900;color:#FA8F31;margin:0;" data-i18n="support.gpmTitle">Skirkite 1,2% GPM!</h2>
+          </div>
+          <p id="support-desc" style="font-size:1.1rem;color:rgba(255,255,255,0.8);line-height:1.7;margin-bottom:20px;" data-i18n="support.gpmDesc">
+            Norėdami mus paremti, sekite instrukcijas šiame PDF faile. Užpildę prašymą, atsiųskite patvirtinimo PDF el. paštu adresu perkunasrt@gmail.com.
+          </p>
+          <p style="font-size:1.05rem;color:#FA8F31;font-weight:600;margin-bottom:32px;" data-i18n="support.gpmThankYou">Padėkosime įrašydami jūsų vardą ant mūsų bolido! 🏎️</p>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;">
+            <a href="https://ugc.production.linktr.ee/6f3133ff-ddb9-463b-bd75-395c8c29b987_1-2-paramos-gidas--2-.pdf" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:16px 32px;border-radius:50px;background:linear-gradient(135deg,#FA8F31,#F16D26);color:#0B0605;text-decoration:none;font-weight:700;font-size:1rem;transition:all 0.3s;box-shadow:0 8px 28px rgba(250,143,49,0.35);">
+              <span class="material-icons" style="font-size:18px;">picture_as_pdf</span>
+              <span>PDF instrukcija</span>
+            </a>
+            <a href="mailto:perkunasrt@gmail.com" style="display:inline-flex;align-items:center;gap:8px;padding:16px 32px;border-radius:50px;border:1px solid rgba(250,143,49,0.4);color:#FA8F31;text-decoration:none;font-weight:700;font-size:1rem;transition:all 0.3s;">
+              <span class="material-icons" style="font-size:18px;">email</span>
+              <span>perkunasrt@gmail.com</span>
+            </a>
+          </div>
+        </div>
+        <div>
+          <img src="/images/gpm.BFzSzPWq.jpg" alt="GPM 1.2% support guide" style="width:100%;border-radius:16px;border:2px solid rgba(250,143,49,0.3);box-shadow:0 20px 50px rgba(0,0,0,0.4);" />
+        </div>
+      </div>
+
+      <!-- Steps -->
+      <div style="background:rgba(11,6,5,0.5);border:1px solid rgba(250,143,49,0.2);border-radius:20px;padding:40px;">
+        <h3 style="font-size:1.5rem;font-weight:700;color:#FA8F31;margin-bottom:32px;text-align:center;">Kaip tai padaryti?</h3>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+          <div style="text-align:center;padding:24px 16px;">
+            <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#FA8F31,#F16D26);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.4rem;font-weight:900;color:#0B0605;">1</div>
+            <p style="color:rgba(255,255,255,0.8);font-size:0.95rem;line-height:1.5;margin:0;">Atsisiųskite ir užpildykite GPM paramos prašymą pagal PDF instrukcijas</p>
+          </div>
+          <div style="text-align:center;padding:24px 16px;">
+            <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#FA8F31,#F16D26);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.4rem;font-weight:900;color:#0B0605;">2</div>
+            <p style="color:rgba(255,255,255,0.8);font-size:0.95rem;line-height:1.5;margin:0;">Pateikite prašymą VMI (Valstybinei mokesčių inspekcijai) elektroniniu būdu</p>
+          </div>
+          <div style="text-align:center;padding:24px 16px;">
+            <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#FA8F31,#F16D26);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.4rem;font-weight:900;color:#0B0605;">3</div>
+            <p style="color:rgba(255,255,255,0.8);font-size:0.95rem;line-height:1.5;margin:0;">Atsiųskite mums patvirtinimą el. paštu – jūsų vardas atsidurs ant bolido!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="background:linear-gradient(135deg,#0B0605,#7C1715);padding:24px 0;border-top:2px solid #F16D26;margin-top:auto;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+      <a href="../index.html"><img src="../images/logo.DW5XiSKA.png" alt="Perkūnas" style="height:40px;filter:drop-shadow(0 0 4px #FA8F31);" /></a>
+      <div style="display:flex;gap:12px;">
+        <a href="https://www.instagram.com/perkunas_racing_ktu/" target="_blank" style="width:36px;height:36px;border-radius:50%;border:1px solid rgba(250,143,49,0.3);display:flex;align-items:center;justify-content:center;"><img src="../images/instagram.CsCcNGYk.png" alt="Instagram" style="width:18px;height:18px;" /></a>
+        <a href="https://www.linkedin.com/company/perkunasrt/" target="_blank" style="width:36px;height:36px;border-radius:50%;border:1px solid rgba(250,143,49,0.3);display:flex;align-items:center;justify-content:center;"><img src="../images/linkedin.DSVuZdlt.png" alt="LinkedIn" style="width:18px;height:18px;" /></a>
+      </div>
+      <p style="color:rgba(255,255,255,0.4);font-size:0.85rem;" data-i18n="footer.copyright">© 2025 Perkūnas Racing Team</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMobileMenu(btn) {
+      btn.classList.toggle('open');
+      const links = document.getElementById('nav-links');
+      links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', links.classList.contains('open'));
+    }
+    document.querySelectorAll('#nav-links a').forEach(a => {
+      a.addEventListener('click', () => {
+        document.getElementById('nav-links').classList.remove('open');
+        document.querySelector('.mobile-menu-btn').classList.remove('open');
+      });
+    });
+  </script>
+
+  <!-- I18n System -->
+  <script src="../src/scripts/i18n.js"></script>
+</body>
+</html>

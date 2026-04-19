@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Galerija | Perkūnas RT</title>
+  <link rel="icon" type="image/png" href="../images/favicon.C7VaowoF.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #FA8F31;
+      --primary-dark: #F16D26;
+      --accent: #AA1811;
+      --accent-dark: #7C1715;
+      --near-black: #0B0605;
+    }
+
+    ::selection { background: var(--primary); color: var(--near-black); }
+    ::-moz-selection { background: var(--primary); color: var(--near-black); }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Exo 2', sans-serif;
+      color: #f0f0f0;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      background: #000;
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #mouse-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* NAVBAR */
+    .pill-menu {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10000;
+      background: rgba(11, 6, 5, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(250, 143, 49, 0.3);
+      border-radius: 50px;
+      padding: 12px 24px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      box-shadow: 0 8px 32px rgba(250, 143, 49, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .pill-menu a, .lang-switcher {
+      padding: 10px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      color: #f0f0f0;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Exo 2', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pill-menu a.logo-link { padding: 6px 16px; }
+    .pill-menu a.logo-link img {
+      height: 32px; width: auto;
+      filter: brightness(0) invert(1);
+      transition: filter 0.3s ease;
+    }
+    .pill-menu a.logo-link:hover img,
+    .pill-menu a.logo-link.active img { filter: none; }
+
+    .pill-menu a:hover, .lang-switcher:hover {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--near-black);
+      box-shadow: 0 4px 12px rgba(250, 143, 49, 0.4);
+    }
+
+    .pill-menu a.active {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--near-black);
+      box-shadow: 0 4px 12px rgba(250, 143, 49, 0.4);
+    }
+
+    .lang-switcher {
+      padding: 10px;
+      border-radius: 50%;
+      background: rgba(250, 143, 49, 0.1);
+      border: 1px solid rgba(250, 143, 49, 0.3);
+      color: var(--primary);
+      font-size: 16px;
+    }
+
+    /* Mobile hamburger */
+    .mobile-menu-btn {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 10001;
+    }
+    .mobile-menu-btn span {
+      width: 24px; height: 2px;
+      background: var(--primary);
+      transition: all 0.3s ease;
+      border-radius: 2px;
+      display: block;
+    }
+    .mobile-menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .mobile-menu-btn.open span:nth-child(2) { opacity: 0; }
+    .mobile-menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 900px) {
+      .pill-menu {
+        top: 12px;
+        padding: 10px 16px;
+        border-radius: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 24px);
+        max-width: 500px;
+        justify-content: space-between;
+      }
+      .pill-menu .nav-links {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(11, 6, 5, 0.97);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        z-index: 9999;
+        padding-top: 80px;
+      }
+      .pill-menu .nav-links.open { display: flex; }
+      .pill-menu .nav-links a { font-size: 20px; padding: 14px 40px; }
+      .mobile-menu-btn { display: flex; }
+    }
+
+    /* MAIN */
+    main {
+      padding-top: 100px;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+      position: relative;
+      z-index: 1;
+      flex-grow: 1;
+      padding-bottom: 60px;
+    }
+
+    /* PAGE HEADER */
+    .page-header {
+      text-align: center;
+      padding: 60px 20px 40px;
+    }
+
+    .page-header h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+
+    .page-header p {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* FILTER TABS */
+    .filter-tabs {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .filter-tab {
+      padding: 10px 24px;
+      border-radius: 50px;
+      border: 1px solid rgba(250, 143, 49, 0.3);
+      background: rgba(11, 6, 5, 0.5);
+      color: rgba(255,255,255,0.7);
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-tab:hover, .filter-tab.active {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--near-black);
+      border-color: transparent;
+      box-shadow: 0 4px 16px rgba(250, 143, 49, 0.35);
+    }
+
+    /* MASONRY GRID */
+    .gallery-grid {
+      columns: 4 280px;
+      column-gap: 16px;
+    }
+
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 16px;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      border: 1px solid rgba(250, 143, 49, 0.15);
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 20px 50px rgba(250, 143, 49, 0.35);
+      border-color: rgba(250, 143, 49, 0.6);
+      z-index: 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      transition: filter 0.35s ease;
+    }
+
+    .gallery-item:hover img {
+      filter: brightness(0.7);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(11,6,5,0.9) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px;
+    }
+
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    .gallery-overlay h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .gallery-overlay p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.4;
+    }
+
+    .gallery-zoom-icon {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 36px; height: 36px;
+      background: rgba(250,143,49,0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .gallery-item:hover .gallery-zoom-icon { opacity: 1; }
+    .gallery-zoom-icon .material-icons { font-size: 18px; color: var(--near-black); }
+
+    /* Category badge */
+    .gallery-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-competition { background: rgba(170, 24, 17, 0.85); color: #fff; }
+    .badge-build { background: rgba(250, 143, 49, 0.85); color: var(--near-black); }
+    .badge-team { background: rgba(11, 6, 5, 0.85); color: var(--primary); border: 1px solid var(--primary); }
+    .badge-car { background: rgba(241, 109, 38, 0.85); color: var(--near-black); }
+
+    /* LIGHTBOX MODAL */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 20000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox-inner {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+
+    .lightbox-inner img {
+      max-width: 90vw;
+      max-height: 80vh;
+      border-radius: 16px;
+      border: 2px solid rgba(250, 143, 49, 0.4);
+      object-fit: contain;
+    }
+
+    .lightbox-caption {
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    .lightbox-caption h3 {
+      font-size: 1.2rem;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .lightbox-caption p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 24px;
+      right: 28px;
+      font-size: 2rem;
+      color: var(--primary);
+      cursor: pointer;
+      background: rgba(11,6,5,0.8);
+      border: none;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      z-index: 20001;
+    }
+
+    .lightbox-close:hover {
+      background: var(--primary);
+      color: var(--near-black);
+      transform: rotate(90deg);
+    }
+
+    .lightbox-nav {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(11,6,5,0.8);
+      border: 1px solid rgba(250,143,49,0.3);
+      color: var(--primary);
+      cursor: pointer;
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      z-index: 20001;
+      font-size: 24px;
+    }
+
+    .lightbox-nav:hover {
+      background: var(--primary);
+      color: var(--near-black);
+    }
+
+    .lightbox-prev { left: 16px; }
+    .lightbox-next { right: 16px; }
+
+    .lightbox-counter {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(11,6,5,0.8);
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(250,143,49,0.2);
+    }
+
+    /* Instagram CTA Section */
+    .instagram-cta {
+      text-align: center;
+      margin: 60px auto;
+      padding: 48px 40px;
+      max-width: 700px;
+      background: rgba(11,6,5,0.6);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(250,143,49,0.2);
+      border-radius: 24px;
+    }
+
+    .instagram-cta h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+    }
+
+    .instagram-cta p {
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 28px;
+      font-size: 1.05rem;
+    }
+
+    .instagram-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 40px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--near-black);
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(250, 143, 49, 0.3);
+    }
+
+    .instagram-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(250, 143, 49, 0.5);
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background: linear-gradient(135deg, var(--near-black), var(--accent-dark));
+      padding: 24px 0;
+      border-top: 2px solid var(--primary-dark);
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo img { height: 40px; filter: drop-shadow(0 0 4px var(--primary)); }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: var(--primary); }
+
+    .footer-socials {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .footer-socials a {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(250,143,49,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .footer-socials a:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .footer-socials img { width: 18px; height: 18px; filter: brightness(0.9); }
+
+    .footer-copy {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 600px) {
+      .gallery-grid { columns: 2 140px; column-gap: 10px; }
+      .gallery-item { margin-bottom: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="mouse-bg"></div>
+
+  <!-- NAVBAR -->
+  <nav class="pill-menu" role="navigation" aria-label="Main navigation">
+    <a href="../index.html" class="logo-link" aria-label="Home">
+      <img src="../images/logo.DW5XiSKA.png" alt="Perkūnas Logo" />
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="../about-us/index.html" data-i18n="nav.about">Apie Mus</a>
+      <a href="../team/team.html" data-i18n="nav.team">Komanda</a>
+      <a href="index.html" class="active" data-i18n="nav.gallery">Galerija</a>
+      <a href="../partners/index.html" data-i18n="nav.partners">Partneriai</a>
+      <a href="../join-us/index.html" data-i18n="nav.join">Prisijunk</a>
+      <a href="../support-us/index.html" data-i18n="nav.support">Paremk</a>
+      <a href="../contact/index.html" data-i18n="nav.contact">Kontaktai</a>
+    </div>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false" onclick="toggleMobileMenu(this)">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <main>
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+      <h1 data-i18n="gallery.title">Galerija</h1>
+      <p data-i18n="gallery.description">Nuotraukos iš varžybų, dirbtuvių ir komandos renginių</p>
+    </div>
+
+    <!-- FILTER TABS -->
+    <div class="filter-tabs" role="tablist">
+      <button class="filter-tab active" data-filter="all" onclick="filterGallery('all', this)">
+        <span class="material-icons" style="font-size:16px;vertical-align:middle">apps</span>
+        Visi
+      </button>
+      <button class="filter-tab" data-filter="competition" onclick="filterGallery('competition', this)">
+        <span class="material-icons" style="font-size:16px;vertical-align:middle">emoji_events</span>
+        Varžybos
+      </button>
+      <button class="filter-tab" data-filter="build" onclick="filterGallery('build', this)">
+        <span class="material-icons" style="font-size:16px;vertical-align:middle">build</span>
+        Statyba
+      </button>
+      <button class="filter-tab" data-filter="team" onclick="filterGallery('team', this)">
+        <span class="material-icons" style="font-size:16px;vertical-align:middle">groups</span>
+        Komanda
+      </button>
+      <button class="filter-tab" data-filter="car" onclick="filterGallery('car', this)">
+        <span class="material-icons" style="font-size:16px;vertical-align:middle">directions_car</span>
+        Bolidas
+      </button>
+    </div>
+
+    <!-- GALLERY GRID -->
+    <div class="gallery-grid" id="gallery-grid">
+
+      <div class="gallery-item" data-category="car" data-title="Perkūnas Bolidas" data-desc="Mūsų lenktyninis bolidas" onclick="openLightbox(this)">
+        <img src="../images/CarInSun.Cl8Zd13v.jpg" alt="Perkūnas car in sun" loading="lazy" />
+        <div class="gallery-badge badge-car">Bolidas</div>
+        <div class="gallery-overlay">
+          <h3>Perkūnas Bolidas</h3>
+          <p>Mūsų lenktyninis bolidas saulėje</p>
+        </div>
+        <div class="gallery-zoom-icon"><span class="material-icons">zoom_in</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="car" data-title="Bolidas Garaže" data-desc="Bolidas dirbtuvėse" onclick="openLightbox(this)">
+        <img src="../images/CarInGarage.BukR3Qsy.jpg" alt="Car in garage" loading="lazy" />
+        <div class="gallery-badge badge-build">Dirbtuvės</div>
+        <div class="gallery-overlay">
+          <h3>Bolidas Garaže</h3>
+          <p>Bolidas mūsų dirbtuvėse</p>
+        </div>
+        <div class="gallery-zoom-icon"><span class="material-icons">zoom_in</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="team" data-title="Komanda" data-desc="Perkūnas komandos nuotrauka" onclick="openLightbox(this)">
+        <img src="../images/Team.CC8i-R1_.png" alt="Perkūnas Team" loading="lazy" />
+        <div class="gallery-badge badge-team">Komanda</div>
+        <div class="gallery-overlay">
+          <h3>Perkūnas Komanda</h3>
+          <p>Mūsų komandos nariai</p>
+        </div>
+        <div class="gallery-zoom-icon"><span class="material-icons">zoom_in</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="team" data-title="Komanda iš Drono" data-desc="Komanda iš paukščio skrydžio" onclick="openLightbox(this)">
+        <img src="../images/TeamFromDrone.7kRmZBe6.png" alt="Team from drone" loading="lazy" />
+        <div class="gallery-badge badge-team">Komanda</div>
+        <div class="gallery-overlay">
+          <h3>Komanda iš Viršaus</h3>
+          <p>Oro vaizdas mūsų komandos</p>
+        </div>
+        <div class="gallery-zoom-icon"><span class="material-icons">zoom_in</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="competition" data-title="Varžybos" data-desc="Dalyvavimas varžybose" onclick="openLightbox(this)">
+        <img src="../images/Competition.BN4d3-bd.jpg" alt="Competition" loading="lazy" />
+        <div class="gallery-badge badge-competition">Varžybos</div>
+        <div class="gallery-overlay">
+          <h3>Varžybos</h3>
+          <p>Dalyvavimas Formula Student varžybose</p>
+        </div>
+        <div class="gallery-zoom-icon"><span class="material-icons">zoom_in</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="car" data-title="Vairavimas" data-desc="Bolidas juda" onclick="openLightbox(this)">
+        <img src="../images/CarDriving.D2d2KQRs.gif" alt="Car driving" loading="lazy" />
+        <div class="gallery-badge badge-car">Vairavimas</div>
+        <div class="gallery-overlay">
+          <h3>Bolidas Važiuoja</h3>
+          <p>Perkūnas bolidas trasos testavime</p>
+        </div>
+        <div class="gallery-zoom-icon"><span class="material-icons">zoom_in</span></div>
+      </div>
+
+    </div>
+
+    <!-- INSTAGRAM CTA -->
+    <div class="instagram-cta">
+      <h2 data-i18n="gallery.morePhotos">Daugiau nuotraukų</h2>
+      <p data-i18n="gallery.followInstagram">Sekite mus Instagram, kad matytumėte naujausias nuotraukas ir vaizdo įrašus iš mūsų komandos gyvenimo</p>
+      <a href="https://www.instagram.com/perkunas_racing_ktu/" target="_blank" rel="noopener noreferrer" class="instagram-btn">
+        <span class="material-icons">photo_camera</span>
+        <span>@perkunas_racing_ktu</span>
+      </a>
+    </div>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">
+      <span class="material-icons">close</span>
+    </button>
+    <button class="lightbox-nav lightbox-prev" onclick="prevImage()" aria-label="Previous">
+      <span class="material-icons">chevron_left</span>
+    </button>
+    <div class="lightbox-inner">
+      <img id="lightbox-img" src="" alt="" />
+      <div class="lightbox-caption">
+        <h3 id="lightbox-title"></h3>
+        <p id="lightbox-desc"></p>
+      </div>
+    </div>
+    <button class="lightbox-nav lightbox-next" onclick="nextImage()" aria-label="Next">
+      <span class="material-icons">chevron_right</span>
+    </button>
+    <div class="lightbox-counter" id="lightbox-counter"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <a href="../index.html"><img src="../images/logo.DW5XiSKA.png" alt="Perkūnas" /></a>
+      </div>
+      <div class="footer-links">
+        <a href="../about-us/index.html" data-i18n="nav.about">Apie Mus</a>
+        <a href="../team/team.html" data-i18n="nav.team">Komanda</a>
+        <a href="../partners/index.html" data-i18n="nav.partners">Partneriai</a>
+        <a href="../contact/index.html" data-i18n="nav.contact">Kontaktai</a>
+      </div>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/perkunas_racing_ktu/" target="_blank" aria-label="Instagram">
+          <img src="../images/instagram.CsCcNGYk.png" alt="Instagram" />
+        </a>
+        <a href="https://www.linkedin.com/company/perkunasrt/" target="_blank" aria-label="LinkedIn">
+          <img src="../images/linkedin.DSVuZdlt.png" alt="LinkedIn" />
+        </a>
+        <a href="https://www.tiktok.com/@perknasrt_ktu" target="_blank" aria-label="TikTok">
+          <img src="../images/tiktok.CtOAf05B.png" alt="TikTok" />
+        </a>
+      </div>
+      <p class="footer-copy" data-i18n="footer.copyright">© 2025 Perkūnas Racing Team</p>
+    </div>
+  </footer>
+
+  <script src="../src/scripts/i18n.js"></script>
+  <script>
+    // Mobile menu
+    function toggleMobileMenu(btn) {
+      btn.classList.toggle('open');
+      const links = document.getElementById('nav-links');
+      links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', links.classList.contains('open'));
+    }
+
+    // Close mobile menu on link click
+    document.querySelectorAll('#nav-links a').forEach(a => {
+      a.addEventListener('click', () => {
+        document.getElementById('nav-links').classList.remove('open');
+        document.querySelector('.mobile-menu-btn').classList.remove('open');
+      });
+    });
+
+    // Mouse-reactive background
+    const mouseBg = document.getElementById('mouse-bg');
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    mouseBg.appendChild(canvas);
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    let mouseX = canvas.width / 2, mouseY = canvas.height / 2;
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedX = (Math.random() - 0.5) * 0.4;
+        this.speedY = (Math.random() - 0.5) * 0.4;
+        this.color = `rgba(250,143,49,${Math.random() * 0.4 + 0.1})`;
+      }
+      update() {
+        const dx = mouseX - this.x, dy = mouseY - this.y;
+        const d = Math.sqrt(dx*dx + dy*dy);
+        if (d < 120) {
+          this.x -= (dx/d) * (120-d)/120 * 2;
+          this.y -= (dy/d) * (120-d)/120 * 2;
+        }
+        this.x += this.speedX; this.y += this.speedY;
+        if (this.x > canvas.width) this.x = 0;
+        if (this.x < 0) this.x = canvas.width;
+        if (this.y > canvas.height) this.y = 0;
+        if (this.y < 0) this.y = canvas.height;
+      }
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 80; i++) particles.push(new Particle());
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    window.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    // Gallery filter
+    function filterGallery(category, btn) {
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.gallery-item').forEach(item => {
+        if (category === 'all' || item.dataset.category === category) {
+          item.style.display = '';
+          item.style.animation = 'fadeIn 0.4s ease';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // Lightbox
+    let currentIndex = 0;
+    let visibleItems = [];
+
+    function openLightbox(el) {
+      visibleItems = Array.from(document.querySelectorAll('.gallery-item:not([style*="display: none"])'));
+      currentIndex = visibleItems.indexOf(el);
+      showLightboxImage();
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function showLightboxImage() {
+      const el = visibleItems[currentIndex];
+      const img = el.querySelector('img');
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox-img').alt = img.alt;
+      document.getElementById('lightbox-title').textContent = el.dataset.title || '';
+      document.getElementById('lightbox-desc').textContent = el.dataset.desc || '';
+      document.getElementById('lightbox-counter').textContent = `${currentIndex + 1} / ${visibleItems.length}`;
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+      showLightboxImage();
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % visibleItems.length;
+      showLightboxImage();
+    }
+
+    document.getElementById('lightbox').addEventListener('click', e => {
+      if (e.target === document.getElementById('lightbox')) closeLightbox();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (!document.getElementById('lightbox').classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') prevImage();
+      if (e.key === 'ArrowRight') nextImage();
+    });
+  </script>
+</body>
+</html>

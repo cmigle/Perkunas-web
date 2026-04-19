@@ -1,0 +1,450 @@
+{
+  "nav": {
+    "home": "Pradžia",
+    "about": "Apie Mus",
+    "team": "Komanda",
+    "projects": "Projektai",
+    "gallery": "Galerija",
+    "partners": "Partneriai",
+    "join": "Prisijunk",
+    "support": "Paremk",
+    "contact": "Kontaktai"
+  },
+  "hero": {
+    "title": "Kuriame ateitį",
+    "subtitle": "Formula Student Lenktynių Komanda",
+    "description": "Projektuojame, konstruojame ir lenktyniaujame su bolidais, kurie skatina inžinerines inovacijas Kauno technologijos universitete.",
+    "cta": "Prisijunk prie mūsų",
+    "rotateHint": "Pasukinėk modelį",
+    "scrollHint": "Slinkite, kad priartintumėte",
+    "latestProjects": "Naujausi projektai",
+    "latestProjectsDesc": "Šiuo metu konstruojamas Perkūnas-02 bolidas pasitelkiant naujausiais technologiniais sprendimais",
+    "achievements": "Pasiekimai",
+    "achievementsDesc": "Antrieji organizacijos veiklos metai",
+    "members": "50+ narių",
+    "membersDesc": "Aktyvūs studentai iš įvairių Lietuvos universitetų"
+  },
+  "stats": {
+    "title": "Mūsų Poveikis",
+    "members": "Komandos Narių",
+    "projects": "Projektų",
+    "competitions": "Varžybų",
+    "years": "Veiklos metai",
+    "commitment": "Įsipareigojimas",
+    "partners": "Partnerių"
+  },
+  "info": {
+    "innovation": {
+      "title": "Inovacijos",
+      "description": "Pažangi elektrinė jėgainė ir aerodinaminės technologijos."
+    },
+    "teamwork": {
+      "title": "Komandinis Darbas",
+      "description": "Bendradarbiavimas tarp inžinerijos disciplinų kuriant čempionus."
+    },
+    "excellence": {
+      "title": "Tobulumas",
+      "description": "Konkuravimas aukščiausiame Formula Student lygyje visame pasaulyje."
+    }
+  },
+  "hotspots": {
+    "front-wing": {
+      "name": "Priekinis sparnas",
+      "description": "Pažangus aerodinaminis priekinis sparnas optimaliam prispaudimui"
+    },
+    "rear-wing": {
+      "name": "Našumas",
+      "description": "Optimizuotas svorio pasiskirstymas ir standumas maksimaliam valdymo tikslumui"
+    },
+    "cockpit": {
+      "name": "Šasi konstrukcija",
+      "description": "Lengva anglies pluošto monocoque, užtikrinanti standumą ir saugumą"
+    },
+    "left-side": {
+      "name": "Integracija",
+      "description": "Suprojektuota sklandžiam sujungimui su pakaba, pavara ir aerodinamika"
+    }
+  },
+  "about": {
+    "title": "Apie Perkūno Lenktynių Komandą",
+    "description": "Mes esame studentų vadovaujama Formula Student komanda Vilniaus Gedimino technikos universitete, skirta projektuoti, konstruoti ir lenktyniauti elektrinėmis formulėmis. Mūsų misija - suteikti praktinę inžinerijos patirtį konkuruojant tarptautiniu lygiu.",
+    "mission": "Misija",
+    "missionText": "Įkvėpti naująją inžinierių kartą praktine automobilių inžinerijos ir lenktyniavimo patirtimi.",
+    "vision": "Vizija",
+    "visionText": "Tapti pirmaujančia Formula Student komanda, pripažinta už inovacijas, techninį tobulumą ir tvarumą.",
+    "latestPosts": "Naujienos",
+    "noPostsYet": "Naujienų dar nėra. Grįžkite netrukus!",
+    "contributePost": "Prisidėti prie naujienos",
+    "heroTitle": "Perkūnas Racing Team",
+    "heroSubtitle": "Lietuvos studentų komanda, kurianti ateitį lenktynių trasose",
+    "statsMembers": "Komandos narių",
+    "statsDepartments": "Skyriai",
+    "statsSeason": "Pirmasis sezonas",
+    "whoWeAre": "Kas mes?",
+    "whoWeAreDesc1": "Perkūnas Racing Team – tai studentų komanda iš Lietuvos, kurianti ir konstruojanti lenktyninį automobilį Formula Student varžyboms. Mūsų tikslas – ne tik pasiekti aukštų rezultatų trasoje, bet ir ugdyti inžinerinius, vadybinius bei kūrybinius įgūdžius.",
+    "whoWeAreDesc2": "Komandoje susibūrę įvairių sričių studentai: nuo mechanikos, elektronikos, iki dizaino ir verslo. Kiekvienas narys prisideda prie bendro tikslo – sukurti inovatyvų, greitą ir patikimą bolidą.",
+    "ourMission": "Mūsų misija",
+    "missionDesc1": "Ugdome ateities lyderius inžinerijos, technologijų ir verslo srityse, kurdami aplinką, kurioje teorinės žinios virsta realiais sprendimais. Kaip suvienyta komanda, mes ne tik kuriame automobilį, bet ir formuojame tvarų mokymosi klimatą.",
+    "missionDesc2": "Esame įsipareigoję skatinti augimą, kurti stiprius partnerystes su pramonės specialistais ir stumti studentų motorsporto ribas, prisidėdami prie inovacijų tiek Lietuvoje, tiek tarptautiniu mastu.",
+    "formulaStudent": "Formula Student varžybos",
+    "formulaStudentDesc1": "Formula Student yra vienas prestižiškiausių inžinerijos konkursų pasaulyje, subūriantis universiteto inžinerijos studentus iš viso pasaulio, siekiančius parodyti savo įgūdžius dizaine, gamyboje, testavime ir projektų vadyboje.",
+    "formulaStudentDesc2": "Varžybose komandos vertinamos ne tik trasoje, bet ir pristatant verslo planą, rinkodaros strategijas, gamybos galimybes ir kaštų analizę. Sėkmė priklauso nuo kūrybiškumo, techninių žinių, inovacijų ir komandinio darbo.",
+    "ourDepartments": "Mūsų skyriai",
+    "deptAero": "Aerodinamika",
+    "deptAeroDesc": "Oro srautų valdymas ir pasipriešinimo jėgos mažinimas",
+    "deptChassis": "Šasi",
+    "deptChassisDesc": "Rėmo ir kėbulo konstrukcijų projektavimas",
+    "deptPowertrain": "Pavara",
+    "deptPowertrainDesc": "Variklio ir transmisijos sistemos integracija",
+    "deptSuspension": "Pakaba",
+    "deptSuspensionDesc": "Automobilio valdymo ir stabilumo užtikrinimas",
+    "deptElectronics": "Elektronika",
+    "deptElectronicsDesc": "Elektros infrastruktūra ir duomenų rinkimo sistemos",
+    "deptBusiness": "Verslas",
+    "deptBusinessDesc": "Rėmėjų paieška, viešieji ryšiai ir finansų valdymas",
+    "ourValues": "Mūsų vertybės",
+    "valueExcellence": "Tobulumo siekimas",
+    "valueExcellenceDesc": "Nuolat tobulėjame ir siekiame aukščiausių standartų",
+    "valueTeamwork": "Komandinis darbas",
+    "valueTeamworkDesc": "Kartu pasiekiame daugiau nei individualiai",
+    "valueLearning": "Mokymasis",
+    "valueLearningDesc": "Kiekvienas projektas - galimybė augti ir tobulėti"
+  },
+  "team": {
+    "title": "Komandos struktūra",
+    "description": "Talentingi studentai iš įvairių inžinerijos sričių dirba kartu.",
+    "leadership": "Vadovybė",
+    "technical": "Techninė komanda",
+    "operations": "Operacijos"
+  },
+  "gallery": {
+    "title": "Galerija",
+    "description": "Nuotraukos iš varžybų, dirbtuvių ir komandos renginių",
+    "morePhotos": "Daugiau nuotraukų",
+    "followInstagram": "Sekite mus Instagram, kad matytumėte naujausias nuotraukas ir vaizdo įrašus iš mūsų komandos gyvenimo",
+    "loading": "Kraunamos nuotraukos...",
+    "viewImage": "Žiūrėti nuotrauką",
+    "closeModal": "Uždaryti",
+    "previous": "Ankstesnis",
+    "next": "Kitas",
+    "imageOf": "Nuotrauka {current} iš {total}",
+    "instagram1": "Šasi montavimas",
+    "instagram1Desc": "Darbai prie bolido šasi konstrukcijos ir integracijos",
+    "instagram2": "Komandos susirinkimas",
+    "instagram2Desc": "Savaitinis komandos susitikimas projektų statuso aptarimui",
+    "instagram3": "Variklio sistema",
+    "instagram3Desc": "Variklio montavimas ir jėgainės optimizavimas",
+    "instagram4": "Aerodinamikos testavimas",
+    "instagram4Desc": "Priekinio ir galinio sparnų aerodinamikos patikrinimas",
+    "instagram5": "Elektronika ir valdymas",
+    "instagram5Desc": "ECU programavimas ir sensorių kalibravimas",
+    "instagram6": "Pavara ir transmisija",
+    "instagram6Desc": "Pakabuojamosios dalies ir pavarų dėžės surinkimas",
+    "instagram7": "Bolido testavimas",
+    "instagram7Desc": "Pirmieji testiniai važiavimai ir našumo matavimas",
+    "instagram8": "Dirbtuvės darbai",
+    "instagram8Desc": "Kasdieninis darbas konstruojant ir tobulėjant",
+    "instagram9": "Komandos renginys",
+    "instagram9Desc": "Bendravimas su rėmėjais ir visuomene",
+    "instagram10": "Projektavimo sesija",
+    "instagram10Desc": "CAD modeliavimas ir inžinerijos sprendimai",
+    "instagram11": "Saugos patikrinimas",
+    "instagram11Desc": "Saugos įrangos ir sistemų testavimas",
+    "instagram12": "Varžybų pasiruošimas",
+    "instagram12Desc": "Galutiniai patikrinimai prieš Formula Student renginį",
+    "instagram13": "Rėmėjų vizitas",
+    "instagram13Desc": "Pristatome pažangą mūsų partneriams ir rėmėjams",
+    "instagram14": "Variklių testavimas",
+    "instagram14Desc": "Dinamometro matavimai ir našumo optimizavimas",
+    "instagram15": "Pakabos derinimas",
+    "instagram15Desc": "Pakabos sistemos nustatymas optimaliam valdymui",
+    "instagram16": "Elektros sistemos",
+    "instagram16Desc": "Laidų montavimas ir elektros sistemų diagnostika",
+    "instagram17": "Komandos šventė",
+    "instagram17Desc": "Minime pasiekimus ir stipriname komandos dvasią",
+    "instagram18": "Gamybos procesas",
+    "instagram18Desc": "Komponentų gamyba ir CNC apdirbimas",
+    "instagram19": "Bolido pristatymas",
+    "instagram19Desc": "Oficialus bolido pristatymas universitetui ir visuomenei",
+    "instagram20": "Sezonas finišuoja",
+    "instagram20Desc": "Pasiruošimas kitiems metams ir naujų tikslų kėlimas",
+    "video1": "Trasoje",
+    "video1Desc": "Testiniai važiavimai ir bolido bandymai trasoje",
+    "video2": "Greičio demonstracija",
+    "video2Desc": "Bolido akceleracija ir našumo demonstracija",
+    "video3": "Dirbtuvėje",
+    "video3Desc": "Kasdieniai darbai konstruojant bolidą",
+    "video4": "Komandos akimirkos",
+    "video4Desc": "Užkulisiai ir komandos kasdienybė",
+    "video5": "Techniniai darbai",
+    "video5Desc": "Montavimo ir derinimo procesai",
+    "video6": "Varžybų diena",
+    "video6Desc": "Pasiruošimas ir dalyvavimas varžybose",
+    "video7": "Bolido veikimas",
+    "video7Desc": "Bolido sistemų testavimas ir veikimas",
+    "video8": "Komandos darbas",
+    "video8Desc": "Sinchronizuotas komandos darbas prie bolido",
+    "video9": "Važiavimo sesija",
+    "video9Desc": "Vairuotojo ir bolido sąveika trasoje",
+    "video10": "Finaliniai testai",
+    "video10Desc": "Paskutiniai patikrinimai prieš varžybas",
+    "event1": "Komandos renginys",
+    "event1Desc": "Bolido pristatymas universiteto bendruomenei",
+    "event2": "Bolido demonstracija",
+    "event2Desc": "Viešas bolido pristatymas ir bendravimas su lankytojais"
+  },
+  "partners": {
+    "title": "Mūsų partneriai",
+    "subtitle": "Kartu kuriame ateitį - dėkojame mūsų partneriams už paramą, kuri leidžia mums siekti svajonių ir stumti technologijas į priekį.",
+    "description": "Esame dėkingi už mūsų rėmėjų ir partnerių paramą, kuri leidžia mums dirbti.",
+    "becomePartner": "Tapti partneriu",
+    "contactUs": "Susisiekite su mumis dėl partnerystės galimybių",
+    "sponsorTitle": "Prisidėk prie mūsų sėkmės!",
+    "sponsorDesc1": "Rėmėjų parama suteikia aukščiausio lygio galimybę tapti dinamiško Formula Student projekto dalimi. Jūsų prekės ženklas įgaus didelį matomumą mūsų lenktyniniame automobilyje, komandos apranga, reklamose, renginiuose ir pasirodymuose varžybose.",
+    "sponsorDesc2": "Rėmėjai turi unikalią galimybę įtakoti mūsų techninę, strateginę ir operacinę plėtrą, užmegzdami tiesioginius ryšius su būsimaisiais inžinieriais ir inovatoriais. Ši partnerystė suteikia tiesioginį ryšį su švietimu ir padeda formuoti būsimuosius talentus.",
+    "sponsorDesc3": "Mes siekiame kurti ilgalaikius santykius, trunkančius keletą sezonų, užtikrinant nuolatinę abipusę naudą. Jūsų parama taip pat suteikia pirmenybę pasiekti talentingus inžinerijos studentus, kurie tiks būsimoms darbo ir stažuotės galimybėms.",
+    "sponsorDesc4": "Prisijungę nuo pat pradžių, tapsite viso mūsų kelio dalimi – nuo idėjos iki varžybų. Padėsite sukurti ne tik lenktyninį automobilį, bet ir inovacijų bei meistriškumo kultūrą.",
+    "ourSponsors": "Mūsų Rėmėjai",
+    "otherPartners": "Kiti Partneriai",
+    "downloadBrochure": "Atsisiųsk Brošiūrą",
+    "iremas": {
+      "name": "Iremas",
+      "desc": "Tai viena pirmaujančių pramoninės priežiūros ir inžinerijos sprendimų įmonių Lietuvoje, teikianti aukštos kokybės paslaugas energetikos, pramonės ir infrastruktūros sektoriams. Įmonė specializuojasi mechaninės įrangos montavimu, elektros inžinerija, automatika ir pramoninių įrenginių priežiūra. Turėdama daugiau nei keturių dešimtmečių patirtį, Iremas sėkmingai vykdo tiek vietinius, tiek tarptautinius projektus, užtikrindama saugumą, patikimumą ir aukštą darbų kokybę."
+    },
+    "ansys": {
+      "name": "Ansys",
+      "desc": "Pasaulinis lyderis inžinerinės simuliacijos programinėje įrangoje, siūlantis pažangius sprendimus produktų kūrimui, testavimui ir optimizavimui. Įmonės programinė įranga leidžia modeliuoti skysčių dinamiką, konstrukcijas, elektromagnetizmą, šilumą ir daugiafizikinius procesus. Ansys sprendimai naudojami įvairiose pramonės šakose – nuo automobilių ir aviakosminės pramonės iki energetikos ir sveikatos priežiūros."
+    },
+    "rapidharness": {
+      "name": "RapidHarness",
+      "desc": "Pažangi laidų projektavimo programinė įranga, sukurta automatizuoti ir supaprastinti visą elektros sistemos projektavimo procesą – nuo pirmosios schemos iki gamybai paruoštos dokumentacijos. Ši CAD platforma įgalina kurti profesionalias schemas realiu laiku, automatiškai generuoti dokumentaciją ir efektyviai bendradarbiauti komandose ar su išorės partneriais. RapidHarness sprendimai naudojami inžinierių įvairiose pramonės šakose – nuo automobilių ir aviakosminės pramonės iki elektronikos ir gamybos."
+    },
+    "solidworks": {
+      "name": "SolidWorks",
+      "desc": "Pasaulinis lyderis 3D projektavimo ir inžinerijos sprendimuose, kurianti pažangią programinę įrangą produktų kūrimui, inžinerijai ir gamybai. Įmonė specializuojasi kompiuteriu remiamo projektavimo (CAD), analizės (CAE) ir produktų duomenų valdymo (PDM) sistemose, padedama įmonėms kurti inovatyvius, efektyvius ir tvaraus sprendimus. SolidWorks sprendimai naudojami įvairiuose sektoriuose – nuo automobilių ir aviakosminės pramonės iki medicinos prietaisų, elektronikos ir švietimo įstaigų visame pasaulyje."
+    }
+  },
+  "join": {
+    "title": "Prisijunk prie komandos",
+    "description": "Ar esi entuziastingas ir domiesi inžinerijos ir lenktyniavimo inovacijomis? Mes visada ieškom motyvuotų studentų prisijungti prie komandos.",
+    "openPositions": "Atviros Pozicijos",
+    "howToApply": "Kaip Kreiptis",
+    "applyNow": "Užpildyk formą",
+    "requirements": "Reikalavimai",
+    "benefits": "Pranašumai",
+    "benefitsTitle": "Ką gausi prisijungęs?",
+    "benefit1": "Įgysi praktinės patirties kuriant, projektuojant ir testuojant aukštos kokybės bolidą.",
+    "benefit2": "Dirbdamas su rėmėjais ir atstovaudamas komandai, išmoksi verslo, rinkodaros ir projektų valdymo pagrindų.",
+    "benefit3": "Tobulinsi komandinio darbo, lyderystės ir laiko planavimo įgūdžius bendradarbiaujančioje aplinkoje.",
+    "benefit4": "Užmegsi ryšius su universiteto dėstytojais ir pramonės partneriais, plėsdamas savo profesinį tinklą.",
+    "benefit5": "Įgysi vertingų žinių ir įgūdžių, kurie padės pasiruošti ateities inžinerijos ir verslo iššūkiams."
+  },
+  "support": {
+    "title": "Paremk mus",
+    "description": "Jūsų parama padeda mums tęsti varžybas ir inovacijas. Štai kaip galite prisidėti:",
+    "donate": "Paaukoti",
+    "sponsor": "Tapti rėmėju",
+    "volunteer": "Savanoriauti",
+    "share": "Dalintis mūsų istorija",
+    "gpmTitle": "Skirkite 1,2% GPM!",
+    "gpmDesc": "Norėdami mus paremti, sekite instrukcijas šiame PDF faile. Užpildę prašymą, atsiųskite patvirtinimo PDF el. paštu adresu perkunasrt@gmail.com.",
+    "gpmThankYou": "Padėkosime įrašydami jūsų vardą ant mūsų bolido!",
+    "teamSupport": "Parama komandai",
+    "platformsText": "Taip pat galite prisidėti per šias platformas:"
+  },
+  "contact": {
+    "title": "Kontaktai",
+    "formTitle": "Susisiekite su mumis",
+    "description": "Turite klausimų ar norite sužinoti daugiau? Mums būtų malonu išgirsti iš jūsų!",
+    "email": "El. Paštas",
+    "phone": "Telefonas",
+    "address": "Adresas",
+    "socialMedia": "Sekite Mus",
+    "sendMessage": "Siųsti Žinutę",
+    "name": "Vardas",
+    "fullName": "Vardas, pavardė",
+    "emailAddress": "El. Pašto Adresas",
+    "emailLabel": "El. paštas",
+    "subject": "Tema",
+    "selectSubject": "Pasirinkite temą",
+    "partnership": "Partnerystė",
+    "membership": "Narystė komandoje",
+    "sponsorship": "Rėmimas",
+    "other": "Kita",
+    "message": "Žinutė",
+    "messagePlaceholder": "Parašykite savo žinutę...",
+    "submit": "Pateikti",
+    "submitMessage": "Siųsti žinutę",
+    "contactInfo": "Kontaktinė informacija",
+    "teamEmail": "El. paštas:",
+    "leaderContacts": "Vadovų kontaktai:",
+    "addressLabel": "Adresas:",
+    "addressFull": "Studentų g. 65, Kaunas, Lietuva",
+    "socialNetworks": "Socialiniai tinklai:",
+    "meetingScheduler": "Suplanuoti Susitikimą"
+  },
+  "footer": {
+    "copyright": "© 2025 Perkūno Lenktynių Komanda. Visos teisės saugomos.",
+    "madeWith": "Sukurta su",
+    "by": "komandos"
+  },
+  "ui": {
+    "rotateHint": "Tempkite kad pasukti",
+    "scrollHint": "Slinkti žemyn",
+    "loading": "Kraunama...",
+    "error": "Klaida",
+    "retry": "Bandyti Iš Naujo",
+    "close": "Uždaryti",
+    "open": "Atidaryti",
+    "readMore": "Skaityti Daugiau",
+    "learnMore": "Sužinoti Daugiau",
+    "showMore": "Rodyti Daugiau",
+    "showLess": "Rodyti Mažiau"
+  },
+  "competence": {
+    "top": "Aukščiausias Lygis",
+    "advanced": "Pažengęs",
+    "intermediate": "Vidutinis",
+    "beginner": "Pradedantis"
+  },
+  "roadmap": {
+    "title": "Mūsų Planas",
+    "phase1": "1 Fazė: Dizainas ir Planavimas",
+    "phase2": "2 Fazė: Gamyba",
+    "phase3": "3 Fazė: Testavimas",
+    "phase4": "4 Fazė: Varžybos",
+    "current": "Dabartinė Fazė",
+    "completed": "Užbaigta",
+    "upcoming": "Artėjanti"
+  },
+  "quotes": {
+    "innovation": "Inovacijos atskiria lyderį nuo sekėjo.",
+    "teamwork": "Vienas galime nuveikti mažai; kartu galime nuveikti daug.",
+    "excellence": "Tobulumas nėra tikslas; tai nuolatinė kelionė, kuri niekada nesibaigia.",
+    "main": "Mes ne tik statome automobilius – mes ugdome ateities inžinerijos ir technologijų lyderius.",
+    "author": "— Perkūnas Racing Team"
+  },
+  "quote": {
+    "main": "Mes ne tik statome automobilius – mes ugdome ateities inžinerijos ir technologijų lyderius.",
+    "author": "— Perkūnas Racing Team"
+  },
+  "technology": {
+    "title": "Technologinė pažanga",
+    "current": {
+      "title": "Dabartinė technologija",
+      "subtitle": "Vidaus degimo variklio optimizavimas",
+      "tuning": "Variklio derinimas",
+      "tuningDesc": "Tikslus degalų ir oro mišinio optimizavimas maksimaliam našumui",
+      "fuel": "Degalų sistema",
+      "fuelDesc": "Pažangi įpurškimo technologija geresniam efektyvumui",
+      "exhaust": "Išmetimo sistema",
+      "exhaustDesc": "Individuali išmetimo sistema, optimizuota našumui ir garsui",
+      "cooling": "Aušinimo sistema",
+      "coolingDesc": "Efektyvi šiluminė valdymo sistema maksimaliam patikimumui",
+      "ecu": "Elektroninė valdymo sistema",
+      "ecuDesc": "Individualaus ECU programavimas tiksliam valdymui",
+      "performance": "Našumo charakteristikos",
+      "power": "Variklio galingumas: 89 kW, 120 AG",
+      "weight": "Svoris: <300 kg",
+      "acceleration": "Greitis 0-100 km/h: <4 sekundės",
+      "topSpeed": "Maksimalus greitis: 120+ km/h"
+    },
+    "future": {
+      "title": "Ateities vizija",
+      "subtitle": "Elektrinio variklio varomas bolidas",
+      "year2026": "2026",
+      "year2026Desc": "Tyrimų fazė - elektrinių sistemų analizė ir planavimas",
+      "year2027": "2027",
+      "year2027Desc": "Prototipo kūrimas - pirmojo elektrinio bolido projektavimas",
+      "year2028": "2028",
+      "year2028Desc": "Varžybos - dalyvavimas Formula Student Electric kategorijoje",
+      "goalsTitle": "Ateities tikslai",
+      "sustainability": "Tvarumas",
+      "sustainabilityDesc": "Sumažintas poveikis aplinkai",
+      "innovation": "Inovacijos",
+      "innovationDesc": "Naujausios baterijų technologijos",
+      "performance": "Našumas",
+      "performanceDesc": "Didesnis efektyvumas ir greitis",
+      "education": "Švietimas",
+      "educationDesc": "Ruošiame studentus elektrinių transporto priemonių ateičiai"
+    }
+  },
+  "leadership": {
+    "title": "Auginame ateities lyderius",
+    "engineering": {
+      "title": "Inžinerinis mąstymas",
+      "desc": "Taikome pažangiausius inžinerijos principus kurdami, gamindami ir testuodami realų bolidą. Studentai įgyja praktinės patirties, pritaikydami teorines žinias realiems inžineriniams iššūkiams ir kurdami tvirtą pagrindą karjerai."
+    },
+    "business": {
+      "title": "Verslumo įgūdžiai",
+      "desc": "Ugdomi verslumo gebėjimai per rėmėjų paiešką, biudžeto planavimą ir projekto valdymą. Mokomės kurti partnerystes, atsakingai valdyti finansus ir dirbti pagal profesionalius standartus."
+    },
+    "teamwork": {
+      "title": "Vieninga komanda",
+      "desc": "Kuriame palaikančią, įtraukią ir bendradarbiaujančią aplinką, kurioje kiekvienas narys prisideda prie bendros sėkmės. Vyresni nariai perduoda patirtį jaunesniems, užtikrindami tvarų komandos augimą ir nuoseklų žinių perdavimą."
+    }
+  },
+  "partnerships": {
+    "title": "Pramonės partnerystės",
+    "professional": {
+      "title": "Profesionalūs ryšiai",
+      "desc": "Bendradarbiaujame su pirmaujančiomis inžinerijos įmonėmis ir pramonės lyderiais, kurdami stiprius profesinius ryšius bei žinių mainų tinklą."
+    },
+    "knowledge": {
+      "title": "Žinių mainai",
+      "desc": "Gauname vertingas konsultacijas iš pramonės ekspertų, mokydamiesi taikyti geriausias praktikas ir tobulinti savo projektus."
+    },
+    "mentorship": {
+      "title": "Mentorystė",
+      "desc": "Mums padeda patyrę inžinieriai ir specialistai, teikiantys individualią mentorystę ir formuojantys mūsų karjeros kelią."
+    }
+  },
+  "innovation": {
+    "title": "Plečiame motorinio sporto ribas",
+    "international": {
+      "title": "Tarptautinis poveikis",
+      "desc": "Dalyvaujame Formula Student varžybose, kuriose atstovaujame Lietuvai ir varžomės su geriausiais universitetais pasaulyje. Dalijamės savo patirtimi, kūrybiškumu ir inovacijomis su tarptautine bendruomene."
+    },
+    "futureTech": {
+      "title": "Ateities technologijos",
+      "desc": "Tyrinėjame elektrifikaciją, autonomines sistemas ir tvarios inžinerijos principus, siekdami kurti pažangesnį ir tvaresnį motorinį sportą."
+    }
+  },
+  "cta": {
+    "title": "Prisijunk prie mūsų kelionės",
+    "students": {
+      "title": "Studentams",
+      "desc": "Pritaikyk savo žinias tikrų projektų aplinkoje. Mokykis, auk ir kurk kartu su mumis.",
+      "button": "Prisijunk dabar"
+    },
+    "partners": {
+      "title": "Partneriams",
+      "desc": "Paremk naują inžinierių kartą. Tapk mūsų kelionės į ateitį dalimi.",
+      "button": "Tapk partneriu"
+    },
+    "competitions": {
+      "title": "Varžybos",
+      "desc": "Patirk Lietuvos inžinerijos meistriškumo renginius. Stebėk mūsų kelionę.",
+      "button": "Galerija"
+    }
+  },
+  "timeline": {
+    "title": "Vystymo kelias",
+    "step1": {
+      "title": "Komanda",
+      "desc": "Atrinkti Kauno technologijos universiteto studentai siekiantys dalyvauti Formula Student varžybose"
+    },
+    "step2": {
+      "title": "Dizaino fazė",
+      "desc": "Kolektyvinio inžinerijos projektavimo proceso metu kuriame inovatyvius sprendimus"
+    },
+    "step3": {
+      "title": "Prototipavimas",
+      "desc": "Testuojame koncepcijas ir tobuliname bolidą iteraciniu vystymo procesu"
+    },
+    "step4": {
+      "title": "Varžybos",
+      "desc": "Galutinis testavimas ir optimizavimas tarptautiniams Formula Student renginiams"
+    }
+  }
+}

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Perkūnas RT | Formula Student Lithuania</title>
+  <link rel="icon" type="image/png" href="../../images/favicon.png" />
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  
+  <!-- External Libraries -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@heroui/theme@latest/dist/index.css" />
+  
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/hero.css" />
+  <link rel="stylesheet" href="../styles/sections.css" />
+</head>
+<body data-theme="dark">
+  <!-- Animated Background -->
+  <div class="engineering-bg">
+    <div class="moving-grid"></div>
+    <canvas id="particles-canvas"></canvas>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="../../images/logo.DW5XiSKA.png" alt="Perkūnas RT" />
+      </a>
+      
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-menu">
+        <a href="#about">Apie mus</a>
+        <a href="../team/index.html">Komanda</a>
+        <a href="../gallery/index.html">Galerija</a>
+        <a href="../partners/index.html">Rėmėjai</a>
+        <a href="../join/index.html">Prisijunk</a>
+        <a href="../support/index.html">Parama</a>
+        <a href="../contact/index.html">Kontaktai</a>
+        
+        <div class="language-switch">
+          <span class="lang-current">LT</span>
+          <span class="lang-separator">|</span>
+          <a href="index-en.html" class="lang-option">EN</a>
+        </div>
+        
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section with 3D Model -->
+    <section class="hero" id="hero">
+      <div id="threejs-car"></div>
+      
+      <!-- Project Overlays -->
+      <div class="project-overlay left">
+        <h3>Dabartiniai projektai</h3>
+        <div class="project-item" onclick="window.location.href='#ice-project'">
+          <div class="project-title">ICE bolidas</div>
+          <div class="project-desc">Kuriame Formula Student bolidą su Honda CBR600RR varikliu</div>
+          <span class="project-status">Aktyvus</span>
+          <div class="popover-trigger right" data-tooltip="→ ICE projektas">→</div>
+        </div>
+        <div class="project-item" onclick="window.location.href='#e-project'">
+          <div class="project-title">E-bolidas</div>
+          <div class="project-desc">Ruošiame pamatus pirmojo elektrinio bolido koncepcijai</div>
+          <span class="project-status">Aktyvus</span>
+          <div class="popover-trigger right" data-tooltip="→ E projektas">→</div>
+        </div>
+        <div class="project-item" onclick="window.location.href='#telemetry'">
+          <div class="project-title">Telemetrija</div>
+          <div class="project-desc">Diegiame jutiklius ir realaus laiko duomenų sistemą</div>
+          <span class="project-status">Aktyvus</span>
+          <div class="popover-trigger right" data-tooltip="→ Telemetrija">→</div>
+        </div>
+      </div>
+      
+      <div class="project-overlay right">
+        <h3>Naujausi pasiekimai</h3>
+        <div class="project-item right" onclick="document.querySelector('#achievements').scrollIntoView({behavior:'smooth'})">
+          <div class="project-title">Įsigytas variklis</div>
+          <div class="project-desc">Honda CBR600RR 2018 metų variklis naujam bolidui</div>
+          <span class="project-status completed">Baigta</span>
+          <div class="popover-trigger left" data-tooltip="↓ Pasiekimai">↓</div>
+        </div>
+        <div class="project-item right" onclick="document.querySelector('#team-section').scrollIntoView({behavior:'smooth'})">
+          <div class="project-title">Rėmas</div>
+          <div class="project-desc">Baigtas naujausio bolido rėmo projektavimas</div>
+          <span class="project-status completed">Baigta</span>
+          <div class="popover-trigger left" data-tooltip="↓ Komanda">↓</div>
+        </div>
+        <div class="project-item right" onclick="window.location.href='../join/index.html'">
+          <div class="project-title">Komandos plėtojimas</div>
+          <div class="project-desc">Atlikti interviu ir priimti naujieji komandos nariai</div>
+          <span class="project-status completed">Baigta</span>
+          <div class="popover-trigger left" data-tooltip="→ Prisijunk">→</div>
+        </div>
+      </div>
+
+      <div class="hero-content">
+        <h1>Kuriame ateitį</h1>
+        <p>Vedami aistros ir pergalės siekio</p>
+        <button class="btn-primary" onclick="window.location.href='../join/index.html'">Prisijunk prie mūsų</button>
+      </div>
+      
+      <div class="scroll-indicator">
+        <span>Slinkite žemyn</span>
+        <div class="scroll-arrow">↓</div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Apie Perkūnas Racing Team</h2>
+          <p class="section-subtitle">Ambicingas studentų komanda kuriantis lenktyninius automobilius tarptautinėms varžyboms</p>
+        </div>
+        
+        <div class="about-grid">
+          <div class="about-card">
+            <div class="card-icon">🏎️</div>
+            <h3>Inžinerijos puikybė</h3>
+            <p>Taikome teorines žinias sprendžiant realius automobilių inžinerijos iššūkius per praktinę patirtį</p>
+          </div>
+          
+          <div class="about-card">
+            <div class="card-icon">💼</div>
+            <h3>Verslo sumanumas</h3>
+            <p>Ugdome projektų valdymo įgūdžius, pritraukdami rėmėjus ir efektyviai valdydami biudžetus</p>
+          </div>
+          
+          <div class="about-card">
+            <div class="card-icon">🏆</div>
+            <h3>Varžybinis  azartas</h3>
+            <p>Kuriame pergales siekiančius automobilius, kurie varžosi su geriausiais universitetais tarptautiniu mastu</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Development Journey Section -->
+    <section class="journey-section" id="journey">
+      <div class="container">
+        <h2 class="section-title">Pilnas kūrimo kelias</h2>
+        <p class="section-subtitle">Nuo idėjos iki finišo linijos</p>
+        
+        <div class="journey-timeline">
+          <div class="journey-step" data-step="01">
+            <div class="step-number">01</div>
+            <div class="step-content">
+              <h3>Komandos formavimas</h3>
+              <p>Suburiame aistringurius inžinerijos studentus iš visos Lietuvos</p>
+            </div>
+          </div>
+          
+          <div class="journey-step" data-step="02">
+            <div class="step-number">02</div>
+            <div class="step-content">
+              <h3>Dizaino fazė</h3>
+              <p>Kuriame inovatyvius sprendimus bendromis jėgomis projektuojant</p>
+            </div>
+          </div>
+          
+          <div class="journey-step" data-step="03">
+            <div class="step-number">03</div>
+            <div class="step-content">
+              <h3>Prototipavimas</h3>
+              <p>Testuojame koncepcijas ir tobuliname našumą iteratyviai</p>
+            </div>
+          </div>
+          
+          <div class="journey-step" data-step="04">
+            <div class="step-number">04</div>
+            <div class="step-content">
+              <h3>Gamyba</h3>
+              <p>Tikslus fabrikavimas, įgyvendinantis projektus pagal pramonės standartus</p>
+            </div>
+          </div>
+          
+          <div class="journey-step" data-step="05">
+            <div class="step-number">05</div>
+            <div class="step-content">
+              <h3>Ruoša varžyboms</h3>
+              <p>Galutinis testavimas ir optimizavimas tarptautinėms Formula Student varžyboms</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technology Focus Section -->
+    <section class="tech-focus-section" id="technology">
+      <div class="container">
+        <div class="tech-split">
+          <div class="tech-card current">
+            <div class="tech-badge">Dabartinė technologija</div>
+            <h2>Vidaus degimo variklis</h2>
+            <p class="tech-intro">Kuriame aukštos galios vidaus degimo variklio sistemas. Optimizuojame energijos perdavimą ir efektyvumą konkurencinėms lenktynėms.</p>
+            
+            <ul class="tech-features">
+              <li>
+                <span class="feature-icon">⚙️</span>
+                <span>Variklio derinimas ir kalibravimas</span>
+              </li>
+              <li>
+                <span class="feature-icon">⛽</span>
+                <span>Degalų sistemos optimizavimas</span>
+              </li>
+              <li>
+                <span class="feature-icon">💨</span>
+                <span>Išmetimo sistemos dizainas</span>
+              </li>
+              <li>
+                <span class="feature-icon">❄️</span>
+                <span>Aušinimo sistemos integracija</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="tech-card future">
+            <div class="tech-badge future">Ateities vizija</div>
+            <h2>Elektriniai automobiliai</h2>
+            <p class="tech-intro">Jau planuojame perėjimą prie elektrinių automobilių. Statome pamatus tvaraus motorsporto inovacijoms.</p>
+            
+            <div class="future-roadmap">
+              <div class="roadmap-item">
+                <div class="roadmap-year">2025</div>
+                <div class="roadmap-desc">E-variklio tyrimo pradžia</div>
+              </div>
+              <div class="roadmap-item">
+                <div class="roadmap-year">2026</div>
+                <div class="roadmap-desc">Pirmasis E-bolido prototipas</div>
+              </div>
+              <div class="roadmap-item">
+                <div class="roadmap-year">2027</div>
+                <div class="roadmap-desc">E varžybų debiutas</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Development Section -->
+    <section class="skills-section" id="skills">
+      <div class="container">
+        <h2 class="section-title">Įgūdžių ugdymo sistema</h2>
+        <p class="section-subtitle">Daugiau nei tik automobilių statymas</p>
+        
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-icon">🔧</div>
+            <h3>Techniniai įgūdžiai</h3>
+            <p>Pažangus inžinerinis projektavimas, gamybos procesai ir automobilinių sistemų integracija</p>
+            <ul class="skill-list">
+              <li>CAD modeliavimas ir simuliacija</li>
+              <li>Medžiagų mokslas ir analizė</li>
+              <li>Elektronikos ir programavimas</li>
+            </ul>
+          </div>
+          
+          <div class="skill-card">
+            <div class="skill-icon">💼</div>
+            <h3>Verslo įgūdžiai</h3>
+            <p>Projektų valdymas, biudžeto planavimas, rėmėjų santykiai ir strateginio mąstymo ugdymas</p>
+            <ul class="skill-list">
+              <li>Komandos vadyba</li>
+              <li>Finansų planavimas</li>
+              <li>Partnerystės kūrimas</li>
+            </ul>
+          </div>
+          
+          <div class="skill-card">
+            <div class="skill-icon">🗣️</div>
+            <h3>Komunikacija</h3>
+            <p>Prezentavimo įgūdžiai, techninė dokumentacija ir tarpfunkcinė komandos bendradarbiavimo gebėjimai</p>
+            <ul class="skill-list">
+              <li>Viešas kalbėjimas</li>
+              <li>Techninė rašyba</li>
+              <li>Tarpdisciplininis darbas</li>
+            </ul>
+          </div>
+          
+          <div class="skill-card">
+            <div class="skill-icon">🧠</div>
+            <h3>Problemų sprendimas</h3>
+            <p>Kritinis mąstymas, inovatyvūs sprendimai ir sistemingas požiūris į sudėtingus iššūkius</p>
+            <ul class="skill-list">
+              <li>Analitinis mąstymas</li>
+              <li>Kūrybiniai sprendimai</li>
+              <li>Greitas prisitaikymas</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leadership Development Section -->
+    <section class="leadership-section" id="leadership">
+      <div class="container">
+        <h2 class="section-title">Ugdome būsimus lyderius</h2>
+        
+        <div class="leadership-grid">
+          <div class="leadership-card">
+            <div class="card-number">01</div>
+            <h3>Žinių transformacija</h3>
+            <p>Konvertuojame teorinį mokymąsi į praktinius inžinerinius sprendimus. Studentai patiria tikrų problemų sprendimo iššūkius.</p>
+          </div>
+          
+          <div class="leadership-card">
+            <div class="card-number">02</div>
+            <h3>Vieninga komandos aplinka</h3>
+            <p>Puoselėjame bendradarbiavimo kultūrą, kur įvairūs įgūdžiai susijungia. Kuriame stiprią komunikaciją tarp disciplinų.</p>
+          </div>
+          
+          <div class="leadership-card">
+            <div class="card-number">03</div>
+            <h3>Tvarus mokymasis</h3>
+            <p>Kuriame ilgalaikį edukacinį poveikį per mentorystę. Ugdome problemų sprendimo gebėjimus būsimoms karjeroms.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact Stats Section -->
+    <section class="stats-section" id="impact">
+      <div class="container">
+        <h2 class="section-title">Mūsų poveikis</h2>
+        
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Komandos nariai</div>
+            <p>Studentai iš įvairių inžinerijos sričių dirba kartu bendriems tikslams pasiekti</p>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Metai aktyvumo</div>
+            <p>Kuriame patirtį ir reputaciją tarptautinėse Formula Student varžybose</p>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Įsipareigojimas</div>
+            <p>Atsidavę puikybei inžinerijos švietime ir konkurencingų motorsporto pasiekimų siekime</p>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">Partneriai</div>
+            <p>Stiprūs ryšiai su pramonės lyderiais ir rėmėjais</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Innovation Section -->
+    <section class="innovation-section" id="innovation">
+      <div class="container">
+        <h2 class="section-title">Stumiam motorsporto ribas</h2>
+        
+        <div class="innovation-grid">
+          <div class="innovation-card">
+            <div class="innovation-icon">💡</div>
+            <h3>Inovacijų varomoji jėga</h3>
+            <p>Nuolat ieškome naujų sprendimų ir technologijų. Stumiame studentų motorsporto galimybių ribas.</p>
+          </div>
+          
+          <div class="innovation-card">
+            <div class="innovation-icon">🌍</div>
+            <h3>Tarptautinis poveikis</h3>
+            <p>Prisidedame prie pasaulinės Formula Student bendruomenės. Atstovaujame Lietuvą tarptautinėje arenoje.</p>
+          </div>
+          
+          <div class="innovation-card">
+            <div class="innovation-icon">🚀</div>
+            <h3>Ateities technologijos</h3>
+            <p>Pionieriaujame naujos kartos automobilinių sprendimų srityje. Vedame perėjimą prie tvariausio motorsporto.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+      <div class="container">
+        <blockquote class="main-quote">
+          <p>"Mes ne tik statome automobilius – mes statome būsimus inžinerijos ir technologijų lyderius."</p>
+          <cite>— Perkūnas Racing Team</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="get-involved">
+      <div class="container">
+        <h2 class="section-title">Prisijunk prie mūsų kelionės</h2>
+        <p class="section-subtitle">Būk Lietuvos pirmaujančios Formula Student komandos dalis. Transformuok savo inžinerijos žinias į čempionato laimėjimo realybę.</p>
+        
+        <div class="cta-grid">
+          <div class="cta-card">
+            <div class="cta-icon">🎓</div>
+            <h3>Studentams</h3>
+            <p>Pritaik teorines žinias tikruose projektuose. Įgyk neįkainojamos praktinės patirties.</p>
+            <button class="btn-secondary" onclick="window.location.href='../join/index.html'">Prisijunk</button>
+          </div>
+          
+          <div class="cta-card">
+            <div class="cta-icon">🤝</div>
+            <h3>Partneriams</h3>
+            <p>Remk naujos kartos inžinierius. Bendraukite su talentingais studentais ir inovatyviais projektais.</p>
+            <button class="btn-secondary" onclick="window.location.href='../support/index.html'">Tapk partneriu</button>
+          </div>
+          
+          <div class="cta-card">
+            <div class="cta-icon">🏁</div>
+            <h3>Varžyboms</h3>
+            <p>Patirk jaudinantį motorsporto veiksmą. Stebėk studentų inžinerijos puikybę veikiant.</p>
+            <button class="btn-secondary" onclick="window.location.href='../gallery/index.html'">Žiūrėk galeriją</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners-section" id="partners">
+      <div class="container">
+        <h2 class="section-title">Mūsų partneriai</h2>
+        <p class="section-subtitle">Profesionalūs ryšiai su pramonės lyderiais</p>
+        
+        <div class="swiper sponsors-swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="../../images/iremas.2M2nfcBa.png" alt="Iremas" /></div>
+            <div class="swiper-slide"><img src="../../images/SolifWorks.Do3iGUPZ.png" alt="SolidWorks" /></div>
+            <div class="swiper-slide"><img src="../../images/ansys.CGZJmO8M.png" alt="Ansys" /></div>
+            <div class="swiper-slide"><img src="../../images/Vi-Grade.nerbgz3M.png" alt="Vi-Grade" /></div>
+            <div class="swiper-slide"><img src="../../images/hostinger.DsncjkBY.png" alt="Hostinger" /></div>
+            <div class="swiper-slide"><img src="../../images/skf.BPpPFOq4.png" alt="SKF" /></div>
+            <div class="swiper-slide"><img src="../../images/gpm.BFzSzPWq.png" alt="GPM" /></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Perkūnas Racing Team</h4>
+          <p>Kuriame Lietuvos motorsporto ateitį per Formula Student varžybas</p>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Nuorodos</h4>
+          <ul>
+            <li><a href="#about">Apie mus</a></li>
+            <li><a href="../team/index.html">Komanda</a></li>
+            <li><a href="../gallery/index.html">Galerija</a></li>
+            <li><a href="../contact/index.html">Kontaktai</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Socialiniai tinklai</h4>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><img src="../../images/facebook.DFt5a5XP.png" alt="Facebook" /></a>
+            <a href="#" aria-label="Instagram"><img src="../../images/instagram.CsCcNGYk.png" alt="Instagram" /></a>
+            <a href="#" aria-label="LinkedIn"><img src="../../images/linkedin.DgLzhU7_.png" alt="LinkedIn" /></a>
+            <a href="#" aria-label="TikTok"><img src="../../images/tiktok.CtOAf05B.png" alt="TikTok" /></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Perkūnas Racing Team. Visos teisės saugomos.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="../scripts/theme.js"></script>
+  <script src="../scripts/navigation.js"></script>
+  <script src="../scripts/3d-scene.js"></script>
+  <script src="../scripts/particles.js"></script>
+  <script src="../scripts/animations.js"></script>
+</body>
+</html>

@@ -1,0 +1,453 @@
+/* ============================================
+   3D SCENE - CAR MODEL WITH WAVY DOT PLANE
+   ============================================ */
+
+(function() {
+  'use strict';
+  
+  const container = document.getElementById('threejs-car');
+  if (!container) return;
+  
+  let scene, camera, renderer, controls;
+  let carGroup, mixer;
+  let dotPlane = [];
+  const clock = new THREE.Clock();
+  
+  // Configuration
+  const CONFIG = {
+    camera: {
+      fov: 50,
+      near: 0.1,
+      far: 1000,
+      position: { x: 3, y: 2, z: 5 }
+    },
+    controls: {
+      autoRotate: true,
+      autoRotateSpeed: 0.5,
+      enableDamping: true,
+      dampingFactor: 0.05,
+      minDistance: 3,
+      maxDistance: 10,
+      maxPolarAngle: Math.PI / 2 + 0.1
+    },
+    plane: {
+      size: 25,
+      segments: 50,
+      waveSpeed: 0.5,
+      waveHeight: 0.15,
+      dotSize: 0.03,
+      dotColor: 0xFA8F31,
+      planeHeight: -2
+    },
+    lights: {
+      ambient: { color: 0xffffff, intensity: 0.4 },
+      directional1: { color: 0xFA8F31, intensity: 0.8, position: { x: 5, y: 5, z: 5 } },
+      directional2: { color: 0xF16D26, intensity: 0.5, position: { x: -5, y: 3, z: -5 } },
+      point1: { color: 0xAA1811, intensity: 0.6, position: { x: 0, y: 3, z: 0 } }
+    },
+    carModel: {
+      path: '../../components/rotatingCarModel.glb',
+      scale: 2.5,
+      positionOffset: { x: -0.5, y: 0.8, z: 0 },
+      color: 0xFA8F31,
+      emissiveIntensity: 0.3,
+      opacity: 0.85,
+      metalness: 0.9,
+      roughness: 0.15
+    }
+  };
+  
+  // Initialize scene
+  function init() {
+    const width = container.offsetWidth || window.innerWidth;
+    const height = container.offsetHeight || window.innerHeight;
+    
+    // Scene setup
+    scene = new THREE.Scene();
+    scene.fog = new THREE.Fog(0x000000, 5, 20);
+    
+    // Camera setup
+    camera = new THREE.PerspectiveCamera(
+      CONFIG.camera.fov,
+      width / height,
+      CONFIG.camera.near,
+      CONFIG.camera.far
+    );
+    camera.position.set(
+      CONFIG.camera.position.x,
+      CONFIG.camera.position.y,
+      CONFIG.camera.position.z
+    );
+    
+    // Renderer setup
+    renderer = new THREE.WebGLRenderer({ 
+      antialias: true,
+      alpha: true
+    });
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    container.appendChild(renderer.domElement);
+    
+    // Controls setup
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.autoRotate = CONFIG.controls.autoRotate;
+    controls.autoRotateSpeed = CONFIG.controls.autoRotateSpeed;
+    controls.enableDamping = CONFIG.controls.enableDamping;
+    controls.dampingFactor = CONFIG.controls.dampingFactor;
+    controls.minDistance = CONFIG.controls.minDistance;
+    controls.maxDistance = CONFIG.controls.maxDistance;
+    controls.maxPolarAngle = CONFIG.controls.maxPolarAngle;
+    controls.target.set(0, 0.5, 0);
+    
+    // Add lights
+    setupLights();
+    
+    // Add wavy dot plane
+    createWavyDotPlane();
+    
+    // Load car model
+    loadCarModel();
+    
+    // Start animation
+    animate();
+    
+    // Handle window resize
+    window.addEventListener('resize', onWindowResize);
+    
+    // Handle user interaction
+    setupInteraction();
+  }
+  
+  // Setup lights
+  function setupLights() {
+    // Ambient light
+    const ambientLight = new THREE.AmbientLight(
+      CONFIG.lights.ambient.color,
+      CONFIG.lights.ambient.intensity
+    );
+    scene.add(ambientLight);
+    
+    // Directional light 1 (main orange light)
+    const directionalLight1 = new THREE.DirectionalLight(
+      CONFIG.lights.directional1.color,
+      CONFIG.lights.directional1.intensity
+    );
+    directionalLight1.position.set(
+      CONFIG.lights.directional1.position.x,
+      CONFIG.lights.directional1.position.y,
+      CONFIG.lights.directional1.position.z
+    );
+    directionalLight1.castShadow = true;
+    directionalLight1.shadow.mapSize.width = 2048;
+    directionalLight1.shadow.mapSize.height = 2048;
+    scene.add(directionalLight1);
+    
+    // Directional light 2 (secondary fill light)
+    const directionalLight2 = new THREE.DirectionalLight(
+      CONFIG.lights.directional2.color,
+      CONFIG.lights.directional2.intensity
+    );
+    directionalLight2.position.set(
+      CONFIG.lights.directional2.position.x,
+      CONFIG.lights.directional2.position.y,
+      CONFIG.lights.directional2.position.z
+    );
+    scene.add(directionalLight2);
+    
+    // Point light (accent from below)
+    const pointLight = new THREE.PointLight(
+      CONFIG.lights.point1.color,
+      CONFIG.lights.point1.intensity,
+      10
+    );
+    pointLight.position.set(
+      CONFIG.lights.point1.position.x,
+      CONFIG.lights.point1.position.y,
+      CONFIG.lights.point1.position.z
+    );
+    scene.add(pointLight);
+  }
+  
+  // Create wavy dot plane
+  function createWavyDotPlane() {
+    const { size, segments, dotSize, dotColor, planeHeight } = CONFIG.plane;
+    const spacing = size / segments;
+    
+    // Dot geometry and material
+    const dotGeometry = new THREE.SphereGeometry(dotSize, 8, 8);
+    const dotMaterial = new THREE.MeshBasicMaterial({
+      color: dotColor,
+      transparent: true,
+      opacity: 0.6
+    });
+    
+    // Create grid of dots
+    for (let i = 0; i <= segments; i++) {
+      for (let j = 0; j <= segments; j++) {
+        const dot = new THREE.Mesh(dotGeometry, dotMaterial.clone());
+        
+        const x = (i - segments / 2) * spacing;
+        const z = (j - segments / 2) * spacing;
+        
+        dot.position.set(x, planeHeight, z);
+        dot.userData = {
+          originalY: planeHeight,
+          offsetX: i * 0.5,
+          offsetZ: j * 0.5
+        };
+        
+        scene.add(dot);
+        dotPlane.push(dot);
+      }
+    }
+    
+    // Add subtle grid lines
+    createGridLines();
+  }
+  
+  // Create grid lines
+  function createGridLines() {
+    const { size } = CONFIG.plane;
+    const gridHelper = new THREE.GridHelper(
+      size,
+      40,
+      0xFA8F31,
+      0xAA1811
+    );
+    gridHelper.material.opacity = 0.15;
+    gridHelper.material.transparent = true;
+    gridHelper.position.y = CONFIG.plane.planeHeight + 0.01;
+    scene.add(gridHelper);
+  }
+  
+  // Animate wavy dot plane
+  function animateWavyPlane() {
+    const time = clock.getElapsedTime();
+    const { waveSpeed, waveHeight } = CONFIG.plane;
+    
+    dotPlane.forEach(dot => {
+      const waveX = Math.sin(time * waveSpeed + dot.userData.offsetX) * waveHeight;
+      const waveZ = Math.cos(time * waveSpeed + dot.userData.offsetZ) * waveHeight;
+      
+      dot.position.y = dot.userData.originalY + waveX + waveZ;
+      
+      // Fade dots based on distance from center
+      const distanceFromCenter = Math.sqrt(
+        dot.position.x ** 2 + dot.position.z ** 2
+      );
+      dot.material.opacity = Math.max(0.2, 0.8 - distanceFromCenter / 15);
+    });
+  }
+  
+  // Load car model
+  function loadCarModel() {
+    const loader = new THREE.GLTFLoader();
+    
+    loader.load(
+      CONFIG.carModel.path,
+      function(gltf) {
+        carGroup = new THREE.Group();
+        const modelMesh = gltf.scene;
+        
+        // Scale the model
+        modelMesh.scale.set(
+          CONFIG.carModel.scale,
+          CONFIG.carModel.scale,
+          CONFIG.carModel.scale
+        );
+        
+        // Calculate bounding box to center the model
+        const box = new THREE.Box3().setFromObject(modelMesh);
+        const center = box.getCenter(new THREE.Vector3());
+        
+        // Center the model within the group
+        modelMesh.position.set(-center.x, -center.y, -center.z);
+        
+        // Apply styling to all meshes
+        modelMesh.traverse((child) => {
+          if (child.isMesh) {
+            // Clone material to avoid affecting other instances
+            child.material = child.material.clone();
+            
+            // Set color and properties
+            child.material.color = new THREE.Color(CONFIG.carModel.color);
+            child.material.emissive = new THREE.Color(CONFIG.carModel.color);
+            child.material.emissiveIntensity = CONFIG.carModel.emissiveIntensity;
+            
+            // Add transparency
+            child.material.transparent = true;
+            child.material.opacity = CONFIG.carModel.opacity;
+            
+            // Metallic properties
+            if (child.material.metalness !== undefined) {
+              child.material.metalness = CONFIG.carModel.metalness;
+            }
+            if (child.material.roughness !== undefined) {
+              child.material.roughness = CONFIG.carModel.roughness;
+            }
+            
+            // Enable shadows
+            child.castShadow = true;
+            child.receiveShadow = true;
+          }
+        });
+        
+        carGroup.add(modelMesh);
+        
+        // Position the entire group
+        carGroup.position.set(
+          CONFIG.carModel.positionOffset.x,
+          CONFIG.carModel.positionOffset.y,
+          CONFIG.carModel.positionOffset.z
+        );
+        
+        scene.add(carGroup);
+        
+        // Setup animations if they exist
+        if (gltf.animations && gltf.animations.length > 0) {
+          mixer = new THREE.AnimationMixer(modelMesh);
+          gltf.animations.forEach((clip) => {
+            mixer.clipAction(clip).play();
+          });
+        }
+        
+        console.log('Car model loaded successfully');
+      },
+      function(progress) {
+        const percentComplete = (progress.loaded / progress.total * 100).toFixed(2);
+        console.log(`Loading car model: ${percentComplete}%`);
+      },
+      function(error) {
+        console.error('Error loading car model:', error);
+        // Show placeholder if model fails to load
+        showPlaceholderCar();
+      }
+    );
+  }
+  
+  // Placeholder car if model fails to load
+  function showPlaceholderCar() {
+    carGroup = new THREE.Group();
+    
+    // Create simple car shape
+    const bodyGeometry = new THREE.BoxGeometry(4, 1, 2);
+    const bodyMaterial = new THREE.MeshStandardMaterial({
+      color: CONFIG.carModel.color,
+      emissive: CONFIG.carModel.color,
+      emissiveIntensity: 0.2,
+      metalness: 0.8,
+      roughness: 0.2,
+      transparent: true,
+      opacity: 0.7
+    });
+    const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
+    body.position.y = 0.5;
+    carGroup.add(body);
+    
+    // Add wheels
+    const wheelGeometry = new THREE.CylinderGeometry(0.35, 0.35, 0.3, 16);
+    const wheelMaterial = new THREE.MeshStandardMaterial({
+      color: 0x333333,
+      metalness: 0.7,
+      roughness: 0.3
+    });
+    
+    const wheelPositions = [
+      [-1.5, 0, 0.8],
+      [-1.5, 0, -0.8],
+      [1.5, 0, 0.8],
+      [1.5, 0, -0.8]
+    ];
+    
+    wheelPositions.forEach(pos => {
+      const wheel = new THREE.Mesh(wheelGeometry, wheelMaterial);
+      wheel.rotation.z = Math.PI / 2;
+      wheel.position.set(...pos);
+      carGroup.add(wheel);
+    });
+    
+    carGroup.position.set(
+      CONFIG.carModel.positionOffset.x,
+      CONFIG.carModel.positionOffset.y,
+      CONFIG.carModel.positionOffset.z
+    );
+    
+    scene.add(carGroup);
+    console.log('Placeholder car displayed');
+  }
+  
+  // Setup user interaction
+  function setupInteraction() {
+    let isUserInteracting = false;
+    let interactionTimeout;
+    
+    const pauseAutoRotate = () => {
+      isUserInteracting = true;
+      controls.autoRotate = false;
+      
+      clearTimeout(interactionTimeout);
+      interactionTimeout = setTimeout(() => {
+        isUserInteracting = false;
+        controls.autoRotate = true;
+      }, 3000);
+    };
+    
+    // Mouse events
+    renderer.domElement.addEventListener('mousedown', (e) => {
+      e.stopPropagation();
+      pauseAutoRotate();
+    });
+    
+    // Touch events
+    renderer.domElement.addEventListener('touchstart', (e) => {
+      e.stopPropagation();
+      pauseAutoRotate();
+    });
+    
+    // Prevent scroll interference
+    renderer.domElement.addEventListener('wheel', (e) => {
+      e.stopPropagation();
+    }, { passive: false });
+  }
+  
+  // Animation loop
+  function animate() {
+    requestAnimationFrame(animate);
+    
+    const delta = clock.getDelta();
+    
+    // Update controls
+    controls.update();
+    
+    // Animate wavy plane
+    animateWavyPlane();
+    
+    // Update mixer for model animations
+    if (mixer) {
+      mixer.update(delta);
+    }
+    
+    // Render scene
+    renderer.render(scene, camera);
+  }
+  
+  // Handle window resize
+  function onWindowResize() {
+    const width = container.offsetWidth || window.innerWidth;
+    const height = container.offsetHeight || window.innerHeight;
+    
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(width, height);
+  }
+  
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+  
+})();

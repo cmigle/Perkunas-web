@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Partneriai | Perkūnas RT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    /* Custom text selection colors */
+    ::selection {
+      background-color: #F16D26;
+      color: #0B0605;
+    }
+    ::-moz-selection {
+      background-color: #F16D26;
+      color: #0B0605;
+    }
+
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Exo 2', sans-serif;
+      color: #f0f0f0;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+      background: #000;
+      position: relative;
+    }
+
+    #mouse-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* NAVBAR - React Bits Pill Menu */
+    .pill-menu {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10000;
+      background: rgba(11, 6, 5, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(250, 143, 49, 0.3);
+      border-radius: 50px;
+      padding: 12px 24px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      box-shadow: 0 8px 32px rgba(250, 143, 49, 0.2);
+      transition: all 0.3s ease;
+      flex-wrap: wrap;
+    }
+
+    .pill-menu a, .lang-switcher {
+      padding: 10px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      color: #f0f0f0;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Exo 2', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pill-menu a.logo-link {
+      padding: 6px 16px;
+    }
+
+    .pill-menu a.logo-link img {
+      height: 32px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      transition: filter 0.3s ease;
+    }
+
+    .pill-menu a.logo-link:hover img,
+    .pill-menu a.logo-link.active img {
+      filter: none;
+    }
+
+    .pill-menu a:hover, .lang-switcher:hover {
+      background: linear-gradient(135deg, #FA8F31, #F16D26);
+      color: #0B0605;
+      box-shadow: 0 4px 12px rgba(250, 143, 49, 0.4);
+    }
+
+    .pill-menu a.active {
+      background: linear-gradient(135deg, #FA8F31, #F16D26);
+      color: #0B0605;
+      box-shadow: 0 4px 12px rgba(250, 143, 49, 0.4);
+    }
+
+    .lang-switcher {
+      padding: 10px;
+      border-radius: 50%;
+      background: rgba(250, 143, 49, 0.1);
+      border: 1px solid rgba(250, 143, 49, 0.3);
+      color: #FA8F31;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .lang-switcher:hover {
+      background: rgba(250, 143, 49, 0.2);
+      transform: scale(1.1);
+    }
+
+    /* Navbar responsive - keep in one line */
+    @media (max-width: 1400px) {
+      .pill-menu {
+        gap: 4px;
+        padding: 10px 18px;
+      }
+      
+      .pill-menu a, .lang-switcher {
+        padding: 8px 14px;
+        font-size: 13px;
+      }
+      
+      .pill-menu a.logo-link {
+        padding: 4px 12px;
+      }
+      
+      .pill-menu a.logo-link img {
+        height: 28px;
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .pill-menu {
+        gap: 3px;
+        padding: 8px 14px;
+      }
+      
+      .pill-menu a, .lang-switcher {
+        padding: 7px 12px;
+        font-size: 12px;
+      }
+      
+      .pill-menu a.logo-link {
+        padding: 3px 10px;
+      }
+      
+      .pill-menu a.logo-link img {
+        height: 26px;
+      }
+    }
+
+    @media (max-width: 1100px) {
+      .pill-menu {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        justify-content: flex-start;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        max-width: 95%;
+      }
+      
+      .pill-menu::-webkit-scrollbar {
+        display: none;
+      }
+      
+      .pill-menu a, .lang-switcher {
+        padding: 6px 10px;
+        font-size: 11px;
+        flex-shrink: 0;
+      }
+    }
+
+    /* Main content */
+    main {
+      padding-top: 120px;
+      max-width: 1400px;
+      margin: 0 auto 60px;
+      padding-left: 20px;
+      padding-right: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 50px;
+      color: #FA8F31;
+      letter-spacing: 3px;
+      text-shadow: 0 0 15px rgba(241, 109, 38, 0.6);
+    }
+
+    .intro-text {
+      text-align: center;
+      color: #ddd;
+      font-size: 1.2rem;
+      margin-bottom: 60px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .sponsorship-info {
+      background: linear-gradient(135deg, rgba(124, 23, 21, 0.3), rgba(170, 24, 17, 0.2));
+      border: 2px solid #F16D26;
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 60px;
+      box-shadow: 0 4px 15px rgba(241, 109, 38, 0.3);
+    }
+
+    .sponsorship-info h2 {
+      color: #FA8F31;
+      font-size: 2.5rem;
+      margin-bottom: 25px;
+    }
+
+    .sponsorship-info p {
+      color: #ddd;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .brochure-link {
+      display: inline-block;
+      padding: 15px 35px;
+      background: linear-gradient(45deg, #FA8F31, #F16D26);
+      color: #0B0605;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .brochure-link:hover {
+      background: linear-gradient(45deg, #F16D26, #AA1811);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(250, 143, 49, 0.4);
+    }
+
+    .sponsors-section h2 {
+      font-size: 2.5rem;
+      color: #FA8F31;
+      text-align: center;
+      margin-bottom: 50px;
+      text-shadow: 0 0 10px rgba(241, 109, 38, 0.4);
+    }
+
+    .sponsor {
+      background: linear-gradient(135deg, rgba(124, 23, 21, 0.3), rgba(170, 24, 17, 0.2));
+      border: 2px solid #F16D26;
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 40px;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+      align-items: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(241, 109, 38, 0.3);
+    }
+
+    .sponsor:hover {
+      border-color: #FA8F31;
+      box-shadow: 0 8px 25px rgba(250, 143, 49, 0.5);
+      transform: translateY(-5px);
+    }
+
+    .sponsor-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+    }
+
+    .sponsor-logo img {
+      max-width: 100%;
+      max-height: 120px;
+      object-fit: contain;
+    }
+
+    .sponsor-info h3 {
+      font-size: 2rem;
+      color: #FA8F31;
+      margin-bottom: 15px;
+    }
+
+    .sponsor-info p {
+      font-size: 1.05rem;
+      color: #ddd;
+      line-height: 1.7;
+    }
+
+    .other-sponsors h3 {
+      font-size: 2rem;
+      color: #FA8F31;
+      text-align: center;
+      margin: 60px 0 40px;
+    }
+
+    .sponsors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 30px;
+      justify-items: center;
+      align-items: center;
+    }
+
+    .sponsor-small {
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid rgba(241, 109, 38, 0.3);
+      border-radius: 15px;
+      height: 100px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .sponsor-small:hover {
+      border-color: #FA8F31;
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(250, 143, 49, 0.3);
+    }
+
+    .sponsor-small img {
+      max-width: 90%;
+      max-height: 70px;
+      object-fit: contain;
+      filter: brightness(0.9);
+    }
+
+    .sponsor-small:hover img {
+      filter: brightness(1.1);
+    }
+
+    /* Footer */
+    .b-block {
+      background: linear-gradient(135deg, #0B0605, #7C1715);
+      padding: 20px 0;
+      border-top: 2px solid #F16D26;
+      margin-top: auto;
+      color: #eee;
+    }
+
+    .containerFoot {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo-img-footer {
+      height: 45px;
+      filter: drop-shadow(0 0 4px #fa8f31);
+    }
+
+    .linksFoot {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .social-icon {
+      height: 28px;
+      width: 28px;
+      filter: brightness(0.8);
+      transition: filter 0.3s ease;
+    }
+
+    .email {
+      font-weight: 600;
+      color: #FA8F31;
+      font-size: 1rem;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 1024px) {
+      .sponsor {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.5rem; }
+      .sponsorship-info { padding: 30px 25px; }
+      .sponsors-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 20px; }
+    }
+
+    /* Mobile hamburger */
+    .mobile-menu-btn {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .mobile-menu-btn span {
+      width: 24px; height: 2px;
+      background: #FA8F31;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+      display: block;
+    }
+    .mobile-menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .mobile-menu-btn.open span:nth-child(2) { opacity: 0; }
+    .mobile-menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 900px) {
+      .pill-menu {
+        top: 12px; padding: 10px 16px;
+        left: 50%; transform: translateX(-50%);
+        width: calc(100% - 24px); max-width: 480px;
+        justify-content: space-between; border-radius: 40px;
+      }
+      .pill-menu .nav-links {
+        display: none; position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(11, 6, 5, 0.97);
+        flex-direction: column; align-items: center;
+        justify-content: center; gap: 16px;
+        z-index: 9999; padding-top: 80px;
+      }
+      .pill-menu .nav-links.open { display: flex; }
+      .pill-menu .nav-links a { font-size: 20px; padding: 14px 40px; }
+      .mobile-menu-btn { display: flex; }
+    }
+  </style>
+</head>
+<body>
+  <div id="mouse-bg"></div>
+  
+  <!-- React Bits Pill Menu -->
+  <nav class="pill-menu" role="navigation" aria-label="Main navigation">
+    <a href="../index.html" class="logo-link" aria-label="Home">
+      <img src="../images/logo.DW5XiSKA.png" alt="Perkūnas Logo" />
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="../about-us/index.html" data-i18n="nav.about">Apie Mus</a>
+      <a href="../team/team.html" data-i18n="nav.team">Komanda</a>
+      <a href="../gallery/index.html" data-i18n="nav.gallery">Galerija</a>
+      <a href="index.html" class="active" data-i18n="nav.partners">Partneriai</a>
+      <a href="../join-us/index.html" data-i18n="nav.join">Prisijunk</a>
+      <a href="../support-us/index.html" data-i18n="nav.support">Paremk</a>
+      <a href="../contact/index.html" data-i18n="nav.contact">Kontaktai</a>
+    </div>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false" onclick="toggleMobileMenu(this)">
+      <span></span><span></span><span></span>
+    </button>
+    <!-- Language switcher added automatically by i18n.js -->
+  </nav>
+
+  <main>
+    <h1 data-i18n="partners.title">Mūsų Partneriai</h1>
+    
+    <p class="intro-text" data-i18n="partners.subtitle">
+      Kartu kuriame ateitį - dėkojame mūsų partneriams už paramą, kuri leidžia mums siekti svajonių ir stumti technologijas į priekį.
+    </p>
+
+    <!-- Sponsorship Information -->
+    <div class="sponsorship-info">
+      <h2 data-i18n="partners.sponsorTitle">Prisidėk prie mūsų sėkmės!</h2>
+      <p data-i18n="partners.sponsorDesc1">Rėmėjų parama suteikia aukščiausio lygio galimybę tapti dinamiško Formula Student projekto dalimi. Jūsų prekės ženklas įgaus didelį matomumą mūsų lenktyniniame automobilyje, komandos apranga, reklamose, renginiuose ir pasirodymuose varžybose.</p>
+      
+      <p data-i18n="partners.sponsorDesc2">Rėmėjai turi unikalią galimybę įtakoti mūsų techninę, strateginę ir operacinę plėtrą, užmegzdami tiesioginius ryšius su būsimaisiais inžinieriais ir inovatoriais. Ši partnerystė suteikia tiesioginį ryšį su švietimu ir padeda formuoti būsimuosius talentus.</p>
+      
+      <p data-i18n="partners.sponsorDesc3">Mes siekiame kurti ilgalaikius santykius, trunkančius keletą sezonų, užtikrinant nuolatinę abipusę naudą. Jūsų parama taip pat suteikia pirmenybę pasiekti talentingus inžinerijos studentus, kurie tiks būsimoms darbo ir stažuotės galimybėms.</p>
+      
+      <p data-i18n="partners.sponsorDesc4">Prisijungę nuo pat pradžių, tapsite viso mūsų kelio dalimi – nuo idėjos iki varžybų. Padėsite sukurti ne tik lenktyniniį automobilį, bet ir inovacijų bei meistriškumo kultūrą.</p>
+      
+      <a href="/brochures/Sponsorship-brochure-LT.pdf" target="_blank" class="brochure-link" data-i18n="partners.downloadBrochure" id="brochureLink">
+        Atsisiųsk Brošiūrą
+      </a>
+    </div>
+
+    <!-- Main Sponsors -->
+    <div class="sponsors-section">
+      <h2 data-i18n="partners.ourSponsors">Mūsų Rėmėjai</h2>
+      
+      <div class="sponsor">
+        <div class="sponsor-logo">
+          <a href="https://www.iremas.lt/" target="_blank">
+            <img src="../images/iremas.2M2nfcBa.png" alt="Iremas" />
+          </a>
+        </div>
+        <div class="sponsor-info">
+          <h3 data-i18n="partners.iremas.name">Iremas</h3>
+          <p data-i18n="partners.iremas.desc">Tai viena pirmaujančių pramoninės priežiūros ir inžinerijos sprendimų įmonių Lietuvoje, teikianti aukštos kokybės paslaugas energetikos, pramonės ir infrastruktūros sektoriams. Įmonė specializuojasi mechaninės įrangos montavimu, elektros inžinerija, automatika ir pramoninių įrenginių priežiūra. Turėdama daugiau nei keturių dešimtmečių patirtį, Iremas sėkmingai vykdo tiek vietinius, tiek tarptautinius projektus, užtikrindama saugumą, patikimumą ir aukštą darbų kokybę.</p>
+        </div>
+      </div>
+
+      <div class="sponsor">
+        <div class="sponsor-logo">
+          <a href="https://www.ansys.com/" target="_blank">
+            <img src="../images/ansys.CGZJmO8M.png" alt="Ansys" />
+          </a>
+        </div>
+        <div class="sponsor-info">
+          <h3 data-i18n="partners.ansys.name">Ansys</h3>
+          <p data-i18n="partners.ansys.desc">Pasaulinis lyderis inžinerinės simuliacijos programinėje įrangoje, siūlantis pažangius sprendimus produktų kūrimui, testavimui ir optimizavimui. Įmonės programinė įranga leidžia modeliuoti skysčių dinamiką, konstrukcijas, elektromagnetizmą, šilumą ir daugiafizikinius procesus. Ansys sprendimai naudojami įvairiose pramonės šakose – nuo automobilių ir aviakosminės pramonės iki energetikos ir sveikatos priežiūros.</p>
+        </div>
+      </div>
+
+      <div class="sponsor">
+        <div class="sponsor-logo">
+          <a href="https://rapidharness.com/" target="_blank">
+            <img src="../images/rapidharness.CEKG1Zqb.png" alt="RapidHarness" />
+          </a>
+        </div>
+        <div class="sponsor-info">
+          <h3 data-i18n="partners.rapidharness.name">RapidHarness</h3>
+          <p data-i18n="partners.rapidharness.desc">Pažangi laidų projektavimo programinė įranga, sukurta automatizuoti ir supaprastinti visą elektros sistemos projektavimo procesą – nuo pirmosios schemos iki gamybai paruoštos dokumentacijos. Ši CAD platforma įgalina kurti profesionalias schemas realiu laiku, automatiškai generuoti dokumentaciją ir efektyviai bendradarbiauti komandose ar su išorės partneriais. RapidHarness sprendimai naudojami inžinierių įvairiose pramonės šakose – nuo automobilių ir aviakosminės pramonės iki elektronikos ir gamybos.</p>
+        </div>
+      </div>
+
+      <div class="sponsor">
+        <div class="sponsor-logo">
+          <a href="https://www.solidworks.com/" target="_blank">
+            <img src="../images/SolifWorks.Do3iGUPZ.png" alt="SolidWorks" />
+          </a>
+        </div>
+        <div class="sponsor-info">
+          <h3 data-i18n="partners.solidworks.name">SolidWorks</h3>
+          <p data-i18n="partners.solidworks.desc">Pasaulinis lyderis 3D projektavimo ir inžinerijos sprendimuose, kurianti pažangią programinę įrangą produktų kūrimui, inžinerijai ir gamybai. Įmonė specializuojasi kompiuteriu remiamo projektavimo (CAD), analizės (CAE) ir produktų duomenų valdymo (PDM) sistemose, padedama įmonėms kurti inovatyvius, efektyvius ir tvaraus sprendimus. SolidWorks sprendimai naudojami įvairiuose sektoriuose – nuo automobilių ir aviakosminės pramonės iki medicinos prietaisų, elektronikos ir švietimo įstaigų visame pasaulyje.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Other Sponsors -->
+    <div class="other-sponsors">
+      <h3 data-i18n="partners.otherPartners">Kiti Partneriai</h3>
+      <div class="sponsors-grid">
+        <a href="https://www.easycomposites.eu/" target="_blank" class="sponsor-small">
+          <img src="../images/easy-composites.DhpO-eN-.jpg" alt="Easy Composites" />
+        </a>
+        <a href="https://www.ansys.com/" target="_blank" class="sponsor-small">
+          <img src="../images/ansys.CGZJmO8M.jpg" alt="Ansys" />
+        </a>
+        <a href="https://racespeconline.com/" target="_blank" class="sponsor-small">
+          <img src="../images/race-spec.BSJBJa_J.png" alt="Racespec Online" />
+        </a>
+        <a href="https://www.nukeperformance.com/" target="_blank" class="sponsor-small">
+          <img src="../images/nuke_performance.CyX2fCvX.png" alt="Nuke Performance" />
+        </a>
+        <a href="https://www.vi-grade.com/" target="_blank" class="sponsor-small">
+          <img src="../images/Vi-Grade.nerbgz3M.png" alt="VI-grade" />
+        </a>
+        <a href="https://www.hostinger.com/" target="_blank" class="sponsor-small">
+          <img src="../images/hostinger.DsncjkBY.png" alt="Hostinger" />
+        </a>
+        <a href="https://injectordynamics.com/" target="_blank" class="sponsor-small">
+          <img src="../images/injector-dynamics.IO_Jt2TQ.png" alt="Injector Dynamics" />
+        </a>
+        <a href="https://www.prowireusa.com/" target="_blank" class="sponsor-small">
+          <img src="../images/pro-wire.BptcbhSz.png" alt="ProWireUsa" />
+        </a>
+        <a href="https://www.skf.com/" target="_blank" class="sponsor-small">
+          <img src="../images/skf.BPpPFOq4.png" alt="SKF" />
+        </a>
+        <a href="https://www.radium-engineering.com/" target="_blank" class="sponsor-small">
+          <img src="../images/radium-engineering.BXjKsCKP.png" alt="Radium Engineering" />
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <div id="mouse-bg"></div>
+
+  <script>
+    const mouseBg = document.getElementById('mouse-bg');
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    mouseBg.appendChild(canvas);
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const particles = [];
+    const particleCount = 100;
+    let mouseX = canvas.width / 2;
+    let mouseY = canvas.height / 2;
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = Math.random() * 0.5 - 0.25;
+        this.speedY = Math.random() * 0.5 - 0.25;
+        this.color = `rgba(250, 143, 49, ${Math.random() * 0.5 + 0.3})`;
+      }
+      update() {
+        const dx = mouseX - this.x;
+        const dy = mouseY - this.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const forceDirectionX = dx / distance;
+        const forceDirectionY = dy / distance;
+        const maxDistance = 150;
+        const force = (maxDistance - distance) / maxDistance;
+        if (distance < maxDistance) {
+          this.x -= forceDirectionX * force * 3;
+          this.y -= forceDirectionY * force * 3;
+        }
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x > canvas.width) this.x = 0;
+        if (this.x < 0) this.x = canvas.width;
+        if (this.y > canvas.height) this.y = 0;
+        if (this.y < 0) this.y = canvas.height;
+      }
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+    for (let i = 0; i < particleCount; i++) particles.push(new Particle());
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+
+  <!-- i18n Script -->
+  <script src="../src/scripts/i18n.js"></script>
+  
+  <!-- Brochure Language Switcher -->
+  <script>
+    function updateBrochureLink() {
+      const currentLang = localStorage.getItem('language') || 'lt';
+      const brochureLink = document.getElementById('brochureLink');
+      if (brochureLink) {
+        brochureLink.href = currentLang === 'lt' 
+          ? '/brochures/Sponsorship-brochure-LT.pdf' 
+          : '/brochures/Sponsorship-brochure-EN.pdf';
+      }
+    }
+    
+    // Update on page load
+    updateBrochureLink();
+    
+    // Update when language changes
+    document.addEventListener('languageChanged', updateBrochureLink);
+
+    function toggleMobileMenu(btn) {
+      btn.classList.toggle('open');
+      const links = document.getElementById('nav-links');
+      links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', links.classList.contains('open'));
+    }
+    document.querySelectorAll('#nav-links a').forEach(a => {
+      a.addEventListener('click', () => {
+        document.getElementById('nav-links').classList.remove('open');
+        document.querySelector('.mobile-menu-btn').classList.remove('open');
+      });
+    });
+  </script>
+
+  <!-- FOOTER -->
+  <footer style="background:linear-gradient(135deg,#0B0605,#7C1715);padding:24px 0;border-top:2px solid #F16D26;margin-top:auto;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+      <a href="../index.html"><img src="../images/logo.DW5XiSKA.png" alt="Perkūnas" style="height:40px;filter:drop-shadow(0 0 4px #FA8F31);" /></a>
+      <div style="display:flex;gap:12px;">
+        <a href="https://www.instagram.com/perkunas_racing_ktu/" target="_blank" style="width:36px;height:36px;border-radius:50%;border:1px solid rgba(250,143,49,0.3);display:flex;align-items:center;justify-content:center;"><img src="../images/instagram.CsCcNGYk.png" alt="Instagram" style="width:18px;height:18px;" /></a>
+        <a href="https://www.linkedin.com/company/perkunasrt/" target="_blank" style="width:36px;height:36px;border-radius:50%;border:1px solid rgba(250,143,49,0.3);display:flex;align-items:center;justify-content:center;"><img src="../images/linkedin.DSVuZdlt.png" alt="LinkedIn" style="width:18px;height:18px;" /></a>
+        <a href="../contact/index.html" style="width:36px;height:36px;border-radius:50%;border:1px solid rgba(250,143,49,0.3);display:flex;align-items:center;justify-content:center;text-decoration:none;"><span class="material-icons" style="font-size:16px;color:#FA8F31;">mail</span></a>
+      </div>
+      <p style="color:rgba(255,255,255,0.4);font-size:0.85rem;" data-i18n="footer.copyright">© 2025 Perkūnas Racing Team</p>
+    </div>
+  </footer>
+</body>
+</html>

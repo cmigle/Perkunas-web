@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="../images/favicon.C7VaowoF.png" />
+  <title>Perkūnas RT | Team Structure</title>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/navbar.css" />
+  <style>
+    /* Custom text selection colors */
+    ::selection {
+      background-color: #F16D26;
+      color: #0B0605;
+    }
+    ::-moz-selection {
+      background-color: #F16D26;
+      color: #0B0605;
+    }
+
+    /* Reset */
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+
+#mouse-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+body {
+  font-family: 'Exo 2', sans-serif;
+  color: #f0f0f0;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  line-height: 1.6;
+  background: #000;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* NAVBAR - React Bits Pill Menu */
+.pill-menu {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  background: rgba(11, 6, 5, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(250, 143, 49, 0.3);
+  border-radius: 50px;
+  padding: 12px 24px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  box-shadow: 0 8px 32px rgba(250, 143, 49, 0.2);
+  transition: all 0.3s ease;
+  flex-wrap: wrap;
+}
+
+.pill-menu a, .lang-switcher {
+  padding: 10px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  color: #f0f0f0;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Exo 2', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pill-menu a.logo-link {
+  padding: 6px 16px;
+}
+
+.pill-menu a.logo-link img {
+  height: 32px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  transition: filter 0.3s ease;
+}
+
+.pill-menu a.logo-link:hover img,
+.pill-menu a.logo-link.active img {
+  filter: none;
+}
+
+.pill-menu a:hover, .lang-switcher:hover {
+  background: linear-gradient(135deg, #FA8F31, #F16D26);
+  color: #0B0605;
+  box-shadow: 0 4px 12px rgba(250, 143, 49, 0.4);
+}
+
+.pill-menu a.active {
+  background: linear-gradient(135deg, #FA8F31, #F16D26);
+  color: #0B0605;
+  box-shadow: 0 4px 12px rgba(250, 143, 49, 0.4);
+}
+
+.lang-switcher {
+  padding: 10px;
+  border-radius: 50%;
+  background: rgba(250, 143, 49, 0.1);
+  border: 1px solid rgba(250, 143, 49, 0.3);
+  color: #FA8F31;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lang-switcher:hover {
+  background: rgba(250, 143, 49, 0.2);
+  transform: scale(1.1);
+}
+
+/* Navbar responsive - keep in one line */
+@media (max-width: 1400px) {
+  .pill-menu {
+    gap: 4px;
+    padding: 10px 18px;
+  }
+  
+  .pill-menu a, .lang-switcher {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+  
+  .pill-menu a.logo-link {
+    padding: 4px 12px;
+  }
+  
+  .pill-menu a.logo-link img {
+    height: 28px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .pill-menu {
+    gap: 3px;
+    padding: 8px 14px;
+  }
+  
+  .pill-menu a, .lang-switcher {
+    padding: 7px 12px;
+    font-size: 12px;
+  }
+  
+  .pill-menu a.logo-link {
+    padding: 3px 10px;
+  }
+  
+  .pill-menu a.logo-link img {
+    height: 26px;
+  }
+}
+
+    /* Mobile hamburger */
+    .mobile-menu-btn {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .mobile-menu-btn span {
+      width: 24px; height: 2px;
+      background: #FA8F31;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+      display: block;
+    }
+    .mobile-menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .mobile-menu-btn.open span:nth-child(2) { opacity: 0; }
+    .mobile-menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 900px) {
+  .pill-menu {
+    top: 12px; padding: 10px 16px;
+    left: 50%; transform: translateX(-50%);
+    width: calc(100% - 24px); max-width: 480px;
+    justify-content: space-between; border-radius: 40px;
+  }
+  .pill-menu .nav-links {
+    display: none; position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(11, 6, 5, 0.97);
+    flex-direction: column; align-items: center;
+    justify-content: center; gap: 16px;
+    z-index: 9999; padding-top: 80px;
+  }
+  .pill-menu .nav-links.open { display: flex; }
+  .pill-menu .nav-links a { font-size: 20px; padding: 14px 40px; }
+  .mobile-menu-btn { display: flex; }
+}
+
+    /* Team cards container */
+    .team-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 40px;
+      padding: 0 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Special styling for team leads (Chief and Deputy) */
+    .team-card.lead {
+      grid-column: span 1;
+      background: linear-gradient(135deg, rgba(250, 143, 49, 0.15), rgba(241, 109, 38, 0.08));
+      border: 2px solid rgba(250, 143, 49, 0.5);
+      position: relative;
+      overflow: visible;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+      }
+    }
+
+    /* Card style */
+    .team-card {
+      position: relative;
+      background: rgba(11, 6, 5, 0.7);
+      backdrop-filter: blur(20px);
+      border: 2px solid rgba(250, 143, 49, 0.3);
+      border-radius: 20px;
+      padding: 30px 20px;
+      box-shadow: 0 8px 32px rgba(250, 143, 49, 0.2);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      user-select: none;
+      transition: all 0.3s ease;
+    }
+
+    .team-card:hover {
+      border-color: #FA8F31;
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(250, 143, 49, 0.4);
+    }
+
+    .team-card img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 4px solid #FA8F31;
+      object-fit: cover;
+      margin-bottom: 20px;
+      box-shadow: 0 0 20px rgba(250, 143, 49, 0.3);
+      transition: all 0.5s ease;
+      background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+      position: relative;
+    }
+    
+    .team-card img.loading {
+      opacity: 0;
+      filter: blur(10px);
+    }
+    
+    .team-card img.loaded {
+      opacity: 1;
+      filter: blur(0);
+      animation: fadeInSharp 0.6s ease-out;
+    }
+    
+    @keyframes fadeInSharp {
+      0% {
+        opacity: 0;
+        filter: blur(20px);
+        transform: scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: scale(1);
+      }
+    }
+    
+    /* Skeleton loader for team cards */
+    .team-card .image-skeleton {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: linear-gradient(
+        90deg,
+        rgba(250, 143, 49, 0.1) 0%,
+        rgba(250, 143, 49, 0.2) 50%,
+        rgba(250, 143, 49, 0.1) 100%
+      );
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      position: absolute;
+      border: 4px solid rgba(250, 143, 49, 0.3);
+      margin-bottom: 20px;
+    }
+    
+    @keyframes shimmer {
+      0% {
+        background-position: -200% 0;
+      }
+      100% {
+        background-position: 200% 0;
+      }
+    }
+    
+    .team-card img.loaded ~ .image-skeleton {
+      display: none;
+    }
+
+    .team-card:hover img {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(250, 143, 49, 0.5);
+    }
+
+    .team-name {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .team-role {
+      font-weight: 500;
+      font-size: 1rem;
+      color: #FA8F31;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .team-email {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: rgba(250, 143, 49, 0.8);
+      text-decoration: underline;
+      cursor: pointer;
+      user-select: all;
+      margin-bottom: 0;
+      transition: color 0.3s ease;
+    }
+
+    .team-email:hover {
+      color: #FA8F31;
+    }
+
+    /* Modal styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10001;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-content {
+      background: rgba(11, 6, 5, 0.95);
+      backdrop-filter: blur(20px);
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 700px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(250, 143, 49, 0.3);
+      border: 2px solid #FA8F31;
+      position: relative;
+      color: #eee;
+      user-select: text;
+    }
+
+    .modal-content h2 {
+      font-family: 'Exo 2', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #FA8F31;
+      letter-spacing: 1.5px;
+      padding-right: 40px;
+    }
+
+    .modal-content p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #ddd;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #FA8F31;
+      cursor: pointer;
+      user-select: none;
+      line-height: 1;
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      color: #F16D26;
+      transform: rotate(90deg);
+    }
+
+    .b-block {
+      background: linear-gradient(135deg, #0B0605, #7C1715);
+      padding: 20px 0;
+      border-top: 2px solid #F16D26;
+      margin-top: auto;
+      color: #eee;
+    }
+    .containerFoot {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .logo-img-footer {
+      height: 45px;
+      filter: drop-shadow(0 0 4px #fa8f31);
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.3s ease;
+    }
+    .logo-img-footer:hover {
+      transform: scale(1.05);
+    }
+    .linksFoot {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+    .socials a {
+      display: inline-block;
+    }
+    .social-icon {
+      height: 28px;
+      width: 28px;
+      filter: brightness(0.8);
+      transition: filter 0.3s ease;
+      cursor: pointer;
+    }
+    .social-icon:hover {
+      filter: brightness(1.3);
+    }
+    .email {
+      font-weight: 600;
+      color: #fa8f31;
+      font-size: 1rem;
+      user-select: text;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    /* Mobile menu button */
+    .mobile-menu-btn {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .mobile-menu-btn span {
+      width: 25px;
+      height: 3px;
+      background: #FA8F31;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .mobile-menu-btn.active span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .mobile-menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-menu-btn.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    /* Language switch styling */
+    .language-switch {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: 24px;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      padding: 8px 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .lang-current {
+      font-weight: 700;
+      color: #ffffff;
+      font-size: 14px;
+      padding: 4px 8px;
+      background: rgba(255, 165, 0, 0.15);
+      border-radius: 6px;
+      border: 1px solid rgba(255, 165, 0, 0.3);
+    }
+
+    .lang-separator {
+      color: rgba(255, 165, 0, 0.6);
+      font-weight: 600;
+    }
+
+    .lang-option {
+      color: rgba(255, 165, 0, 0.8) !important;
+      text-decoration: none !important;
+      font-weight: 700 !important;
+      padding: 4px 8px !important;
+      background: none !important;
+      transition: all 0.3s ease !important;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid transparent;
+    }
+
+    .lang-option:hover {
+      color: #0B0605 !important;
+      background: linear-gradient(135deg, rgba(255, 165, 0, 0.9), rgba(255, 140, 0, 0.8)) !important;
+      border-color: rgba(255, 140, 0, 0.8) !important;
+      box-shadow: 0 0 10px rgba(255, 165, 0, 0.5) !important;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 1024px) {
+      .mobile-menu-btn {
+        display: flex;
+        z-index: 11000;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.98);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        transform: translateY(-100%);
+        transition: transform 0.3s ease;
+        z-index: 10500;
+        padding: 40px 20px;
+      }
+
+      nav.active {
+        transform: translateY(0);
+      }
+
+      nav a {
+        font-size: 18px;
+        padding: 16px 32px;
+        text-align: center;
+        width: 80%;
+        max-width: 300px;
+        background: linear-gradient(135deg, rgba(124, 23, 21, 0.4), rgba(170, 24, 17, 0.3));
+        border: 2px solid rgba(250, 143, 49, 0.5);
+        border-radius: 15px;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      }
+
+      nav a:hover {
+        background: linear-gradient(135deg, #FA8F31, #F16D26);
+        color: #0B0605;
+        border-color: #F16D26;
+        box-shadow: 
+          0 0 25px rgba(250, 143, 49, 0.8),
+          0 6px 20px rgba(170, 24, 17, 0.5);
+        transform: translateY(-3px);
+      }
+
+      .language-switch {
+        margin-left: 0;
+        font-size: 16px;
+        gap: 12px;
+        background: linear-gradient(135deg, rgba(124, 23, 21, 0.6), rgba(170, 24, 17, 0.4));
+        border: 2px solid rgba(250, 143, 49, 0.6);
+        padding: 12px 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      }
+
+      .lang-current, .lang-option {
+        font-size: 14px;
+        padding: 6px 10px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1.page-title {
+        font-size: 2.5rem;
+      }
+
+      .pill-menu {
+        width: 90%;
+        flex-direction: column;
+        gap: 5px;
+        padding: 12px;
+      }
+
+      .pill-menu a {
+        width: 100%;
+        text-align: center;
+        padding: 12px 20px;
+      }
+
+      .team-cards {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 25px;
+        padding: 0;
+      }
+
+      .modal-content {
+        width: 90%;
+        padding: 30px 20px;
+        max-height: 70vh;
+      }
+
+      .modal-content h2 {
+        font-size: 1.6rem;
+      }
+
+      .team-card img {
+        width: 150px;
+        height: 150px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1.page-title {
+        font-size: 2rem;
+      }
+
+      .team-cards {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .team-card {
+        padding: 25px 15px;
+      }
+
+      .team-card img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .team-name {
+        font-size: 1.1rem;
+      }
+
+      .team-role {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1200px) {
+      .team-cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (min-width: 1201px) {
+      .team-cards {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    main {
+      padding-top: 120px;
+      padding-bottom: 60px;
+      padding-left: 20px;
+      padding-right: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+      color: #eee;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1.page-title {
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 900;
+      font-size: 3.5rem;
+      text-align: center;
+      margin-bottom: 60px;
+      background: linear-gradient(135deg, #FA8F31, #F16D26);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 3px;
+      user-select: none;
+    }
+
+    /* Footer Styles */
+    .team-footer {
+      margin-top: 100px;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, rgba(124, 23, 21, 0.3), rgba(170, 24, 17, 0.2));
+      border-top: 2px solid #F16D26;
+      border-radius: 20px 20px 0 0;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .footer-brand h3 {
+      font-size: 2rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #FA8F31, #F16D26);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background: rgba(250, 143, 49, 0.1);
+      border: 2px solid rgba(250, 143, 49, 0.3);
+      border-radius: 50%;
+      color: #FA8F31;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .footer-social a:hover {
+      background: linear-gradient(135deg, #FA8F31, #F16D26);
+      border-color: #FA8F31;
+      color: #0B0605;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(250, 143, 49, 0.4);
+    }
+
+    .footer-social a .material-icons {
+      font-size: 24px;
+    }
+
+    .footer-contact a {
+      color: #FA8F31;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    .footer-contact a:hover {
+      color: #F16D26;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-brand h3 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Mouse-reactive particle background -->
+  <div id="mouse-bg"></div>
+  
+  <!-- React Bits Pill Menu -->
+  <nav class="pill-menu" role="navigation" aria-label="Main navigation">
+    <a href="../index.html" class="logo-link" aria-label="Home">
+      <img src="../images/logo.DW5XiSKA.png" alt="Perkūnas Logo" />
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="../about-us/index.html" data-i18n="nav.about">Apie Mus</a>
+      <a href="team.html" class="active" data-i18n="nav.team">Komanda</a>
+      <a href="../gallery/index.html" data-i18n="nav.gallery">Galerija</a>
+      <a href="../partners/index.html" data-i18n="nav.partners">Partneriai</a>
+      <a href="../join-us/index.html" data-i18n="nav.join">Prisijunk</a>
+      <a href="../support-us/index.html" data-i18n="nav.support">Paremk</a>
+      <a href="../contact/index.html" data-i18n="nav.contact">Kontaktai</a>
+    </div>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false" onclick="toggleMobileMenu(this)">
+      <span></span><span></span><span></span>
+    </button>
+    <!-- Language switcher added automatically by i18n.js -->
+  </nav>
+
+<main>
+  <h1 class="page-title" data-i18n="team.title">Komandos struktūra</h1>
+  <div class="team-cards" id="teamCards">
+    <!-- Cards will be inserted here by JS -->
+  </div>
+
+  <!-- Footer -->
+  <footer class="team-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>Perkūnas</h3>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/perkunas_rt/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <span class="material-icons">camera_alt</span>
+        </a>
+        <a href="https://www.linkedin.com/company/perk%C5%ABnas-racing-team/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <span class="material-icons">business</span>
+        </a>
+        <a href="https://www.tiktok.com/@perkunasrt" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <span class="material-icons">music_note</span>
+        </a>
+        <a href="https://www.facebook.com/PerkunasRT/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <span class="material-icons">facebook</span>
+        </a>
+      </div>
+      <div class="footer-contact">
+        <a href="mailto:perkunasrt@gmail.com">perkunasrt@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+  <div class="modal-content" role="document">
+    <span class="modal-close" id="modalClose" aria-label="Close modal">&times;</span>
+    <h2 id="modalTitle">Title</h2>
+    <p id="modalDesc">Description</p>
+  </div>
+</div>
+
+<script>
+  // Team data
+  const teamMembers = [
+    {
+      name: "Benas Lukoševičius",
+      role: "Chief Engineer",
+      department: "Chief Engineer",
+      email: "benas.lukosevicius@ktu.edu",
+      img: "../images/Benas.CSO4RDZF.jpg",
+      description: `Benas Lukoševičius yra vyriausiasis inžinierius, vadovaujantis techninei vizijai ir prižiūrintis visą projekto plėtrą nuo koncepcijos iki trasoje paruošto bolido.`
+    },
+    {
+      name: "Deivid Mico",
+      role: "Deputy Chief Engineer",
+      department: "Deputy Chief Engineer",
+      email: "deivid.mico@ktu.edu",
+      img: "../images/Deivid.CvnwjvLX.jpg",
+      description: `Deivid Mico palaiko vyriausiąjį inžinierių ir koordinuoja tarp skyrių, kad užtikrintų sklandų projekto eigą ir techninę integraciją.`
+    },
+    {
+      name: "Murad Abdullayev",
+      role: "Lead Engineer, Aerodynamics",
+      department: "Aerodynamics Department",
+      email: "murad.abdullayev@ktu.edu",
+      img: "../images/NoPicture.48BOrpyT.png",
+      description: `Atsakingas už oro srauto valdymą aplink automobilį, siekiant padidinti prispaudimo jėgą ir sumažinti pasipriešinimą. 
+                            Komanda projektuoja priekinius ir galinius sparnus, difuzorių, apačios plokštes ir kitus elementus, padedančius užtikrinti 
+                            stabilumą dideliu greičiu. Skaičiavimų ir bandymų pagalba komandos nariai optimizuoja aerodinamikos parametrus, siekdami 
+                            maksimalaus efektyvumo trasoje.`
+    },
+    {
+      name: "Benas Mangevičius",
+      role: "Lead Engineer, Chassis",
+      department: "Chassis Department",
+      email: "benas.mangevicius@ktu.edu",
+      img: "../images/Benas_M.png.jpg",
+      description: `Atsakingas už automobilio konstrukciją, įskaitant rėmo ir kėbulo dizainą. Komanda kuria lengvą ir tvirtą šasi, 
+                            gebantį atlaikyti lenktyninių krūvių poveikį, kartu užtikrinant, kad kėbulo struktūra būtų ne tik saugi vairuotojui, 
+                            bet ir struktūriškai sandariai. Ši komanda glaudžiai bendradarbiauja su kitais skyriais, užtikrindama, kad visi komponentai 
+                            tilptų, būtų saugiai pritvirtinti ir veiktų efektyviai.`
+    },
+    {
+      name: "Ervinas Rimkevičius",
+      role: "Lead Engineer, Powertrain",
+      department: "Powertrain Department",
+      email: "ervinas.rimkevicius@ktu.edu",
+      img: "../images/Ervinas.4QKraqXQ.jpg",
+      description: `Projektuoja ir integruoja variklio sistemą, kuri lemia automobilio greitį, pagreitį ir patikimumą. Šis skyrius 
+                            sprendžia, kokio tipo variklis bus naudojamas, projektuoja pavarų dėžės sprendimus, integruoja aušinimo sistemas ir 
+                            stebi komponentų šiluminį bei mechaninį efektyvumą.`
+    },
+    {
+      name: "Ugnius Trainys",
+      role: "Lead Engineer, Suspension",
+      department: "Suspension Department",
+      email: "ugnius.trainys@ktu.edu",
+      img: "../images/Ugnius.BV_jdF0Y.png",
+      description: `Kuria sprendimus, užtikrinančius puikų automobilio valdymą, stabilumą ir komfortą trasoje. Komanda projektuoja ratų 
+                            geometriją, amortizatorių ir spyruoklių parametrus, valdymo svirtis, vairo mechanizmus ir kitus komponentus. 
+                            Visos dalys turi būti tiksliai suderintos, kad automobilis galėtų optimaliai įveikti posūkius, išliktų greitas ir 
+                            gerai prisitaikytų prie trasos paviršiaus.`
+    },
+    {
+      name: "Mantas Babonas",
+      role: "Lead Engineer, Electronics and Software",
+      department: "Electronics and Software Department",
+      email: "mantas.babonas@ktu.edu",
+      img: "../images/Mantas.DVqcg64O.png",
+      description: `Kuria visą elektros infrastruktūrą: laidus, jutiklius, valdymo modulius ir vartotojo sąsajas. Komanda taip pat 
+                            atsakinga už duomenų kaupimo sistemas. Naudodami mikrovaldiklius ir programinę įrangą, visi elektronikos komponentai 
+                            integruojami į vieningą sistemą, kuri leidžia analizuoti našumą, aptikti gedimus ir tobulinti sistemas.`
+    },
+    {
+      name: "Vytautė Pratkevičiūtė",
+      role: "Team Leader, Business",
+      department: "Business Department",
+      email: "vytaute.pratkeviciute@ktu.edu",
+      img: "../images/Vytaute.y2Qz4yAV.png",
+      description: `Valdo rėmėjų paiešką, bendradarbiavimą su pramonės partneriais, socialinių tinklų turinį, viešuosius ryšius, 
+                            projektų finansavimą ir renginių organizavimą. Komanda formuoja prekės ženklą, kūrybiškai komunikuoja komandos 
+                            pasiekimus bei kuria įtraukiančius vizualinius ir informacinius sprendimus.`
+    }
+  ];
+
+  // Generate cards dynamically
+  const cardsContainer = document.getElementById('teamCards');
+  teamMembers.forEach((member, index) => {
+    const card = document.createElement('div');
+    card.className = 'team-card';
+    
+    // Add special class for team leads (Chief Engineer and Deputy Chief Engineer)
+    if (index === 0 || index === 1) {
+      card.classList.add('lead');
+    }
+    
+    card.tabIndex = 0;
+    card.setAttribute('role', 'button');
+    card.setAttribute('aria-pressed', 'false');
+    card.innerHTML = `
+      <img src="${member.img}" alt="${member.name}" />
+      <p class="team-name">${member.name}</p>
+      <p class="team-role">${member.role}</p>
+      <p class="team-email" title="Click to copy email" onclick="copyEmail(event)">${member.email}</p>
+    `;
+    // Open modal on click or enter key
+    card.addEventListener('click', () => openModal(member));
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openModal(member);
+      }
+    });
+    cardsContainer.appendChild(card);
+  });
+
+  // Copy email function
+  function copyEmail(e) {
+    e.stopPropagation();
+    const email = e.target.textContent.trim();
+    navigator.clipboard.writeText(email).then(() => {
+      alert('Email copied: ' + email);
+    });
+  }
+
+  // Modal elements
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalDesc = document.getElementById('modalDesc');
+  const modalClose = document.getElementById('modalClose');
+
+  function openModal(member) {
+    modalTitle.textContent = member.department;
+    modalDesc.textContent = member.description;
+    modalOverlay.classList.add('active');
+    modalClose.focus();
+  }
+  function closeModal() {
+    modalOverlay.classList.remove('active');
+  }
+  modalClose.addEventListener('click', closeModal);
+  modalOverlay.addEventListener('click', e => {
+    if (e.target === modalOverlay) closeModal();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+      closeModal();
+    }
+  });
+</script>
+
+  <!-- Particle Background Animation -->
+  <script>
+    const mouseBg = document.getElementById('mouse-bg');
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    mouseBg.appendChild(canvas);
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const particles = [];
+    const particleCount = 100;
+    let mouseX = canvas.width / 2;
+    let mouseY = canvas.height / 2;
+    
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = Math.random() * 0.5 - 0.25;
+        this.speedY = Math.random() * 0.5 - 0.25;
+        this.color = `rgba(250, 143, 49, ${Math.random() * 0.5 + 0.3})`;
+      }
+      
+      update() {
+        const dx = mouseX - this.x;
+        const dy = mouseY - this.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const forceDirectionX = dx / distance;
+        const forceDirectionY = dy / distance;
+        const maxDistance = 150;
+        const force = (maxDistance - distance) / maxDistance;
+        
+        if (distance < maxDistance) {
+          this.x -= forceDirectionX * force * 3;
+          this.y -= forceDirectionY * force * 3;
+        }
+        
+        this.x += this.speedX;
+        this.y += this.speedY;
+        
+        if (this.x > canvas.width) this.x = 0;
+        if (this.x < 0) this.x = canvas.width;
+        if (this.y > canvas.height) this.y = 0;
+        if (this.y < 0) this.y = canvas.height;
+      }
+      
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+    
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+    
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    
+    animateParticles();
+    
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+    
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+    
+    // Add lazy loading to all team member images for better performance
+    const teamImages = document.querySelectorAll('.team-card img, #modalImage');
+    
+    teamImages.forEach((img, index) => {
+      // Add loading class initially
+      img.classList.add('loading');
+      
+      // Create skeleton loader
+      const skeleton = document.createElement('div');
+      skeleton.className = 'image-skeleton';
+      img.parentElement.style.position = 'relative';
+      img.parentElement.insertBefore(skeleton, img);
+      
+      // Stagger the loading with slight delays for smoother appearance
+      const delay = index * 100; // 100ms delay between each image
+      
+      setTimeout(() => {
+        // Use loading and decoding attributes
+        img.loading = 'eager'; // Load team images with priority
+        img.decoding = 'async';
+        
+        // Handle successful load
+        img.addEventListener('load', function() {
+          // Small delay before showing to ensure smooth transition
+          setTimeout(() => {
+            img.classList.remove('loading');
+            img.classList.add('loaded');
+            skeleton.remove();
+          }, 50);
+        });
+        
+        // Handle load errors
+        img.addEventListener('error', function() {
+          img.classList.remove('loading');
+          skeleton.remove();
+          console.warn('Failed to load team image:', img.src);
+        });
+        
+        // If image is already cached/loaded
+        if (img.complete && img.naturalHeight !== 0) {
+          img.classList.remove('loading');
+          img.classList.add('loaded');
+          skeleton.remove();
+        }
+      }, delay);
+    });
+    
+    // Use Intersection Observer for images below the fold
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            if (!img.classList.contains('loaded') && !img.classList.contains('loading-started')) {
+              img.classList.add('loading-started');
+              // Image will load when it enters viewport
+            }
+            imageObserver.unobserve(img);
+          }
+        });
+      }, {
+        rootMargin: '100px' // Start loading 100px before entering viewport
+      });
+      
+      // Observe only images that are below the fold
+      teamImages.forEach((img, index) => {
+        if (index > 4) { // First 5 images load immediately, rest are observed
+          imageObserver.observe(img);
+        }
+      });
+    }
+  </script>
+
+  <!-- I18n System -->
+  <script src="../src/scripts/i18n.js"></script>
+  <script>
+    function toggleMobileMenu(btn) {
+      btn.classList.toggle('open');
+      const links = document.getElementById('nav-links');
+      links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', links.classList.contains('open'));
+    }
+    document.querySelectorAll('#nav-links a').forEach(a => {
+      a.addEventListener('click', () => {
+        document.getElementById('nav-links').classList.remove('open');
+        document.querySelector('.mobile-menu-btn').classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>
