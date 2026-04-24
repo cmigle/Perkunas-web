@@ -43,10 +43,10 @@ export default function About() {
         {/* Gallery strip — team + car photos, intentionally horizontal */}
         <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3">
           {[
-            { src: '/images/TeamFromDrone.7kRmZBe6.png', alt: 'Team from above', ratio: 'aspect-[4/5]' },
-            { src: '/images/CarInGarage.BukR3Qsy.jpg',  alt: 'Car in the garage', ratio: 'aspect-[4/5]' },
-            { src: '/images/Competition.BN4d3-bd.jpg',  alt: 'At competition',    ratio: 'aspect-[4/5]' },
-            { src: '/images/Team.CC8i-R1_.png',         alt: 'The team',          ratio: 'aspect-[4/5]' }
+            { src: '/images/team-ktu-full.jpg',       alt: 'Team at KTU',         ratio: 'aspect-[4/5]' },
+            { src: '/images/team-selfie.webp',        alt: 'Team in the office',  ratio: 'aspect-[4/5]' },
+            { src: '/images/car-garage-cockpit.jpg',  alt: 'Car in the garage',   ratio: 'aspect-[4/5]' },
+            { src: '/images/team-with-car.jpg',       alt: 'Team with the car',   ratio: 'aspect-[4/5]' }
           ].map((img) => (
             <div key={img.src} className={`relative overflow-hidden rounded-xl border border-white/8 bg-ink-900 ${img.ratio}`}>
               <img

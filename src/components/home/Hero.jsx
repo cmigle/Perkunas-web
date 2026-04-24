@@ -28,13 +28,13 @@ export default function Hero() {
   return (
     <section className="relative max-w-[1400px] mx-auto px-4 sm:px-6 pt-2 pb-6">
       <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-ink-950">
-        {/* Car photo backdrop */}
+        {/* Team + car backdrop — real photo of the team at KTU */}
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: 'url(/images/CarInSun.Cl8Zd13v.jpg)',
+            backgroundImage: 'url(/images/team-with-car.jpg)',
             backgroundSize: 'cover',
-            backgroundPosition: 'center 40%',
+            backgroundPosition: 'center 35%',
             filter: 'contrast(1.05) saturate(0.85) brightness(0.6)'
           }}
           aria-hidden="true"

@@ -12,71 +12,89 @@ export const GALLERY = [
   { src: '/images/CarDriving.D2d2KQRs.gif', category: 'car', caption: { lt: 'Bolidas važiuoja', en: 'Car in motion' }, year: 2024, aspect: 'wide' }
 ];
 
-// TODO: verify each member's real role, specialties, and whether they are a
-// lead. Current entries are placeholders — please confirm before publishing.
+// Roster pulled from the previous perkunasrt.com team page. Roles, emails and
+// department responsibilities are confirmed against that source.
 export const TEAM_MEMBERS = [
   {
-    name: 'Benas',
+    name: 'Benas Lukoševičius',
     photo: '/images/Benas.CSO4RDZF.jpg',
-    role: { lt: 'Pakabos inžinierius', en: 'Suspension Engineer' },
+    email: 'benas.lukosevicius@ktu.edu',
+    role: { lt: 'Vyriausiasis inžinierius', en: 'Chief Engineer' },
     specialties: {
-      lt: ['Geometrija', 'Amortizatoriai', 'CAD'],
-      en: ['Geometry', 'Dampers', 'CAD']
+      lt: ['Techninė vizija', 'Integracija', 'Plėtra'],
+      en: ['Technical vision', 'Integration', 'Development']
     },
     dept: 'engineering',
     lead: true
   },
   {
-    name: 'Deividas',
+    name: 'Deivid Mico',
     photo: '/images/Deivid.CvnwjvLX.jpg',
-    role: { lt: 'Varomosios sistemos inžinierius', en: 'Powertrain Engineer' },
+    email: 'deivid.mico@ktu.edu',
+    role: { lt: 'Vyr. inžinieriaus pavaduotojas', en: 'Deputy Chief Engineer' },
     specialties: {
-      lt: ['ECU', 'Dyno', 'Kalibravimas'],
-      en: ['ECU', 'Dyno', 'Calibration']
+      lt: ['Koordinavimas', 'Integracija', 'Procesas'],
+      en: ['Coordination', 'Integration', 'Process']
     },
     dept: 'engineering',
     lead: true
   },
   {
-    name: 'Ervinas',
+    name: 'Benas Mangevičius',
+    photo: '/images/BenasM.jpg',
+    email: 'benas.mangevicius@ktu.edu',
+    role: { lt: 'Šasi vadovas', en: 'Lead Engineer, Chassis' },
+    specialties: {
+      lt: ['Rėmas', 'Kėbulas', 'FEA'],
+      en: ['Spaceframe', 'Bodywork', 'FEA']
+    },
+    dept: 'engineering',
+    lead: true
+  },
+  {
+    name: 'Ervinas Rimkevičius',
     photo: '/images/Ervinas.4QKraqXQ.jpg',
-    role: { lt: 'Rėmo inžinierius', en: 'Chassis Engineer' },
+    email: 'ervinas.rimkevicius@ktu.edu',
+    role: { lt: 'Varomosios sistemos vadovas', en: 'Lead Engineer, Powertrain' },
     specialties: {
-      lt: ['Virinimas', 'FEA', 'Karkasas'],
-      en: ['Welding', 'FEA', 'Spaceframe']
+      lt: ['Variklis', 'Pavara', 'Aušinimas'],
+      en: ['Engine', 'Drivetrain', 'Cooling']
     },
     dept: 'engineering',
     lead: true
   },
   {
-    name: 'Mantas',
-    photo: '/images/Mantas.DVqcg64O.png',
-    role: { lt: 'Aerodinamikas', en: 'Aerodynamics Engineer' },
-    specialties: {
-      lt: ['CFD', 'Sparnai', 'Ansys'],
-      en: ['CFD', 'Wings', 'Ansys']
-    },
-    dept: 'engineering',
-    lead: true
-  },
-  {
-    name: 'Ugnius',
+    name: 'Ugnius Trainys',
     photo: '/images/Ugnius.BV_jdF0Y.png',
-    role: { lt: 'Elektronikos inžinierius', en: 'Electronics Engineer' },
+    email: 'ugnius.trainys@ktu.edu',
+    role: { lt: 'Pakabos vadovas', en: 'Lead Engineer, Suspension' },
     specialties: {
-      lt: ['Laidai', 'Telemetrija', 'Jutikliai'],
-      en: ['Wiring', 'Telemetry', 'Sensors']
+      lt: ['Geometrija', 'Amortizatoriai', 'Vairavimas'],
+      en: ['Geometry', 'Dampers', 'Steering']
     },
     dept: 'engineering',
     lead: true
   },
   {
-    name: 'Vytautė',
-    photo: '/images/Vytaute.y2Qz4yAV.png',
-    role: { lt: 'Komunikacijos vadovė', en: 'Communications Lead' },
+    name: 'Mantas Babonas',
+    photo: '/images/Mantas.DVqcg64O.png',
+    email: 'mantas.babonas@ktu.edu',
+    role: { lt: 'Elektronikos ir PĮ vadovas', en: 'Lead Engineer, Electronics & Software' },
     specialties: {
-      lt: ['PR', 'Soc. tinklai', 'Renginiai'],
-      en: ['PR', 'Social media', 'Events']
+      lt: ['ECU', 'Jutikliai', 'Duomenys'],
+      en: ['ECU', 'Sensors', 'Data']
+    },
+    dept: 'engineering',
+    lead: true
+  },
+  {
+    name: 'Vytautė Pratkevičiūtė',
+    photo: '/images/Vytaute.y2Qz4yAV.png',
+    email: 'vytaute.pratkeviciute@ktu.edu',
+    role: { lt: 'Verslo skyriaus vadovė', en: 'Team Leader, Business' },
+    specialties: {
+      lt: ['Rėmėjai', 'PR', 'Renginiai'],
+      en: ['Sponsors', 'PR', 'Events']
     },
     dept: 'business',
     lead: true
