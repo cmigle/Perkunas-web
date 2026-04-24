@@ -99,7 +99,7 @@ export default function CarSchematic() {
       <div className="flex items-center justify-between mb-4 px-1">
         <div className="flex items-center gap-2">
           <span className="led-dot" />
-          <span className="mono-tag text-white/70">PERKŪNAS · P-05 SCHEMATIC</span>
+          <span className="mono-tag text-white/70">PERKŪNAS · SCHEMATIC</span>
         </div>
         <span className="mono-tag text-white/40 hidden sm:inline">
           {lang === 'en' ? 'TAP HOTSPOTS' : 'PALIESKITE TAŠKUS'}

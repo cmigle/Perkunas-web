@@ -1,0 +1,440 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "team": "Team",
+    "projects": "Projects",
+    "gallery": "Gallery",
+    "partners": "Partners",
+    "join": "Join Us",
+    "support": "Support Us",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Building the Future",
+    "subtitle": "Formula Student Racing Team",
+    "description": "We design, build, and race formula cars that drive engineering innovation at Kaunas University of Technology.",
+    "cta": "Join Us",
+    "rotateHint": "Drag to rotate",
+    "scrollHint": "Scroll to zoom",
+    "latestProjects": "Latest Projects",
+    "latestProjectsDesc": "Currently building the Perkūnas-02 racing car using cutting-edge technological solutions",
+    "achievements": "Achievements",
+    "achievementsDesc": "Second year of operations",
+    "members": "50+ Members",
+    "membersDesc": "Active students from various Lithuanian universities"
+  },
+  "stats": {
+    "title": "Our Impact",
+    "members": "Team Members",
+    "projects": "Projects",
+    "competitions": "Competitions",
+    "years": "Years of Operation",
+    "commitment": "Commitment",
+    "partners": "Partners"
+  },
+  "info": {
+    "innovation": {
+      "title": "Innovation",
+      "description": "Cutting-edge electric powertrain technology and advanced aerodynamics."
+    },
+    "teamwork": {
+      "title": "Teamwork",
+      "description": "Collaboration across engineering disciplines to build championship-winning cars."
+    },
+    "excellence": {
+      "title": "Excellence",
+      "description": "Competing at the highest level in Formula Student competitions worldwide."
+    }
+  },
+  "hotspots": {
+    "front-wing": {
+      "name": "Front Wing",
+      "description": "Advanced aerodynamic front wing for optimal downforce"
+    },
+    "rear-wing": {
+      "name": "Performance",
+      "description": "Optimized weight distribution and stiffness for maximum handling precision"
+    },
+    "cockpit": {
+      "name": "Chassis Structure",
+      "description": "Lightweight carbon fiber monocoque ensuring rigidity and safety"
+    },
+    "left-side": {
+      "name": "Integration",
+      "description": "Designed for seamless connection with suspension, powertrain, and aerodynamics"
+    }
+  },
+  "about": {
+    "title": "About Perkūnas Racing Team",
+    "description": "We are a student-led Formula Student team at Vilnius Gediminas Technical University, dedicated to designing, building, and racing electric formula cars. Our mission is to provide hands-on engineering experience while competing at the international level.",
+    "mission": "Mission",
+    "missionText": "To inspire the next generation of engineers through practical experience in automotive engineering and competitive racing.",
+    "vision": "Vision",
+    "visionText": "To become a leading Formula Student team, recognized for innovation, technical excellence, and sustainability.",
+    "latestPosts": "Latest News",
+    "noPostsYet": "No posts yet. Check back soon for updates!",
+    "contributePost": "Contribute a Post",
+    "heroTitle": "Perkūnas Racing Team",
+    "heroSubtitle": "Lithuanian student team building the future on racing tracks",
+    "statsMembers": "Team Members",
+    "statsDepartments": "Departments",
+    "statsSeason": "First Season",
+    "whoWeAre": "Who Are We?",
+    "whoWeAreDesc1": "Perkūnas Racing Team is a student team from Lithuania that designs and builds a racing car for Formula Student competitions. Our goal is not only to achieve high results on the track, but also to develop engineering, managerial and creative skills.",
+    "whoWeAreDesc2": "The team brings together students from various fields: from mechanics, electronics, to design and business. Each member contributes to the common goal – to create an innovative, fast and reliable racing car.",
+    "ourMission": "Our Mission",
+    "missionDesc1": "We develop future leaders in engineering, technology and business by creating an environment where theoretical knowledge becomes real solutions. As a united team, we not only create a car, but also form a sustainable learning climate.",
+    "missionDesc2": "We are committed to promoting growth, building strong partnerships with industry professionals, and pushing the boundaries of student motorsport, contributing to innovation both in Lithuania and internationally.",
+    "formulaStudent": "Formula Student Competitions",
+    "formulaStudentDesc1": "Formula Student is one of the most prestigious engineering competitions in the world, bringing together university engineering students from around the world to showcase their skills in design, manufacturing, testing and project management.",
+    "formulaStudentDesc2": "In competitions, teams are evaluated not only on the track, but also when presenting a business plan, marketing strategies, production capabilities and cost analysis. Success depends on creativity, technical knowledge, innovation and teamwork.",
+    "ourDepartments": "Our Departments",
+    "deptAero": "Aerodynamics",
+    "deptAeroDesc": "Airflow management and drag force reduction",
+    "deptChassis": "Chassis",
+    "deptChassisDesc": "Frame and body structure design",
+    "deptPowertrain": "Powertrain",
+    "deptPowertrainDesc": "Engine and transmission system integration",
+    "deptSuspension": "Suspension",
+    "deptSuspensionDesc": "Ensuring vehicle handling and stability",
+    "deptElectronics": "Electronics",
+    "deptElectronicsDesc": "Electrical infrastructure and data acquisition systems",
+    "deptBusiness": "Business",
+    "deptBusinessDesc": "Sponsor search, public relations and financial management",
+    "ourValues": "Our Values",
+    "valueExcellence": "Pursuit of Excellence",
+    "valueExcellenceDesc": "We constantly improve and strive for the highest standards",
+    "valueTeamwork": "Teamwork",
+    "valueTeamworkDesc": "Together we achieve more than individually",
+    "valueInnovation": "Innovation",
+    "valueInnovationDesc": "We are not afraid to experiment and implement new ideas",
+    "valueLearning": "Learning",
+    "valueLearningDesc": "Every project is an opportunity to grow and improve"
+  },
+  "team": {
+    "title": "Team Structure",
+    "description": "Talented students from various engineering disciplines working together.",
+    "leadership": "Leadership",
+    "technical": "Technical Team",
+    "operations": "Operations"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "description": "Photos from competitions, workshops, and team events",
+    "morePhotos": "More Photos",
+    "followInstagram": "Follow us on Instagram to see the latest photos and videos from our team's life",
+    "loading": "Loading images...",
+    "viewImage": "View Image",
+    "closeModal": "Close",
+    "previous": "Previous",
+    "next": "Next",
+    "imageOf": "Image {current} of {total}",
+    "instagram1": "Chassis Assembly",
+    "instagram1Desc": "Working on the race car chassis construction and integration",
+    "instagram2": "Team Meeting",
+    "instagram2Desc": "Weekly team gathering to discuss project status",
+    "instagram3": "Engine System",
+    "instagram3Desc": "Engine installation and powertrain optimization",
+    "instagram4": "Aerodynamics Testing",
+    "instagram4Desc": "Testing front and rear wing aerodynamic performance",
+    "instagram5": "Electronics & Control",
+    "instagram5Desc": "ECU programming and sensor calibration",
+    "instagram6": "Drivetrain & Transmission",
+    "instagram6Desc": "Suspension and gearbox assembly work",
+    "instagram7": "Car Testing",
+    "instagram7Desc": "First test runs and performance measurements",
+    "instagram8": "Workshop Work",
+    "instagram8Desc": "Daily work building and improving the race car",
+    "instagram9": "Team Event",
+    "instagram9Desc": "Engaging with sponsors and the public",
+    "instagram10": "Design Session",
+    "instagram10Desc": "CAD modeling and engineering solutions",
+    "instagram11": "Safety Check",
+    "instagram11Desc": "Testing safety equipment and systems",
+    "instagram12": "Competition Preparation",
+    "instagram12Desc": "Final checks before Formula Student event",
+    "instagram13": "Sponsor Visit",
+    "instagram13Desc": "Presenting progress to our partners and sponsors",
+    "instagram14": "Engine Testing",
+    "instagram14Desc": "Dynamometer measurements and performance optimization",
+    "instagram15": "Suspension Tuning",
+    "instagram15Desc": "Adjusting suspension system for optimal handling",
+    "instagram16": "Electrical Systems",
+    "instagram16Desc": "Wiring installation and electrical diagnostics",
+    "instagram17": "Team Celebration",
+    "instagram17Desc": "Celebrating achievements and building team spirit",
+    "instagram18": "Manufacturing Process",
+    "instagram18Desc": "Component fabrication and CNC machining",
+    "instagram19": "Car Launch",
+    "instagram19Desc": "Official car reveal to the university and public",
+    "instagram20": "Season Wrap-up",
+    "instagram20Desc": "Preparing for next year and setting new goals",
+    "video1": "On Track",
+    "video1Desc": "Test runs and car trials on the track",
+    "video2": "Speed Demo",
+    "video2Desc": "Car acceleration and performance demonstration",
+    "video3": "In the Workshop",
+    "video3Desc": "Daily work building the race car",
+    "video4": "Team Moments",
+    "video4Desc": "Behind the scenes and team daily life",
+    "video5": "Technical Work",
+    "video5Desc": "Assembly and tuning processes",
+    "video6": "Race Day",
+    "video6Desc": "Preparation and competition participation",
+    "video7": "Car in Action",
+    "video7Desc": "Testing and operation of car systems",
+    "video8": "Teamwork",
+    "video8Desc": "Synchronized team work on the car",
+    "video9": "Driving Session",
+    "video9Desc": "Driver and car interaction on track",
+    "video10": "Final Tests",
+    "video10Desc": "Last checks before competition",
+    "event1": "Team Event",
+    "event1Desc": "Car presentation to the university community",
+    "event2": "Car Demonstration",
+    "event2Desc": "Public car presentation and visitor engagement"
+  },
+  "partners": {
+    "title": "Our Partners",
+    "subtitle": "Together we build the future - thank you to our partners for the support that allows us to pursue our dreams and push technology forward.",
+    "description": "We are grateful for the support of our sponsors and partners who make our work possible.",
+    "becomePartner": "Become a Partner",
+    "contactUs": "Contact us to learn about partnership opportunities",
+    "sponsorTitle": "Contribute to our success!",
+    "sponsorDesc1": "Sponsor support provides a top-level opportunity to become part of a dynamic Formula Student project. Your brand will gain high visibility on our racing car, team apparel, advertisements, events and competition appearances.",
+    "sponsorDesc2": "Sponsors have a unique opportunity to influence our technical, strategic and operational development, establishing direct connections with future engineers and innovators. This partnership provides direct connection with education and helps shape future talents.",
+    "sponsorDesc3": "We aim to create long-term relationships spanning multiple seasons, ensuring continuous mutual benefit. Your support also provides priority access to talented engineering students suitable for future employment and internship opportunities.",
+    "sponsorDesc4": "By joining from the very beginning, you become part of our entire journey – from idea to competition. You help create not just a racing car, but a culture of innovation and excellence.",
+    "ourSponsors": "Our Sponsors",
+    "otherPartners": "Other Partners",
+    "downloadBrochure": "Download Brochure",
+    "iremas": {
+      "name": "Iremas",
+      "desc": "One of the leading industrial maintenance and engineering solutions companies in Lithuania, providing high-quality services to the energy, industry, and infrastructure sectors. The company specializes in mechanical equipment installation, electrical engineering, automation, and industrial equipment maintenance. With over four decades of experience, Iremas successfully executes both local and international projects, ensuring safety, reliability, and high work quality."
+    },
+    "ansys": {
+      "name": "Ansys",
+      "desc": "A global leader in engineering simulation software, offering advanced solutions for product development, testing, and optimization. The company's software enables modeling of fluid dynamics, structures, electromagnetism, heat, and multi-physics processes. Ansys solutions are used across various industries – from automotive and aerospace to energy and healthcare."
+    },
+    "rapidharness": {
+      "name": "RapidHarness",
+      "desc": "Advanced wire harness design software created to automate and simplify the entire electrical system design process – from initial schematic to production-ready documentation. This CAD platform enables creating professional schematics in real-time, automatically generating documentation, and efficiently collaborating in teams or with external partners. RapidHarness solutions are used by engineers in various industries – from automotive and aerospace to electronics and manufacturing."
+    },
+    "solidworks": {
+      "name": "SolidWorks",
+      "desc": "A global leader in 3D design and engineering solutions, creating advanced software for product development, engineering, and manufacturing. The company specializes in computer-aided design (CAD), analysis (CAE), and product data management (PDM) systems, helping companies create innovative, efficient, and sustainable solutions. SolidWorks solutions are used in various sectors – from automotive and aerospace to medical devices, electronics, and educational institutions worldwide."
+    }
+  },
+  "join": {
+    "title": "Join the Team",
+    "description": "Are you enthusiastic and interested in engineering and racing innovations? We're always looking for motivated students to join our team.",
+    "openPositions": "Open Positions",
+    "howToApply": "How to Apply",
+    "applyNow": "Fill Out the Form",
+    "requirements": "Requirements",
+    "benefits": "Benefits",
+    "benefitsTitle": "What will you gain by joining?",
+    "benefit1": "You will gain practical experience in building, designing and testing a high-quality racing car.",
+    "benefit2": "Working with sponsors and representing the team, you will learn the basics of business, marketing and project management.",
+    "benefit3": "You will improve teamwork, leadership and time management skills in a collaborative environment.",
+    "benefit4": "You will establish connections with university lecturers and industry partners, expanding your professional network.",
+    "benefit5": "You will gain valuable knowledge and skills that will help you prepare for future engineering and business challenges."
+  },
+  "support": {
+    "title": "Support Us",
+    "description": "Your support helps us continue to compete and innovate. Here are ways you can contribute:",
+    "donate": "Donate",
+    "sponsor": "Become a Sponsor",
+    "volunteer": "Volunteer",
+    "share": "Share Our Story",
+    "gpmTitle": "Donate 1.2% GPM!",
+    "gpmDesc": "To support us, follow the instructions in this PDF file. After completing the application, send the confirmation PDF by email to perkunasrt@gmail.com.",
+    "gpmThankYou": "We will thank you by inscribing your name on our racing car!",
+    "teamSupport": "Team Support",
+    "platformsText": "You can also contribute through these platforms:"
+  },
+  "contact": {
+    "title": "Contact",
+    "formTitle": "Get in Touch",
+    "description": "Have questions or want to learn more? We'd love to hear from you!",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "socialMedia": "Follow Us",
+    "sendMessage": "Send Message",
+    "name": "Name",
+    "fullName": "Full Name",
+    "emailAddress": "Email Address",
+    "emailLabel": "Email",
+    "subject": "Subject",
+    "selectSubject": "Select a subject",
+    "partnership": "Partnership",
+    "membership": "Team Membership",
+    "sponsorship": "Sponsorship",
+    "other": "Other",
+    "message": "Message",
+    "messagePlaceholder": "Write your message...",
+    "submit": "Submit",
+    "submitMessage": "Send Message",
+    "contactInfo": "Contact Information",
+    "teamEmail": "Email:",
+    "leaderContacts": "Leader Contacts:",
+    "addressLabel": "Address:",
+    "addressFull": "Studentų St. 65, Kaunas, Lithuania",
+    "socialNetworks": "Social Networks:",
+    "meetingScheduler": "Schedule a Meeting"
+  },
+  "footer": {
+    "copyright": "© 2025 Perkūnas Racing Team. All rights reserved.",
+    "madeWith": "Made with",
+    "by": "by the team"
+  },
+  "ui": {
+    "rotateHint": "Drag to rotate",
+    "scrollHint": "Scroll down",
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "close": "Close",
+    "open": "Open",
+    "readMore": "Read More",
+    "learnMore": "Learn More",
+    "showMore": "Show More",
+    "showLess": "Show Less"
+  },
+  "competence": {
+    "top": "Top Level",
+    "advanced": "Advanced",
+    "intermediate": "Intermediate",
+    "beginner": "Beginner"
+  },
+  "roadmap": {
+    "title": "Our Roadmap",
+    "phase1": "Phase 1: Design & Planning",
+    "phase2": "Phase 2: Manufacturing",
+    "phase3": "Phase 3: Testing",
+    "phase4": "Phase 4: Competition",
+    "current": "Current Phase",
+    "completed": "Completed",
+    "upcoming": "Upcoming"
+  },
+  "quotes": {
+    "innovation": "Innovation distinguishes between a leader and a follower.",
+    "teamwork": "Alone we can do so little; together we can do so much.",
+    "excellence": "Excellence is not a destination; it is a continuous journey that never ends.",
+    "main": "We don't just build cars – we develop future leaders in engineering and technology.",
+    "author": "— Perkūnas Racing Team"
+  },
+  "quote": {
+    "main": "We don't just build cars – we develop future leaders in engineering and technology.",
+    "author": "— Perkūnas Racing Team"
+  },
+  "technology": {
+    "title": "Technological Advancement",
+    "current": {
+      "title": "Current Technology",
+      "subtitle": "Internal Combustion Engine Optimization",
+      "tuning": "Engine Tuning: Precise fuel and air mixture optimization for maximum performance",
+      "fuel": "Fuel System: Advanced injection technology for better efficiency",
+      "exhaust": "Exhaust System: Custom exhaust system optimized for performance and sound",
+      "cooling": "Cooling System: Efficient thermal management system for maximum reliability",
+      "ecu": "Electronic Control System: Custom ECU programming for precise control",
+      "performanceTitle": "Performance Characteristics",
+      "power": "Engine power: 89 kW, 120 HP",
+      "weight": "Weight: <300 kg (engine)",
+      "acceleration": "0-100 km/h: <4 seconds",
+      "topSpeed": "Top speed: 120+ km/h"
+    },
+    "future": {
+      "title": "Future Vision",
+      "subtitle": "Electric Motor Powered Race Car",
+      "year2026": "2026: Research phase - Electric systems analysis and planning",
+      "year2027": "2027: Prototype development - First electric race car design",
+      "year2028": "2028: Competition - Participation in Formula Student Electric category",
+      "goalsTitle": "Future Goals",
+      "sustainability": "Sustainability: Reduced environmental impact",
+      "innovation": "Innovation: Latest battery technologies",
+      "performance": "Performance: Greater efficiency and speed",
+      "education": "Education: Preparing students for the future of electric vehicles"
+    }
+  },
+  "leadership": {
+    "title": "Growing Future Leaders",
+    "engineering": {
+      "title": "Engineering Thinking",
+      "desc": "We apply the most advanced engineering principles in designing, manufacturing and testing a real race car. Students gain practical experience by applying theoretical knowledge to real engineering challenges and building a solid foundation for their careers."
+    },
+    "business": {
+      "title": "Business Skills",
+      "desc": "Entrepreneurial abilities are developed through sponsor search, budget planning and project management. We learn to build partnerships, manage finances responsibly and work according to professional standards."
+    },
+    "teamwork": {
+      "title": "United Team Environment",
+      "desc": "We create a supportive, inclusive and collaborative environment where each member contributes to collective success. Senior members pass on experience to juniors, ensuring sustainable team growth and consistent knowledge transfer."
+    }
+  },
+  "partnerships": {
+    "title": "Industry Partnerships",
+    "professional": {
+      "title": "Professional Connections",
+      "desc": "We collaborate with leading engineering companies and industry leaders, building strong professional connections and knowledge exchange networks."
+    },
+    "knowledge": {
+      "title": "Knowledge Exchange",
+      "desc": "We receive valuable consultations from industry experts, learning to apply best practices and improve our projects."
+    },
+    "mentorship": {
+      "title": "Mentorship",
+      "desc": "We are helped by experienced engineers and specialists who provide individual mentorship and shape our career paths."
+    }
+  },
+  "innovation": {
+    "title": "Pushing Motorsport Boundaries",
+    "international": {
+      "title": "International Impact",
+      "desc": "We participate in Formula Student competitions where we represent Lithuania and compete with the best universities in the world. We share our experience, creativity and innovations with the international community."
+    },
+    "futureTech": {
+      "title": "Future Technologies",
+      "desc": "We explore electrification, autonomous systems and sustainable engineering principles, aiming to create more advanced and sustainable motorsport."
+    }
+  },
+  "cta": {
+    "title": "Join Our Journey",
+    "students": {
+      "title": "For Students",
+      "desc": "Apply your knowledge in a real project environment. Learn, grow and create with us.",
+      "button": "Join Now"
+    },
+    "partners": {
+      "title": "For Partners",
+      "desc": "Support a new generation of engineers. Become part of our journey into the future.",
+      "button": "Become a Partner"
+    },
+    "competitions": {
+      "title": "Competitions",
+      "desc": "Experience Lithuanian engineering excellence events. Follow our journey.",
+      "button": "Gallery"
+    }
+  },
+  "timeline": {
+    "title": "Development Journey",
+    "step1": {
+      "title": "Team",
+      "desc": "Selected Kaunas University of Technology students aiming to participate in Formula Student competitions"
+    },
+    "step2": {
+      "title": "Design Phase",
+      "desc": "Creating innovative solutions through a collaborative engineering design process"
+    },
+    "step3": {
+      "title": "Prototyping",
+      "desc": "Testing concepts and improving the car through an iterative development process"
+    },
+    "step4": {
+      "title": "Competition",
+      "desc": "Final testing and optimization for international Formula Student events"
+    }
+  }
+}

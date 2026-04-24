@@ -22,25 +22,27 @@ export default function RightNow() {
 
   return (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
-      <div className="matte rounded-3xl overflow-hidden">
-        {/* Live header strip */}
-        <div className="flex items-center gap-3 px-6 py-3 border-b border-white/5 bg-black/20">
+      <div className="readout rounded-2xl overflow-hidden">
+        {/* Live header strip — pit-wall style */}
+        <div className="flex items-center gap-3 px-6 py-3 border-b border-white/10 bg-black/40">
           <span className="led-dot" />
-          <span className="mono-tag text-brand-400">
-            {lang === 'en' ? 'RIGHT NOW · LIVE FROM THE GARAGE' : 'DABAR · TIESIOGIAI IŠ DIRBTUVIŲ'}
+          <span className="mono-tag text-brand-400 text-[10px]">
+            {lang === 'en' ? 'GARAGE · LIVE' : 'DIRBTUVĖS · TIESIOGIAI'}
           </span>
           <span className="flex-1" />
-          <span className="mono-label hidden sm:inline">P-05 · BUILD CYCLE 02</span>
+          <span className="mono-tag text-white/40 text-[10px] hidden sm:inline">
+            {lang === 'en' ? 'ROOKIE SEASON 2025/26' : 'DEBIUTINIS SEZONAS 2025/26'}
+          </span>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/6">
           {items.map((it) => (
-            <div key={it.label} className="bg-[#0B0809] px-5 py-5">
+            <div key={it.label} className="bg-ink-900 px-5 py-5">
               <div className="flex items-center gap-2 mb-3">
                 <span className="material-symbols-outlined text-brand-400 text-[16px]">{it.icon}</span>
-                <span className="mono-label">{it.label}</span>
+                <span className="mono-label text-[10px]">{it.label}</span>
               </div>
-              <div className="text-white font-bold text-base leading-snug">{it.value}</div>
+              <div className="text-white font-semibold text-base leading-snug">{it.value}</div>
             </div>
           ))}
         </div>

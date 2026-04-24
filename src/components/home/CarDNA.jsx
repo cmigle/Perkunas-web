@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-// TODO: replace these with real P-05 spec values + real partner attribution.
+// TODO: replace these with real spec values + real partner attribution as the build firms up.
 // `by` is optional — shown as a tiny "made with <partner>" credit line.
 const DNA = [
   { code: 'CHS', label: { lt: 'Karkasas', en: 'Chassis' }, value: { lt: 'Plieno erdvinis', en: 'Steel spaceframe' }, by: 'Iremas' },
@@ -17,33 +17,37 @@ export default function CarDNA() {
 
   return (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
-      <div className="flex items-center gap-2 mb-3">
-        <span className="w-8 h-px bg-brand-400" />
-        <span className="mono-tag text-brand-400">CAR DNA · P-05</span>
+      <div className="flex items-center gap-3 mb-5">
+        <span className="w-10 h-px bg-brand-400" />
+        <span className="mono-tag text-brand-400 text-[10px]">
+          {lang === 'en' ? 'SPEC SHEET' : 'SPECIFIKACIJOS'}
+        </span>
       </div>
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
-        <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-white max-w-2xl">
+        <h2 className="display-headline text-4xl sm:text-5xl lg:text-6xl text-white max-w-2xl font-light">
           {lang === 'en'
-            ? 'Six numbers that define the build.'
-            : 'Šeši skaičiai apibrėžia bolidą.'}
+            ? <>Six numbers that <br/><span className="text-brand-400">define the build.</span></>
+            : <>Šeši skaičiai, <br/><span className="text-brand-400">apibrėžiantys bolidą.</span></>}
         </h2>
-        <span className="mono-label">{lang === 'en' ? 'SPEC SHEET · 2026 SEASON' : 'SPEC. LAPAS · 2026 SEZONAS'}</span>
+        <span className="mono-tag text-white/40 text-[10px]">
+          {lang === 'en' ? 'ROOKIE SEASON · 2025/26' : 'DEBIUTINIS SEZONAS · 2025/26'}
+        </span>
       </div>
 
-      {/* Six-cell grid with matte separator look */}
-      <div className="matte rounded-3xl overflow-hidden">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-white/5">
+      {/* Six-cell grid — telemetry readout style */}
+      <div className="readout rounded-2xl overflow-hidden">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-white/6">
           {DNA.map((d, i) => (
             <div
               key={d.code}
-              className="bg-[#0B0809] px-5 py-6 relative group transition-colors hover:bg-[#100B0C]"
+              className="bg-ink-900 px-5 py-6 relative group transition-colors hover:bg-ink-800"
             >
               <div className="flex items-start justify-between mb-3">
-                <span className="mono-tag text-brand-400 text-[11px]">{d.code}</span>
-                <span className="mono-label">0{i + 1} / 0{DNA.length}</span>
+                <span className="mono-tag text-brand-400 text-xs tracking-[0.2em]">{d.code}</span>
+                <span className="mono-tag text-white/35 text-[9.5px]">0{i + 1} / 0{DNA.length}</span>
               </div>
-              <div className="mono-label mb-1">{d.label[lang]}</div>
-              <div className="text-white font-bold text-xl leading-tight mb-3">
+              <div className="mono-label text-[10px] mb-1.5">{d.label[lang]}</div>
+              <div className="text-white font-semibold text-xl leading-tight mb-3">
                 {d.value[lang]}
               </div>
               {d.by && (

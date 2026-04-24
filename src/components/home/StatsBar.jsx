@@ -53,30 +53,32 @@ export default function StatsBar() {
 
   return (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
-      <div className="flex items-center gap-2 mb-3">
-        <span className="w-8 h-px bg-brand-400" />
-        <span className="mono-tag text-brand-400">BY THE NUMBERS</span>
+      <div className="flex items-center gap-3 mb-5">
+        <span className="w-10 h-px bg-brand-400" />
+        <span className="mono-tag text-brand-400 text-[10px]">
+          {lang === 'en' ? 'BY THE NUMBERS' : 'SKAIČIAIS'}
+        </span>
       </div>
-      <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-white mb-12 max-w-2xl">
-        {lang === 'en' ? 'Our Impact' : 'Mūsų poveikis'}
+      <h2 className="display-headline text-white text-4xl sm:text-5xl lg:text-6xl mb-12 max-w-2xl font-light">
+        {lang === 'en' ? <>Our <span className="text-brand-400">impact</span></> : <>Mūsų <span className="text-brand-400">poveikis</span></>}
       </h2>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         {items.map((it) => (
           <div
             key={it.label}
-            className="glass rounded-2xl p-6 relative overflow-hidden group hover:border-brand-400/40 transition-colors"
+            className="readout rounded-xl p-6 relative overflow-hidden group hover:border-brand-400/40 transition-colors"
           >
-            <span className="material-symbols-outlined text-brand-400/60 text-[20px] mb-3 block">
+            <span className="material-symbols-outlined text-brand-400/70 text-[20px] mb-3 block">
               {it.icon}
             </span>
-            <div className="text-white font-black text-4xl sm:text-5xl tracking-tight leading-none mb-2">
+            <div className="font-light text-white text-4xl sm:text-5xl tracking-tight leading-none mb-2">
               <CountUp target={it.target} suffix={it.suffix} />
             </div>
-            <div className="mono-label">{it.label}</div>
+            <div className="mono-label text-[10px]">{it.label}</div>
 
             {/* corner LED */}
-            <span className="absolute top-4 right-4 w-1.5 h-1.5 rounded-full bg-brand-400 group-hover:shadow-[0_0_8px_rgba(250,143,49,0.8)] transition-shadow" />
+            <span className="absolute top-4 right-4 w-1.5 h-1.5 rounded-full bg-brand-400 group-hover:shadow-[0_0_10px_rgba(31,168,255,0.9)] transition-shadow" />
           </div>
         ))}
       </div>

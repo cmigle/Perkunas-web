@@ -1,6 +1,7 @@
 import Hero from '../components/home/Hero';
 import RightNow from '../components/home/RightNow';
 import Marquee from '../components/home/Marquee';
+import Heritage from '../components/home/Heritage';
 import CarDNA from '../components/home/CarDNA';
 import BuildLog from '../components/home/BuildLog';
 import Timeline from '../components/home/Timeline';
@@ -14,6 +15,7 @@ export default function Home() {
       <Hero />
       <RightNow />
       <Marquee />
+      <Heritage />
       <CarDNA />
       <BuildLog />
       <Timeline />

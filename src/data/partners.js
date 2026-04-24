@@ -67,8 +67,8 @@ export const PARTNERS_DATA = [
     },
     since: 2023,
     story: {
-      lt: 'Visas P-05 plieninis karkasas suvirintas Iremas dirbtuvėse.',
-      en: 'The entire P-05 steel spaceframe was welded at Iremas.'
+      lt: 'Bolido plieninis karkasas suvirintas Iremas dirbtuvėse.',
+      en: 'The steel spaceframe was welded at Iremas.'
     }
   },
   {

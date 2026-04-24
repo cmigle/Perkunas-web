@@ -24,24 +24,26 @@ export default function App() {
   return (
     <>
       <DotWaveBackground />
-      <ScrollProgress />
-      <ScrollToTop />
-      <Navbar />
+      <div className="relative z-10">
+        <ScrollProgress />
+        <ScrollToTop />
+        <Navbar />
 
-      <div className="pt-24">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/team" element={<Team />} />
-          <Route path="/partners" element={<Partners />} />
-          <Route path="/join" element={<Join />} />
-          <Route path="/support" element={<Support />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <div className="pt-24">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/team" element={<Team />} />
+            <Route path="/partners" element={<Partners />} />
+            <Route path="/join" element={<Join />} />
+            <Route path="/support" element={<Support />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+
+        <Footer />
       </div>
-
-      <Footer />
     </>
   );
 }
