@@ -26,8 +26,14 @@ export default function DotWaveBackground() {
     // ---------- Lightning strike state machine ----------
     // A "strike" is a sequence of 2–5 "flashes" separated by ~40–90ms gaps.
     // Each flash has: a main branching bolt + a flash envelope (intensity curve).
-    let strike = null;           // active strike object, or null
+    let strike = null;           // active hero strike, or null
     let nextStrikeAt = 4000 + Math.random() * 8000;
+
+    // Distant-lightning pool: many tiny, faint, short-lived bolts scattered
+    // across the background. They read as far-off storm activity, not the
+    // main Perkūnas strike.
+    const distant = [];          // active distant bolts
+    let nextDistantAt = 800 + Math.random() * 1800;
 
     function resize() {
       w = window.innerWidth;
@@ -96,6 +102,49 @@ export default function DotWaveBackground() {
 
       subdivide(x0, y0, x1, y1, 6, Math.max(80, h * 0.18));
       return segments;
+    }
+
+    // Build a small, mostly-straight distant bolt (less fractal than the hero).
+    function buildDistantBolt(cx, cy, length, angle) {
+      const endX = cx + Math.cos(angle) * length;
+      const endY = cy + Math.sin(angle) * length;
+      const segments = [];
+      function subdivide(ax, ay, bx, by, depth, jitter) {
+        if (depth === 0) {
+          segments.push({ x1: ax, y1: ay, x2: bx, y2: by });
+          return;
+        }
+        const mx = (ax + bx) / 2;
+        const my = (ay + by) / 2;
+        const dx = bx - ax;
+        const dy = by - ay;
+        const len = Math.hypot(dx, dy) || 1;
+        const nx = -dy / len;
+        const ny = dx / len;
+        const offset = (Math.random() - 0.5) * jitter;
+        const jmx = mx + nx * offset;
+        const jmy = my + ny * offset;
+        subdivide(ax, ay, jmx, jmy, depth - 1, jitter * 0.55);
+        subdivide(jmx, jmy, bx, by, depth - 1, jitter * 0.55);
+      }
+      // 4 levels of subdivision — just enough shape, not much wander
+      subdivide(cx, cy, endX, endY, 4, length * 0.18);
+      return segments;
+    }
+
+    function scheduleDistantBolt(t) {
+      // Random position on-screen (slight bias upward — bolts come from the sky)
+      const cx = Math.random() * w;
+      const cy = Math.random() * h * 0.7;
+      const length = 40 + Math.random() * 90;       // short
+      const angle = Math.PI / 2 + (Math.random() - 0.5) * 1.6; // roughly downward
+      distant.push({
+        segments: buildDistantBolt(cx, cy, length, angle),
+        startedAt: t,
+        dur: 40 + Math.random() * 60,               // bright peak
+        afterglow: 60 + Math.random() * 140,        // short fade
+        peak: 0.18 + Math.random() * 0.22           // capped well below hero strikes
+      });
     }
 
     function scheduleStrike(t) {
@@ -229,7 +278,47 @@ export default function DotWaveBackground() {
       }
       ctx.stroke();
 
-      // 6. Lightning — realistic branching + multi-flash
+      // 6a. Distant lightning — small, faint bolts flickering across the background.
+      // Spawned frequently (every 0.8–2.6s), lifespans short, low opacity.
+      if (t > nextDistantAt) {
+        scheduleDistantBolt(t);
+        nextDistantAt = t + 800 + Math.random() * 1800;
+      }
+      if (distant.length) {
+        for (let i = distant.length - 1; i >= 0; i--) {
+          const b = distant[i];
+          const local = t - b.startedAt;
+          if (local > b.dur + b.afterglow) {
+            distant.splice(i, 1);
+            continue;
+          }
+          let v;
+          if (local < b.dur) {
+            v = Math.min(1, local / 14);
+          } else {
+            const fade = (local - b.dur) / b.afterglow;
+            v = Math.max(0, (1 - fade) * (1 - fade));
+          }
+          const a = v * b.peak;
+          if (a <= 0.002) continue;
+
+          // Two passes for distant bolts — just a thin warm halo + a white core.
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+          ctx.strokeStyle = `rgba(253,216,53,${a * 0.35})`;
+          ctx.lineWidth = 2.4;
+          ctx.beginPath();
+          for (const s of b.segments) { ctx.moveTo(s.x1, s.y1); ctx.lineTo(s.x2, s.y2); }
+          ctx.stroke();
+          ctx.strokeStyle = `rgba(255,240,190,${a * 0.85})`;
+          ctx.lineWidth = 0.8;
+          ctx.beginPath();
+          for (const s of b.segments) { ctx.moveTo(s.x1, s.y1); ctx.lineTo(s.x2, s.y2); }
+          ctx.stroke();
+        }
+      }
+
+      // 6b. Hero lightning — realistic branching + multi-flash
       if (!strike && t > nextStrikeAt) {
         scheduleStrike(t);
       }
