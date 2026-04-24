@@ -103,19 +103,21 @@ export default function Partners() {
               shadow="none"
             >
               <CardBody className="p-0">
-                {/* Logo panel — natural colors, soft neutral backdrop */}
+                {/* Logo panel — forced-white monochrome to match the page */}
                 <a
                   href={p.url === '#' ? undefined : p.url}
                   target={p.url === '#' ? undefined : '_blank'}
                   rel="noopener noreferrer"
-                  className="block relative aspect-[5/2] bg-white/[0.04] border-b border-white/5 overflow-hidden"
+                  className="block relative aspect-[5/2] bg-ink-900 border-b border-white/5 overflow-hidden group/logo"
                 >
                   <div className="absolute inset-0 flex items-center justify-center p-6">
                     <img
                       src={p.logo}
                       alt={p.name}
                       loading="lazy"
-                      className="max-w-full max-h-full object-contain"
+                      decoding="async"
+                      data-bg={/\.jpe?g($|\?)/i.test(p.logo) ? 'jpg' : undefined}
+                      className="max-w-full max-h-full object-contain logo-mono transition-[filter,opacity] duration-300"
                     />
                   </div>
                   {/* Tier chip top-left */}

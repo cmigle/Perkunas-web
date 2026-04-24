@@ -1,6 +1,7 @@
 import Hero from '../components/home/Hero';
 import Marquee from '../components/home/Marquee';
 import Heritage from '../components/home/Heritage';
+import GalleryStrip from '../components/home/GalleryStrip';
 import CarDNA from '../components/home/CarDNA';
 import SpecDashboard from '../components/home/SpecDashboard';
 import StatsBar from '../components/home/StatsBar';
@@ -12,6 +13,7 @@ export default function Home() {
       <Hero />
       <Marquee />
       <Heritage />
+      <GalleryStrip />
       <CarDNA />
       <SpecDashboard />
       <StatsBar />

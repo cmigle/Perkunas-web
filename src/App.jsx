@@ -24,11 +24,13 @@ export default function App() {
   return (
     <>
       <DotWaveBackground />
+      {/* Navbar lives at the top of its own layer, above any page content's
+          stacking context. Page content below keeps z-10 so it sits above the
+          fixed background canvas but below the navbar. */}
+      <Navbar />
+      <ScrollProgress />
+      <ScrollToTop />
       <div className="relative z-10">
-        <ScrollProgress />
-        <ScrollToTop />
-        <Navbar />
-
         <div className="pt-24">
           <Routes>
             <Route path="/" element={<Home />} />

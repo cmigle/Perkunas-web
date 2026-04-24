@@ -9,11 +9,10 @@ const VALUES = [
 ];
 
 const MILESTONES = [
-  { year: '2023', lt: 'Komandos įkūrimas KTU', en: 'Team founded at KTU' },
-  { year: '2024', lt: 'Perkūnas-04 pristatymas', en: 'Perkūnas-04 unveiled' },
-  { year: '2024', lt: 'Pirmas varžybų startas', en: 'First competition entry' },
-  { year: '2025', lt: 'Perkūnas-05 kūrimas', en: 'Perkūnas-05 in development' },
-  { year: '2026', lt: 'Elektrinio bolido tyrimas', en: 'Electric program research' }
+  { year: '2025', lt: 'Komandos įkūrimas KTU', en: 'Team founded at KTU' },
+  { year: '2025', lt: 'Departamentų surinkimas', en: 'Department leads assembled' },
+  { year: '2026', lt: 'Pirmasis bolido dizainas', en: 'First car design frozen' },
+  { year: '2026', lt: 'Pirmosios varžybos', en: 'First competition entry' }
 ];
 
 export default function About() {
@@ -37,9 +36,29 @@ export default function About() {
         </h1>
         <p className="text-white/60 text-xl max-w-3xl leading-relaxed">
           {lang === 'en'
-            ? 'Perkūnas Racing Team is Kaunas University of Technology\'s Formula Student team. We design, build and race a new combustion racecar every year — and in doing so, we train the engineers Lithuanian industry needs.'
-            : 'Perkūnas Racing Team — Kauno technologijos universiteto Formula Student komanda. Kasmet kuriame, gaminame ir važiuojame nauju vidaus degimo bolidu — taip ruošiame inžinierius, kurių reikia Lietuvos pramonei.'}
+            ? 'Perkūnas Racing Team is the first-ever Formula Student team at Kaunas University of Technology, founded in 2025. We design, build and race a single-seater combustion racecar — and in doing so, we train the engineers Lithuanian industry needs.'
+            : 'Perkūnas Racing Team — pirmoji Formula Student komanda Kauno technologijos universitete, įkurta 2025 m. Projektuojame, konstruojame ir lenktyniaujame vidaus degimo bolidu — taip ruošiame inžinierius, kurių reikia Lietuvos pramonei.'}
         </p>
+
+        {/* Gallery strip — team + car photos, intentionally horizontal */}
+        <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3">
+          {[
+            { src: '/images/TeamFromDrone.7kRmZBe6.png', alt: 'Team from above', ratio: 'aspect-[4/5]' },
+            { src: '/images/CarInGarage.BukR3Qsy.jpg',  alt: 'Car in the garage', ratio: 'aspect-[4/5]' },
+            { src: '/images/Competition.BN4d3-bd.jpg',  alt: 'At competition',    ratio: 'aspect-[4/5]' },
+            { src: '/images/Team.CC8i-R1_.png',         alt: 'The team',          ratio: 'aspect-[4/5]' }
+          ].map((img) => (
+            <div key={img.src} className={`relative overflow-hidden rounded-xl border border-white/8 bg-ink-900 ${img.ratio}`}>
+              <img
+                src={img.src}
+                alt={img.alt}
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Mission card — large */}

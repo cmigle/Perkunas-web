@@ -86,7 +86,7 @@ export default function Navbar() {
         isBlurred={false}
         classNames={{
           base: [
-            'fixed top-3 left-1/2 -translate-x-1/2 transition-colors duration-200',
+            'fixed top-3 left-1/2 -translate-x-1/2 z-[100] transition-colors duration-200',
             'w-[calc(100%-1.5rem)] max-w-5xl rounded-full px-2',
             'bg-ink-900/55 border-white/5',
             'border backdrop-blur-md'

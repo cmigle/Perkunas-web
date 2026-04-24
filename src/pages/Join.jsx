@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Card, CardBody, Button, Accordion, AccordionItem } from '@heroui/react';
+import { Card, CardBody, Button } from '@heroui/react';
 import { Link } from 'react-router-dom';
 
 const TRACKS = [
@@ -136,27 +136,30 @@ export default function Join() {
         </div>
         <Card className="glass" shadow="none">
           <CardBody className="p-2 sm:p-4">
-            <Accordion
-              variant="light"
-              className="px-0"
-              itemClasses={{
-                base: 'border-b border-white/5 last:border-b-0',
-                title: 'text-white font-semibold text-base',
-                content: 'text-white/60 text-sm pb-4',
-                trigger: 'py-4 px-2'
-              }}
-            >
+            <ul>
               {FAQ.map((f, i) => (
-                <AccordionItem
+                <li
                   key={i}
-                  aria-label={f[lang].q}
-                  title={f[lang].q}
-                  startContent={<span className="mono-tag text-brand-400 w-8">0{i + 1}</span>}
+                  className="border-b border-white/5 last:border-b-0"
                 >
-                  {f[lang].a}
-                </AccordionItem>
+                  <details className="group">
+                    <summary className="no-glow flex items-center gap-3 py-4 px-2 cursor-pointer list-none text-white font-semibold text-base select-none">
+                      <span className="mono-tag text-brand-400 w-8 shrink-0">0{i + 1}</span>
+                      <span className="flex-1">{f[lang].q}</span>
+                      <span
+                        className="material-symbols-outlined text-white/50 text-[20px] transition-transform duration-200 group-open:rotate-180"
+                        aria-hidden="true"
+                      >
+                        expand_more
+                      </span>
+                    </summary>
+                    <div className="text-white/65 text-sm pb-4 pl-12 pr-2 leading-relaxed">
+                      {f[lang].a}
+                    </div>
+                  </details>
+                </li>
               ))}
-            </Accordion>
+            </ul>
           </CardBody>
         </Card>
       </section>

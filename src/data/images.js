@@ -12,49 +12,74 @@ export const GALLERY = [
   { src: '/images/CarDriving.D2d2KQRs.gif', category: 'car', caption: { lt: 'Bolidas važiuoja', en: 'Car in motion' }, year: 2024, aspect: 'wide' }
 ];
 
-// TODO: replace roles and specialties with each member's real responsibilities.
+// TODO: verify each member's real role, specialties, and whether they are a
+// lead. Current entries are placeholders — please confirm before publishing.
 export const TEAM_MEMBERS = [
   {
     name: 'Benas',
     photo: '/images/Benas.CSO4RDZF.jpg',
     role: { lt: 'Pakabos inžinierius', en: 'Suspension Engineer' },
-    specialties: ['Geometrija', 'Amortizatoriai', 'CAD'],
-    dept: 'engineering'
+    specialties: {
+      lt: ['Geometrija', 'Amortizatoriai', 'CAD'],
+      en: ['Geometry', 'Dampers', 'CAD']
+    },
+    dept: 'engineering',
+    lead: true
   },
   {
     name: 'Deividas',
     photo: '/images/Deivid.CvnwjvLX.jpg',
     role: { lt: 'Varomosios sistemos inžinierius', en: 'Powertrain Engineer' },
-    specialties: ['ECU', 'Dyno', 'Kalibravimas'],
-    dept: 'engineering'
+    specialties: {
+      lt: ['ECU', 'Dyno', 'Kalibravimas'],
+      en: ['ECU', 'Dyno', 'Calibration']
+    },
+    dept: 'engineering',
+    lead: true
   },
   {
     name: 'Ervinas',
     photo: '/images/Ervinas.4QKraqXQ.jpg',
     role: { lt: 'Rėmo inžinierius', en: 'Chassis Engineer' },
-    specialties: ['Virinimas', 'FEA', 'Karkasas'],
-    dept: 'engineering'
+    specialties: {
+      lt: ['Virinimas', 'FEA', 'Karkasas'],
+      en: ['Welding', 'FEA', 'Spaceframe']
+    },
+    dept: 'engineering',
+    lead: true
   },
   {
     name: 'Mantas',
     photo: '/images/Mantas.DVqcg64O.png',
     role: { lt: 'Aerodinamikas', en: 'Aerodynamics Engineer' },
-    specialties: ['CFD', 'Sparnai', 'Ansys'],
-    dept: 'engineering'
+    specialties: {
+      lt: ['CFD', 'Sparnai', 'Ansys'],
+      en: ['CFD', 'Wings', 'Ansys']
+    },
+    dept: 'engineering',
+    lead: true
   },
   {
     name: 'Ugnius',
     photo: '/images/Ugnius.BV_jdF0Y.png',
     role: { lt: 'Elektronikos inžinierius', en: 'Electronics Engineer' },
-    specialties: ['Laidai', 'Telemetrija', 'Jutikliai'],
-    dept: 'engineering'
+    specialties: {
+      lt: ['Laidai', 'Telemetrija', 'Jutikliai'],
+      en: ['Wiring', 'Telemetry', 'Sensors']
+    },
+    dept: 'engineering',
+    lead: true
   },
   {
     name: 'Vytautė',
     photo: '/images/Vytaute.y2Qz4yAV.png',
     role: { lt: 'Komunikacijos vadovė', en: 'Communications Lead' },
-    specialties: ['PR', 'Soc. tinklai', 'Renginiai'],
-    dept: 'business'
+    specialties: {
+      lt: ['PR', 'Soc. tinklai', 'Renginiai'],
+      en: ['PR', 'Social media', 'Events']
+    },
+    dept: 'business',
+    lead: true
   }
 ];
 
