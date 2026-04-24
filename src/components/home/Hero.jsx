@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button } from '@heroui/react';
 import { Link } from 'react-router-dom';
 
 // Target: first Formula Student competition of the rookie season.
@@ -59,18 +58,14 @@ export default function Hero() {
           aria-hidden="true"
         />
 
-        {/* Top strip — sector data bar */}
+        {/* Top strip — identity bar */}
         <div className="relative z-10 flex items-center gap-4 px-5 sm:px-8 py-3 border-b border-white/8 bg-black/45 backdrop-blur-sm">
-          <span className="inline-flex items-center gap-2">
-            <span className="led-dot" />
-            <span className="mono-tag text-brand-400 text-[10px]">
-              {lang === 'en' ? 'ROOKIE SEASON · 2025/26' : 'DEBIUTINIS SEZONAS · 2025/26'}
-            </span>
+          <span className="mono-tag text-brand-400 text-[10px]">
+            {lang === 'en' ? 'EST. 2025 · KTU KAUNAS' : 'ĮKURTA 2025 · KTU KAUNAS'}
           </span>
-          <span className="hidden md:inline mono-tag text-white/40 text-[10px]">KAUNAS · 54.8985° N</span>
           <span className="flex-1" />
           <span className="mono-tag text-white/50 text-[10px] flag-tag">
-            {lang === 'en' ? 'KTU · FORMULA STUDENT LITHUANIA' : 'KTU · FORMULA STUDENT LIETUVA'}
+            {lang === 'en' ? 'FORMULA STUDENT LITHUANIA' : 'FORMULA STUDENT LIETUVA'}
           </span>
         </div>
 
@@ -117,40 +112,35 @@ export default function Hero() {
                   : 'Pirmoji Formula Student komanda Kauno technologijos universiteto istorijoje. Įkurta 2025 metais studentų iniciatyva.'}
               </p>
 
-              {/* CTAs */}
+              {/* CTAs — plain anchors, no HeroUI Button quirks */}
               <div className="flex flex-wrap gap-3 mt-9">
-                <Button
-                  as={Link}
+                <Link
                   to="/join"
-                  color="primary"
-                  size="lg"
-                  radius="sm"
-                  className="text-ink-950 font-semibold tracking-wide px-7 shadow-glow-brand"
-                  endContent={<span className="material-symbols-outlined text-[18px]">arrow_forward</span>}
+                  className="inline-flex items-center gap-2 px-7 h-12 rounded-md bg-brand-400 hover:bg-brand-300 text-ink-950 text-[15px] font-semibold tracking-wide shadow-glow-brand transition-colors"
                 >
-                  {lang === 'en' ? 'Join the team' : 'Prisijunk'}
-                </Button>
-                <Button
-                  as={Link}
+                  <span>{lang === 'en' ? 'Join the team' : 'Prisijunk'}</span>
+                  <span aria-hidden="true">→</span>
+                </Link>
+                <Link
                   to="/about"
-                  variant="bordered"
-                  size="lg"
-                  radius="sm"
-                  className="text-white border-white/20 hover:border-brand-400/60 hover:text-brand-400 font-semibold tracking-wide"
+                  className="inline-flex items-center gap-2 px-7 h-12 rounded-md border border-white/20 hover:border-brand-400/70 text-white hover:text-brand-400 text-[15px] font-semibold tracking-wide transition-colors"
                 >
                   {lang === 'en' ? 'Our story' : 'Mūsų istorija'}
-                </Button>
+                </Link>
               </div>
             </div>
 
-            {/* RIGHT — countdown only (no fabricated car number) */}
-            <div className="flex flex-col items-start lg:items-end gap-5">
+            {/* RIGHT — countdown + season badge */}
+            <div className="flex flex-col items-start lg:items-end gap-5 w-full">
               <div className="readout w-full max-w-sm rounded-lg px-5 py-4">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="readout-label">{lang === 'en' ? 'FIRST RACE' : 'PIRMOS VARŽYBOS'}</span>
-                  <span className="mono-tag text-white/55 text-[10px]">TBD · 2026</span>
+                {/* Header stacks on its own row, so the label and date never collide */}
+                <div className="mb-3">
+                  <div className="readout-label">
+                    {lang === 'en' ? 'FIRST RACE' : 'PIRMOS VARŽYBOS'}
+                  </div>
+                  <div className="mono-tag text-white/50 text-[10px] mt-1">TBD · 2026</div>
                 </div>
-                <div className="grid grid-cols-4 gap-2">
+                <div className="grid grid-cols-4 gap-1.5">
                   {[
                     { v: d, l: 'D' },
                     { v: h, l: 'H' },
@@ -158,7 +148,7 @@ export default function Hero() {
                     { v: s, l: 'S' }
                   ].map((u) => (
                     <div key={u.l} className="text-center">
-                      <div className="font-light text-white text-3xl sm:text-4xl tabular-nums tracking-tight leading-none">
+                      <div className="font-light text-white text-[26px] sm:text-[30px] tabular-nums tracking-tight leading-none">
                         {String(u.v).padStart(2, '0')}
                       </div>
                       <div className="mono-label mt-1 text-[9px]">{u.l}</div>

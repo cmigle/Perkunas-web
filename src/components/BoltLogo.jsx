@@ -1,6 +1,12 @@
-export default function BoltLogo({ size = 22, className = '', glow = false }) {
+export default function BoltLogo({ size = 22, className = '', glow = true }) {
   // Matches the team's actual logo: outlined monochrome lightning bolt,
-  // not a filled accent mark.
+  // wrapped in a soft thunder-yellow glow.
+  const glowStyle = glow
+    ? {
+        filter:
+          'drop-shadow(0 0 2px rgba(253,216,53,0.95)) drop-shadow(0 0 6px rgba(253,216,53,0.55)) drop-shadow(0 0 14px rgba(250,143,49,0.35))'
+      }
+    : undefined;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10,7 +16,7 @@ export default function BoltLogo({ size = 22, className = '', glow = false }) {
       fill="none"
       aria-label="Perkūnas"
       className={className}
-      style={glow ? { filter: 'drop-shadow(0 0 4px rgba(31,168,255,0.5))' } : undefined}
+      style={glowStyle}
     >
       <path
         d="M14.5 2 L5 13 H11 L9.5 22 L19 11 H13 L14.5 2 Z"

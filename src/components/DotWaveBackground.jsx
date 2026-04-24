@@ -181,16 +181,16 @@ export default function DotWaveBackground() {
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, w, h);
 
-      // 2. Cool blue atmosphere pool — bottom-right (racing blue signature)
-      const rg = ctx.createRadialGradient(w * 0.85, h * 0.9, 0, w * 0.85, h * 0.9, Math.max(w, h) * 0.55);
-      rg.addColorStop(0, 'rgba(31,168,255,0.06)');
+      // 2. Warm garage pool — bottom-left (brand orange)
+      const rg = ctx.createRadialGradient(w * 0.15, h * 0.88, 0, w * 0.15, h * 0.88, Math.max(w, h) * 0.55);
+      rg.addColorStop(0, 'rgba(250,143,49,0.08)');
       rg.addColorStop(1, 'rgba(0,0,0,0)');
       ctx.fillStyle = rg;
       ctx.fillRect(0, 0, w, h);
 
-      // 3. Storm pool — top-left, cold blue-white
-      const rg2 = ctx.createRadialGradient(w * 0.15, h * 0.1, 0, w * 0.15, h * 0.1, Math.max(w, h) * 0.5);
-      rg2.addColorStop(0, 'rgba(120,160,210,0.04)');
+      // 3. Storm pool — top-right, warm thunder yellow
+      const rg2 = ctx.createRadialGradient(w * 0.85, h * 0.1, 0, w * 0.85, h * 0.1, Math.max(w, h) * 0.5);
+      rg2.addColorStop(0, 'rgba(253,216,53,0.045)');
       rg2.addColorStop(1, 'rgba(0,0,0,0)');
       ctx.fillStyle = rg2;
       ctx.fillRect(0, 0, w, h);
@@ -210,7 +210,7 @@ export default function DotWaveBackground() {
       ctx.stroke();
 
       // Every 5th vertical line gets a stronger accent — like sector markers
-      ctx.strokeStyle = 'rgba(31,168,255,0.04)';
+      ctx.strokeStyle = 'rgba(250,143,49,0.04)';
       ctx.beginPath();
       for (let x = -drift; x < w + CELL; x += CELL * 5) {
         ctx.moveTo(x, 0); ctx.lineTo(x, h);
@@ -245,15 +245,15 @@ export default function DotWaveBackground() {
             // Sky flash — briefly brighten the whole frame when the strike peaks
             if (intensity > 0.3) {
               const sky = (intensity - 0.3) * 0.22; // max ~0.15 alpha
-              ctx.fillStyle = `rgba(180,210,255,${sky})`;
+              ctx.fillStyle = `rgba(255,235,170,${sky})`;
               ctx.fillRect(0, 0, w, h);
             }
 
             // Draw the bolt in three passes: wide soft halo, medium glow, bright core.
             const segs = active.segments;
 
-            // PASS 1: outer halo (blue corona)
-            ctx.strokeStyle = `rgba(120,175,255,${intensity * 0.22})`;
+            // PASS 1: outer halo (warm yellow corona)
+            ctx.strokeStyle = `rgba(253,216,53,${intensity * 0.26})`;
             ctx.lineCap = 'round';
             ctx.lineJoin = 'round';
             for (const s of segs) {
@@ -265,8 +265,8 @@ export default function DotWaveBackground() {
               ctx.stroke();
             }
 
-            // PASS 2: mid glow (white-blue)
-            ctx.strokeStyle = `rgba(200,225,255,${intensity * 0.55})`;
+            // PASS 2: mid glow (warm white-yellow)
+            ctx.strokeStyle = `rgba(255,236,170,${intensity * 0.6})`;
             for (const s of segs) {
               const wide = s.branch ? 2 : 5;
               ctx.lineWidth = wide;

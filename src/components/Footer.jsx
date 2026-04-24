@@ -25,7 +25,7 @@ export default function Footer() {
       {/* Livery diagonal accent */}
       <div
         className="absolute inset-x-0 top-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(31,168,255,0.5) 50%, transparent)' }}
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(250,143,49,0.5) 50%, transparent)' }}
         aria-hidden="true"
       />
       <div className="max-w-6xl mx-auto px-6 py-14">

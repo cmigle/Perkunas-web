@@ -15,7 +15,7 @@ body {
   overflow-x: hidden;
 }
 
-::selection { background: #1FA8FF; color: #050608; }
+::selection { background: #FA8F31; color: #050608; }
 
 /* ------- Wordmark type ------- *
  * Matches the team logo: wide, open, airy — not condensed, not italic.
@@ -104,11 +104,11 @@ body {
   top: 0;
   left: 0;
   height: 2px;
-  background: #1FA8FF;
+  background: #FA8F31;
   z-index: 1000;
   width: var(--scroll-pct, 0%);
   transition: width 0.08s linear;
-  box-shadow: 0 0 8px rgba(31,168,255,0.55);
+  box-shadow: 0 0 8px rgba(250,143,49,0.55);
 }
 
 /* ------- Telemetry readout card ------- */
@@ -116,7 +116,7 @@ body {
   background:
     linear-gradient(180deg, rgba(20,23,29,0.88) 0%, rgba(10,11,14,0.88) 100%);
   border: 1px solid rgba(255,255,255,0.06);
-  border-top: 1px solid rgba(31,168,255,0.28);
+  border-top: 1px solid rgba(250,143,49,0.28);
   backdrop-filter: blur(6px);
 }
 .readout-label {
@@ -124,7 +124,7 @@ body {
   font-size: 9px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: rgba(31,168,255,0.8);
+  color: rgba(250,143,49,0.8);
   font-weight: 600;
 }
 
@@ -144,9 +144,9 @@ body {
 .led-dot {
   width: 6px;
   height: 6px;
-  background: #1FA8FF;
+  background: #FA8F31;
   border-radius: 50%;
-  box-shadow: 0 0 8px rgba(31,168,255,0.85), 0 0 2px rgba(31,168,255,1);
+  box-shadow: 0 0 8px rgba(250,143,49,0.85), 0 0 2px rgba(250,143,49,1);
   animation: pulseSoft 2s ease-in-out infinite;
 }
 
@@ -163,9 +163,9 @@ body {
 }
 .reveal.in { opacity: 1; transform: translateY(0); }
 
-/* Focus ring — racing blue on dark */
+/* Focus ring — brand orange on dark */
 *:focus-visible {
-  outline: 2px solid #1FA8FF;
+  outline: 2px solid #FA8F31;
   outline-offset: 2px;
   border-radius: 4px;
 }

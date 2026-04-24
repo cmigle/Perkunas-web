@@ -29,18 +29,24 @@ export default {
           500: '#2B303A',
           400: '#3B414D'
         },
-        // Brand — electric racing blue, pulled from the car's roll cage
+        // Brand — racing orange, the team's signature warm accent
         brand: {
-          DEFAULT: '#1FA8FF',
-          50: '#E6F5FF',
-          100: '#BFE5FF',
-          200: '#80CCFF',
-          300: '#3DB6FF',
-          400: '#1FA8FF',
-          500: '#0089DB',
-          600: '#006CAF',
-          700: '#004F82',
-          800: '#003355'
+          DEFAULT: '#FA8F31',
+          50: '#FFF4E8',
+          100: '#FFE2C1',
+          200: '#FFCD91',
+          300: '#FFB466',
+          400: '#FA8F31',
+          500: '#F16D26',
+          600: '#D8581A',
+          700: '#AA1811',
+          800: '#7C1715'
+        },
+        // Bolt — Perkūnas thunder yellow, used only for the logo glow
+        bolt: {
+          DEFAULT: '#FDD835',
+          400: '#FDD835',
+          500: '#F9A825'
         },
         // Steel carbon — for readout surfaces
         steel: {
@@ -52,11 +58,12 @@ export default {
       boxShadow: {
         'glass': '0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)',
         'glass-lg': '0 16px 48px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06)',
-        'glow-brand': '0 0 22px rgba(31,168,255,0.45)'
+        'glow-brand': '0 0 22px rgba(250,143,49,0.45)',
+        'glow-bolt': '0 0 18px rgba(253,216,53,0.55)'
       },
       backgroundImage: {
         'dot-grid': 'radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px)',
-        'dot-grid-brand': 'radial-gradient(rgba(31,168,255,0.15) 1px, transparent 1px)',
+        'dot-grid-brand': 'radial-gradient(rgba(250,143,49,0.15) 1px, transparent 1px)',
         'carbon': 'repeating-linear-gradient(45deg, rgba(255,255,255,0.018) 0 2px, transparent 2px 6px), repeating-linear-gradient(-45deg, rgba(255,255,255,0.018) 0 2px, transparent 2px 6px)',
         'sector-grid': 'linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px)'
       },
@@ -103,20 +110,20 @@ export default {
             background: '#050608',
             foreground: '#F4F4F6',
             primary: {
-              50: '#E6F5FF',
-              100: '#BFE5FF',
-              200: '#80CCFF',
-              300: '#3DB6FF',
-              400: '#1FA8FF',
-              500: '#0089DB',
-              600: '#006CAF',
-              700: '#004F82',
-              800: '#003355',
-              900: '#001F36',
-              DEFAULT: '#1FA8FF',
+              50: '#FFF4E8',
+              100: '#FFE2C1',
+              200: '#FFCD91',
+              300: '#FFB466',
+              400: '#FA8F31',
+              500: '#F16D26',
+              600: '#D8581A',
+              700: '#AA1811',
+              800: '#7C1715',
+              900: '#5C100F',
+              DEFAULT: '#FA8F31',
               foreground: '#050608'
             },
-            focus: '#1FA8FF',
+            focus: '#FA8F31',
             content1: '#0D0D10',
             content2: '#131317',
             content3: '#1A1A1F',

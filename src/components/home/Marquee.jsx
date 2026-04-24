@@ -4,7 +4,7 @@ const ITEMS = [
   { icon: 'fitness_center', label: 'WEIGHT', value: '< 300 kg' },
   { icon: 'public', label: 'CATEGORY', value: 'FS Combustion' },
   { icon: 'engineering', label: 'TEAM', value: '70+ Engineers' },
-  { icon: 'workspace_premium', label: 'SINCE', value: '2023' },
+  { icon: 'workspace_premium', label: 'FOUNDED', value: '2025' },
   { icon: 'settings', label: 'DRIVETRAIN', value: 'RWD' }
 ];
 

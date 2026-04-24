@@ -78,7 +78,7 @@ export default function StatsBar() {
             <div className="mono-label text-[10px]">{it.label}</div>
 
             {/* corner LED */}
-            <span className="absolute top-4 right-4 w-1.5 h-1.5 rounded-full bg-brand-400 group-hover:shadow-[0_0_10px_rgba(31,168,255,0.9)] transition-shadow" />
+            <span className="absolute top-4 right-4 w-1.5 h-1.5 rounded-full bg-brand-400 group-hover:shadow-[0_0_10px_rgba(250,143,49,0.9)] transition-shadow" />
           </div>
         ))}
       </div>
