@@ -44,11 +44,12 @@ export default function StatsBar() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language?.startsWith('en') ? 'en' : 'lt';
 
+  // Only verifiable facts — members, partners, department count.
+  // No invented percentages, no inflated years.
   const items = [
     { icon: 'groups', target: 70, suffix: '+', label: t('stats.members', lang === 'en' ? 'Members' : 'Nariai') },
-    { icon: 'event', target: 3, suffix: '+', label: t('stats.years', lang === 'en' ? 'Years' : 'Metai') },
-    { icon: 'local_fire_department', target: 100, suffix: '%', label: lang === 'en' ? 'Commitment' : 'Atsidavimas' },
-    { icon: 'handshake', target: 15, suffix: '+', label: t('stats.partners', lang === 'en' ? 'Partners' : 'Partneriai') }
+    { icon: 'handshake', target: 15, suffix: '+', label: t('stats.partners', lang === 'en' ? 'Partners' : 'Partneriai') },
+    { icon: 'hub', target: 6, suffix: '', label: lang === 'en' ? 'Departments' : 'Skyriai' }
   ];
 
   return (
@@ -63,7 +64,7 @@ export default function StatsBar() {
         {lang === 'en' ? <>Our <span className="text-brand-400">impact</span></> : <>Mūsų <span className="text-brand-400">poveikis</span></>}
       </h2>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 min-[480px]:grid-cols-3 gap-3">
         {items.map((it) => (
           <div
             key={it.label}

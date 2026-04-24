@@ -98,16 +98,18 @@ export default function Support() {
           <span className="flex-1 h-px bg-white/10" />
           <span className="mono-label">{TIERS.length}</span>
         </div>
-        <div className="grid md:grid-cols-3 gap-4">
+        {/* Top padding on the grid gives the FEATURED ribbon room to sit
+            above the card edge without clipping on any screen size. */}
+        <div className="grid md:grid-cols-3 gap-4 pt-4">
           {TIERS.map((tier) => (
             <Card
               key={tier.name}
-              className={['glass border relative', tier.color, tier.featured ? 'md:-translate-y-3' : ''].join(' ')}
+              className={['glass border relative overflow-visible', tier.color, tier.featured ? 'md:-translate-y-3' : ''].join(' ')}
               shadow="none"
             >
               {tier.featured && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-brand-400 text-ink-950 mono-tag text-[10px]">
-                  FEATURED
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-brand-400 text-ink-950 mono-tag text-[10px] whitespace-nowrap shadow-lg z-10">
+                  {lang === 'en' ? 'FEATURED' : 'REKOMENDUOJAMA'}
                 </div>
               )}
               <CardBody className="p-7">

@@ -31,20 +31,44 @@ const TRACKS = [
 
 const FAQ = [
   {
-    lt: { q: 'Kiek laiko per savaitę?', a: '5-15 valandų priklausomai nuo role ir sezonas.' },
-    en: { q: 'How much time per week?', a: '5-15 hours depending on your role and the season.' }
+    lt: {
+      q: 'Kiek laiko reikės skirti per savaitę?',
+      a: 'Vidutiniškai nuo 5 iki 15 valandų — tikslus laikas priklauso nuo tavo vaidmens komandoje ir sezono etapo. Arčiau varžybų tempas natūraliai didėja, o pradžioje — ramiau. Kartu su tavimi aptarsime, kiek realiai gali skirti, kad derinimas būtų komfortiškas.'
+    },
+    en: {
+      q: 'How much time will I need to commit each week?',
+      a: 'Typically somewhere between 5 and 15 hours, depending on your role and where we are in the season. The pace naturally picks up closer to competitions and is calmer early on. We’ll agree together on what realistically fits your schedule so it stays sustainable.'
+    }
   },
   {
-    lt: { q: 'Ar reikia patirties?', a: 'Ne. Reikia noro mokytis. Mokomės kartu.' },
-    en: { q: 'Do I need experience?', a: 'No. You need willingness to learn. We learn together.' }
+    lt: {
+      q: 'Ar reikia turėti ankstesnės patirties?',
+      a: 'Visai ne — svarbiausia yra smalsumas ir noras mokytis. Komandoje yra ir tik pradedančių, ir patyrusių narių, tad visuomet turėsi iš ko mokytis ir su kuo pasitarti. Tavo įgūdžiai augs kartu su projektu.'
+    },
+    en: {
+      q: 'Do I need prior experience?',
+      a: 'Not at all — curiosity and a willingness to learn matter most. The team includes members from total beginners to more experienced engineers, so you’ll always have someone to learn from and ask. Your skills will grow alongside the project.'
+    }
   },
   {
-    lt: { q: 'Ar reikia būti KTU?', a: 'Daugiausia iš KTU, bet priimame ir iš kitų universitetų.' },
-    en: { q: 'Do I need to study at KTU?', a: 'Mostly KTU, but we accept students from other universities too.' }
+    lt: {
+      q: 'Ar reikia studijuoti KTU?',
+      a: 'Pirmenybė teikiama KTU studentams, nes komanda įsikūrusi būtent čia ir formaliai susijusi su universitetu. Tačiau mielai vertiname ir kitų universitetų studentų paraiškas — jei tavo interesai bei įgūdžiai dera su komandos poreikiais, parašyk ir aptarsime galimybes.'
+    },
+    en: {
+      q: 'Do I need to study at KTU?',
+      a: 'Priority goes to KTU students since the team is based here and formally affiliated with the university. That said, we warmly welcome applications from students at other universities — if your interests and skills match what the team needs, reach out and we’ll discuss the options together.'
+    }
   },
   {
-    lt: { q: 'Ar moka už darbą?', a: 'Ne. Tai studentų organizacija. Mokiniesi realias įgūdžius.' },
-    en: { q: 'Do you pay?', a: "No. It's a student organisation. You gain real industry skills." }
+    lt: {
+      q: 'Ar tai apmokama veikla?',
+      a: 'Perkūnas Racing Team — studentų iniciatyva, todėl atlygio forma kiek kitokia. Gauni tikrą inžinerinę patirtį, portfolio vertą projektą, tarptautinių varžybų išgyvenimus, ryšius su pramonės partneriais ir komandą, kuri auga kartu su tavimi. Daugeliui narių ši patirtis tampa stipriu tramplinu į pirmąją karjeros darbą.'
+    },
+    en: {
+      q: 'Is this a paid role?',
+      a: 'Perkūnas Racing Team is a student-led initiative, so what you get back looks a little different. You gain hands-on engineering experience, a portfolio-worthy project, international competition exposure, industry partner connections and a team that grows alongside you. For many of our members, this becomes a strong stepping stone into their first professional role.'
+    }
   }
 ];
 

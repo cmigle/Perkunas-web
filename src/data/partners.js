@@ -14,11 +14,8 @@ export const PARTNERS_DATA = [
       lt: 'Skaitmeninio srautų modeliavimo (CFD) ir konstrukcinio analizės licencijos.',
       en: 'CFD and structural FEA simulation licenses.'
     },
-    since: 2024,
-    story: {
-      lt: 'Ansys Fluent leidžia mums išbandyti aerodinamiką skaitmeniškai prieš gaminant fizinę dalį.',
-      en: 'Ansys Fluent lets us validate aerodynamic designs digitally before we cut a single carbon part.'
-    }
+    since: 2025,
+    story: null
   },
   {
     name: 'SKF',
@@ -31,11 +28,8 @@ export const PARTNERS_DATA = [
       lt: 'Guoliai, diferencialo komponentai, pavaros sistemos detalės.',
       en: 'Bearings, differential parts, drivetrain components.'
     },
-    since: 2023,
-    story: {
-      lt: 'SKF pagalba sumažinome pavaros trintį 18% palyginus su praeitų metų bolidu.',
-      en: 'With SKF support, drivetrain friction dropped 18% year-over-year on our test rig.'
-    }
+    since: 2025,
+    story: null
   },
   {
     name: 'Hostinger',
@@ -48,11 +42,8 @@ export const PARTNERS_DATA = [
       lt: 'Svetainės hostingas ir domeno paslaugos.',
       en: 'Website hosting and domain services.'
     },
-    since: 2024,
-    story: {
-      lt: 'Ši svetainė veikia Hostinger infrastruktūroje — 99.9% uptime per 12 mėn.',
-      en: 'This site you are reading runs on Hostinger — 99.9% uptime over 12 months.'
-    }
+    since: 2025,
+    story: null
   },
   {
     name: 'Iremas',
@@ -65,11 +56,8 @@ export const PARTNERS_DATA = [
       lt: 'Karkaso suvirinimas ir CNC apdirbimas.',
       en: 'Chassis welding and CNC machining.'
     },
-    since: 2023,
-    story: {
-      lt: 'Bolido plieninis karkasas suvirintas Iremas dirbtuvėse.',
-      en: 'The steel spaceframe was welded at Iremas.'
-    }
+    since: 2025,
+    story: null
   },
   {
     name: 'GPM',
@@ -82,7 +70,7 @@ export const PARTNERS_DATA = [
       lt: 'Parama studentiškoms iniciatyvoms.',
       en: 'Support for student initiatives.'
     },
-    since: 2024,
+    since: 2025,
     story: null
   },
   {
@@ -96,11 +84,8 @@ export const PARTNERS_DATA = [
       lt: 'Aukšto debito degalų purkštukai ir kalibravimo duomenys.',
       en: 'High-flow fuel injectors and calibration data.'
     },
-    since: 2024,
-    story: {
-      lt: 'ID1050x purkštukai leido pereiti prie E85 degalų be rizikos.',
-      en: 'ID1050x injectors let us run E85 with full confidence in fuel delivery.'
-    }
+    since: 2025,
+    story: null
   },
   {
     name: 'Race-Spec',
@@ -113,7 +98,7 @@ export const PARTNERS_DATA = [
       lt: 'Motorsporto kokybės jungtys ir laidai.',
       en: 'Motorsport-grade connectors and wiring.'
     },
-    since: 2024,
+    since: 2025,
     story: null
   },
   {
@@ -127,7 +112,7 @@ export const PARTNERS_DATA = [
       lt: 'Degalų siurbliai, alyvos aušintuvai.',
       en: 'Fuel pumps, oil coolers.'
     },
-    since: 2024,
+    since: 2025,
     story: null
   },
   {
@@ -141,7 +126,7 @@ export const PARTNERS_DATA = [
       lt: 'Anglies pluošto audiniai ir epoksidinės dervos.',
       en: 'Carbon fibre cloth and epoxy resins.'
     },
-    since: 2024,
+    since: 2025,
     story: null
   },
   {
@@ -152,7 +137,7 @@ export const PARTNERS_DATA = [
     category: 'electrical',
     tags: ['Wiring', 'Harnesses'],
     supplies: { lt: 'Laidai, apvijos, terminalai.', en: 'Wire, braid, terminals.' },
-    since: 2024,
+    since: 2025,
     story: null
   },
   {
@@ -163,7 +148,7 @@ export const PARTNERS_DATA = [
     category: 'powertrain',
     tags: ['Fuel systems'],
     supplies: { lt: 'Degalų sistemos komponentai.', en: 'Fuel system components.' },
-    since: 2024,
+    since: 2025,
     story: null
   },
   {
@@ -174,7 +159,7 @@ export const PARTNERS_DATA = [
     category: 'software',
     tags: ['Harness CAD'],
     supplies: { lt: 'Laidų projektavimo programa.', en: 'Wire-harness CAD software.' },
-    since: 2024,
+    since: 2025,
     story: null
   },
   {
@@ -185,7 +170,7 @@ export const PARTNERS_DATA = [
     category: 'mechanical',
     tags: ['Fasteners', 'Hardware'],
     supplies: { lt: 'Lenktyninės kokybės tvirtinimo detalės.', en: 'Motorsport-grade fasteners.' },
-    since: 2024,
+    since: 2025,
     story: null
   },
   {
@@ -196,7 +181,7 @@ export const PARTNERS_DATA = [
     category: 'software',
     tags: ['CAD'],
     supplies: { lt: 'CAD licencijos visai komandai.', en: 'CAD licences for the whole team.' },
-    since: 2023,
+    since: 2025,
     story: null
   },
   {
@@ -207,7 +192,7 @@ export const PARTNERS_DATA = [
     category: 'software',
     tags: ['Vehicle dynamics'],
     supplies: { lt: 'Bolido dinamikos simuliavimas.', en: 'Vehicle dynamics simulation.' },
-    since: 2024,
+    since: 2025,
     story: null
   }
 ];

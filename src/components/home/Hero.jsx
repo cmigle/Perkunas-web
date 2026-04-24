@@ -180,13 +180,12 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Bottom sidepod stats row — 2 cols on phones, 4 at sm+ */}
-        <div className="relative z-10 grid grid-cols-2 sm:grid-cols-4 border-t border-white/8 bg-black/55 backdrop-blur-sm divide-x divide-y sm:divide-y-0 divide-white/8">
+        {/* Bottom stats row — approachable numbers only (team size + car basics) */}
+        <div className="relative z-10 grid grid-cols-3 border-t border-white/8 bg-black/55 backdrop-blur-sm divide-x divide-white/8">
           {[
             { v: '70+', l: lang === 'en' ? 'MEMBERS' : 'NARIAI' },
-            { v: '01', l: lang === 'en' ? 'SEASON' : 'SEZONAS' },
-            { v: '120', l: 'HP · 89 kW' },
-            { v: '<300', l: lang === 'en' ? 'KG DRY' : 'KG SAUSA' }
+            { v: '120', l: lang === 'en' ? 'HORSEPOWER' : 'ARKL. GALIOS' },
+            { v: '<300', l: lang === 'en' ? 'KG WEIGHT' : 'KG SVORIS' }
           ].map((st) => (
             <div key={st.l} className="px-4 sm:px-5 py-3 sm:py-4">
               <div className="font-light text-white text-2xl sm:text-3xl md:text-4xl tracking-tight leading-none">

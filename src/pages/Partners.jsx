@@ -54,7 +54,7 @@ export default function Partners() {
           {[
             { v: totalCount, l: lang === 'en' ? 'PARTNERS' : 'PARTNERIAI' },
             { v: goldCount, l: lang === 'en' ? 'GOLD TIER' : 'AUKSINIAI' },
-            { v: '2023', l: lang === 'en' ? 'SINCE' : 'NUO' }
+            { v: '2025', l: lang === 'en' ? 'SINCE' : 'NUO' }
           ].map((s) => (
             <div key={s.l} className="matte rounded-2xl px-4 py-3">
               <div className="text-white font-black text-2xl tracking-tight leading-none">{s.v}</div>

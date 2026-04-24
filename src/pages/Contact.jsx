@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Input, Textarea, Select, SelectItem, Button, Card, CardBody } from '@heroui/react';
+import { Button, Card, CardBody } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 
 const SUBJECTS = [
@@ -16,29 +16,130 @@ const CHANNELS = [
   { label: 'Location', value: 'KTU · Kaunas, Lithuania', href: 'https://maps.google.com/?q=Kaunas+University+of+Technology', icon: 'location_on' }
 ];
 
+// ---------------------------------------------------------------------------
+// FormSubmit endpoint — where inquiries actually land.
+//
+// Flow:
+//   1. Plain-email form     →  FormSubmit sends a confirmation email the first
+//                              time the form is submitted.
+//   2. Owner clicks "Confirm" in that email.
+//   3. FormSubmit then issues a random hash. Swap this constant to that hash
+//      (e.g. 'ab12cd34ef56'), and FormSubmit will still deliver to the same
+//      inbox, but the address is no longer in the rendered page source.
+//
+// Until the hash is issued, the email below ships with the bundle — still
+// only visible to anyone who reads the JS, not to casual visitors, but
+// swapping to the hash is the real hiding step. The destination inbox never
+// changes; only the token in this URL does.
+// ---------------------------------------------------------------------------
+const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/migle.cirtautaite@gmail.com';
+
+// Email validation — permissive enough to accept real addresses, strict
+// enough to catch typos like "bad@domain" or "no-at-sign.com".
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+function validate(values, lang) {
+  const errs = {};
+  const t = (en, lt) => (lang === 'en' ? en : lt);
+
+  if (!values.name.trim()) {
+    errs.name = t('Please enter your name.', 'Įveskite savo vardą.');
+  } else if (values.name.trim().length < 2) {
+    errs.name = t('Name looks too short.', 'Vardas atrodo per trumpas.');
+  }
+
+  if (!values.email.trim()) {
+    errs.email = t('Email is required.', 'El. paštas privalomas.');
+  } else if (!EMAIL_RE.test(values.email.trim())) {
+    errs.email = t('That doesn’t look like a valid email address.', 'Panašu, kad el. pašto adresas neteisingas.');
+  }
+
+  if (!values.subject) {
+    errs.subject = t('Please pick a subject.', 'Pasirinkite temą.');
+  }
+
+  const msg = values.message.trim();
+  if (!msg) {
+    errs.message = t('Please write a short message.', 'Parašykite trumpą žinutę.');
+  } else if (msg.length < 10) {
+    errs.message = t('Your message is a bit too short — add a sentence or two.', 'Žinutė per trumpa — pridėkite sakinį ar du.');
+  }
+
+  return errs;
+}
+
+const EMPTY_VALUES = { name: '', email: '', subject: '', message: '', _honey: '' };
+
 export default function Contact() {
   const { i18n } = useTranslation();
   const lang = i18n.language?.startsWith('en') ? 'en' : 'lt';
+  const [values, setValues] = useState(EMPTY_VALUES);
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
-  const [error, setError] = useState(null);
+  const [submitError, setSubmitError] = useState(null);
+
+  function update(field) {
+    return (e) => {
+      const next = { ...values, [field]: e.target.value };
+      setValues(next);
+      // Re-run validation on change so errors clear as soon as they're fixed.
+      if (touched[field] || errors[field]) {
+        const nextErrors = validate(next, lang);
+        setErrors(nextErrors);
+      }
+    };
+  }
+
+  function onBlur(field) {
+    return () => {
+      setTouched({ ...touched, [field]: true });
+      setErrors(validate(values, lang));
+    };
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setError(null);
+    setSubmitError(null);
+
+    // Mark every field as touched so any remaining errors show up.
+    setTouched({ name: true, email: true, subject: true, message: true });
+    const nextErrors = validate(values, lang);
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length > 0) {
+      return; // Stop — fields are invalid.
+    }
+
+    // Honeypot trap — bots fill every field; legit users never touch this.
+    if (values._honey) {
+      setSent(true);
+      return;
+    }
+
     setSending(true);
-    const fd = new FormData(e.currentTarget);
     try {
-      const res = await fetch('https://formsubmit.co/ajax/perkunasrt@gmail.com', {
+      const fd = new FormData();
+      fd.append('name', values.name.trim());
+      fd.append('email', values.email.trim());
+      fd.append('subject', values.subject);
+      fd.append('message', values.message.trim());
+      fd.append('_subject', 'Perkūnas website — new inquiry');
+      fd.append('_template', 'table');
+      fd.append('_captcha', 'false');
+
+      const res = await fetch(FORMSUBMIT_ENDPOINT, {
         method: 'POST',
         headers: { Accept: 'application/json' },
         body: fd
       });
       if (!res.ok) throw new Error('Submit failed');
       setSent(true);
-      e.target.reset();
+      setValues(EMPTY_VALUES);
+      setTouched({});
+      setErrors({});
     } catch (err) {
-      setError(lang === 'en' ? 'Could not send message. Try again or email us directly.' : 'Nepavyko išsiųsti žinutės. Pabandyk dar kartą arba parašyk el. paštu.');
+      setSubmitError(lang === 'en' ? 'Could not send message. Try again or email us directly.' : 'Nepavyko išsiųsti žinutės. Pabandyk dar kartą arba parašyk el. paštu.');
     } finally {
       setSending(false);
     }
@@ -105,15 +206,34 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
-                <input type="hidden" name="_subject" value="Perkūnas website contact" />
-                <input type="hidden" name="_captcha" value="false" />
+                {/* FormSubmit config — these names are FormSubmit conventions */}
+                <input type="hidden" name="_subject" value="Perkūnas website — new inquiry" />
                 <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_captcha" value="false" />
+                {/* Honeypot: hidden from users + AT accessibility tree, but
+                    bots fill every field they find. */}
+                <input
+                  type="text"
+                  name="_honey"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  style={{
+                    position: 'absolute',
+                    left: '-10000px',
+                    width: '1px',
+                    height: '1px',
+                    opacity: 0,
+                    pointerEvents: 'none'
+                  }}
+                />
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <Input
                     name="name"
                     required
                     isRequired
+                    autoComplete="name"
                     variant="bordered"
                     label={lang === 'en' ? 'Full name' : 'Vardas Pavardė'}
                     classNames={{
@@ -125,6 +245,7 @@ export default function Contact() {
                     type="email"
                     required
                     isRequired
+                    autoComplete="email"
                     variant="bordered"
                     label="Email"
                     classNames={{
