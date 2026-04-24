@@ -134,7 +134,7 @@ export default function Navbar() {
           <NavbarItem>
             <button
               onClick={toggleLang}
-              className="rounded-full px-3 py-1.5 mono-tag text-[10px] text-white/80 hover:text-brand-300 border border-white/10 hover:border-brand-400/40 transition-colors"
+              className="no-glow rounded-full px-3 py-1.5 mono-tag text-[10px] text-white/80 hover:text-brand-300 border border-white/10 hover:border-brand-400/40 transition-colors"
               aria-label="Toggle language"
             >
               {i18n.language?.startsWith('en') ? 'EN' : 'LT'}

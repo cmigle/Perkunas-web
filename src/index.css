@@ -17,6 +17,25 @@ body {
 
 ::selection { background: #FA8F31; color: #050608; }
 
+/* ------- Button hover glow — warm orange halo ------- *
+ * Applied to any button or button-styled anchor. Catches:
+ *   - native <button> (HeroUI Button renders one)
+ *   - <a> / <Link> with .inline-flex (our own CTAs)
+ * Opt out on small icon buttons / nav toggles with the `no-glow` class.
+ * Disabled buttons never glow. */
+button:not(.no-glow):not(:disabled),
+a.inline-flex:not(.no-glow) {
+  transition: box-shadow 220ms ease-out, background-color 180ms ease-out,
+              border-color 180ms ease-out, color 180ms ease-out, transform 180ms ease-out;
+}
+button:not(.no-glow):not(:disabled):hover,
+a.inline-flex:not(.no-glow):hover {
+  box-shadow:
+    0 0 0 1px rgba(250,143,49,0.28),
+    0 0 14px rgba(250,143,49,0.45),
+    0 0 32px rgba(250,143,49,0.22);
+}
+
 /* ------- Wordmark type ------- *
  * Matches the team logo: wide, open, airy — not condensed, not italic.
  * Used for the big headline moments: hero, section titles. */
