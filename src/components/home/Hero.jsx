@@ -26,7 +26,7 @@ export default function Hero() {
   const { d, h, m, s } = useCountdown(RACE_TARGET);
 
   return (
-    <section className="relative max-w-[1400px] mx-auto px-4 sm:px-6 pt-2 pb-6">
+    <section className="relative max-w-[1600px] 2xl:max-w-[1800px] mx-auto px-3 sm:px-6 pt-2 pb-6">
       <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-ink-950">
         {/* Team + car backdrop — real photo of the team at KTU */}
         <div
@@ -70,23 +70,24 @@ export default function Hero() {
         </div>
 
         {/* Hero content */}
-        <div className="relative z-10 px-5 sm:px-10 lg:px-14 pt-12 sm:pt-16 pb-10 sm:pb-12">
-          <div className="grid lg:grid-cols-[1.3fr_0.7fr] gap-10 items-end">
+        <div className="relative z-10 px-4 sm:px-8 md:px-10 lg:px-14 2xl:px-20 pt-8 sm:pt-12 md:pt-14 lg:pt-16 pb-8 sm:pb-10 md:pb-12">
+          <div className="grid lg:grid-cols-[1.25fr_minmax(260px,0.75fr)] gap-8 lg:gap-10 items-end">
             {/* LEFT — wordmark, tagline */}
-            <div>
-              <div className="flex items-center gap-3 mb-5">
+            <div className="min-w-0">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
                 <span className="mono-tag text-brand-400 text-[10px]">KTU · EST. 2025</span>
-                <span className="h-px w-10 bg-white/20" />
+                <span className="h-px w-8 sm:w-10 bg-white/20 hidden sm:inline-block" />
                 <span className="mono-tag text-white/45 text-[10px]">
                   {lang === 'en' ? 'INAUGURAL SEASON' : 'PIRMASIS SEZONAS'}
                 </span>
               </div>
 
-              {/* Main wordmark — matches the logo's open wide letterforms */}
-              <h1 className="wordmark text-white text-[clamp(2.6rem,9vw,7rem)] leading-[0.95] font-light">
+              {/* Main wordmark — letter-spacing tightens on narrow viewports so
+                  "PERKŪNAS" doesn't wrap or overflow. */}
+              <h1 className="wordmark text-white text-[clamp(2.2rem,9vw,7.5rem)] leading-[0.95] font-light break-words tracking-[0.08em] sm:tracking-[0.12em] lg:tracking-[0.18em]">
                 PERKŪNAS
               </h1>
-              <div className="wordmark text-white/55 text-[clamp(0.9rem,2vw,1.4rem)] mt-3 mb-7 font-light tracking-[0.3em]">
+              <div className="wordmark text-white/55 text-[clamp(0.85rem,1.8vw,1.4rem)] mt-2 sm:mt-3 mb-6 sm:mb-7 font-light tracking-[0.2em] sm:tracking-[0.3em]">
                 RACING TEAM
               </div>
 
@@ -112,27 +113,29 @@ export default function Hero() {
                   : 'Pirmoji Formula Student komanda Kauno technologijos universiteto istorijoje. Įkurta 2025 metais studentų iniciatyva.'}
               </p>
 
-              {/* CTAs — plain anchors, no HeroUI Button quirks */}
-              <div className="flex flex-wrap gap-3 mt-9">
+              {/* CTAs — full-width at small, auto at sm+ */}
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3 mt-7 sm:mt-9">
                 <Link
                   to="/join"
-                  className="inline-flex items-center gap-2 px-7 h-12 rounded-md bg-brand-400 hover:bg-brand-300 text-ink-950 text-[15px] font-semibold tracking-wide shadow-glow-brand transition-colors"
+                  className="inline-flex items-center justify-center gap-2 px-5 sm:px-7 h-11 sm:h-12 rounded-md bg-brand-400 hover:bg-brand-300 text-ink-950 text-[14px] sm:text-[15px] font-semibold tracking-wide shadow-glow-brand transition-colors"
                 >
                   <span>{lang === 'en' ? 'Join the team' : 'Prisijunk'}</span>
                   <span aria-hidden="true">→</span>
                 </Link>
                 <Link
                   to="/about"
-                  className="inline-flex items-center gap-2 px-7 h-12 rounded-md border border-white/20 hover:border-brand-400/70 text-white hover:text-brand-400 text-[15px] font-semibold tracking-wide transition-colors"
+                  className="inline-flex items-center justify-center gap-2 px-5 sm:px-7 h-11 sm:h-12 rounded-md border border-white/20 hover:border-brand-400/70 text-white hover:text-brand-400 text-[14px] sm:text-[15px] font-semibold tracking-wide transition-colors"
                 >
                   {lang === 'en' ? 'Our story' : 'Mūsų istorija'}
                 </Link>
               </div>
             </div>
 
-            {/* RIGHT — countdown + season badge */}
-            <div className="flex flex-col items-start lg:items-end gap-5 w-full">
-              <div className="readout w-full max-w-sm rounded-lg px-5 py-4">
+            {/* RIGHT — countdown + season badge. Max-width removed so it
+                fills the right column on large screens, and stays tidy on
+                mobile where it stacks below the left column. */}
+            <div className="flex flex-col items-stretch lg:items-end gap-4 sm:gap-5 w-full min-w-0">
+              <div className="readout w-full lg:max-w-sm rounded-lg px-4 sm:px-5 py-3 sm:py-4">
                 {/* Header stacks on its own row, so the label and date never collide */}
                 <div className="mb-3">
                   <div className="readout-label">
@@ -158,7 +161,7 @@ export default function Hero() {
               </div>
 
               {/* Season badge */}
-              <div className="flex items-center gap-3 readout rounded-lg px-4 py-3 w-full max-w-sm">
+              <div className="flex items-center gap-3 readout rounded-lg px-4 py-3 w-full lg:max-w-sm">
                 <div className="flex h-5 w-7 rounded-sm overflow-hidden shrink-0">
                   <div className="flex-1 bg-[#FDB913]" />
                   <div className="flex-1 bg-[#006A44]" />
@@ -177,16 +180,16 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Bottom sidepod stats row */}
-        <div className="relative z-10 grid grid-cols-2 sm:grid-cols-4 border-t border-white/8 bg-black/55 backdrop-blur-sm divide-x divide-white/8">
+        {/* Bottom sidepod stats row — 2 cols on phones, 4 at sm+ */}
+        <div className="relative z-10 grid grid-cols-2 sm:grid-cols-4 border-t border-white/8 bg-black/55 backdrop-blur-sm divide-x divide-y sm:divide-y-0 divide-white/8">
           {[
             { v: '70+', l: lang === 'en' ? 'MEMBERS' : 'NARIAI' },
             { v: '01', l: lang === 'en' ? 'SEASON' : 'SEZONAS' },
             { v: '120', l: 'HP · 89 kW' },
             { v: '<300', l: lang === 'en' ? 'KG DRY' : 'KG SAUSA' }
           ].map((st) => (
-            <div key={st.l} className="px-5 py-4">
-              <div className="font-light text-white text-3xl sm:text-4xl tracking-tight leading-none">
+            <div key={st.l} className="px-4 sm:px-5 py-3 sm:py-4">
+              <div className="font-light text-white text-2xl sm:text-3xl md:text-4xl tracking-tight leading-none">
                 {st.v}
               </div>
               <div className="mono-label mt-1.5 text-[9.5px]">{st.l}</div>

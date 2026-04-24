@@ -27,13 +27,13 @@ export default function Team() {
   const filteredRest = dept === 'all' ? rest : rest.filter((m) => m.dept === dept);
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <div className="max-w-6xl 2xl:max-w-[1400px] mx-auto px-4 sm:px-6 py-10 sm:py-12">
       <div className="mb-10">
         <div className="flex items-center gap-2 mb-3">
           <span className="w-8 h-px bg-brand-400" />
           <span className="mono-tag text-brand-400">OUR PEOPLE</span>
         </div>
-        <h1 className="text-5xl md:text-6xl font-black tracking-tight text-white mb-4">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white mb-4">
           {lang === 'en' ? 'The Team' : 'Komanda'}
         </h1>
         <p className="text-white/60 max-w-2xl text-lg">
@@ -53,7 +53,7 @@ export default function Team() {
             <span className="flex-1 h-px bg-white/10" />
             <span className="mono-label">{leads.length}</span>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 min-[480px]:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-4">
             {leads.map((m, i) => {
               const specs = getSpecialties(m, lang);
               return (
@@ -136,7 +136,7 @@ export default function Team() {
             ))}
           </div>
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 min-[480px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4">
             {filteredRest.map((m, i) => {
               const specs = getSpecialties(m, lang);
               return (

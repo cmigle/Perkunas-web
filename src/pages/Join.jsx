@@ -60,20 +60,20 @@ export default function Join() {
   const lang = i18n.language?.startsWith('en') ? 'en' : 'lt';
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
-      <div className="mb-12">
+    <div className="max-w-6xl 2xl:max-w-[1400px] mx-auto px-4 sm:px-6 py-10 sm:py-12">
+      <div className="mb-10 sm:mb-12">
         <div className="flex items-center gap-2 mb-3">
           <span className="w-8 h-px bg-brand-400" />
           <span className="mono-tag text-brand-400">RECRUITING</span>
         </div>
-        <h1 className="text-5xl md:text-7xl font-black tracking-tight text-white mb-5 leading-[0.95]">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white mb-5 leading-[0.95]">
           {lang === 'en' ? (
             <>Build a<br /><span className="text-brand-400">racecar.</span></>
           ) : (
             <>Statyk<br /><span className="text-brand-400">bolidą.</span></>
           )}
         </h1>
-        <p className="text-white/60 text-xl max-w-2xl leading-relaxed">
+        <p className="text-white/60 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed">
           {lang === 'en'
             ? 'Apply engineering knowledge on hardware that actually runs. Work in a team of 70+. Compete internationally.'
             : 'Pritaikyk inžinerinį mąstymą realiai technikai. Dirbk 70+ žmonių komandoje. Varžykis tarptautiškai.'}

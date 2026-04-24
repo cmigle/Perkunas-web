@@ -20,28 +20,28 @@ export default function About() {
   const lang = i18n.language?.startsWith('en') ? 'en' : 'lt';
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <div className="max-w-6xl 2xl:max-w-[1400px] mx-auto px-4 sm:px-6 py-10 sm:py-12">
       {/* Hero */}
-      <div className="mb-16">
+      <div className="mb-12 sm:mb-16">
         <div className="flex items-center gap-2 mb-3">
           <span className="w-8 h-px bg-brand-400" />
           <span className="mono-tag text-brand-400">WHO WE ARE</span>
         </div>
-        <h1 className="text-5xl md:text-7xl font-black tracking-tight text-white mb-6 leading-[0.95]">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white mb-5 sm:mb-6 leading-[0.95]">
           {lang === 'en' ? (
             <>We build<br /><span className="text-brand-400">engineers.</span></>
           ) : (
             <>Mes kuriame<br /><span className="text-brand-400">inžinierius.</span></>
           )}
         </h1>
-        <p className="text-white/60 text-xl max-w-3xl leading-relaxed">
+        <p className="text-white/60 text-base sm:text-lg md:text-xl max-w-3xl leading-relaxed">
           {lang === 'en'
             ? 'Perkūnas Racing Team is the first-ever Formula Student team at Kaunas University of Technology, founded in 2025. We design, build and race a single-seater combustion racecar — and in doing so, we train the engineers Lithuanian industry needs.'
             : 'Perkūnas Racing Team — pirmoji Formula Student komanda Kauno technologijos universitete, įkurta 2025 m. Projektuojame, konstruojame ir lenktyniaujame vidaus degimo bolidu — taip ruošiame inžinierius, kurių reikia Lietuvos pramonei.'}
         </p>
 
         {/* Gallery strip — team + car photos, intentionally horizontal */}
-        <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="mt-8 sm:mt-10 grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3">
           {[
             { src: '/images/team-ktu-full.jpg',       alt: 'Team at KTU',         ratio: 'aspect-[4/5]' },
             { src: '/images/team-selfie.webp',        alt: 'Team in the office',  ratio: 'aspect-[4/5]' },
@@ -62,19 +62,19 @@ export default function About() {
       </div>
 
       {/* Mission card — large */}
-      <Card className="glass mb-16" shadow="none">
-        <CardBody className="p-8 sm:p-12 grid md:grid-cols-[auto_1fr] gap-8 items-start">
+      <Card className="glass mb-12 sm:mb-16" shadow="none">
+        <CardBody className="p-6 sm:p-10 md:p-12 grid md:grid-cols-[auto_1fr] gap-6 md:gap-8 items-start">
           <div>
             <div className="mono-label mb-3">MISSION</div>
-            <div className="text-8xl font-black text-brand-400 leading-none">01</div>
+            <div className="text-6xl sm:text-7xl md:text-8xl font-black text-brand-400 leading-none">01</div>
           </div>
           <div>
-            <h2 className="text-3xl sm:text-4xl font-black text-white mb-4 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-4 leading-tight">
               {lang === 'en'
                 ? 'More than a car — a training ground.'
                 : 'Daugiau nei bolidas — mokymosi aikštelė.'}
             </h2>
-            <p className="text-white/70 text-lg leading-relaxed">
+            <p className="text-white/70 text-base sm:text-lg leading-relaxed">
               {lang === 'en'
                 ? 'Every year we start from blank paper and finish with a running, roaring, driving competition car. The car is the outcome — but the real product is what it takes to build it: the coordination, the CAD, the negotiations with suppliers, the late nights, the failed prototypes, the working prototypes.'
                 : 'Kasmet pradedame nuo tuščio popieriaus lapo ir baigiame veikiančiu, ūžiančiu, varžybose važiuojančiu bolidu. Bolidas — rezultatas. Tikrasis produktas yra tai, ko reikia, kad jis atsirastų: koordinacija, CAD, derybos su tiekėjais, vakarai dirbtuvėse, nepavykę bandymai, pavykę sprendimai.'}

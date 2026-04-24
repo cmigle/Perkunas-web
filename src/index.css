@@ -151,28 +151,6 @@ a.inline-flex:not(.no-glow):hover {
 summary::-webkit-details-marker { display: none; }
 summary { list-style: none; }
 
-/* ------- Sponsor logo monochrome treatment ------- *
- * Turns any raster logo into a clean white silhouette that reads on the dark
- * page. `.logo-mono` is the default dimmed state; hover restores full white.
- *
- *   - For PNGs with transparent backgrounds (most of our logos): brightness(0)
- *     zeroes colour info, invert(1) flips black→white. Clean silhouette.
- *   - For JPGs with white backgrounds: `.logo-mono-jpg` uses invert+grayscale
- *     so the white background becomes dark (blends with page) and the dark
- *     logo becomes white.
- * Add `data-bg="jpg"` on the <img> to opt into the JPG variant. */
-.logo-mono {
-  filter: brightness(0) invert(1);
-  opacity: 0.72;
-}
-.logo-mono:hover,
-.group\/logo:hover .logo-mono {
-  opacity: 1;
-}
-img[data-bg="jpg"].logo-mono {
-  filter: invert(1) grayscale(1) contrast(1.15) brightness(1.1);
-}
-
 /* Flag tag — Lithuania accent */
 .flag-tag::before {
   content: "";

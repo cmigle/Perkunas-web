@@ -99,11 +99,11 @@ export default function Heritage() {
       </div>
 
       <div className="readout rounded-xl overflow-hidden">
-        {/* Table header */}
-        <div className="grid grid-cols-[60px_1fr_110px_90px_100px] sm:grid-cols-[80px_1fr_1fr_110px_120px] gap-3 px-4 sm:px-6 py-3 border-b border-white/6 bg-black/30">
+        {/* Table header — hidden on phones, the card layout has its own labels */}
+        <div className="hidden sm:grid sm:grid-cols-[80px_1fr_1fr_110px_120px] gap-3 px-4 sm:px-6 py-3 border-b border-white/6 bg-black/30">
           <span className="readout-label">CODE</span>
           <span className="readout-label">EVENT</span>
-          <span className="readout-label hidden sm:inline">LOCATION</span>
+          <span className="readout-label">LOCATION</span>
           <span className="readout-label">DATE</span>
           <span className="readout-label text-right">STATUS</span>
         </div>
@@ -112,15 +112,19 @@ export default function Heritage() {
           <div
             key={e.code}
             className={[
-              'grid grid-cols-[60px_1fr_110px_90px_100px] sm:grid-cols-[80px_1fr_1fr_110px_120px] gap-3 items-center px-4 sm:px-6 py-4 transition-colors hover:bg-brand-400/5',
+              // Phone: block layout, wraps naturally. sm+: full table grid.
+              'flex flex-col gap-2 sm:grid sm:grid-cols-[80px_1fr_1fr_110px_120px] sm:gap-3 sm:items-center px-4 sm:px-6 py-4 transition-colors hover:bg-brand-400/5',
               i < EVENTS.length - 1 ? 'border-b border-white/5' : ''
             ].join(' ')}
           >
-            <span className="mono-tag text-brand-400 text-[12px] tracking-[0.2em]">{e.code}</span>
-            <span className="text-white font-semibold text-sm sm:text-base truncate">{e.name}</span>
-            <span className="mono-tag text-white/55 text-[10px] hidden sm:inline truncate">{e.city}</span>
+            <div className="flex items-center justify-between sm:contents">
+              <span className="mono-tag text-brand-400 text-[12px] tracking-[0.2em]">{e.code}</span>
+              <span className="sm:hidden"><StatusPill status={e.status} lang={lang} /></span>
+            </div>
+            <span className="text-white font-semibold text-sm sm:text-base sm:truncate">{e.name}</span>
+            <span className="mono-tag text-white/55 text-[10px] sm:truncate">{e.city}</span>
             <span className="mono-tag text-white/75 text-[10px]">{e.date}</span>
-            <span className="text-right">
+            <span className="hidden sm:inline text-right">
               <StatusPill status={e.status} lang={lang} />
             </span>
           </div>

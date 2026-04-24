@@ -52,14 +52,14 @@ export default function GalleryStrip() {
   const lang = i18n.language?.startsWith('en') ? 'en' : 'lt';
 
   return (
-    <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
-      <div className="flex items-center gap-3 mb-6">
+    <section className="max-w-6xl 2xl:max-w-[1400px] mx-auto px-4 sm:px-6 py-14 sm:py-16">
+      <div className="flex items-center gap-3 mb-5 sm:mb-6">
         <span className="w-10 h-px bg-brand-400" />
         <span className="mono-tag text-brand-400 text-[10px]">
           {lang === 'en' ? 'GLIMPSES' : 'AKIMIRKOS'}
         </span>
       </div>
-      <h2 className="display-headline text-white text-4xl sm:text-5xl lg:text-6xl font-light mb-10 max-w-3xl">
+      <h2 className="display-headline text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-8 sm:mb-10 max-w-3xl">
         {lang === 'en' ? (
           <>From the garage <br /><span className="text-brand-400">to the track.</span></>
         ) : (
@@ -67,7 +67,9 @@ export default function GalleryStrip() {
         )}
       </h2>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] sm:auto-rows-[220px] gap-3">
+      {/* Grid steps: 1 col < 480px, 2 cols sm+, 4 cols md+. auto-rows
+          grow on larger screens so images breathe on wide monitors. */}
+      <div className="grid grid-cols-1 min-[480px]:grid-cols-2 md:grid-cols-4 auto-rows-[240px] min-[480px]:auto-rows-[180px] sm:auto-rows-[220px] lg:auto-rows-[240px] gap-3">
         {PHOTOS.map((p) => (
           <div
             key={p.src}

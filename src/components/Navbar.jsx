@@ -98,11 +98,11 @@ export default function Navbar() {
           ]
         }}
       >
-        {/* LOGO — matches the team logo: open, wide, monochrome */}
+        {/* LOGO — shown at every width so the bar never looks empty */}
         <NavbarContent justify="start" className="gap-2">
-          <NavbarBrand as={NavLink} to="/" className="gap-2.5 cursor-pointer">
+          <NavbarBrand as={NavLink} to="/" className="gap-2 sm:gap-2.5 cursor-pointer">
             <BoltLogo size={22} />
-            <span className="wordmark text-white text-[13px] font-light tracking-[0.2em] hidden sm:inline">
+            <span className="wordmark text-white text-[11px] sm:text-[13px] font-light tracking-[0.18em] sm:tracking-[0.2em]">
               PERKŪNAS
             </span>
           </NavbarBrand>

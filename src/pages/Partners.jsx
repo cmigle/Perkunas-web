@@ -29,21 +29,21 @@ export default function Partners() {
   const totalCount = PARTNERS_DATA.length;
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <div className="max-w-6xl 2xl:max-w-[1400px] mx-auto px-4 sm:px-6 py-10 sm:py-12">
       {/* Header */}
       <div className="mb-10">
         <div className="flex items-center gap-2 mb-3">
           <span className="w-8 h-px bg-brand-400" />
           <span className="mono-tag text-brand-400">NETWORK</span>
         </div>
-        <h1 className="text-5xl md:text-7xl font-black tracking-tight text-white mb-5 leading-[0.95]">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white mb-5 leading-[0.95]">
           {lang === 'en' ? (
             <>Our<br /><span className="text-brand-400">partners.</span></>
           ) : (
             <>Mūsų<br /><span className="text-brand-400">partneriai.</span></>
           )}
         </h1>
-        <p className="text-white/60 text-xl max-w-2xl leading-relaxed">
+        <p className="text-white/60 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed">
           {lang === 'en'
             ? 'Every bolt, every simulation licence, every welded seam exists because someone chose to invest in student engineering. These are the companies that make it possible.'
             : 'Kiekviena sąvarža, kiekviena licencija, kiekviena suvirinta siūlė egzistuoja, nes kažkas nusprendė investuoti į studentų inžineriją. Štai jie.'}
@@ -93,7 +93,7 @@ export default function Partners() {
       </div>
 
       {/* Partner cards */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 min-[480px]:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
         {filtered.map((p) => {
           const tier = TIER_STYLES[p.tier];
           return (
@@ -103,22 +103,27 @@ export default function Partners() {
               shadow="none"
             >
               <CardBody className="p-0">
-                {/* Logo panel — forced-white monochrome to match the page */}
+                {/* Typographic wordmark panel — the partner name in big white
+                    letters. Cleaner than trying to recolor raster logos and
+                    always reads consistently across the whole grid. */}
                 <a
                   href={p.url === '#' ? undefined : p.url}
                   target={p.url === '#' ? undefined : '_blank'}
                   rel="noopener noreferrer"
                   className="block relative aspect-[5/2] bg-ink-900 border-b border-white/5 overflow-hidden group/logo"
                 >
-                  <div className="absolute inset-0 flex items-center justify-center p-6">
-                    <img
-                      src={p.logo}
-                      alt={p.name}
-                      loading="lazy"
-                      decoding="async"
-                      data-bg={/\.jpe?g($|\?)/i.test(p.logo) ? 'jpg' : undefined}
-                      className="max-w-full max-h-full object-contain logo-mono transition-[filter,opacity] duration-300"
-                    />
+                  <div className="absolute inset-0 flex items-center justify-center p-6 text-center">
+                    <span
+                      className="wordmark-bold text-white transition-colors duration-200 group-hover/logo:text-brand-400 leading-none"
+                      style={{
+                        // Auto-scale so long names like "Injector Dynamics"
+                        // stay on one readable line: CSS clamp with a fallback
+                        // that shrinks with character count.
+                        fontSize: `clamp(1rem, ${Math.max(1.6, 5.5 - p.name.length * 0.15)}rem, 2.4rem)`
+                      }}
+                    >
+                      {p.name}
+                    </span>
                   </div>
                   {/* Tier chip top-left */}
                   <span className={`absolute top-3 left-3 mono-tag text-[9px] px-2 py-1 rounded-full ${tier.badge}`}>

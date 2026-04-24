@@ -45,13 +45,13 @@ export default function Contact() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
-      <div className="mb-10">
+    <div className="max-w-6xl 2xl:max-w-[1400px] mx-auto px-4 sm:px-6 py-10 sm:py-12">
+      <div className="mb-8 sm:mb-10">
         <div className="flex items-center gap-2 mb-3">
           <span className="w-8 h-px bg-brand-400" />
           <span className="mono-tag text-brand-400">REACH OUT</span>
         </div>
-        <h1 className="text-5xl md:text-6xl font-black tracking-tight text-white mb-4">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white mb-4">
           {lang === 'en' ? 'Contact' : 'Kontaktai'}
         </h1>
         <p className="text-white/60 max-w-2xl">

@@ -48,20 +48,20 @@ export default function Support() {
   const lang = i18n.language?.startsWith('en') ? 'en' : 'lt';
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
-      <div className="mb-14">
+    <div className="max-w-6xl 2xl:max-w-[1400px] mx-auto px-4 sm:px-6 py-10 sm:py-12">
+      <div className="mb-10 sm:mb-14">
         <div className="flex items-center gap-2 mb-3">
           <span className="w-8 h-px bg-brand-400" />
           <span className="mono-tag text-brand-400">SUPPORT US</span>
         </div>
-        <h1 className="text-5xl md:text-7xl font-black tracking-tight text-white mb-5 leading-[0.95]">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white mb-5 leading-[0.95]">
           {lang === 'en' ? (
             <>Back the<br /><span className="text-brand-400">next build.</span></>
           ) : (
             <>Paremk<br /><span className="text-brand-400">kitą bolidą.</span></>
           )}
         </h1>
-        <p className="text-white/60 text-xl max-w-2xl leading-relaxed">
+        <p className="text-white/60 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed">
           {lang === 'en'
             ? 'A racecar is built by students but paid for by partners. Here\'s how you can help — and what you get back.'
             : 'Bolidą stato studentai, o finansuoja partneriai. Štai kaip gali prisidėti — ir ką gauni mainais.'}
