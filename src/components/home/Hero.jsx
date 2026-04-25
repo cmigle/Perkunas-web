@@ -82,9 +82,11 @@ export default function Hero() {
                 </span>
               </div>
 
-              {/* Main wordmark — letter-spacing tightens on narrow viewports so
-                  "PERKŪNAS" doesn't wrap or overflow. */}
-              <h1 className="wordmark text-white text-[clamp(2.2rem,9vw,7.5rem)] leading-[0.95] font-light break-words tracking-[0.08em] sm:tracking-[0.12em] lg:tracking-[0.18em]">
+              {/* Main wordmark — clamp + responsive tracking keep "PERKŪNAS"
+                  on a single line from phones up through ultrawides. The
+                  upper bound is conservative so small laptops (≈1280-1440px)
+                  don't wrap — they get the lg tracking but a tamer size. */}
+              <h1 className="wordmark text-white text-[clamp(2rem,7.5vw,6rem)] xl:text-[6.5rem] 2xl:text-[7.5rem] leading-[0.95] font-light whitespace-nowrap tracking-[0.06em] sm:tracking-[0.1em] lg:tracking-[0.14em] xl:tracking-[0.18em]">
                 PERKŪNAS
               </h1>
               <div className="wordmark text-white/55 text-[clamp(0.85rem,1.8vw,1.4rem)] mt-2 sm:mt-3 mb-6 sm:mb-7 font-light tracking-[0.2em] sm:tracking-[0.3em]">
