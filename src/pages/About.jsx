@@ -2,16 +2,16 @@ import { useTranslation } from 'react-i18next';
 import { Card, CardBody } from '@heroui/react';
 
 const VALUES = [
-  { icon: 'bolt', lt: { t: 'Greitis', d: 'Greita iteracija, greitas sprendimas, greita mokymosi kreivė.' }, en: { t: 'Speed', d: 'Fast iteration, fast decisions, fast learning curves.' } },
-  { icon: 'precision_manufacturing', lt: { t: 'Tikslumas', d: 'Inžinerinis tikslumas kiekvienoje sąvaržoje ir tekste.' }, en: { t: 'Precision', d: 'Engineering precision in every bolt and line of code.' } },
-  { icon: 'handshake', lt: { t: 'Komanda', d: 'Jokių vienišų herojų — viskas yra komandinis sportas.' }, en: { t: 'Team', d: 'No lone heroes — everything is a team sport.' } },
-  { icon: 'open_in_new', lt: { t: 'Atvirumas', d: 'Dalinamės tuo, ką išmokstame. Mokomės vieni iš kitų.' }, en: { t: 'Openness', d: 'We share what we learn. We learn from each other.' } }
+  { icon: 'bolt', lt: { t: 'Greitis', d: 'Greitos iteracijos, greiti sprendimai, greita mokymosi kreivė.' }, en: { t: 'Speed', d: 'Fast iteration, fast decisions, fast learning curves.' } },
+  { icon: 'precision_manufacturing', lt: { t: 'Tikslumas', d: 'Inžinerinis tikslumas kiekvienoje detalėje ir kiekvienoje kodo eilutėje.' }, en: { t: 'Precision', d: 'Engineering precision in every bolt and line of code.' } },
+  { icon: 'handshake', lt: { t: 'Komanda', d: 'Jokių pavienių didvyrių — viskas vyksta kaip komandinis sportas.' }, en: { t: 'Team', d: 'No lone heroes — everything is a team sport.' } },
+  { icon: 'open_in_new', lt: { t: 'Atvirumas', d: 'Dalijamės tuo, ką išmokstame. Mokomės vieni iš kitų.' }, en: { t: 'Openness', d: 'We share what we learn. We learn from each other.' } }
 ];
 
 const MILESTONES = [
-  { year: '2025', lt: 'Komandos įkūrimas KTU', en: 'Team founded at KTU' },
-  { year: '2025', lt: 'Departamentų surinkimas', en: 'Department leads assembled' },
-  { year: '2026', lt: 'Pirmasis bolido dizainas', en: 'First car design frozen' },
+  { year: '2025', lt: 'Komandos įsteigimas KTU', en: 'Team founded at KTU' },
+  { year: '2025', lt: 'Surinkti skyrių vadovai', en: 'Department leads assembled' },
+  { year: '2026', lt: 'Pirmasis bolido projektas', en: 'First car design frozen' },
   { year: '2026', lt: 'Pirmosios varžybos', en: 'First competition entry' }
 ];
 
@@ -37,7 +37,7 @@ export default function About() {
         <p className="text-white/60 text-base sm:text-lg md:text-xl max-w-3xl leading-relaxed">
           {lang === 'en'
             ? 'Perkūnas Racing Team is the first-ever Formula Student team at Kaunas University of Technology, founded in 2025. We design, build and race a single-seater combustion racecar — and in doing so, we train the engineers Lithuanian industry needs.'
-            : 'Perkūnas Racing Team — pirmoji Formula Student komanda Kauno technologijos universitete, įkurta 2025 m. Projektuojame, konstruojame ir lenktyniaujame vidaus degimo bolidu — taip ruošiame inžinierius, kurių reikia Lietuvos pramonei.'}
+            : 'Perkūnas Racing Team — pirmoji Formula Student komanda Kauno technologijos universitete, įsteigta 2025 m. Projektuojame, gaminame ir lenktyniaujame vidaus degimo bolidu — taip ugdome inžinierius, kurių reikia Lietuvos pramonei.'}
         </p>
 
         {/* Gallery strip — team + car photos, intentionally horizontal */}
@@ -77,7 +77,7 @@ export default function About() {
             <p className="text-white/70 text-base sm:text-lg leading-relaxed">
               {lang === 'en'
                 ? 'Every year we start from blank paper and finish with a running, roaring, driving competition car. The car is the outcome — but the real product is what it takes to build it: the coordination, the CAD, the negotiations with suppliers, the late nights, the failed prototypes, the working prototypes.'
-                : 'Kasmet pradedame nuo tuščio popieriaus lapo ir baigiame veikiančiu, ūžiančiu, varžybose važiuojančiu bolidu. Bolidas — rezultatas. Tikrasis produktas yra tai, ko reikia, kad jis atsirastų: koordinacija, CAD, derybos su tiekėjais, vakarai dirbtuvėse, nepavykę bandymai, pavykę sprendimai.'}
+                : 'Kasmet pradedame nuo tuščio popieriaus lapo, o baigiame veikiančiu, ūžiančiu, varžybose važiuojančiu bolidu. Bolidas yra rezultatas, tačiau svarbiausia yra procesas, dėl kurio jis atsiranda: koordinavimas, projektavimas, derybos su tiekėjais, vakarai dirbtuvėse, nepavykę bandymai ir pavykę sprendimai.'}
             </p>
           </div>
         </CardBody>

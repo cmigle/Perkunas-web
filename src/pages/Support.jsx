@@ -18,7 +18,7 @@ const TIERS = [
     lt: 'Sidabrinis',
     amount: '€ 1500+',
     perks: {
-      lt: ['Visi bronzos privalumai', 'Logotipas ant bolido', 'Dirbtuvių apsilankymas'],
+      lt: ['Visi bronzinio paketo privalumai', 'Logotipas ant bolido', 'Apsilankymas dirbtuvėse'],
       en: ['All Bronze perks', 'Logo on car', 'Workshop visit']
     },
     color: 'border-white/25'
@@ -28,7 +28,7 @@ const TIERS = [
     lt: 'Auksinis',
     amount: '€ 5000+',
     perks: {
-      lt: ['Visi sidabro privalumai', 'Pagrindinis logotipas ant bolido', 'Varžybų pakvietimas', 'Pasirinktinė talentų programa'],
+      lt: ['Visi sidabrinio paketo privalumai', 'Pagrindinis logotipas ant bolido', 'Pakvietimas į varžybas', 'Individuali talentų atrankos programa'],
       en: ['All Silver perks', 'Primary logo on car', 'Race day invitation', 'Custom talent program']
     },
     color: 'border-brand-400/60 shadow-[0_0_32px_rgba(250,143,49,0.18)]',
@@ -38,9 +38,9 @@ const TIERS = [
 
 const WAYS = [
   { icon: 'payments', lt: { t: 'Finansinė parama', d: 'Tiesioginis finansinis indėlis.' }, en: { t: 'Financial support', d: 'Direct financial contribution.' } },
-  { icon: 'inventory_2', lt: { t: 'Medžiagos ir dalys', d: 'Komponentai, įrankiai, medžiagos.' }, en: { t: 'Materials & parts', d: 'Components, tools, materials.' } },
-  { icon: 'school', lt: { t: 'Žinios', d: 'Konsultacijos, mokymai, mentorystė.' }, en: { t: 'Knowledge', d: 'Consulting, training, mentorship.' } },
-  { icon: 'precision_manufacturing', lt: { t: 'Gamyba', d: 'CNC apdirbimas, 3D spauda, virinimas.' }, en: { t: 'Manufacturing', d: 'CNC machining, 3D printing, welding.' } }
+  { icon: 'inventory_2', lt: { t: 'Medžiagos ir dalys', d: 'Komponentai, įrankiai ir medžiagos.' }, en: { t: 'Materials & parts', d: 'Components, tools, materials.' } },
+  { icon: 'school', lt: { t: 'Žinios', d: 'Konsultacijos, mokymai ir mentorystė.' }, en: { t: 'Knowledge', d: 'Consulting, training, mentorship.' } },
+  { icon: 'precision_manufacturing', lt: { t: 'Gamyba', d: 'CNC apdirbimas, 3D spausdinimas ir virinimas.' }, en: { t: 'Manufacturing', d: 'CNC machining, 3D printing, welding.' } }
 ];
 
 export default function Support() {
@@ -64,7 +64,7 @@ export default function Support() {
         <p className="text-white/60 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed">
           {lang === 'en'
             ? 'A racecar is built by students but paid for by partners. Here\'s how you can help — and what you get back.'
-            : 'Bolidą stato studentai, o finansuoja partneriai. Štai kaip gali prisidėti — ir ką gauni mainais.'}
+            : 'Bolidą gamina studentai, o finansiškai prie projekto prisideda partneriai. Štai keliai, kuriais galite prisidėti, ir ką gausite mainais.'}
         </p>
       </div>
 

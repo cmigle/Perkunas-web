@@ -6,25 +6,25 @@ const TRACKS = [
   {
     icon: 'precision_manufacturing',
     key: 'engineering',
-    lt: { t: 'Inžinerija', d: 'Rėmas, aerodinamika, pakaba, varomoji sistema, elektronika.' },
+    lt: { t: 'Inžinerija', d: 'Rėmas, aerodinamika, pakaba, varomoji sistema ir elektronika.' },
     en: { t: 'Engineering', d: 'Chassis, aero, suspension, powertrain, electronics.' }
   },
   {
     icon: 'developer_mode',
     key: 'software',
-    lt: { t: 'Programinė įranga', d: 'Duomenų rinkimas, ECU, telemetrija, valdiklių logika.' },
+    lt: { t: 'Programinė įranga', d: 'Duomenų rinkimas, ECU, telemetrija ir valdiklių logika.' },
     en: { t: 'Software', d: 'Data acquisition, ECU tuning, telemetry, control logic.' }
   },
   {
     icon: 'campaign',
     key: 'business',
-    lt: { t: 'Verslas ir komunikacija', d: 'Partnerystės, biudžetas, viešieji ryšiai, renginiai.' },
+    lt: { t: 'Verslas ir komunikacija', d: 'Partnerystės, biudžetas, viešieji ryšiai ir renginiai.' },
     en: { t: 'Business & PR', d: 'Partnerships, budget, communications, events.' }
   },
   {
     icon: 'handyman',
     key: 'fabrication',
-    lt: { t: 'Gamyba', d: 'Surinkimas, virinimas, kompozitai, CNC.' },
+    lt: { t: 'Gamyba', d: 'Surinkimas, virinimas, kompozitai ir CNC apdirbimas.' },
     en: { t: 'Fabrication', d: 'Assembly, welding, composites, CNC operation.' }
   }
 ];
@@ -33,7 +33,7 @@ const FAQ = [
   {
     lt: {
       q: 'Kiek laiko reikės skirti per savaitę?',
-      a: 'Vidutiniškai nuo 5 iki 15 valandų — tikslus laikas priklauso nuo tavo vaidmens komandoje ir sezono etapo. Arčiau varžybų tempas natūraliai didėja, o pradžioje — ramiau. Kartu su tavimi aptarsime, kiek realiai gali skirti, kad derinimas būtų komfortiškas.'
+      a: 'Vidutiniškai nuo 5 iki 15 valandų — tikslus laikas priklauso nuo Jūsų vaidmens komandoje ir sezono etapo. Artėjant varžyboms tempas natūraliai didėja, o sezono pradžioje yra ramiau. Kartu aptarsime, kiek realiai galite skirti, kad derinimas su studijomis būtų patogus.'
     },
     en: {
       q: 'How much time will I need to commit each week?',
@@ -43,7 +43,7 @@ const FAQ = [
   {
     lt: {
       q: 'Ar reikia turėti ankstesnės patirties?',
-      a: 'Visai ne — svarbiausia yra smalsumas ir noras mokytis. Komandoje yra ir tik pradedančių, ir patyrusių narių, tad visuomet turėsi iš ko mokytis ir su kuo pasitarti. Tavo įgūdžiai augs kartu su projektu.'
+      a: 'Visai ne — svarbiausia yra smalsumas ir noras mokytis. Komandoje yra ir pradedančiųjų, ir patyrusių narių, tad visuomet turėsite iš ko mokytis ir su kuo pasitarti. Įgūdžiai augs kartu su projektu.'
     },
     en: {
       q: 'Do I need prior experience?',
@@ -53,7 +53,7 @@ const FAQ = [
   {
     lt: {
       q: 'Ar reikia studijuoti KTU?',
-      a: 'Pirmenybė teikiama KTU studentams, nes komanda įsikūrusi būtent čia ir formaliai susijusi su universitetu. Tačiau mielai vertiname ir kitų universitetų studentų paraiškas — jei tavo interesai bei įgūdžiai dera su komandos poreikiais, parašyk ir aptarsime galimybes.'
+      a: 'Pirmenybė teikiama KTU studentams, nes komanda yra įsikūrusi būtent čia ir formaliai susijusi su universitetu. Tačiau mielai vertiname ir kitų universitetų studentų paraiškas — jei Jūsų interesai bei įgūdžiai atitinka komandos poreikius, parašykite ir aptarsime galimybes.'
     },
     en: {
       q: 'Do I need to study at KTU?',
@@ -63,7 +63,7 @@ const FAQ = [
   {
     lt: {
       q: 'Ar tai apmokama veikla?',
-      a: 'Perkūnas Racing Team — studentų iniciatyva, todėl atlygio forma kiek kitokia. Gauni tikrą inžinerinę patirtį, portfolio vertą projektą, tarptautinių varžybų išgyvenimus, ryšius su pramonės partneriais ir komandą, kuri auga kartu su tavimi. Daugeliui narių ši patirtis tampa stipriu tramplinu į pirmąją karjeros darbą.'
+      a: 'Perkūnas Racing Team yra studentų iniciatyva, todėl atlygio forma kiek kitokia. Įgyjate realios inžinerinės patirties, vertingą projektą savo aplankui, tarptautinių varžybų patirties, ryšių su pramonės partneriais ir komandą, kuri auga kartu su Jumis. Daugeliui narių ši patirtis tampa tvirtu pagrindu pradedant profesinę karjerą.'
     },
     en: {
       q: 'Is this a paid role?',
@@ -73,10 +73,10 @@ const FAQ = [
 ];
 
 const STEPS = [
-  { n: '01', lt: 'Užpildyk formą kontaktuose', en: 'Fill the form on the Contact page' },
-  { n: '02', lt: 'Pokalbis su departamentu', en: 'Interview with the department lead' },
+  { n: '01', lt: 'Užpildykite formą kontaktų puslapyje', en: 'Fill the form on the Contact page' },
+  { n: '02', lt: 'Pokalbis su skyriaus vadovu', en: 'Interview with the department lead' },
   { n: '03', lt: 'Bandomasis projektas', en: 'Trial project' },
-  { n: '04', lt: 'Oficialus prisijungimas', en: 'Officially join the team' }
+  { n: '04', lt: 'Oficialus prisijungimas prie komandos', en: 'Officially join the team' }
 ];
 
 export default function Join() {
@@ -100,7 +100,7 @@ export default function Join() {
         <p className="text-white/60 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed">
           {lang === 'en'
             ? 'Apply engineering knowledge on hardware that actually runs. Work in a team of 70+. Compete internationally.'
-            : 'Pritaikyk inžinerinį mąstymą realiai technikai. Dirbk 70+ žmonių komandoje. Varžykis tarptautiškai.'}
+            : 'Pritaikykite inžinerinį mąstymą realiai technikai. Dirbkite daugiau nei 70 žmonių komandoje. Varžykitės tarptautiniu lygiu.'}
         </p>
       </div>
 
@@ -194,10 +194,10 @@ export default function Join() {
           <div className="flex-1">
             <div className="mono-label mb-2">NEXT STEP</div>
             <h3 className="text-2xl sm:text-3xl font-black text-white mb-2">
-              {lang === 'en' ? 'Ready to apply?' : 'Pasiruošęs kandidatuoti?'}
+              {lang === 'en' ? 'Ready to apply?' : 'Pasiruošę kandidatuoti?'}
             </h3>
             <p className="text-white/60">
-              {lang === 'en' ? 'Reach out — we reply within 48 hours.' : 'Parašyk — atsakome per 48 val.'}
+              {lang === 'en' ? 'Reach out — we reply within 48 hours.' : 'Parašykite — atsakome per 48 val.'}
             </p>
           </div>
           <Button

@@ -112,7 +112,7 @@ export default function Hero() {
               <p className="text-white/50 text-sm sm:text-base max-w-xl leading-relaxed mt-4">
                 {lang === 'en'
                   ? 'The first-ever Formula Student team at Kaunas University of Technology. Founded 2025 by students, for students.'
-                  : 'Pirmoji Formula Student komanda Kauno technologijos universiteto istorijoje. Įkurta 2025 metais studentų iniciatyva.'}
+                  : 'Pirmoji Formula Student komanda Kauno technologijos universiteto istorijoje. Įsteigta 2025 m. studentų iniciatyva.'}
               </p>
 
               {/* CTAs — full-width at small, auto at sm+ */}
@@ -174,7 +174,7 @@ export default function Hero() {
                     {lang === 'en' ? 'REPRESENTING' : 'ATSTOVAUJAME'}
                   </div>
                   <div className="text-white font-medium text-sm leading-tight truncate">
-                    {lang === 'en' ? 'Lithuania · KTU Kaunas' : 'Lietuvą · KTU Kaunas'}
+                    {lang === 'en' ? 'Lithuania · KTU Kaunas' : 'Lietuvai · KTU Kaunas'}
                   </div>
                 </div>
               </div>

@@ -50,8 +50,8 @@ export default function Heritage() {
             ) : (
               <>
                 <span className="text-white font-semibold">Perkūnas</span> — baltų griausmo dievas.
-                Seniausias vardas mūsų kalboje, senesnis už pačią Lietuvą. Kai jis trenkia, dangus
-                skyla, o žemė dreba. Tokio standarto ir laikomės patys.
+                Tai vienas seniausių vardų mūsų kalboje, senesnis už pačią Lietuvą. Kai jis
+                trenkia, dangus skyla, o žemė sudreba. Tokio paties standarto laikomės ir mes.
               </>
             )}
           </p>
@@ -63,9 +63,9 @@ export default function Heritage() {
               </>
             ) : (
               <>
-                Lenktyniaujame po Lietuvos vėliava — geltona kaip saulė, žalia kaip mūsų miškai,
-                raudona kaip ugnis išmetimo vamzdyje. Sukurta Kaune. Lenktyniauja visur, kur
-                Formula Student.
+                Lenktyniaujame su Lietuvos vėliava — geltona spalva kaip saulė, žalia kaip mūsų
+                miškai, raudona kaip ugnis išmetimo vamzdyje. Bolidą kuriame Kaune, o lenktyniauti
+                vykstame visur, kur tik vyksta Formula Student varžybos.
               </>
             )}
           </p>

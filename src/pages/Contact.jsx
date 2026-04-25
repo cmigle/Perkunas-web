@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next';
 
 const SUBJECTS = [
   { key: 'partnership', lt: 'Partnerystė', en: 'Partnership' },
-  { key: 'membership', lt: 'Narystė', en: 'Membership' },
-  { key: 'sponsorship', lt: 'Sponsorystė', en: 'Sponsorship' },
+  { key: 'membership', lt: 'Narystė komandoje', en: 'Membership' },
+  { key: 'sponsorship', lt: 'Rėmimas', en: 'Sponsorship' },
   { key: 'other', lt: 'Kita', en: 'Other' }
 ];
 

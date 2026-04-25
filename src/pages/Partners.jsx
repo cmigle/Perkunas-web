@@ -92,29 +92,35 @@ export default function Partners() {
         })}
       </div>
 
-      {/* Partner cards */}
+      {/* Partner cards — entire card is a link to the partner's site
+          when one is provided. Cards without a URL stay non-interactive. */}
       <div className="grid grid-cols-1 min-[480px]:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
         {filtered.map((p) => {
           const tier = TIER_STYLES[p.tier];
+          const hasUrl = p.url && p.url !== '#';
+          const cardClass = `matte ${tier.ring} border transition-all hover:border-brand-400/60 hover:-translate-y-1 ${hasUrl ? 'cursor-pointer block group/card' : ''}`;
+          // Render the card as <a> when we have a URL, plain <div> otherwise.
+          // Using `as` would also work but a literal swap is simpler here.
+          const CardWrapper = hasUrl ? 'a' : 'div';
+          const wrapperProps = hasUrl
+            ? { href: p.url, target: '_blank', rel: 'noopener noreferrer', 'aria-label': `${p.name} — ${lang === 'en' ? 'visit website' : 'apsilankyti svetainėje'}` }
+            : {};
           return (
             <Card
               key={p.name}
-              className={`matte ${tier.ring} border transition-all hover:border-brand-400/60 hover:-translate-y-1`}
+              as={CardWrapper}
+              {...wrapperProps}
+              className={cardClass}
               shadow="none"
             >
               <CardBody className="p-0">
-                {/* Typographic wordmark panel — the partner name in big white
-                    letters. Cleaner than trying to recolor raster logos and
-                    always reads consistently across the whole grid. */}
-                <a
-                  href={p.url === '#' ? undefined : p.url}
-                  target={p.url === '#' ? undefined : '_blank'}
-                  rel="noopener noreferrer"
-                  className="block relative aspect-[5/2] bg-ink-900 border-b border-white/5 overflow-hidden group/logo"
-                >
+                {/* Typographic wordmark panel — partner name in big white
+                    letters. The whole card is the link, so this no longer
+                    needs to be its own anchor. */}
+                <div className="relative aspect-[5/2] bg-ink-900 border-b border-white/5 overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center p-6 text-center">
                     <span
-                      className="wordmark-bold text-white transition-colors duration-200 group-hover/logo:text-brand-400 leading-none"
+                      className={`wordmark-bold text-white leading-none transition-colors duration-200 ${hasUrl ? 'group-hover/card:text-brand-400' : ''}`}
                       style={{
                         // Auto-scale so long names like "Injector Dynamics"
                         // stay on one readable line: CSS clamp with a fallback
@@ -133,25 +139,19 @@ export default function Partners() {
                   <span className="absolute top-3 right-3 mono-label">
                     {lang === 'en' ? 'SINCE' : 'NUO'} {p.since}
                   </span>
-                </a>
+                  {/* External-link cue, only when a URL is present */}
+                  {hasUrl && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute bottom-3 right-3 text-white/35 group-hover/card:text-brand-400 transition-colors"
+                    >
+                      <span className="material-symbols-outlined text-[18px]">arrow_outward</span>
+                    </span>
+                  )}
+                </div>
 
-                {/* Content */}
+                {/* Content — no name repeat. Category + supplies + tags only. */}
                 <div className="p-5">
-                  <div className="flex items-start justify-between mb-1.5">
-                    <h3 className="text-white font-bold text-lg leading-tight">{p.name}</h3>
-                    {p.url !== '#' && (
-                      <a
-                        href={p.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-white/40 hover:text-brand-400 transition-colors shrink-0 ml-2"
-                        aria-label={`Visit ${p.name}`}
-                      >
-                        <span className="material-symbols-outlined text-[18px]">arrow_outward</span>
-                      </a>
-                    )}
-                  </div>
-
                   <div className="mono-label text-brand-400/90 mb-3">
                     {CATEGORY_LABELS[p.category]?.[lang].toUpperCase()}
                   </div>
@@ -177,7 +177,7 @@ export default function Partners() {
                     <div className="mt-3 pt-3 border-t border-white/5">
                       <div className="mono-label mb-1.5">{lang === 'en' ? 'WHAT WE BUILT' : 'KĄ SUKŪRĖME'}</div>
                       <p className="text-white/55 text-[13px] italic leading-snug">
-                        "{p.story[lang]}"
+                        “{p.story[lang]}”
                       </p>
                     </div>
                   )}

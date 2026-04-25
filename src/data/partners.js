@@ -11,7 +11,7 @@ export const PARTNERS_DATA = [
     category: 'software',
     tags: ['CFD', 'FEA', 'Simulation'],
     supplies: {
-      lt: 'Skaitmeninio srautų modeliavimo (CFD) ir konstrukcinio analizės licencijos.',
+      lt: 'Skaitmeninio srautų modeliavimo (CFD) ir konstrukcinės analizės licencijos.',
       en: 'CFD and structural FEA simulation licenses.'
     },
     since: 2025,
@@ -25,7 +25,7 @@ export const PARTNERS_DATA = [
     category: 'mechanical',
     tags: ['Bearings', 'Differential', 'Drivetrain'],
     supplies: {
-      lt: 'Guoliai, diferencialo komponentai, pavaros sistemos detalės.',
+      lt: 'Guoliai, diferencialo komponentai ir pavaros sistemos detalės.',
       en: 'Bearings, differential parts, drivetrain components.'
     },
     since: 2025,
@@ -39,7 +39,7 @@ export const PARTNERS_DATA = [
     category: 'digital',
     tags: ['Hosting', 'Domains', 'Infrastructure'],
     supplies: {
-      lt: 'Svetainės hostingas ir domeno paslaugos.',
+      lt: 'Svetainės talpinimo ir domeno paslaugos.',
       en: 'Website hosting and domain services.'
     },
     since: 2025,
@@ -81,7 +81,7 @@ export const PARTNERS_DATA = [
     category: 'powertrain',
     tags: ['Fuel injectors', 'Tuning'],
     supplies: {
-      lt: 'Aukšto debito degalų purkštukai ir kalibravimo duomenys.',
+      lt: 'Didelio našumo degalų purkštukai ir kalibravimo duomenys.',
       en: 'High-flow fuel injectors and calibration data.'
     },
     since: 2025,
@@ -95,7 +95,7 @@ export const PARTNERS_DATA = [
     category: 'electrical',
     tags: ['Harnesses', 'Connectors'],
     supplies: {
-      lt: 'Motorsporto kokybės jungtys ir laidai.',
+      lt: 'Motorsportui pritaikytos jungtys ir laidai.',
       en: 'Motorsport-grade connectors and wiring.'
     },
     since: 2025,
@@ -169,7 +169,7 @@ export const PARTNERS_DATA = [
     tier: 'bronze',
     category: 'mechanical',
     tags: ['Fasteners', 'Hardware'],
-    supplies: { lt: 'Lenktyninės kokybės tvirtinimo detalės.', en: 'Motorsport-grade fasteners.' },
+    supplies: { lt: 'Lenktynėms pritaikytos tvirtinimo detalės.', en: 'Motorsport-grade fasteners.' },
     since: 2025,
     story: null
   },
@@ -205,6 +205,6 @@ export const CATEGORY_LABELS = {
   powertrain:     { lt: 'Variklis', en: 'Powertrain', icon: 'bolt' },
   electrical:     { lt: 'Elektrika', en: 'Electrical', icon: 'electrical_services' },
   materials:      { lt: 'Medžiagos', en: 'Materials', icon: 'layers' },
-  digital:        { lt: 'Skaitmeniniai', en: 'Digital', icon: 'language' },
+  digital:        { lt: 'Skaitmeninės paslaugos', en: 'Digital', icon: 'language' },
   logistics:      { lt: 'Logistika', en: 'Logistics', icon: 'local_shipping' }
 };
