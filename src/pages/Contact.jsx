@@ -205,19 +205,17 @@ export default function Contact() {
                 </Button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                {/* FormSubmit config — these names are FormSubmit conventions */}
-                <input type="hidden" name="_subject" value="Perkūnas website — new inquiry" />
-                <input type="hidden" name="_template" value="table" />
-                <input type="hidden" name="_captcha" value="false" />
-                {/* Honeypot: hidden from users + AT accessibility tree, but
-                    bots fill every field they find. */}
+              <form onSubmit={handleSubmit} noValidate className="space-y-5">
+                {/* Honeypot: offscreen, hidden from humans and AT. Bots fill
+                    every field they find and get trapped here. */}
                 <input
                   type="text"
                   name="_honey"
                   tabIndex={-1}
                   autoComplete="off"
                   aria-hidden="true"
+                  value={values._honey}
+                  onChange={update('_honey')}
                   style={{
                     position: 'absolute',
                     left: '-10000px',
@@ -229,76 +227,131 @@ export default function Contact() {
                 />
 
                 <div className="grid sm:grid-cols-2 gap-4">
-                  <Input
-                    name="name"
-                    required
-                    isRequired
-                    autoComplete="name"
-                    variant="bordered"
-                    label={lang === 'en' ? 'Full name' : 'Vardas Pavardė'}
-                    classNames={{
-                      inputWrapper: 'bg-ink-800/60 border-white/10 data-[hover=true]:border-brand-400/40 group-data-[focus=true]:border-brand-400'
-                    }}
-                  />
-                  <Input
-                    name="email"
-                    type="email"
-                    required
-                    isRequired
-                    autoComplete="email"
-                    variant="bordered"
+                  <Field
+                    id="name"
+                    label={lang === 'en' ? 'Full name' : 'Vardas ir pavardė'}
+                    error={errors.name}
+                  >
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      autoComplete="name"
+                      value={values.name}
+                      onChange={update('name')}
+                      onBlur={onBlur('name')}
+                      aria-invalid={!!errors.name}
+                      aria-describedby={errors.name ? 'name-error' : undefined}
+                      className={fieldInputClass(errors.name)}
+                      placeholder={lang === 'en' ? 'Jane Doe' : 'Vardas Pavardenis'}
+                    />
+                  </Field>
+
+                  <Field
+                    id="email"
                     label="Email"
-                    classNames={{
-                      inputWrapper: 'bg-ink-800/60 border-white/10 data-[hover=true]:border-brand-400/40 group-data-[focus=true]:border-brand-400'
-                    }}
-                  />
+                    error={errors.email}
+                  >
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      autoComplete="email"
+                      value={values.email}
+                      onChange={update('email')}
+                      onBlur={onBlur('email')}
+                      aria-invalid={!!errors.email}
+                      aria-describedby={errors.email ? 'email-error' : undefined}
+                      className={fieldInputClass(errors.email)}
+                      placeholder="name@example.com"
+                    />
+                  </Field>
                 </div>
 
-                <Select
-                  name="subject"
-                  isRequired
-                  variant="bordered"
+                <Field
+                  id="subject"
                   label={lang === 'en' ? 'Subject' : 'Tema'}
-                  classNames={{
-                    trigger: 'bg-ink-800/60 border-white/10 data-[hover=true]:border-brand-400/40 data-[focus=true]:border-brand-400'
-                  }}
+                  error={errors.subject}
                 >
-                  {SUBJECTS.map((s) => (
-                    <SelectItem key={s.key}>{s[lang]}</SelectItem>
-                  ))}
-                </Select>
+                  <select
+                    id="subject"
+                    name="subject"
+                    value={values.subject}
+                    onChange={update('subject')}
+                    onBlur={onBlur('subject')}
+                    aria-invalid={!!errors.subject}
+                    aria-describedby={errors.subject ? 'subject-error' : undefined}
+                    className={fieldInputClass(errors.subject) + ' appearance-none pr-10 cursor-pointer'}
+                    style={{
+                      backgroundImage:
+                        "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1L6 6L11 1' stroke='rgba(255,255,255,0.55)' stroke-width='1.5'/></svg>\")",
+                      backgroundRepeat: 'no-repeat',
+                      backgroundPosition: 'right 14px center'
+                    }}
+                  >
+                    <option value="" disabled>
+                      {lang === 'en' ? 'Choose one…' : 'Pasirinkite…'}
+                    </option>
+                    {SUBJECTS.map((s) => (
+                      <option key={s.key} value={s.key} className="bg-ink-900 text-white">
+                        {s[lang]}
+                      </option>
+                    ))}
+                  </select>
+                </Field>
 
-                <Textarea
-                  name="message"
-                  required
-                  isRequired
-                  variant="bordered"
-                  minRows={5}
+                <Field
+                  id="message"
                   label={lang === 'en' ? 'Message' : 'Žinutė'}
-                  classNames={{
-                    inputWrapper: 'bg-ink-800/60 border-white/10 data-[hover=true]:border-brand-400/40 group-data-[focus=true]:border-brand-400'
-                  }}
-                />
+                  error={errors.message}
+                >
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    value={values.message}
+                    onChange={update('message')}
+                    onBlur={onBlur('message')}
+                    aria-invalid={!!errors.message}
+                    aria-describedby={errors.message ? 'message-error' : undefined}
+                    className={fieldInputClass(errors.message) + ' resize-y min-h-[120px]'}
+                    placeholder={lang === 'en'
+                      ? 'Tell us what this is about — a sentence or two is plenty.'
+                      : 'Trumpai parašykite, dėl ko kreipiatės — užteks kelių sakinių.'}
+                  />
+                </Field>
 
-                {error && (
-                  <div className="glass rounded-lg p-3 border-red-400/40 text-red-300 text-sm">
-                    {error}
+                {submitError && (
+                  <div
+                    role="alert"
+                    className="rounded-lg px-4 py-3 border border-red-400/50 bg-red-500/10 text-red-200 text-sm"
+                  >
+                    {submitError}
                   </div>
                 )}
 
-                <Button
-                  type="submit"
-                  color="primary"
-                  size="lg"
-                  radius="full"
-                  className="w-full sm:w-auto font-bold"
-                  isLoading={sending}
-                  endContent={!sending && <span className="material-symbols-outlined text-[18px]">send</span>}
-                >
-                  {sending
-                    ? lang === 'en' ? 'Sending…' : 'Siunčiama…'
-                    : lang === 'en' ? 'Send message' : 'Siųsti žinutę'}
-                </Button>
+                {/* Footer row — separated by a divider so the Send button is
+                    clearly its own action, not glued to the textarea. */}
+                <div className="pt-5 mt-2 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                  <p className="text-white/50 text-xs sm:text-sm">
+                    {lang === 'en'
+                      ? 'We reply within 48 hours. Your email is only used to reply to you.'
+                      : 'Atsakome per 48 val. Jūsų el. paštą naudojame tik atsakymui.'}
+                  </p>
+                  <Button
+                    type="submit"
+                    color="primary"
+                    size="lg"
+                    radius="full"
+                    className="w-full sm:w-auto font-bold px-7"
+                    isLoading={sending}
+                    endContent={!sending && <span className="material-symbols-outlined text-[18px]">send</span>}
+                  >
+                    {sending
+                      ? lang === 'en' ? 'Sending…' : 'Siunčiama…'
+                      : lang === 'en' ? 'Send message' : 'Siųsti žinutę'}
+                  </Button>
+                </div>
               </form>
             )}
           </CardBody>
@@ -306,4 +359,40 @@ export default function Contact() {
       </div>
     </div>
   );
+}
+
+/**
+ * One row: label on top, input below, optional error message beneath.
+ * All text is white/near-white so it reads clearly on the dark card.
+ */
+function Field({ id, label, error, children }) {
+  return (
+    <div>
+      <label
+        htmlFor={id}
+        className="block text-white text-sm font-semibold mb-1.5"
+      >
+        {label}
+      </label>
+      {children}
+      {error && (
+        <p id={`${id}-error`} role="alert" className="mt-1.5 text-red-300 text-[12.5px] leading-snug">
+          {error}
+        </p>
+      )}
+    </div>
+  );
+}
+
+/** Shared input/select/textarea class. Red border + focus ring when invalid.
+ *  Height is controlled by callers (fixed h-11 for inputs, min-h on textareas)
+ *  via the extra padding class below. */
+function fieldInputClass(hasError) {
+  const base =
+    'w-full rounded-lg bg-ink-800/70 border px-3.5 py-2.5 text-white text-[15px] placeholder:text-white/35 ' +
+    'outline-none transition-colors';
+  const borders = hasError
+    ? 'border-red-400/70 focus:border-red-400 focus:ring-2 focus:ring-red-400/30'
+    : 'border-white/15 hover:border-white/25 focus:border-brand-400 focus:ring-2 focus:ring-brand-400/30';
+  return `${base} ${borders}`;
 }
