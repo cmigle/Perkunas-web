@@ -31,7 +31,7 @@ export default function Team() {
       <div className="mb-10">
         <div className="flex items-center gap-2 mb-3">
           <span className="w-8 h-px bg-brand-400" />
-          <span className="mono-tag text-brand-400">OUR PEOPLE</span>
+          <span className="mono-tag text-brand-400">{lang === 'en' ? 'OUR PEOPLE' : 'MŪSŲ ŽMONĖS'}</span>
         </div>
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white mb-4">
           {lang === 'en' ? 'The Team' : 'Komanda'}
@@ -187,7 +187,7 @@ export default function Team() {
             <span className="material-symbols-outlined text-brand-400 text-[26px]">rocket_launch</span>
           </div>
           <div className="flex-1 text-center sm:text-left">
-            <div className="mono-label mb-1">RECRUITING</div>
+            <div className="mono-label mb-1">{lang === 'en' ? 'RECRUITING' : 'IEŠKOME NARIŲ'}</div>
             <div className="text-white font-bold text-lg">
               {lang === 'en' ? 'Want your photo on this page?' : 'Nori atsidurti šioje nuotraukoje?'}
             </div>

@@ -23,19 +23,19 @@ export default function CTASection() {
       title: lang === 'en' ? 'For Partners' : 'Partneriams',
       desc: lang === 'en'
         ? 'Support the next generation of engineers. Become part of our journey.'
-        : 'Paremk naują kartą inžinierių. Tapk mūsų kelionės dalimi.',
+        : 'Paremk naują inžinierių kartą. Tapk mūsų kelionės dalimi.',
       to: '/support',
       button: lang === 'en' ? 'Become a partner' : 'Tapk partneriu'
     },
     {
-      badge: 'PRESS',
-      icon: 'newsmode',
-      title: lang === 'en' ? 'For Media' : 'Spaudai',
+      badge: lang === 'en' ? 'CONTACTS' : 'KONTAKTAI',
+      icon: 'mail',
+      title: lang === 'en' ? 'Contact us' : 'Susisiek',
       desc: lang === 'en'
-        ? 'Press kit, photos, team bio — everything you need to cover our program.'
-        : 'Spaudos rinkinys, nuotraukos, komandos biografija — viskas ką reikia apie mus rašant.',
+        ? 'Questions, partnership, press. Drop us a message and we will reply within 48 hours.'
+        : 'Klausimai, partnerystė, spauda. Parašyk mums ir atsakysime per 48 val.',
       to: '/contact',
-      button: lang === 'en' ? 'Press kit' : 'Spaudos rinkinys'
+      button: lang === 'en' ? 'Contact' : 'Kontaktai'
     }
   ];
 

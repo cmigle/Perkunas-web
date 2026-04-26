@@ -34,7 +34,7 @@ export default function Partners() {
       <div className="mb-10">
         <div className="flex items-center gap-2 mb-3">
           <span className="w-8 h-px bg-brand-400" />
-          <span className="mono-tag text-brand-400">NETWORK</span>
+          <span className="mono-tag text-brand-400">{lang === 'en' ? 'NETWORK' : 'TINKLAS'}</span>
         </div>
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white mb-5 leading-[0.95]">
           {lang === 'en' ? (
@@ -45,8 +45,8 @@ export default function Partners() {
         </h1>
         <p className="text-white/60 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed">
           {lang === 'en'
-            ? 'Every bolt, every simulation licence, every welded seam exists because someone chose to invest in student engineering. These are the companies that make it possible.'
-            : 'Kiekviena sąvarža, kiekviena licencija, kiekviena suvirinta siūlė egzistuoja, nes kažkas nusprendė investuoti į studentų inžineriją. Štai jie.'}
+            ? 'A car does not reach the track on enthusiasm alone. Every bolt, every licence, every welded centimetre of metal becomes reality only because someone chose to back student engineering. Here is the team that stands behind us.'
+            : 'Bolidas į trasą neišvažiuoja vien iš entuziazmo. Kiekvienas varžtas, licencija ir suvirintas metalo centimetras tapo realybe tik todėl, kad kažkas nusprendė palaikyti studentų inžineriją. Štai komanda, kuri stovi už mūsų.'}
         </p>
 
         {/* Meta stats strip */}
@@ -103,7 +103,7 @@ export default function Partners() {
           // Using `as` would also work but a literal swap is simpler here.
           const CardWrapper = hasUrl ? 'a' : 'div';
           const wrapperProps = hasUrl
-            ? { href: p.url, target: '_blank', rel: 'noopener noreferrer', 'aria-label': `${p.name} — ${lang === 'en' ? 'visit website' : 'apsilankyti svetainėje'}` }
+            ? { href: p.url, target: '_blank', rel: 'noopener noreferrer', 'aria-label': `${p.name}, ${lang === 'en' ? 'visit website' : 'apsilankyti svetainėje'}` }
             : {};
           return (
             <Card
@@ -199,16 +199,16 @@ export default function Partners() {
       <Card className="matte mt-14" shadow="none">
         <CardBody className="p-8 sm:p-10 grid md:grid-cols-[1fr_auto] gap-6 items-center">
           <div>
-            <div className="mono-label mb-2">BECOME A PARTNER</div>
+            <div className="mono-label mb-2">{lang === 'en' ? 'BECOME A PARTNER' : 'TAPK PARTNERIU'}</div>
             <h3 className="text-2xl sm:text-3xl font-black text-white mb-2 leading-tight">
               {lang === 'en'
-                ? 'Put your logo on a working racecar.'
-                : 'Patalpink savo logotipą ant važiuojančio bolido.'}
+                ? 'Your logo could be on a racecar speeding around the track!'
+                : 'Tavo logotipas gali atsidurti ant lenktynių trasoje skriejančio bolido!'}
             </h3>
             <p className="text-white/60">
               {lang === 'en'
-                ? 'See tiers, perks and benefits on the support page.'
-                : 'Žiūrėk tiek pakopas, tiek privalumus paramos puslapyje.'}
+                ? 'You can find all sponsorship packages and partnership benefits on our support page.'
+                : 'Visus rėmimo paketus ir partnerystės privalumus rasi mūsų paramos puslapyje.'}
             </p>
           </div>
           <Button

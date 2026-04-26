@@ -13,7 +13,7 @@ const CHANNELS = [
   { label: 'Email', value: 'perkunasrt@gmail.com', href: 'mailto:perkunasrt@gmail.com', icon: 'mail' },
   { label: 'Instagram', value: '@perkunas_racing_ktu', href: 'https://www.instagram.com/perkunas_racing_ktu/', icon: 'photo_camera' },
   { label: 'LinkedIn', value: 'Perkūnas Racing', href: 'https://www.linkedin.com/company/perkunasrt/', icon: 'work' },
-  { label: 'Location', value: 'KTU · Kaunas, Lithuania', href: 'https://maps.google.com/?q=Kaunas+University+of+Technology', icon: 'location_on' }
+  { label: 'Location', value: 'KTU MIDF · Kaunas, Lithuania', href: 'https://maps.google.com/?q=KTU+Mechanikos+inžinerijos+ir+dizaino+fakultetas+Studentų+56+Kaunas', icon: 'location_on' }
 ];
 
 // ---------------------------------------------------------------------------
@@ -62,7 +62,7 @@ function validate(values, lang) {
   if (!msg) {
     errs.message = t('Please write a short message.', 'Parašykite trumpą žinutę.');
   } else if (msg.length < 10) {
-    errs.message = t('Your message is a bit too short — add a sentence or two.', 'Žinutė per trumpa — pridėkite sakinį ar du.');
+    errs.message = t('Your message is a bit too short. Add a sentence or two.', 'Žinutė per trumpa. Pridėkite sakinį ar du.');
   }
 
   return errs;
@@ -157,8 +157,8 @@ export default function Contact() {
         </h1>
         <p className="text-white/60 max-w-2xl">
           {lang === 'en'
-            ? 'Questions, partnership, press — drop us a message. We reply within 48 hours.'
-            : 'Klausimai, partnerystė, spauda — parašyk. Atsakome per 48 val.'}
+            ? 'Questions, partnership, press. Drop us a message. We reply within 48 hours.'
+            : 'Klausimai, partnerystė, spauda. Parašyk. Atsakome per 48 val.'}
         </p>
       </div>
 
@@ -195,7 +195,7 @@ export default function Contact() {
                 </div>
                 <div className="mono-tag text-brand-400 mb-2">MESSAGE RECEIVED</div>
                 <h3 className="text-2xl font-black text-white mb-2">
-                  {lang === 'en' ? 'Thanks — we got it.' : 'Ačiū — gavome.'}
+                  {lang === 'en' ? 'Thanks, we got it.' : 'Ačiū, gavome.'}
                 </h3>
                 <p className="text-white/60 mb-6">
                   {lang === 'en' ? 'We reply within 48 hours.' : 'Atsakysime per 48 val.'}
@@ -243,7 +243,7 @@ export default function Contact() {
                       aria-invalid={!!errors.name}
                       aria-describedby={errors.name ? 'name-error' : undefined}
                       className={fieldInputClass(errors.name)}
-                      placeholder={lang === 'en' ? 'Jane Doe' : 'Vardas Pavardenis'}
+                      placeholder={lang === 'en' ? 'Jane Doe' : 'Vardas Pavardė'}
                     />
                   </Field>
 
@@ -316,8 +316,8 @@ export default function Contact() {
                     aria-describedby={errors.message ? 'message-error' : undefined}
                     className={fieldInputClass(errors.message) + ' resize-y min-h-[120px]'}
                     placeholder={lang === 'en'
-                      ? 'Tell us what this is about — a sentence or two is plenty.'
-                      : 'Trumpai parašykite, dėl ko kreipiatės — užteks kelių sakinių.'}
+                      ? 'Tell us what this is about. A sentence or two is plenty.'
+                      : 'Trumpai parašykite, dėl ko kreipiatės. Užteks kelių sakinių.'}
                   />
                 </Field>
 

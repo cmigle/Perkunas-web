@@ -33,7 +33,7 @@ const FAQ = [
   {
     lt: {
       q: 'Kiek laiko reikės skirti per savaitę?',
-      a: 'Vidutiniškai nuo 5 iki 15 valandų — tikslus laikas priklauso nuo Jūsų vaidmens komandoje ir sezono etapo. Artėjant varžyboms tempas natūraliai didėja, o sezono pradžioje yra ramiau. Kartu aptarsime, kiek realiai galite skirti, kad derinimas su studijomis būtų patogus.'
+      a: 'Vidutiniškai nuo 5 iki 15 valandų. Tikslus laikas priklauso nuo Jūsų vaidmens komandoje ir sezono etapo. Artėjant varžyboms tempas natūraliai didėja, o sezono pradžioje yra ramiau. Kartu aptarsime, kiek realiai galite skirti, kad derinimas su studijomis būtų patogus.'
     },
     en: {
       q: 'How much time will I need to commit each week?',
@@ -43,21 +43,21 @@ const FAQ = [
   {
     lt: {
       q: 'Ar reikia turėti ankstesnės patirties?',
-      a: 'Visai ne — svarbiausia yra smalsumas ir noras mokytis. Komandoje yra ir pradedančiųjų, ir patyrusių narių, tad visuomet turėsite iš ko mokytis ir su kuo pasitarti. Įgūdžiai augs kartu su projektu.'
+      a: 'Visai ne. Svarbiausia yra smalsumas ir noras mokytis. Komandoje yra ir pradedančiųjų, ir patyrusių narių, tad visuomet turėsite iš ko mokytis ir su kuo pasitarti. Įgūdžiai augs kartu su projektu.'
     },
     en: {
       q: 'Do I need prior experience?',
-      a: 'Not at all — curiosity and a willingness to learn matter most. The team includes members from total beginners to more experienced engineers, so you’ll always have someone to learn from and ask. Your skills will grow alongside the project.'
+      a: 'Not at all. Curiosity and a willingness to learn matter most. The team includes members from total beginners to more experienced engineers, so you’ll always have someone to learn from and ask. Your skills will grow alongside the project.'
     }
   },
   {
     lt: {
       q: 'Ar reikia studijuoti KTU?',
-      a: 'Pirmenybė teikiama KTU studentams, nes komanda yra įsikūrusi būtent čia ir formaliai susijusi su universitetu. Tačiau mielai vertiname ir kitų universitetų studentų paraiškas — jei Jūsų interesai bei įgūdžiai atitinka komandos poreikius, parašykite ir aptarsime galimybes.'
+      a: 'Pirmenybė teikiama KTU studentams, nes komanda yra įsikūrusi būtent čia ir formaliai susijusi su universitetu. Tačiau mielai vertiname ir kitų universitetų studentų paraiškas. Jei Jūsų interesai bei įgūdžiai atitinka komandos poreikius, parašykite ir aptarsime galimybes.'
     },
     en: {
       q: 'Do I need to study at KTU?',
-      a: 'Priority goes to KTU students since the team is based here and formally affiliated with the university. That said, we warmly welcome applications from students at other universities — if your interests and skills match what the team needs, reach out and we’ll discuss the options together.'
+      a: 'Priority goes to KTU students since the team is based here and formally affiliated with the university. That said, we warmly welcome applications from students at other universities. If your interests and skills match what the team needs, reach out and we’ll discuss the options together.'
     }
   },
   {
@@ -197,7 +197,7 @@ export default function Join() {
               {lang === 'en' ? 'Ready to apply?' : 'Pasiruošę kandidatuoti?'}
             </h3>
             <p className="text-white/60">
-              {lang === 'en' ? 'Reach out — we reply within 48 hours.' : 'Parašykite — atsakome per 48 val.'}
+              {lang === 'en' ? 'Reach out. We reply within 48 hours.' : 'Parašykite. Atsakome per 48 val.'}
             </p>
           </div>
           <Button

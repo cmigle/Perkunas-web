@@ -60,7 +60,7 @@ export default function MotionReel() {
             {lang === 'en' ? 'CLIP · TESTING SESSION' : 'KLIPAS · BANDYMAI'}
           </div>
           <div className="text-white text-lg sm:text-xl font-medium drop-shadow">
-            {lang === 'en' ? 'From the workshop to the asphalt.' : 'Nuo dirbtuvių iki asfalto.'}
+            {lang === 'en' ? 'From the workshop to the asphalt.' : 'Bolidas judesyje.'}
           </div>
         </div>
       </div>

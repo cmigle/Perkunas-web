@@ -4,7 +4,7 @@ import { Card, CardBody } from '@heroui/react';
 const VALUES = [
   { icon: 'bolt', lt: { t: 'Greitis', d: 'Greitos iteracijos, greiti sprendimai, greita mokymosi kreivė.' }, en: { t: 'Speed', d: 'Fast iteration, fast decisions, fast learning curves.' } },
   { icon: 'precision_manufacturing', lt: { t: 'Tikslumas', d: 'Inžinerinis tikslumas kiekvienoje detalėje ir kiekvienoje kodo eilutėje.' }, en: { t: 'Precision', d: 'Engineering precision in every bolt and line of code.' } },
-  { icon: 'handshake', lt: { t: 'Komanda', d: 'Jokių pavienių didvyrių — viskas vyksta kaip komandinis sportas.' }, en: { t: 'Team', d: 'No lone heroes — everything is a team sport.' } },
+  { icon: 'handshake', lt: { t: 'Komanda', d: 'Jokių pavienių didvyrių. Viskas vyksta kaip komandinis sportas.' }, en: { t: 'Team', d: 'No lone heroes. Everything is a team sport.' } },
   { icon: 'open_in_new', lt: { t: 'Atvirumas', d: 'Dalijamės tuo, ką išmokstame. Mokomės vieni iš kitų.' }, en: { t: 'Openness', d: 'We share what we learn. We learn from each other.' } }
 ];
 
@@ -25,7 +25,7 @@ export default function About() {
       <div className="mb-12 sm:mb-16">
         <div className="flex items-center gap-2 mb-3">
           <span className="w-8 h-px bg-brand-400" />
-          <span className="mono-tag text-brand-400">WHO WE ARE</span>
+          <span className="mono-tag text-brand-400">{lang === 'en' ? 'WHO WE ARE' : 'KAS MES'}</span>
         </div>
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white mb-5 sm:mb-6 leading-[0.95]">
           {lang === 'en' ? (
@@ -36,8 +36,8 @@ export default function About() {
         </h1>
         <p className="text-white/60 text-base sm:text-lg md:text-xl max-w-3xl leading-relaxed">
           {lang === 'en'
-            ? 'Perkūnas Racing Team is the first-ever Formula Student team at Kaunas University of Technology, founded in 2025. We design, build and race a single-seater combustion racecar — and in doing so, we train the engineers Lithuanian industry needs.'
-            : 'Perkūnas Racing Team — pirmoji Formula Student komanda Kauno technologijos universitete, įsteigta 2025 m. Projektuojame, gaminame ir lenktyniaujame vidaus degimo bolidu — taip ugdome inžinierius, kurių reikia Lietuvos pramonei.'}
+            ? 'Perkūnas Racing Team is the first-ever Formula Student team at Kaunas University of Technology, founded in 2025. We design, build and race a single-seater combustion racecar, and in doing so, we train the engineers Lithuanian industry needs.'
+            : 'Perkūnas Racing Team yra pirmoji Formula Student komanda Kauno technologijos universitete, įsteigta 2025 m. Projektuojame, gaminame ir lenktyniaujame vidaus degimo bolidu. Taip ugdome inžinierius, kurių reikia Lietuvos pramonei.'}
         </p>
 
         {/* Gallery strip — team + car photos, intentionally horizontal */}
@@ -65,19 +65,19 @@ export default function About() {
       <Card className="glass mb-12 sm:mb-16" shadow="none">
         <CardBody className="p-6 sm:p-10 md:p-12 grid md:grid-cols-[auto_1fr] gap-6 md:gap-8 items-start">
           <div>
-            <div className="mono-label mb-3">MISSION</div>
+            <div className="mono-label mb-3">{lang === 'en' ? 'MISSION' : 'MISIJA'}</div>
             <div className="text-6xl sm:text-7xl md:text-8xl font-black text-brand-400 leading-none">01</div>
           </div>
           <div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-4 leading-tight">
               {lang === 'en'
-                ? 'More than a car — a training ground.'
-                : 'Daugiau nei bolidas — mokymosi aikštelė.'}
+                ? 'More than a car, a training ground.'
+                : 'Daugiau nei bolidas. Mokymosi aikštelė.'}
             </h2>
             <p className="text-white/70 text-base sm:text-lg leading-relaxed">
               {lang === 'en'
-                ? 'Every year we start from blank paper and finish with a running, roaring, driving competition car. The car is the outcome — but the real product is what it takes to build it: the coordination, the CAD, the negotiations with suppliers, the late nights, the failed prototypes, the working prototypes.'
-                : 'Kasmet pradedame nuo tuščio popieriaus lapo, o baigiame veikiančiu, ūžiančiu, varžybose važiuojančiu bolidu. Bolidas yra rezultatas, tačiau svarbiausia yra procesas, dėl kurio jis atsiranda: koordinavimas, projektavimas, derybos su tiekėjais, vakarai dirbtuvėse, nepavykę bandymai ir pavykę sprendimai.'}
+                ? 'Every year we start from blank paper and finish with a running, roaring, driving competition car. The car is the outcome, but the real product is what it takes to build it: the coordination, the CAD, the negotiations with suppliers, the late nights, the failed prototypes, the working prototypes.'
+                : 'Kasmet pradedame nuo balto popieriaus lapo, o baigiame veikiančiu, griaudinčiu, varžybose skriejančiu bolidu. Bolidas yra rezultatas, tačiau svarbiausia yra procesas, kurio metu jis gimsta: koordinavimas, projektavimas, derybos su tiekėjais, vakarai dirbtuvėse, nesėkmingi bandymai ir pasiteisinę sprendimai.'}
             </p>
           </div>
         </CardBody>
@@ -86,7 +86,7 @@ export default function About() {
       {/* Values grid */}
       <section className="mb-16">
         <div className="flex items-center gap-2 mb-8">
-          <span className="mono-tag text-brand-400">VALUES</span>
+          <span className="mono-tag text-brand-400">{lang === 'en' ? 'VALUES' : 'VERTYBĖS'}</span>
           <span className="flex-1 h-px bg-white/10" />
           <span className="mono-label">04</span>
         </div>
@@ -111,16 +111,16 @@ export default function About() {
       {/* Timeline — horizontal scrollable on mobile, evenly spaced on desktop */}
       <section>
         <div className="flex items-center gap-2 mb-8">
-          <span className="mono-tag text-brand-400">HISTORY</span>
+          <span className="mono-tag text-brand-400">{lang === 'en' ? 'HISTORY' : 'ISTORIJA'}</span>
           <span className="flex-1 h-px bg-white/10" />
           <span className="mono-label">{MILESTONES.length}</span>
         </div>
         <div className="glass rounded-2xl p-6 sm:p-8 overflow-x-auto no-scrollbar">
-          <div className="flex gap-4 md:gap-6 min-w-max md:min-w-0 md:grid md:grid-cols-5 relative">
+          <div className="flex gap-4 md:gap-6 min-w-max md:min-w-0 md:grid md:grid-cols-4 relative">
             <div className="hidden md:block absolute top-5 left-4 right-4 h-px bg-gradient-to-r from-brand-400 via-brand-400/40 to-brand-400/10" />
             {MILESTONES.map((m, i) => (
-              <div key={i} className="relative pt-12 min-w-[140px]">
-                <div className="absolute top-2 left-0 w-6 h-6 rounded-full bg-ink-950 border-2 border-brand-400 shadow-[0_0_12px_rgba(250,143,49,0.5)] flex items-center justify-center">
+              <div key={i} className="relative pt-12 min-w-[140px] md:flex md:flex-col md:items-center md:text-center">
+                <div className="absolute top-2 left-0 md:left-1/2 md:-translate-x-1/2 w-6 h-6 rounded-full bg-ink-950 border-2 border-brand-400 shadow-[0_0_12px_rgba(250,143,49,0.5)] flex items-center justify-center">
                   <div className="w-2 h-2 rounded-full bg-brand-400" />
                 </div>
                 <div className="mono-tag text-brand-400 mb-1">{m.year}</div>

@@ -43,29 +43,29 @@ export default function Heritage() {
           <p>
             {lang === 'en' ? (
               <>
-                <span className="text-white font-semibold">Perkūnas</span> is the Baltic god of thunder —
+                <span className="text-white font-semibold">Perkūnas</span> is the Baltic god of thunder,
                 the oldest name in our language, older than Lithuania itself. When he strikes, the
                 sky splits and the earth shakes. That's the standard we hold ourselves to.
               </>
             ) : (
               <>
-                <span className="text-white font-semibold">Perkūnas</span> — baltų griausmo dievas.
+                <span className="text-white font-semibold">Perkūnas</span> yra baltų griausmo dievas.
                 Tai vienas seniausių vardų mūsų kalboje, senesnis už pačią Lietuvą. Kai jis
-                trenkia, dangus skyla, o žemė sudreba. Tokio paties standarto laikomės ir mes.
+                trenkia, skyla dangus ir sudreba žemė. Tokius pat reikalavimus keliame ir sau.
               </>
             )}
           </p>
           <p>
             {lang === 'en' ? (
               <>
-                We race under Lithuania's colors — yellow for the sun, green for our forests, red
+                We race under Lithuania's colors, yellow for the sun, green for our forests, red
                 for the fire in the exhaust. Built in Kaunas. Raced wherever Formula Student goes.
               </>
             ) : (
               <>
-                Lenktyniaujame su Lietuvos vėliava — geltona spalva kaip saulė, žalia kaip mūsų
-                miškai, raudona kaip ugnis išmetimo vamzdyje. Bolidą kuriame Kaune, o lenktyniauti
-                vykstame visur, kur tik vyksta Formula Student varžybos.
+                Mūsų bolidą puošia Lietuvos vėliava: geltona kaip saulė, žalia kaip mūsų
+                miškai, o raudona kaip ugnis išmetimo vamzdyje. Bolidą kuriame Kaune, o lenktyniauti
+                vykstame visur, kur tik rengiamos „Formula Student“ varžybos.
               </>
             )}
           </p>

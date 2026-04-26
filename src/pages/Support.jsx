@@ -63,7 +63,7 @@ export default function Support() {
         </h1>
         <p className="text-white/60 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed">
           {lang === 'en'
-            ? 'A racecar is built by students but paid for by partners. Here\'s how you can help — and what you get back.'
+            ? 'A racecar is built by students but paid for by partners. Here\'s how you can help, and what you get back.'
             : 'Bolidą gamina studentai, o finansiškai prie projekto prisideda partneriai. Štai keliai, kuriais galite prisidėti, ir ką gausite mainais.'}
         </p>
       </div>
@@ -156,7 +156,7 @@ export default function Support() {
             <p className="text-white/70 leading-relaxed">
               {lang === 'en'
                 ? 'Every euro goes toward materials, machining time, competition entry fees, and travel. In return, you get access to a pipeline of Lithuanian engineering talent that has already shipped real hardware.'
-                : 'Kiekvienas euras skirtas medžiagoms, apdirbimui, varžybų mokesčiams ir kelionėms. Mainais — prieiga prie Lietuvos inžinerinio talento, kuris jau pristatė veikiančią techniką.'}
+                : 'Kiekvienas euras skirtas medžiagoms, apdirbimui, varžybų mokesčiams ir kelionėms. Mainais gausite prieigą prie Lietuvos inžinerinio talento, kuris jau pristatė veikiančią techniką.'}
             </p>
           </div>
         </CardBody>

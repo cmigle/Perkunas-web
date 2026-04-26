@@ -97,13 +97,13 @@ export default function Hero() {
               <p className="text-white/80 text-lg sm:text-xl max-w-xl leading-relaxed mb-2">
                 {lang === 'en' ? (
                   <>
-                    We're not just building a car —
+                    We're not just building a car,
                     <br className="hidden sm:block" />
                     <span className="text-brand-400">we're building a legacy.</span>
                   </>
                 ) : (
                   <>
-                    Mes ne tik kuriame bolidą —
+                    Mes ne tik kuriame bolidą,
                     <br className="hidden sm:block" />
                     <span className="text-brand-400">mes kuriame istoriją.</span>
                   </>
@@ -185,7 +185,7 @@ export default function Hero() {
         {/* Bottom stats row — approachable numbers only (team size + car basics) */}
         <div className="relative z-10 grid grid-cols-3 border-t border-white/8 bg-black/55 backdrop-blur-sm divide-x divide-white/8">
           {[
-            { v: '70+', l: lang === 'en' ? 'MEMBERS' : 'NARIAI' },
+            { v: '70+', l: lang === 'en' ? 'MEMBERS' : 'NARIŲ' },
             { v: '120', l: lang === 'en' ? 'HORSEPOWER' : 'ARKL. GALIOS' },
             { v: '<300', l: lang === 'en' ? 'KG WEIGHT' : 'KG SVORIS' }
           ].map((st) => (
