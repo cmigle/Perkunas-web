@@ -150,7 +150,7 @@ export default function Contact() {
       <div className="mb-8 sm:mb-10">
         <div className="flex items-center gap-2 mb-3">
           <span className="w-8 h-px bg-brand-400" />
-          <span className="mono-tag text-brand-400">REACH OUT</span>
+          <span className="mono-tag text-brand-400">{lang === 'en' ? 'REACH OUT' : 'PARAŠYK'}</span>
         </div>
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white mb-4">
           {lang === 'en' ? 'Contact' : 'Kontaktai'}
@@ -193,7 +193,7 @@ export default function Contact() {
                 <div className="w-16 h-16 rounded-full bg-brand-400/15 border border-brand-400/40 flex items-center justify-center mx-auto mb-5">
                   <span className="material-symbols-outlined text-brand-400 text-[32px]">check</span>
                 </div>
-                <div className="mono-tag text-brand-400 mb-2">MESSAGE RECEIVED</div>
+                <div className="mono-tag text-brand-400 mb-2">{lang === 'en' ? 'MESSAGE RECEIVED' : 'ŽINUTĖ GAUTA'}</div>
                 <h3 className="text-2xl font-black text-white mb-2">
                   {lang === 'en' ? 'Thanks, we got it.' : 'Ačiū, gavome.'}
                 </h3>

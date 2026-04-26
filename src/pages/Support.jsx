@@ -52,7 +52,7 @@ export default function Support() {
       <div className="mb-10 sm:mb-14">
         <div className="flex items-center gap-2 mb-3">
           <span className="w-8 h-px bg-brand-400" />
-          <span className="mono-tag text-brand-400">SUPPORT US</span>
+          <span className="mono-tag text-brand-400">{lang === 'en' ? 'SUPPORT US' : 'PAREMK MUS'}</span>
         </div>
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white mb-5 leading-[0.95]">
           {lang === 'en' ? (
@@ -71,7 +71,7 @@ export default function Support() {
       {/* Ways to help */}
       <section className="mb-16">
         <div className="flex items-center gap-2 mb-8">
-          <span className="mono-tag text-brand-400">WAYS TO HELP</span>
+          <span className="mono-tag text-brand-400">{lang === 'en' ? 'WAYS TO HELP' : 'KAIP PADĖTI'}</span>
           <span className="flex-1 h-px bg-white/10" />
           <span className="mono-label">{WAYS.length}</span>
         </div>
@@ -94,7 +94,7 @@ export default function Support() {
       {/* Pricing tiers */}
       <section className="mb-16">
         <div className="flex items-center gap-2 mb-8">
-          <span className="mono-tag text-brand-400">SPONSORSHIP TIERS</span>
+          <span className="mono-tag text-brand-400">{lang === 'en' ? 'SPONSORSHIP TIERS' : 'PARAMOS PAKOPOS'}</span>
           <span className="flex-1 h-px bg-white/10" />
           <span className="mono-label">{TIERS.length}</span>
         </div>
@@ -144,19 +144,19 @@ export default function Support() {
       <Card className="glass" shadow="none">
         <CardBody className="p-8 sm:p-10 grid md:grid-cols-[auto_1fr] gap-8">
           <div>
-            <div className="mono-label mb-3">WHY IT MATTERS</div>
+            <div className="mono-label mb-3">{lang === 'en' ? 'WHY IT MATTERS' : 'KODĖL TAI SVARBU'}</div>
             <div className="text-8xl font-black text-brand-400 leading-none">€</div>
           </div>
           <div>
             <h2 className="text-2xl sm:text-3xl font-black text-white mb-3 leading-tight">
               {lang === 'en'
-                ? 'Your support builds engineers, not just cars.'
+                ? 'Your support builds engineers, not just a car.'
                 : 'Tavo parama kuria inžinierius, ne tik bolidus.'}
             </h2>
             <p className="text-white/70 leading-relaxed">
               {lang === 'en'
-                ? 'Every euro goes toward materials, machining time, competition entry fees, and travel. In return, you get access to a pipeline of Lithuanian engineering talent that has already shipped real hardware.'
-                : 'Kiekvienas euras skirtas medžiagoms, apdirbimui, varžybų mokesčiams ir kelionėms. Mainais gausite prieigą prie Lietuvos inžinerinio talento, kuris jau pristatė veikiančią techniką.'}
+                ? 'Every euro goes to materials, machining time, competition entry fees and travel. In return you get a direct line to Lithuanian engineering students who are designing and building a real Formula Student car.'
+                : 'Kiekvienas euras keliauja medžiagoms, apdirbimui, varžybų mokesčiams ir kelionėms. Mainais gausite tiesioginį ryšį su Lietuvos inžinerijos studentais, kurie projektuoja ir stato tikrą Formula Student bolidą.'}
             </p>
           </div>
         </CardBody>

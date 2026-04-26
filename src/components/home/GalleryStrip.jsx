@@ -4,13 +4,13 @@ import { useTranslation } from 'react-i18next';
 // gives a motorsport-magazine feel without the photos needing to match aspect.
 const PHOTOS = [
   {
-    src: '/images/team-ktu-full.jpg',
+    src: '/images/TeamFromDrone.7kRmZBe6.png',
     alt: { lt: 'Visa komanda prie KTU', en: 'The full team at KTU' },
     tag: { lt: 'KOMANDA', en: 'TEAM' },
     span: 'md:col-span-2 md:row-span-2'
   },
   {
-    src: '/images/car-garage-cockpit.jpg',
+    src: '/images/CarInGarage.BukR3Qsy.jpg',
     alt: { lt: 'Bolidas dirbtuvėse', en: 'Car in the garage' },
     tag: { lt: 'DIRBTUVĖS', en: 'GARAGE' },
     span: ''

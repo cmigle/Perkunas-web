@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { Card, CardBody } from '@heroui/react';
 import { TEAM_MEMBERS } from '../data/images';
 
@@ -102,6 +103,43 @@ export default function Team() {
                 </Card>
               );
             })}
+
+            {/* Recruiting CTA — fills the empty slot(s) at the end of the leads
+                grid. Spans two columns at md (3-col grid: leaves 2 holes after
+                7 leads) so it sits flush next to Vytautė. At 2xl (4-col grid:
+                only 1 hole) it shrinks back to a single column. */}
+            <Card
+              as={Link}
+              to="/join"
+              className="glass overflow-hidden group border border-dashed border-brand-400/40 hover:border-brand-400 transition-colors min-[480px]:col-span-2 md:col-span-2 2xl:col-span-1"
+              shadow="none"
+            >
+              <CardBody className="p-0 h-full">
+                <div className="aspect-[4/5] md:aspect-auto md:min-h-full bg-ink-900/60 relative overflow-hidden flex flex-col items-center justify-center text-center p-8">
+                  {/* Faux silhouette portrait */}
+                  <div className="relative mb-5">
+                    <div className="w-24 h-24 rounded-full bg-brand-400/10 border-2 border-dashed border-brand-400/50 flex items-center justify-center">
+                      <span className="material-symbols-outlined text-brand-400/70 text-[56px]">person</span>
+                    </div>
+                  </div>
+                  <span className="mono-tag text-[10px] text-brand-400 mb-2">
+                    {lang === 'en' ? 'YOUR SPOT' : 'TAVO VIETA'}
+                  </span>
+                  <h3 className="text-white font-bold text-xl mb-2 leading-tight">
+                    {lang === 'en' ? 'Could be you.' : 'Galėtum būti tu.'}
+                  </h3>
+                  <p className="text-white/55 text-sm leading-relaxed mb-5 max-w-xs">
+                    {lang === 'en'
+                      ? 'We are recruiting for the next season. Engineering, software, business and fabrication roles are open.'
+                      : 'Ieškome narių kitam sezonui. Atviros inžinerijos, programavimo, verslo ir gamybos pozicijos.'}
+                  </p>
+                  <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-400 text-ink-950 font-bold group-hover:brightness-110 transition-all">
+                    {lang === 'en' ? 'Join the team' : 'Prisijunk'}
+                    <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+                  </span>
+                </div>
+              </CardBody>
+            </Card>
           </div>
         </section>
       )}
@@ -180,26 +218,6 @@ export default function Team() {
         </>
       )}
 
-      {/* Join hint */}
-      <Card className="glass mt-14" shadow="none">
-        <CardBody className="p-7 flex flex-col sm:flex-row items-center gap-5">
-          <div className="w-14 h-14 rounded-2xl bg-brand-400/15 border border-brand-400/30 flex items-center justify-center">
-            <span className="material-symbols-outlined text-brand-400 text-[26px]">rocket_launch</span>
-          </div>
-          <div className="flex-1 text-center sm:text-left">
-            <div className="mono-label mb-1">{lang === 'en' ? 'RECRUITING' : 'IEŠKOME NARIŲ'}</div>
-            <div className="text-white font-bold text-lg">
-              {lang === 'en' ? 'Want your photo on this page?' : 'Nori atsidurti šioje nuotraukoje?'}
-            </div>
-          </div>
-          <a
-            href="/join"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-400 text-ink-950 font-bold hover:brightness-110 transition-all"
-          >
-            {lang === 'en' ? 'Join the team' : 'Prisijunk'}
-          </a>
-        </CardBody>
-      </Card>
     </div>
   );
 }

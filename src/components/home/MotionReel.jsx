@@ -40,7 +40,7 @@ export default function MotionReel() {
           loop
           playsInline
           preload="metadata"
-          poster="/images/car-garage-cockpit.jpg"
+          poster="/images/CarInGarage.BukR3Qsy.jpg"
           className="absolute inset-0 w-full h-full object-cover"
         />
         {/* gradient for caption legibility */}

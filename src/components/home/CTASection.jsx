@@ -43,7 +43,7 @@ export default function CTASection() {
     <section className="max-w-6xl mx-auto px-4 sm:px-6 py-20">
       <div className="flex items-center gap-2 mb-3">
         <span className="w-8 h-px bg-brand-400" />
-        <span className="mono-tag text-brand-400">GET INVOLVED</span>
+        <span className="mono-tag text-brand-400">{lang === 'en' ? 'GET INVOLVED' : 'PRISIDĖK'}</span>
       </div>
       <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-white mb-12 max-w-2xl">
         {lang === 'en' ? 'Join the journey' : 'Prisijunk prie kelionės'}

@@ -37,7 +37,7 @@ const FAQ = [
     },
     en: {
       q: 'How much time will I need to commit each week?',
-      a: 'Typically somewhere between 5 and 15 hours, depending on your role and where we are in the season. The pace naturally picks up closer to competitions and is calmer early on. We’ll agree together on what realistically fits your schedule so it stays sustainable.'
+      a: 'Roughly 5 to 15 hours a week, depending on your role and the time of season. Things get busier as competitions approach and quieter early on. We will work out a realistic time commitment with you so it fits around your studies.'
     }
   },
   {
@@ -47,7 +47,7 @@ const FAQ = [
     },
     en: {
       q: 'Do I need prior experience?',
-      a: 'Not at all. Curiosity and a willingness to learn matter most. The team includes members from total beginners to more experienced engineers, so you’ll always have someone to learn from and ask. Your skills will grow alongside the project.'
+      a: 'No. What matters most is curiosity and a willingness to learn. The team mixes complete beginners with more experienced engineers, so there is always someone to ask. Your skills will grow with the project.'
     }
   },
   {
@@ -57,7 +57,7 @@ const FAQ = [
     },
     en: {
       q: 'Do I need to study at KTU?',
-      a: 'Priority goes to KTU students since the team is based here and formally affiliated with the university. That said, we warmly welcome applications from students at other universities. If your interests and skills match what the team needs, reach out and we’ll discuss the options together.'
+      a: 'KTU students get priority because the team is based here and formally tied to the university. We still welcome applications from students at other universities. If your interests and skills match what we need, get in touch and we will figure something out.'
     }
   },
   {
@@ -67,7 +67,7 @@ const FAQ = [
     },
     en: {
       q: 'Is this a paid role?',
-      a: 'Perkūnas Racing Team is a student-led initiative, so what you get back looks a little different. You gain hands-on engineering experience, a portfolio-worthy project, international competition exposure, industry partner connections and a team that grows alongside you. For many of our members, this becomes a strong stepping stone into their first professional role.'
+      a: 'No. Perkūnas Racing Team is a student-led project, so the payoff is different. You walk away with real engineering experience, a serious project for your CV, international competition exposure and direct contact with industry partners. For many members it has been their first step into a professional engineering job.'
     }
   }
 ];
@@ -88,7 +88,7 @@ export default function Join() {
       <div className="mb-10 sm:mb-12">
         <div className="flex items-center gap-2 mb-3">
           <span className="w-8 h-px bg-brand-400" />
-          <span className="mono-tag text-brand-400">RECRUITING</span>
+          <span className="mono-tag text-brand-400">{lang === 'en' ? 'RECRUITING' : 'IEŠKOME NARIŲ'}</span>
         </div>
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white mb-5 leading-[0.95]">
           {lang === 'en' ? (
@@ -107,7 +107,7 @@ export default function Join() {
       {/* Tracks */}
       <section className="mb-16">
         <div className="flex items-center gap-2 mb-8">
-          <span className="mono-tag text-brand-400">TRACKS</span>
+          <span className="mono-tag text-brand-400">{lang === 'en' ? 'TRACKS' : 'KRYPTYS'}</span>
           <span className="flex-1 h-px bg-white/10" />
           <span className="mono-label">{TRACKS.length}</span>
         </div>
@@ -132,7 +132,7 @@ export default function Join() {
       {/* Process steps */}
       <section className="mb-16">
         <div className="flex items-center gap-2 mb-8">
-          <span className="mono-tag text-brand-400">PROCESS</span>
+          <span className="mono-tag text-brand-400">{lang === 'en' ? 'PROCESS' : 'PROCESAS'}</span>
           <span className="flex-1 h-px bg-white/10" />
           <span className="mono-label">{STEPS.length}</span>
         </div>
@@ -192,7 +192,7 @@ export default function Join() {
       <Card className="glass" shadow="none">
         <CardBody className="p-8 sm:p-10 flex flex-col md:flex-row items-start md:items-center gap-6">
           <div className="flex-1">
-            <div className="mono-label mb-2">NEXT STEP</div>
+            <div className="mono-label mb-2">{lang === 'en' ? 'NEXT STEP' : 'KITAS ŽINGSNIS'}</div>
             <h3 className="text-2xl sm:text-3xl font-black text-white mb-2">
               {lang === 'en' ? 'Ready to apply?' : 'Pasiruošę kandidatuoti?'}
             </h3>

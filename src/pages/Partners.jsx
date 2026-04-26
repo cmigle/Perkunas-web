@@ -45,7 +45,7 @@ export default function Partners() {
         </h1>
         <p className="text-white/60 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed">
           {lang === 'en'
-            ? 'A car does not reach the track on enthusiasm alone. Every bolt, every licence, every welded centimetre of metal becomes reality only because someone chose to back student engineering. Here is the team that stands behind us.'
+            ? 'A racecar does not reach the track on enthusiasm alone. Every bolt, every licence and every welded centimetre of metal exists because someone chose to back student engineering. These are the companies that make it possible.'
             : 'Bolidas į trasą neišvažiuoja vien iš entuziazmo. Kiekvienas varžtas, licencija ir suvirintas metalo centimetras tapo realybe tik todėl, kad kažkas nusprendė palaikyti studentų inžineriją. Štai komanda, kuri stovi už mūsų.'}
         </p>
 
