@@ -16,7 +16,8 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    emptyOutDir: true
+    emptyOutDir: true,
+    target: 'es2022'
   },
   // Let Vite serve static files from /images and /i18n
   publicDir: 'public'
