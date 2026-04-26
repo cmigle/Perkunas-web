@@ -14,8 +14,23 @@ export default function MotionReel() {
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
+
+    // Skip the first 4 seconds (intro). Native `loop` rewinds to 0, so we also
+    // listen for the loop wrap-around and re-seek each time.
+    const START = 4;
+    const seekToStart = () => {
+      if (v.currentTime < START) v.currentTime = START;
+    };
+    if (v.readyState >= 1) seekToStart();
+    else v.addEventListener('loadedmetadata', seekToStart, { once: true });
+    v.addEventListener('seeked', () => {}, { once: true });
+    const onTimeUpdate = () => {
+      if (v.currentTime < START - 0.05) v.currentTime = START;
+    };
+    v.addEventListener('timeupdate', onTimeUpdate);
+
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) return;
+    if (reduce) return () => v.removeEventListener('timeupdate', onTimeUpdate);
 
     const obs = new IntersectionObserver(
       (entries) => {
@@ -27,7 +42,10 @@ export default function MotionReel() {
       { threshold: 0.35 }
     );
     obs.observe(v);
-    return () => obs.disconnect();
+    return () => {
+      obs.disconnect();
+      v.removeEventListener('timeupdate', onTimeUpdate);
+    };
   }, []);
 
   return (
@@ -35,7 +53,7 @@ export default function MotionReel() {
       <div className="relative rounded-2xl overflow-hidden border border-white/8 bg-ink-950 aspect-video">
         <video
           ref={videoRef}
-          src="/videos/car-clip-1.mp4"
+          src="/videos/car-clip-1.mp4#t=4"
           muted
           loop
           playsInline

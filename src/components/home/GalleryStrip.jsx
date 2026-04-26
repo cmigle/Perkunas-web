@@ -44,6 +44,12 @@ const PHOTOS = [
     alt: { lt: 'Komanda renginyje', en: 'Team at an event' },
     tag: { lt: 'VARŽYBOS', en: 'EVENT' },
     span: ''
+  },
+  {
+    src: '/images/CarInSun.Cl8Zd13v.jpg',
+    alt: { lt: 'Bolidas saulėje', en: 'Car in the sun' },
+    tag: { lt: 'TRASA', en: 'TRACK' },
+    span: ''
   }
 ];
 
