@@ -1,1 +1,5 @@
 node_modules
+dist
+desktop.ini
+.DS_Store
+*.log
