@@ -97,13 +97,13 @@ export default function Hero() {
               <p className="text-white/80 text-lg sm:text-xl max-w-xl leading-relaxed mb-2">
                 {lang === 'en' ? (
                   <>
-                    We're not just building a car,
+                    We're not just building a car,{' '}
                     <br className="hidden sm:block" />
                     <span className="text-brand-400">we're building a legacy.</span>
                   </>
                 ) : (
                   <>
-                    Mes ne tik kuriame bolidą,
+                    Mes ne tik kuriame bolidą,{' '}
                     <br className="hidden sm:block" />
                     <span className="text-brand-400">mes kuriame istoriją.</span>
                   </>
